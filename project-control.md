@@ -11,8 +11,9 @@
 - 根域 A 记录：`34.216.117.25`、`54.149.79.189`；HTTP 页面实际为 Spaceship `Parking Page`，不是本项目。
 - 当前环境 Cloudflare Wrangler 未登录；本次已改由 GitHub Pages 部署。
 - 已创建并推送新的可维护源码基线：`https://github.com/ZifanWang1996/wangzifan-personal-site`。这不覆盖现有线上停车页。
-- GitHub Pages 已真实发布：`https://zifanwang1996.github.io/wangzifan-personal-site/`（HTTPS 200）。
-- 已将 `wangzifan.store` 登记为 GitHub Pages 自定义域名；当前 DNS 仍指向 Spaceship Parking，证书尚不能签发，等待注册商侧 DNS 修改。
+- 根域 A 已由公共 DNS 确认切换至 GitHub Pages：`185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`。
+- HTTP `wangzifan.store` 已实际返回本项目页面（GitHub 200）；HTTPS 暂因证书仍在签发而主机名不匹配，GitHub Pages 尚未允许强制 HTTPS。
+- 已安排一次 30 分钟后的自动复查（任务 `654f917a9590`）；当前无需再次修改 DNS。
 
 ## 已确认（来自《王子凡简历2025》）
 - 姓名：王子凡；2021 年开始工作。
