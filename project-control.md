@@ -9,8 +9,10 @@
 ## 线上现状（2026-07-12）
 - 公共 DNS：Nameserver 为 `launch1.spaceship.net` / `launch2.spaceship.net`，尚未由 Cloudflare 托管。
 - 根域 A 记录：`34.216.117.25`、`54.149.79.189`；HTTP 页面实际为 Spaceship `Parking Page`，不是本项目。
-- 当前环境 Cloudflare Wrangler 未登录；创建 Pages 项目需 Cloudflare 真人账户授权。
+- 当前环境 Cloudflare Wrangler 未登录；本次已改由 GitHub Pages 部署。
 - 已创建并推送新的可维护源码基线：`https://github.com/ZifanWang1996/wangzifan-personal-site`。这不覆盖现有线上停车页。
+- GitHub Pages 已真实发布：`https://zifanwang1996.github.io/wangzifan-personal-site/`（HTTPS 200）。
+- 已将 `wangzifan.store` 登记为 GitHub Pages 自定义域名；当前 DNS 仍指向 Spaceship Parking，证书尚不能签发，等待注册商侧 DNS 修改。
 
 ## 已确认（来自《王子凡简历2025》）
 - 姓名：王子凡；2021 年开始工作。
