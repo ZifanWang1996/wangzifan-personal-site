@@ -3,7 +3,14 @@
 - 项目：zf-wang-personal-site
 - 类型：个人作品集 / 履历 / 网站档案
 - 当前模式：总控直做（未调用群内阶段 Bot）
-- 域名：wangzifan.store\n- 状态：SOURCE_READY · DNS_NOT_MANAGED_BY_CLOUDFLARE · DEPLOYMENT_BLOCKED
+- 域名：wangzifan.store
+- 状态：SOURCE_READY · DNS_CURRENTLY_SPACESHIP_PARKING · CLOUDFLARE_AUTH_REQUIRED
+
+## 线上现状（2026-07-12）
+- 公共 DNS：Nameserver 为 `launch1.spaceship.net` / `launch2.spaceship.net`，尚未由 Cloudflare 托管。
+- 根域 A 记录：`34.216.117.25`、`54.149.79.189`；HTTP 页面实际为 Spaceship `Parking Page`，不是本项目。
+- 当前环境 Cloudflare Wrangler 未登录；创建 Pages 项目需 Cloudflare 真人账户授权。
+- 已创建并推送新的可维护源码基线：`https://github.com/ZifanWang1996/wangzifan-personal-site`。这不覆盖现有线上停车页。
 
 ## 已确认（来自《王子凡简历2025》）
 - 姓名：王子凡；2021 年开始工作。
