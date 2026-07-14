@@ -32,7 +32,8 @@
    - `AIStoryNest` — `https://aistorynest.mom/` — 状态：已上线；卡片显示：`01· 已上线 / 睡前故事生成站`。
    - `Build a Hooper` — `https://buildahooper.best/` — 状态：已上线；篮球训练内容站。
    - `FalloutDay` — `https://falloutday.online/` — 状态：已上线；Fallout 76 攻略站。
-   - 三个外部链接均使用新窗口和 `noopener noreferrer`；“访问项目 ↗”为高对比度按钮 CTA。
+   - `PalworldMap` — `https://palworldmap.best/` — 状态：已上线；Palworld 非官方地图与指南，提供已验证地点记录、地图图层、搜索与坐标点导航。
+   - 四个外部链接均使用新窗口和 `noopener noreferrer`；“访问项目 ↗”为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
