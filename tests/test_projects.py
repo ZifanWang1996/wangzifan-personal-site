@@ -30,5 +30,14 @@ def test_projects_section_includes_live_allwishescometrue_card():
     assert 'href="https://allwishescometrue.site/"' in html
     assert '<span>07 · 已上线</span><span>八仙电影与民俗文化站</span>' in html
     assert '电影背景、八位角色、民俗源流' in html
-    assert html.count('data-status="live"') == 7
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 7
+
+
+def test_projects_section_includes_live_taskbarherowiki_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>TaskbarHeroWiki</h3>' in html
+    assert 'href="https://taskbarherowiki.best/"' in html
+    assert '<span>08 · 已上线</span><span>Task Bar Hero 数据库</span>' in html
+    assert '关卡、怪物、宝箱、材料与关系记录' in html
+    assert html.count('data-status="live"') == 8
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 8

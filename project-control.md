@@ -10,8 +10,8 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`8224edf`（`feat: add llmstxt portfolio project`）
-- 工作区：新增 All Wishes Come True 项目卡（待发布）
+- 最新提交：`8963802`（`feat: add All Wishes Come True project card`）
+- 工作区：新增 TaskbarHeroWiki 项目卡（待发布）
 
 ## 上线与域名状态（2026-07-12）
 
@@ -36,7 +36,8 @@
    - `CodexSkin.space` — `https://codexskin.space/` — 状态：已上线；Codex CLI TUI 配置指南站。
    - `llmstxt` — `https://llmstxt.best/` — 状态：已上线；llms.txt 的阅读、发布与维护实用指南。
    - `All Wishes Come True` — `https://allwishescometrue.site/` — 状态：已上线；八仙电影、角色、民俗源流与本地互动工具文化站。
-   - 七个外部链接均使用新窗口和 `noopener noreferrer`；“访问项目 ↗”为高对比度按钮 CTA。
+   - `TaskbarHeroWiki` — `https://taskbarherowiki.best/` — 状态：已上线；Task Bar Hero 非官方数据库，收录关卡、怪物、宝箱、材料与关系记录，支持搜索、筛选与详情浏览。
+   - 八个外部链接均使用新窗口和 `noopener noreferrer`；“访问项目 ↗”为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
