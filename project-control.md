@@ -10,8 +10,8 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`8963802`（`feat: add All Wishes Come True project card`）
-- 工作区：新增 TaskbarHeroWiki 项目卡（待发布）
+- 最新提交：`3262cd1`（`feat: add TaskbarHeroWiki project card`）
+- 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
 
