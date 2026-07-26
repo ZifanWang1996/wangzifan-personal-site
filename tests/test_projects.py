@@ -48,5 +48,14 @@ def test_projects_section_includes_live_chinesecashcoins_card():
     assert 'href="https://chinesecashcoins.wiki/"' in html
     assert '<span>09 · 已上线</span><span>中国古钱币图鉴</span>' in html
     assert '布币、刀币、五铢、开元通宝' in html
-    assert html.count('data-status="live"') == 9
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 9
+
+
+def test_projects_section_includes_live_rotcheck_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>Rot Check</h3>' in html
+    assert 'href="https://rotcheck.cyou/"' in html
+    assert '<span>10 · 已上线</span><span>Gen Alpha 趣味测试站</span>' in html
+    assert 'Am I Unc、Brainrot Test、Am I Cooked' in html
+    assert html.count('data-status="live"') == 10
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 10
