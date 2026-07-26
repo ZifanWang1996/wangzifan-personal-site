@@ -39,5 +39,14 @@ def test_projects_section_includes_live_taskbarherowiki_card():
     assert 'href="https://taskbarherowiki.best/"' in html
     assert '<span>08 · 已上线</span><span>Task Bar Hero 数据库</span>' in html
     assert '关卡、怪物、宝箱、材料与关系记录' in html
-    assert html.count('data-status="live"') == 8
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 8
+
+
+def test_projects_section_includes_live_chinesecashcoins_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>Chinese Coins Atlas</h3>' in html
+    assert 'href="https://chinesecashcoins.wiki/"' in html
+    assert '<span>09 · 已上线</span><span>中国古钱币图鉴</span>' in html
+    assert '布币、刀币、五铢、开元通宝' in html
+    assert html.count('data-status="live"') == 9
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 9
