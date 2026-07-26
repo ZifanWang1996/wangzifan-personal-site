@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`e809604`（`feat: add Chinese Coins Atlas project card`）
+- 最新提交：`43e9679`（`feat: add Rot Check project card`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
