@@ -39,7 +39,8 @@
    - `TaskbarHeroWiki` — `https://taskbarherowiki.best/` — 状态：已上线；Task Bar Hero 非官方数据库，收录关卡、怪物、宝箱、材料与关系记录，支持搜索、筛选与详情浏览。
    - `Chinese Coins Atlas` — `https://chinesecashcoins.wiki/` — 状态：已上线；中英双语中国古钱币教育图鉴，按朝代梳理主要钱型并提供满文局名查询工具。
    - `Rot Check` — `https://rotcheck.cyou/` — 状态：已上线；Gen Alpha 趣味测试站，提供 Am I Unc、Brainrot Test、Am I Cooked 等病毒式 vibe check，即时出分，无需注册。
-   - 十个外部链接均使用新窗口和 `noopener noreferrer`；“访问项目 ↗”为高对比度按钮 CTA。
+   - `SpiritVale Wiki` — `https://spiritvale.blog/` — 状态：已上线；SpiritVale 非官方社区 Wiki，收录 16 个职业流派、230+ 怪物数据库、元素机制指南、强度排行与配装模拟器。
+   - 十一个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**

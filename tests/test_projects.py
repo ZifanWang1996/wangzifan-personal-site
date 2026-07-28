@@ -57,5 +57,14 @@ def test_projects_section_includes_live_rotcheck_card():
     assert 'href="https://rotcheck.cyou/"' in html
     assert '<span>10 · 已上线</span><span>Gen Alpha 趣味测试站</span>' in html
     assert 'Am I Unc、Brainrot Test、Am I Cooked' in html
-    assert html.count('data-status="live"') == 10
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 10
+
+
+def test_projects_section_includes_live_spiritvale_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>SpiritVale Wiki</h3>' in html
+    assert 'href="https://spiritvale.blog/"' in html
+    assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
+    assert '16 个职业流派、230+ 怪物数据库' in html
+    assert html.count('data-status="live"') == 11
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 11
