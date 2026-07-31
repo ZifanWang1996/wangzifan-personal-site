@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`43e9679`（`feat: add Rot Check project card`）
+- 最新提交：`452cc9d`（`feat: add CopyPlaintext project card (copyplaintext.com)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -40,7 +40,9 @@
    - `Chinese Coins Atlas` — `https://chinesecashcoins.wiki/` — 状态：已上线；中英双语中国古钱币教育图鉴，按朝代梳理主要钱型并提供满文局名查询工具。
    - `Rot Check` — `https://rotcheck.cyou/` — 状态：已上线；Gen Alpha 趣味测试站，提供 Am I Unc、Brainrot Test、Am I Cooked 等病毒式 vibe check，即时出分，无需注册。
    - `SpiritVale Wiki` — `https://spiritvale.blog/` — 状态：已上线；SpiritVale 非官方社区 Wiki，收录 16 个职业流派、230+ 怪物数据库、元素机制指南、强度排行与配装模拟器。
-   - 十一个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `DragonSword Wiki` — `https://dragonswordawakening.fun/` — 状态：已上线；DragonSword: Awakening 非官方社区 Wiki，收录 19 位英雄资料、异常状态接力系统、互动 Orbis 地图、队伍构建器与版本更新记录。
+   - `CopyPlaintext` — `https://copyplaintext.com/` — 状态：已上线；去除格式的免费在线纯文本粘贴工具，并收录各应用与操作系统的纯文本粘贴指南，无需注册、浏览器直接运行。
+   - 十三个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
