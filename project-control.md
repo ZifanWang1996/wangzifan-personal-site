@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`452cc9d`（`feat: add CopyPlaintext project card (copyplaintext.com)`）
+- 最新提交：`baaa647`（`feat: add IsItDown project card (isitdown.click)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -42,7 +42,8 @@
    - `SpiritVale Wiki` — `https://spiritvale.blog/` — 状态：已上线；SpiritVale 非官方社区 Wiki，收录 16 个职业流派、230+ 怪物数据库、元素机制指南、强度排行与配装模拟器。
    - `DragonSword Wiki` — `https://dragonswordawakening.fun/` — 状态：已上线；DragonSword: Awakening 非官方社区 Wiki，收录 19 位英雄资料、异常状态接力系统、互动 Orbis 地图、队伍构建器与版本更新记录。
    - `CopyPlaintext` — `https://copyplaintext.com/` — 状态：已上线；去除格式的免费在线纯文本粘贴工具，并收录各应用与操作系统的纯文本粘贴指南，无需注册、浏览器直接运行。
-   - 十三个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `IsItDown` — `https://isitdown.click/` — 状态：已上线；免费网站宕机检测工具，输入任意网址即可查看该网站是全网宕机还是仅你无法访问，返回实时状态、HTTP 状态码与响应时间。
+   - 十四个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
