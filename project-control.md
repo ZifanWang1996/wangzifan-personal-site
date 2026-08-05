@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`73c20fd`（`feat: add 竹知了 project card (zhuzhiliao.buzz)`）
+- 最新提交：`1b14ba3`（`feat: add Shift at Midnight Guide project card (shiftatmidnight.blog)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -46,7 +46,8 @@
    - `HowManySleepsUntil` — `https://howmanysleepsuntil.rest/` — 状态：已上线；「还要睡几觉」倒计时工具，支持圣诞、万圣节、复活节、生日等日期倒数，多语言免费使用。
    - `Cash Flow Lifestyle` — `https://cashflow.lifestyle/` — 状态：已上线；免费在线现金流桌游站，通过游戏学习财务知识、构建被动收入、逃离老鼠赛跑，无需注册即可游玩。
    - `竹知了` — `https://zhuzhiliao.buzz/` — 状态：已上线；传统玩具竹知了（竹蝉/哇哇筒）的在线模拟器与声学档案，按住屏幕画圈甩响，配有实时示波器、甩响成绩单、发声原理与手工制作教程，无需下载，手机即玩。
-   - 十七个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `Shift at Midnight Guide` — `https://shiftatmidnight.blog/` — 状态：已上线；《Shift at Midnight》（Steam）独立粉丝攻略站，提供替身识别检查清单、追猎生存、赚钱路线、全 3 种结局、成就与版本更新追踪，支持中英双语。
+   - 十八个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
