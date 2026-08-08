@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`17d59bd`（`feat: add Merge a Nuke project card (mergeanuke.space)`）
+- 最新提交：`4df813e`（`feat: refresh PalworldMap project card (palworldmap.best)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -32,7 +32,7 @@
    - `AIStoryNest` — `https://aistorynest.mom/` — 状态：已上线；卡片显示：`01· 已上线 / 睡前故事生成站`。
    - `Build a Hooper` — `https://buildahooper.best/` — 状态：已上线；篮球训练内容站。
    - `FalloutDay` — `https://falloutday.online/` — 状态：已上线；Fallout 76 攻略站。
-   - `PalworldMap` — `https://palworldmap.best/` — 状态：已上线；Palworld 非官方地图与指南，提供已验证地点记录、地图图层、搜索与坐标点导航。
+   - `PalworldMap` — `https://palworldmap.best/` — 状态：已上线；Palworld 非官方坐标导航图谱，收录 89 条来源锁定导航记录（82 个快速传送点、7 座高塔），支持搜索、筛选、最近点计算与本地清单。
    - `CodexSkin.space` — `https://codexskin.space/` — 状态：已上线；Codex CLI TUI 配置指南站。
    - `llmstxt` — `https://llmstxt.best/` — 状态：已上线；llms.txt 的阅读、发布与维护实用指南。
    - `All Wishes Come True` — `https://allwishescometrue.site/` — 状态：已上线；八仙电影、角色、民俗源流与本地互动工具文化站。
