@@ -4,6 +4,16 @@ from pathlib import Path
 SITE = Path(__file__).parents[1] / "index.html"
 
 
+def test_projects_section_includes_live_palworldmap_v2_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>PalworldMap</h3>' in html
+    assert 'href="https://palworldmap.best/"' in html
+    assert '<span>04 · 已上线</span><span>Palworld 坐标图谱</span>' in html
+    assert '89 条来源锁定导航记录（82 个快速传送点、7 座高塔）' in html
+    assert '最近点计算与本地清单' in html
+
+
 def test_projects_section_includes_live_codexskin_card():
     html = SITE.read_text(encoding="utf-8")
 
