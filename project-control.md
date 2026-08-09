@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`7f15eaa`（`feat: add AI Scanner project card (aiscanner.run)`）
+- 最新提交：`6e16793`（`feat: add RSP Editor project card (rspeditor.app)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -49,7 +49,8 @@
    - `Shift at Midnight Guide` — `https://shiftatmidnight.blog/` — 状态：已上线；《Shift at Midnight》（Steam）独立粉丝攻略站，提供替身识别检查清单、追猎生存、赚钱路线、全 3 种结局、成就与版本更新追踪，支持中英双语。
    - `Merge a Nuke! Guide` — `https://mergeanuke.space/` — 状态：已上线；《Merge a Nuke!》Roblox 非官方攻略站，提供可兑换代码、指挥官与突变情报、进度强度排行和合成计算器，并追踪每周五更新。
    - `AI Scanner` — `https://aiscanner.run/` — 状态：已上线；AI 文本检测工具，提供浏览器端免费检测、多模型深度扫描、置信度与逐句原因说明，并明确提示误判与使用边界。
-   - 二十个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `RSP Editor` — `https://rspeditor.app/` — 状态：已上线；AI 同款照片生成器，支持选择同款模板、上传照片并在数秒内生成成片，另提供提示词库与交互式提示词构建器。
+   - 二十一个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
