@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 20
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 20
+    assert html.count('data-status="live"') == 21
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 21
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -97,3 +97,13 @@ def test_projects_section_includes_live_aiscanner_card():
     assert '<span>20 · 已上线</span><span>AI 文本检测工具</span>' in html
     assert '浏览器端免费检测' in html
     assert '多模型深度扫描、置信度和逐句原因说明' in html
+
+
+def test_projects_section_includes_live_rspeditor_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>RSP Editor</h3>' in html
+    assert 'href="https://rspeditor.app/"' in html
+    assert '<span>21 · 已上线</span><span>AI 同款照片生成器</span>' in html
+    assert '选择同款模板、上传照片并用 AI 在数秒内生成成片' in html
+    assert '提示词库与交互式提示词构建器' in html
