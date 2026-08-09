@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`4df813e`（`feat: refresh PalworldMap project card (palworldmap.best)`）
+- 最新提交：`7f15eaa`（`feat: add AI Scanner project card (aiscanner.run)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -48,7 +48,8 @@
    - `竹知了` — `https://zhuzhiliao.buzz/` — 状态：已上线；传统玩具竹知了（竹蝉/哇哇筒）的在线模拟器与声学档案，按住屏幕画圈甩响，配有实时示波器、甩响成绩单、发声原理与手工制作教程，无需下载，手机即玩。
    - `Shift at Midnight Guide` — `https://shiftatmidnight.blog/` — 状态：已上线；《Shift at Midnight》（Steam）独立粉丝攻略站，提供替身识别检查清单、追猎生存、赚钱路线、全 3 种结局、成就与版本更新追踪，支持中英双语。
    - `Merge a Nuke! Guide` — `https://mergeanuke.space/` — 状态：已上线；《Merge a Nuke!》Roblox 非官方攻略站，提供可兑换代码、指挥官与突变情报、进度强度排行和合成计算器，并追踪每周五更新。
-   - 十九个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `AI Scanner` — `https://aiscanner.run/` — 状态：已上线；AI 文本检测工具，提供浏览器端免费检测、多模型深度扫描、置信度与逐句原因说明，并明确提示误判与使用边界。
+   - 二十个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
