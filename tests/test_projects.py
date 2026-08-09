@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 19
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 19
+    assert html.count('data-status="live"') == 20
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 20
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -87,3 +87,13 @@ def test_projects_section_includes_live_mergeanuke_card():
     assert 'href="https://mergeanuke.space/"' in html
     assert '<span>19 · 已上线</span><span>核弹合成攻略站</span>' in html
     assert '可兑换代码、指挥官与突变情报、进度强度排行和合成计算器' in html
+
+
+def test_projects_section_includes_live_aiscanner_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>AI Scanner</h3>' in html
+    assert 'href="https://aiscanner.run/"' in html
+    assert '<span>20 · 已上线</span><span>AI 文本检测工具</span>' in html
+    assert '浏览器端免费检测' in html
+    assert '多模型深度扫描、置信度和逐句原因说明' in html
