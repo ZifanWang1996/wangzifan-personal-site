@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 21
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 21
+    assert html.count('data-status="live"') == 22
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 22
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -107,3 +107,14 @@ def test_projects_section_includes_live_rspeditor_card():
     assert '<span>21 · 已上线</span><span>AI 同款照片生成器</span>' in html
     assert '选择同款模板、上传照片并用 AI 在数秒内生成成片' in html
     assert '提示词库与交互式提示词构建器' in html
+
+
+def test_projects_section_includes_live_remove_matcha_filter_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>Remove Matcha Filter</h3>' in html
+    assert 'href="https://remove-matcha-filter.com/"' in html
+    assert '<span>22 · 已上线</span><span>图片视频校色工具</span>' in html
+    assert '修正抹茶绿色偏色的图片与短视频' in html
+    assert '浏览器本地处理、效果对比与导出' in html
+    assert '媒体文件无需上传服务器' in html
