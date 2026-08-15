@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 22
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 22
+    assert html.count('data-status="live"') == 23
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 23
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -118,3 +118,14 @@ def test_projects_section_includes_live_remove_matcha_filter_card():
     assert '修正抹茶绿色偏色的图片与短视频' in html
     assert '浏览器本地处理、效果对比与导出' in html
     assert '媒体文件无需上传服务器' in html
+
+
+def test_projects_section_includes_live_deepseek_harness_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>DSH Field Guide</h3>' in html
+    assert 'href="https://deepseekharness.site/"' in html
+    assert '<span>23 · 已上线</span><span>DeepSeek 工具指南</span>' in html
+    assert '独立的 DeepSeek Harness 实用指南' in html
+    assert '经来源核验且标注版本' in html
+    assert '安装、模型配置、Python SDK、插件与故障排查' in html
