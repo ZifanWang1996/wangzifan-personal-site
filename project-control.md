@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`8dfa806`（`feat: add Remove Matcha Filter project card (remove-matcha-filter.com)`）
+- 最新提交：`1996bcf`（`feat: add DSH Field Guide project card (deepseekharness.site)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -51,7 +51,8 @@
    - `AI Scanner` — `https://aiscanner.run/` — 状态：已上线；AI 文本检测工具，提供浏览器端免费检测、多模型深度扫描、置信度与逐句原因说明，并明确提示误判与使用边界。
    - `RSP Editor` — `https://rspeditor.app/` — 状态：已上线；AI 同款照片生成器，支持选择同款模板、上传照片并在数秒内生成成片，另提供提示词库与交互式提示词构建器。
    - `Remove Matcha Filter` — `https://remove-matcha-filter.com/` — 状态：已上线；图片与短视频抹茶绿色偏色校正工具，支持浏览器本地处理、效果对比与导出，媒体文件无需上传服务器。
-   - 二十二个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `DSH Field Guide` — `https://deepseekharness.site/` — 状态：已上线；独立的 DeepSeek Harness 实用指南，提供经来源核验且标注版本的安装、模型配置、Python SDK、插件与故障排查内容。
+   - 二十三个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
