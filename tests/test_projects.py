@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 23
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 23
+    assert html.count('data-status="live"') == 24
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 24
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -129,3 +129,14 @@ def test_projects_section_includes_live_deepseek_harness_card():
     assert '独立的 DeepSeek Harness 实用指南' in html
     assert '经来源核验且标注版本' in html
     assert '安装、模型配置、Python SDK、插件与故障排查' in html
+
+
+def test_projects_section_includes_live_polski_pilkarz_simulator_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>Polski Piłkarz Simulator</h3>' in html
+    assert 'href="https://polskipilkarzsymulator.online/"' in html
+    assert '<span>24 · 已上线</span><span>波兰足球生涯模拟器</span>' in html
+    assert '可免费在线游玩 v1.90' in html
+    assert '8400+ 家俱乐部与 101 个生涯事件' in html
+    assert '比赛胜率计算器和新手指南' in html
