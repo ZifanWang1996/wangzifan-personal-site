@@ -97,12 +97,18 @@ const filters = filterSpecs.map(([value, label], index) => {
   element.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
   return element;
 });
-const categories = [...Array(3).fill('ai'), ...Array(9).fill('game'), ...Array(9).fill('tool'), ...Array(5).fill('creative')];
-const projects = categories.map((category, index) => {
-  const card = new Element(`project-${index + 1}`, { classes: ['site'] });
+const projectSpecs = [...html.matchAll(
+  /<article class="site" data-status="live"><div data-category="(ai|game|tool|creative)">[\s\S]*?<h3>([\s\S]*?)<\/h3>[\s\S]*?<\/article>/g,
+)].map(([, category, titleHtml]) => ({ category, title: titleHtml.replace(/<[^>]+>/g, '') }));
+assert.equal(projectSpecs.length, 27, 'dynamic fixture must include every live project card');
+const projects = projectSpecs.map(({ category, title }, index) => {
+  const card = new Element(`project-${index + 1}`, { dataset: { title }, classes: ['site'] });
   card.one.set('[data-category]', new Element(`category-${index + 1}`, { dataset: { category } }));
   return card;
 });
+const craveloop = projects.find(card => card.dataset.title === 'CraveLoop');
+assert.ok(craveloop, 'dynamic fixture must include CraveLoop');
+assert.equal(craveloop.querySelector('[data-category]').dataset.category, 'creative');
 
 const visibleCount = new Element('visibleCount', { textContent: 'ALL RELEASES' });
 const modal = new Element('commandDialog', { hidden: true, classes: ['modal'] });
@@ -154,7 +160,7 @@ new Function('document', 'navigator', 'matchMedia', 'addEventListener', 'request
   document, navigator, matchMedia, addEventListener, requestAnimationFrame,
 );
 
-for (const [value, expected] of [['ai', 3], ['game', 9], ['tool', 9], ['creative', 5], ['all', 26]]) {
+for (const [value, expected] of [['ai', 3], ['game', 9], ['tool', 9], ['creative', 6], ['all', 27]]) {
   const button = filters.find(item => item.dataset.filter === value);
   await button.emit('click');
   assert.equal(projects.filter(card => !card.classList.contains('hide')).length, expected, `${value} visible count`);

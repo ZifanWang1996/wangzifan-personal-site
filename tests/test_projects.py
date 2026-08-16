@@ -83,8 +83,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 26
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 26
+    assert html.count('data-status="live"') == 27
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 27
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -172,6 +172,23 @@ def test_projects_section_includes_live_matchafilter_card():
     assert '无需账户，免费处理时照片不会上传服务器' in html
 
 
+def test_projects_section_includes_live_craveloop_card():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    matching = [card for card in cards if '<h3>CraveLoop</h3>' in card]
+
+    assert len(matching) == 1
+    card = matching[0]
+    assert html.count('href="https://foodnevercomes.online/"') == 1
+    assert 'data-category="creative"' in card
+    assert '<span>27 · 已上线</span><span>全球美食点单模拟器</span>' in card
+    assert 'href="https://foodnevercomes.online/"' in card
+    assert '8 个国家的 48 道菜' in card
+    assert '加入虚拟购物车' in card
+    assert '以 $0 结账' in card
+    assert '永远不会送达的虚构订单' in card
+
+
 def test_homepage_uses_opc_launch_ledger_information_architecture():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
@@ -207,13 +224,13 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 26
-    assert html.count('<article class="site" data-status="live">') == 26
-    assert html.count('data-category=') == 26
+    assert html.count('data-status="live"') == 27
+    assert html.count('<article class="site" data-status="live">') == 27
+    assert html.count('data-category=') == 27
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
-    for removed_label in ("全部 26", "AI 产品 3", "游戏与内容 9", "实用工具 9", "创意实验 5"):
+    for removed_label in ("全部 27", "AI 产品 3", "游戏与内容 9", "实用工具 9", "创意实验 6"):
         assert removed_label not in html
 
     # Required section order and evidence-led motivational language.
