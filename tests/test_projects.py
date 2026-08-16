@@ -1,4 +1,5 @@
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -170,7 +171,7 @@ def test_projects_section_includes_live_matchafilter_card():
     assert '无需账户，免费处理时照片不会上传服务器' in html
 
 
-def test_homepage_uses_opc_only_information_architecture():
+def test_homepage_uses_opc_launch_ledger_information_architecture():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
 
@@ -187,24 +188,36 @@ def test_homepage_uses_opc_only_information_architecture():
         assert removed not in html
         assert removed not in control
 
-    # Owner-approved narrative and evidence.
-    assert "一个人，也能把产品推向全球。" in html
-    assert "26 个产品" in html
-    assert "6 项证书" in html
-    assert "2026 开始持续构建" in html
+    # The hero is an action-led shipping statement, not a scorecard.
+    assert "先把想法做出来" in html
+    assert "再让世界给答案。" in html
+    assert "SHIPPING ENGINE" in html
+    for removed in (
+        "26 个产品",
+        "6 项证书",
+        "六个重点产品",
+        "Selected Deployments",
+        'id="proof"',
+        'data-featured="true"',
+    ):
+        assert removed not in html
 
-    # Six featured products plus the complete categorized deployment index.
-    assert html.count('data-featured="true"') == 6
+    # One complete, equal-weight release ledger carries every live product.
+    assert 'class="release-ledger"' in html
+    assert "全部上线记录" in html
+    assert "把想法做成网址" in html
     assert html.count('data-status="live"') == 26
     assert html.count('<article class="site" data-status="live">') == 26
     assert html.count('data-category=') == 26
+    assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
+    for removed_label in ("全部 26", "AI 产品 3", "游戏与内容 9", "实用工具 9", "创意实验 5"):
+        assert removed_label not in html
 
-    # Required section order and OPC operating loop.
+    # Required section order and evidence-led motivational language.
     ordered_sections = (
         'id="top"',
-        'id="proof"',
         'id="work"',
         'id="system"',
         'id="manifesto"',
@@ -212,6 +225,10 @@ def test_homepage_uses_opc_only_information_architecture():
     )
     positions = [html.index(section) for section in ordered_sections]
     assert positions == sorted(positions)
+    assert "不把灵感收藏起来" in html
+    assert "少一点等待" in html and "多一次真实发布" in html
+    assert "上线就是时机" in html
+    assert "下一件值得上线的事" in html and "现在就开始" in html
     for step in ("判断", "构建", "上线", "反馈"):
         assert f'data-step="{step}"' in html
 
@@ -219,6 +236,36 @@ def test_homepage_uses_opc_only_information_architecture():
     assert "wang1227928718" in html
     assert "复制微信号" in html
     assert 'aria-live="polite"' in html
+
+
+def test_command_palette_opens_on_first_destination():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert "modal.querySelector('a').focus()" in html
+
+
+def test_interactions_execute_across_filters_keyboard_and_copy_fallbacks():
+    result = subprocess.run(
+        ["node", str(ROOT / "tests" / "browser_interactions.mjs")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        timeout=20,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "dynamic interactions: OK" in result.stdout
+
+
+def test_release_filters_remain_compact_at_narrowest_width():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert ".filters{display:grid;grid-template-columns:1fr 1fr}" in html
+    assert ".filters{grid-template-columns:1fr}" not in html
+    filter_rule = re.search(r"\.filter\{([^}]*)\}", html)
+    assert filter_rule
+    assert "border:1px solid var(--line2)" in filter_rule.group(1)
 
 
 def test_release_artifact_is_allowlisted_and_mobile_safe():

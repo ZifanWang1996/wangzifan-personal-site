@@ -12,46 +12,52 @@
 - 当前发布提交：`283799bde2540856d785d14653882ba7eca9d08c`
 - 已审查 tree：`5f8da9244e774bd14371a0bf6f1188fb3d1bceab`
 
-## 发布状态（2026-08-16）
+## 本地候选状态（未授权上线）
+
+- 候选方向：**Launch Ledger / 持续发布引擎**。
+- 候选 `index.html` SHA-256：`f7ca5ba489b9b014d9e8346450b03745a915cd2d189c864c6cc12504dc6c8e95`。
+- 本地 Pages 白名单产物仅含 `index.html` 与 `favicon.svg`，页面源文件与产物逐字节一致。
+- 回归测试：`21 passed`；其中仓库内 Node 动态交互测试执行真实页面脚本，覆盖五种筛选、命令面板状态/焦点及四种复制结果，并验证初始 `BODY`、普通可聚焦元素、点击触发器三类焦点恢复。
+- 真实浏览器候选验收：1440×900、390×844、320×568 均通过；`BODY → Ctrl+K → Escape` 稳定回退到命令按钮，原焦点元素被移除时同样安全回退；强制 Clipboard API 与 `execCommand` 同时抛异常时仍显示明文并清理临时节点；尚未提交、推送或部署。
+- 本轮 independent exact-tree 审查结果记录于交接报告，不在审查后反写候选树。
+
+## 当前生产状态（2026-08-16）
 
 - 独立 exact-tree 审查：**PASS**。
 - GitHub Actions Pages run `31927459835`：**success**。
 - Pages 配置：`build_type: workflow`、`cname: wangzifan.store`、`https_enforced: true`。
 - TLS：Let's Encrypt 证书有效，SAN 包含 `wangzifan.store`。
 - HTTP 已验证自动跳转至 HTTPS。
-- 生产 `index.html` SHA-256：`9668d1a5e5b1a5640bd3368a040a4130d80ed966b504be8a695633d24a909be4`，与已审查文件逐字节一致。
-- 生产 `favicon.svg` SHA-256：`88c7718f853c633d012afbb79ebc08bfd89294f49babc26add6831b719e6abed`，与已审查文件逐字节一致。
+- 生产 `index.html` SHA-256：`9668d1a5e5b1a5640bd3368a040a4130d80ed966b504be8a695633d24a909be4`，与上一轮已审查文件逐字节一致。
+- 生产 `favicon.svg` SHA-256：`88c7718f853c633d012afbb79ebc08bfd89294f49babc26add6831b719e6abed`。
 
-## 公开定位与信息架构
+## 候选公开定位与信息架构
 
-1. **Hero / OPC 定位**
-   - 核心标题：`一个人，也能把产品推向全球。`
-   - 公开身份：面向全球用户持续构建、上线和迭代产品的 OPC 创业者。
-   - 方法论：用 AI 放大单人产能，用真实反馈决定下一步。
+1. **Hero / Shipping Engine**
+   - 核心标题：`先把想法做出来，再让世界给答案。`
+   - 公开身份：面向真实用户持续构建、上线和迭代产品的 OPC 创业者。
+   - 视觉叙事：`SHIP REAL.` 持续发布引擎；首屏不再陈列产品数、证书数或精选成绩板。
 
-2. **成果证据**
-   - 26 个已上线产品。
-   - 6 项专业证书。
-   - 自 2026 年开始持续构建。
-   - 运行循环：判断 → 构建 → 上线 → 反馈。
+2. **Launch Ledger**
+   - 核心标题：`把想法做成网址，把网址做成复利。`
+   - 完整产品索引中的全部记录等权展示，不再重复设置重点精选区。
+   - 支持五个语义筛选状态：全部、AI 产品、游戏与内容、实用工具、创意实验；按钮标签不显示计数。
 
-3. **Selected Deployments**
-   - 六个重点产品：RSP Editor、AI Scanner、AIStoryNest、PalworldMap、Chinese Coins Atlas、MatchaFilter。
-   - 完整产品索引支持五个筛选状态：全部 26、AI 产品 3、游戏与内容 9、实用工具 9、创意实验 5。
+3. **OPC Operating System**
+   - 判断：别追逐所有机会，找到真实需求，选中那个值得立刻动手的问题。
+   - 构建：压缩范围，用 AI 把想法尽快变成可用产品。
+   - 上线：把真实版本交给用户，让产品接受世界的检验。
+   - 反馈：让行为、搜索和运营结果推动下一轮更快出发。
 
-4. **OPC Operating System**
-   - 判断：从搜索需求、社区信号和真实痛点中筛选机会。
-   - 构建：把需求压缩为最短可验证路径，以 AI 放大单人产能。
-   - 上线：先交付真实可用版本，再补齐可靠性、隐私与增长基础。
-   - 反馈：以用户行为、搜索数据和运营结果决定下一轮迭代。
+4. **Founder Manifesto**
+   - See the signal.
+   - Make the move.
+   - Ship the truth.
+   - Earn momentum.
+   - 核心口号：`没有完美时机。上线就是时机。`
 
-5. **Founder Manifesto**
-   - Think clearly.
-   - Build small.
-   - Ship real.
-   - Compound fast.
-
-6. **Collaboration**
+5. **Collaboration**
+   - 核心标题：`下一件值得上线的事，现在就开始。`
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
@@ -94,14 +100,16 @@
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
 - 页面不加载第三方脚本；26 个外部链接均使用新窗口及 `noopener noreferrer`。
 
-## 浏览器验收
+## 候选浏览器验收
 
-- 桌面 1440px、移动 390px、极窄 320px 均无页面级横向溢出。
-- `HowManySleepsUntil` 在极窄宽度按语义断点显示完整。
-- 筛选计数为 `26 / 3 / 9 / 9 / 5`，显示计数和 `aria-pressed` 同步。
-- 命令面板支持点击与 `Ctrl+K`，Escape 关闭后恢复触发按钮焦点。
-- 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径。
-- 首次加载 favicon 返回 200；生产控制台无 JavaScript 错误。
+- 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
+- 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
+- 全部记录与 AI 产品筛选分别显示 26 / 3 条，类别标签和 `aria-pressed` 同步；页面不展示数字成绩板。
+- 320px 筛选器保持双列三行并保有 44px 最小触控高度。
+- 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
+- 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
+- 仓库内 `tests/browser_interactions.mjs` 动态执行页面真实脚本，覆盖五种筛选、命令面板状态、初始 `BODY`/普通元素/点击触发器焦点恢复、正反向 Tab 与四种复制结果，避免只靠源码字符串断言。
+- favicon 返回 200；候选控制台、页面异常、失败请求及第三方请求均为 0。
 
 ## 隐私与内容边界
 
