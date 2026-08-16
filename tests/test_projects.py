@@ -269,6 +269,21 @@ def test_release_filters_remain_compact_at_narrowest_width():
     assert "border:1px solid var(--line2)" in filter_rule.group(1)
 
 
+def test_oem_android_fonts_do_not_inherit_font_specific_opentype_features():
+    html = SITE.read_text(encoding="utf-8")
+    body_rule = re.search(r"body\{([^}]*)\}", html)
+
+    assert body_rule
+    body_css = body_rule.group(1)
+    assert "font-feature-settings:normal" in body_css
+    assert 'font-feature-settings:"cv01","ss03"' not in body_css
+    heading = re.search(r"<h3>(Build a Hooper)</h3>", html)
+    assert heading
+    assert [ord(char) for char in "Build a Hooper"] == [
+        ord(char) for char in heading.group(1)
+    ]
+
+
 def test_mobile_release_card_microcopy_is_legible():
     html = SITE.read_text(encoding="utf-8")
     mobile_start = html.index("@media(max-width:700px){")
