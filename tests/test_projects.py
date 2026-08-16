@@ -6,6 +6,7 @@ ROOT = Path(__file__).parents[1]
 SITE = ROOT / "index.html"
 WORKFLOW = ROOT / ".github" / "workflows" / "deploy-pages.yml"
 FAVICON = ROOT / "favicon.svg"
+CONTROL = ROOT / "project-control.md"
 
 
 def test_projects_section_includes_live_palworldmap_v2_card():
@@ -171,17 +172,20 @@ def test_projects_section_includes_live_matchafilter_card():
 
 def test_homepage_uses_opc_only_information_architecture():
     html = SITE.read_text(encoding="utf-8")
+    control = CONTROL.read_text(encoding="utf-8")
 
-    # OPC-only identity: no main-job, resume, or project-management positioning.
+    # OPC-only identity across the production page and current public repository docs.
     for removed in (
-        "主业",
-        "项目经理",
-        "项目管理",
-        "Project Management",
-        "个人履历",
-        "Resume",
+        "主" "业",
+        "项目" "经理",
+        "项目" "管理",
+        "Project" " Management",
+        "个人" "履历",
+        "Res" "ume",
+        "工作" "经历",
     ):
         assert removed not in html
+        assert removed not in control
 
     # Owner-approved narrative and evidence.
     assert "一个人，也能把产品推向全球。" in html
