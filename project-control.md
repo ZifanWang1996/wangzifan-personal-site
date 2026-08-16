@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - Pages 预览：`https://zifanwang1996.github.io/wangzifan-personal-site/`
 - 正式域名：`wangzifan.store`
-- 最新提交：`08b32c3`（`feat: add Polski Piłkarz Simulator project card (polskipilkarzsymulator.online)`）
+- 最新提交：`8e01c64`（`feat: add burnt for you project card (burncd.xyz)`）
 - 工作区：干净
 
 ## 上线与域名状态（2026-07-12）
@@ -53,7 +53,8 @@
    - `Remove Matcha Filter` — `https://remove-matcha-filter.com/` — 状态：已上线；图片与短视频抹茶绿色偏色校正工具，支持浏览器本地处理、效果对比与导出，媒体文件无需上传服务器。
    - `DSH Field Guide` — `https://deepseekharness.site/` — 状态：已上线；独立的 DeepSeek Harness 实用指南，提供经来源核验且标注版本的安装、模型配置、Python SDK、插件与故障排查内容。
    - `Polski Piłkarz Simulator` — `https://polskipilkarzsymulator.online/` — 状态：已上线；非官方粉丝数据库与攻略站，可免费在线游玩 v1.90，收录 8400+ 家俱乐部与 101 个生涯事件，并提供比赛胜率计算器和新手指南。
-   - 二十四个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
+   - `burnt for you` — `https://burncd.xyz/` — 状态：已上线；数字混音带制作器，支持挑选歌曲、写下留言并生成 CD，通过单个链接分享；无需注册，每首歌以 30 秒片段播放。
+   - 二十五个外部链接均使用新窗口和 `noopener noreferrer`；"访问项目 ↗"为高对比度按钮 CTA。
    - 不展示本站 `wangzifan.store` 作为项目卡。
 
 3. **02 / Resume**
