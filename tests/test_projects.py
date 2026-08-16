@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 24
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 24
+    assert html.count('data-status="live"') == 25
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 25
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -140,3 +140,14 @@ def test_projects_section_includes_live_polski_pilkarz_simulator_card():
     assert '可免费在线游玩 v1.90' in html
     assert '8400+ 家俱乐部与 101 个生涯事件' in html
     assert '比赛胜率计算器和新手指南' in html
+
+
+def test_projects_section_includes_live_burnt_for_you_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>burnt for you</h3>' in html
+    assert 'href="https://burncd.xyz/"' in html
+    assert '<span>25 · 已上线</span><span>数字混音带制作器</span>' in html
+    assert '挑选歌曲、写下留言并生成数字混音带 CD' in html
+    assert '通过单个链接分享' in html
+    assert '无需注册，每首歌以 30 秒片段播放' in html
