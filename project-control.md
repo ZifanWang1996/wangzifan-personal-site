@@ -9,27 +9,28 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前发布提交：`283799bde2540856d785d14653882ba7eca9d08c`
-- 已审查 tree：`5f8da9244e774bd14371a0bf6f1188fb3d1bceab`
+- 当前页面实现提交：`57be9f1c19d6d1ea2082bb1f9c9dba39c7b1ee42`
+- 已审查页面 tree：`7d902ccd7f09f4f91e35fd0d4cfec474c6621d3d`
 
-## 本地候选状态（未授权上线）
+## 本轮 CraveLoop 发布状态（2026-08-16）
 
-- 候选方向：**Launch Ledger / 持续发布引擎**。
-- 候选 `index.html` SHA-256：`f7ca5ba489b9b014d9e8346450b03745a915cd2d189c864c6cc12504dc6c8e95`。
-- 本地 Pages 白名单产物仅含 `index.html` 与 `favicon.svg`，页面源文件与产物逐字节一致。
-- 回归测试：`21 passed`；其中仓库内 Node 动态交互测试执行真实页面脚本，覆盖五种筛选、命令面板状态/焦点及四种复制结果，并验证初始 `BODY`、普通可聚焦元素、点击触发器三类焦点恢复。
-- 真实浏览器候选验收：1440×900、390×844、320×568 均通过；`BODY → Ctrl+K → Escape` 稳定回退到命令按钮，原焦点元素被移除时同样安全回退；强制 Clipboard API 与 `execCommand` 同时抛异常时仍显示明文并清理临时节点；尚未提交、推送或部署。
-- 本轮 independent exact-tree 审查结果记录于交接报告，不在审查后反写候选树。
+- 新增第 27 项 `CraveLoop`，正式链接为 `https://foodnevercomes.online/`，归入“创意实验”，标签为“全球美食点单模拟器”。
+- 页面 `index.html` SHA-256：`86d49c0d2aae7e7bbced5e8bfcb9dc492e57df1d41ff1ec839aae819983893a9`。
+- 独立 exact-tree 复审：**PASS**；前轮 tree `547d7a7b402f44d7bdd09195433e331e9ffdc590` 因测试数据假绿已废弃，正式发布仅绑定 tree `7d902ccd7f09f4f91e35fd0d4cfec474c6621d3d`。
+- 回归测试：`25 passed`；Node 动态交互测试直接从正式页面提取 27 张 live 卡片，绑定 `CraveLoop=creative`，验证 `AI 3 / game 9 / tool 9 / creative 6 / all 27`。
+- 真实浏览器候选及生产验收：1440×900、Android 390×844、Android 320×568 均通过；创意实验筛选显示 6 张，切回全部显示 27 张，无页面级横向溢出、控制台错误或页面异常。
 
 ## 当前生产状态（2026-08-16）
 
-- 独立 exact-tree 审查：**PASS**。
-- GitHub Actions Pages run `31927459835`：**success**。
+- 独立 exact-tree 审查：**PASS**，页面实现提交 `57be9f1c19d6d1ea2082bb1f9c9dba39c7b1ee42` 与已审查 tree 完全一致。
+- GitHub Actions Pages run `31944491143`：**success**，head SHA 为页面实现提交。
 - Pages 配置：`build_type: workflow`、`cname: wangzifan.store`、`https_enforced: true`。
 - TLS：Let's Encrypt 证书有效，SAN 包含 `wangzifan.store`。
-- HTTP 已验证自动跳转至 HTTPS。
-- 生产 `index.html` SHA-256：`9668d1a5e5b1a5640bd3368a040a4130d80ed966b504be8a695633d24a909be4`，与上一轮已审查文件逐字节一致。
+- HTTP 已验证以 301 自动跳转至 HTTPS。
+- 生产 `index.html` SHA-256：`86d49c0d2aae7e7bbced5e8bfcb9dc492e57df1d41ff1ec839aae819983893a9`，与已审查页面逐字节一致。
 - 生产 `favicon.svg` SHA-256：`88c7718f853c633d012afbb79ebc08bfd89294f49babc26add6831b719e6abed`。
+- 生产 `privacy.html` SHA-256：`f37ca6f1817c3645ba8a3662abe33147ba9418617301706cb63d68359f8c2ca5`。
+- 生产页面共 27 张 live 卡片；CraveLoop 唯一，390px 触摸模式实点外链后正确落到 `https://foodnevercomes.online/en/`。
 
 ## 候选公开定位与信息架构
 
@@ -61,7 +62,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（26）
+## 产品索引（27）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -91,25 +92,26 @@
 | 24 | Polski Piłkarz Simulator | 游戏与内容 | https://polskipilkarzsymulator.online/ |
 | 25 | burnt for you | 创意实验 | https://burncd.xyz/ |
 | 26 | MatchaFilter | 实用工具 | https://matchafilter.cc/ |
+| 27 | CraveLoop | 创意实验 | https://foodnevercomes.online/ |
 
 ## 发布产物边界
 
 - workflow 先创建全新的 `_site` 目录。
-- 仅复制 `index.html` 与 `favicon.svg`。
+- 仅复制 `index.html`、`favicon.svg` 与 `privacy.html`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面不加载第三方脚本；26 个外部链接均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；27 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
 - 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录与 AI 产品筛选分别显示 26 / 3 条，类别标签和 `aria-pressed` 同步；页面不展示数字成绩板。
+- 全部记录、AI 产品与创意实验筛选分别显示 27 / 3 / 6 条，类别标签和 `aria-pressed` 同步；页面不展示数字成绩板。
 - 320px 筛选器保持双列三行并保有 44px 最小触控高度。
 - 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
 - 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 动态执行页面真实脚本，覆盖五种筛选、命令面板状态、初始 `BODY`/普通元素/点击触发器焦点恢复、正反向 Tab 与四种复制结果，避免只靠源码字符串断言。
-- favicon 返回 200；候选控制台、页面异常、失败请求及第三方请求均为 0。
+- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 live 卡片后动态执行页面真实脚本，覆盖五种筛选、CraveLoop 分类绑定、命令面板状态、初始 `BODY`/普通元素/点击触发器焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
+- favicon 返回 200；候选与生产验收中的控制台错误、页面异常及失败请求均为 0。
 
 ## 隐私与内容边界
 
