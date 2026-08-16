@@ -6,6 +6,7 @@
   <meta name="description" content="王子凡的 OPC 创业主页：把机会做成真实产品，用持续上线与用户反馈推动下一轮增长。">
   <meta name="theme-color" content="#07080b">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>
   <title>王子凡 ZF Wang — OPC 创业与全球产品</title>
   <style>
     :root{
@@ -125,7 +126,7 @@
     .contact-main{padding:58px}.contact-main h2{font-size:clamp(48px,6vw,80px);line-height:.96;max-width:790px}.contact-main h2 span{display:block}.contact-main p{color:#969cab;line-height:1.8;margin-top:25px;max-width:620px}.contact-fire{display:inline-flex;align-items:center;gap:9px;margin-top:28px;color:#d8dbe3;font:500 10px var(--mono);letter-spacing:.06em}.contact-fire i{width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 16px var(--ember)}
     .contact-side{border-left:1px solid var(--line);padding:38px;background:linear-gradient(145deg,rgba(129,120,255,.085),rgba(88,216,255,.018));display:flex;flex-direction:column;justify-content:space-between}
     .contact-side small{font:500 9px var(--mono);color:#848b9a;text-transform:uppercase;letter-spacing:.14em}.wechat{font-size:22px;font-weight:590;letter-spacing:-.03em;margin-top:12px;overflow-wrap:anywhere}.copy-status{min-height:24px;color:var(--green);font:400 10px var(--mono);margin-top:10px}.contact-actions{display:grid;gap:10px}.copy-btn{width:100%}.contact-note{color:#858c9b;font-size:12px;line-height:1.7}
-    .footer{padding:31px 0 52px;display:flex;justify-content:space-between;gap:20px;color:#6e7584;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.08em}
+    .footer{padding:31px 0 52px;display:flex;justify-content:space-between;gap:20px;color:#6e7584;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.08em}.footer nav{display:flex;gap:18px;flex-wrap:wrap}.footer a:hover{color:#d9dce5}
 
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);backdrop-filter:blur(14px);display:none;place-items:center;z-index:30;padding:20px}.modal.open{display:grid}.palette{width:min(620px,100%);border:1px solid rgba(255,255,255,.14);border-radius:15px;background:#101219;box-shadow:0 40px 120px #000;overflow:hidden}.palette-head{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:#8a90a0;font:400 10px var(--mono)}.palette-close{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer}.palette-list{padding:8px}.palette-list a{min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-radius:9px;color:#c9ccd5;font-size:13px}.palette-list a:hover,.palette-list a:focus-visible{background:rgba(129,120,255,.11);color:#fff}.palette-list kbd{font:400 9px var(--mono);color:#6d7382;border:1px solid var(--line);padding:4px 7px;border-radius:4px}
     :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
@@ -240,7 +241,7 @@
     </section>
   </main>
 
-  <footer class="shell footer"><span>© <span id="year"></span> ZF WANG · BUILD SMALL · SHIP REAL · KEEP GOING</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <footer class="shell footer"><span>© <span id="year"></span> ZF WANG · BUILD SMALL · SHIP REAL · KEEP GOING</span><nav aria-label="页脚链接"><a href="privacy.html">PRIVACY / 隐私</a><a href="#top">BACK TO TOP ↑</a></nav></footer>
   <div class="modal" id="commandDialog" role="dialog" aria-modal="true" aria-labelledby="commandTitle" hidden><div class="palette"><div class="palette-head"><span id="commandTitle">Navigate / 选择下一步</span><button class="palette-close" id="commandClose" aria-label="关闭导航">×</button></div><div class="palette-list"><a href="#work"><span>浏览全部上线记录</span><kbd>01</kbd></a><a href="#system"><span>进入 OPC Operating System</span><kbd>02</kbd></a><a href="#manifesto"><span>阅读 Founder Manifesto</span><kbd>03</kbd></a><a href="#contact"><span>复制微信号并开始合作对话</span><kbd>04</kbd></a></div></div></div>
   <script>
     const filters=[...document.querySelectorAll('.filter')];

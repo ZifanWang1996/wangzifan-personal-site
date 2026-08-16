@@ -8,6 +8,7 @@ SITE = ROOT / "index.html"
 WORKFLOW = ROOT / ".github" / "workflows" / "deploy-pages.yml"
 FAVICON = ROOT / "favicon.svg"
 CONTROL = ROOT / "project-control.md"
+PRIVACY = ROOT / "privacy.html"
 
 
 def test_projects_section_includes_live_palworldmap_v2_card():
@@ -303,3 +304,43 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
     assert "test ! -e _site" in workflow
     assert "install -m 0644 index.html _site/index.html" in workflow
     assert "install -m 0644 favicon.svg _site/favicon.svg" in workflow
+
+    prepare_block = workflow.split("      - name: Prepare public artifact", 1)[1].split(
+        "      - name: Upload site artifact", 1
+    )[0]
+    prepare_commands = [
+        line.strip()
+        for line in prepare_block.splitlines()
+        if line.strip() and line.strip() != "run: |"
+    ]
+    assert prepare_commands == [
+        "test ! -e _site",
+        "mkdir _site",
+        "install -m 0644 index.html _site/index.html",
+        "install -m 0644 favicon.svg _site/favicon.svg",
+        "install -m 0644 privacy.html _site/privacy.html",
+    ]
+
+
+def test_plausible_analytics_is_disclosed_and_allowlisted():
+    html = SITE.read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    script = '<script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>'
+
+    assert html.count(script) == 1
+    assert 'href="privacy.html">PRIVACY / 隐私</a>' in html
+    assert PRIVACY.exists()
+
+    privacy = PRIVACY.read_text(encoding="utf-8")
+    assert privacy.count(script) == 1
+    for disclosure in (
+        "Plausible Analytics",
+        "plausible.shipsolo.io",
+        "不设置分析 Cookie",
+        "不进行跨站跟踪",
+        "GitHub Pages",
+        "wang1227928718",
+    ):
+        assert disclosure in privacy
+
+    assert "install -m 0644 privacy.html _site/privacy.html" in workflow

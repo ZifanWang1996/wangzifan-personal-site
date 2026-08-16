@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="wangzifan.store 的隐私说明：了解本站使用的托管与汇总访问统计服务。">
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>
+  <title>隐私说明 — ZF Wang</title>
+  <style>
+    :root{
+      --bg:#07080b;--panel:#0d0f15;--text:#f6f7fb;--muted:#9ba1b0;--dim:#707787;
+      --line:rgba(255,255,255,.10);--line2:rgba(255,255,255,.055);--violet:#8178ff;
+      --cyan:#5ad8ff;--green:#66e8a9;--sans:Inter,"SF Pro Display","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{background:var(--bg)}
+    body{min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(700px circle at 84% 8%,rgba(129,120,255,.15),transparent 66%),radial-gradient(540px circle at 4% 78%,rgba(90,216,255,.06),transparent 70%)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+    .shell{width:min(1040px,calc(100% - 48px));margin-inline:auto}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:650;letter-spacing:-.02em}
+    .brand-mark{width:30px;height:30px;border:1px solid rgba(129,120,255,.68);display:grid;place-items:center;border-radius:8px;background:linear-gradient(145deg,rgba(129,120,255,.25),rgba(88,216,255,.08));font:500 11px var(--mono)}
+    .back{min-height:44px;display:inline-flex;align-items:center;padding:10px 15px;border:1px solid var(--line);border-radius:999px;color:#d9dce5;font:500 10px var(--mono);transition:.2s}
+    .back:hover{border-color:rgba(129,120,255,.58);background:rgba(129,120,255,.08)}
+    main{padding:92px 0 110px}
+    .eyebrow{color:#aaa5ff;font:500 10px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+    h1{font-size:clamp(52px,8vw,92px);line-height:.91;letter-spacing:-.065em;font-weight:590;margin:24px 0 28px;max-width:850px}
+    h1 em{display:block;font-style:normal;color:transparent;background:linear-gradient(90deg,#fff,#aaa5ff 52%,#62d9ff);background-clip:text;-webkit-background-clip:text;padding-bottom:.08em}
+    .lede{max-width:720px;color:#a8aebb;font-size:17px;line-height:1.8}
+    .status{display:flex;gap:10px;align-items:center;margin-top:26px;color:var(--green);font:500 10px var(--mono);letter-spacing:.08em}.status i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 16px rgba(102,232,169,.7)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:66px}
+    article{min-width:0;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));padding:30px}
+    article.wide{grid-column:1/-1}
+    .num{color:#8178ff;font:500 9px var(--mono);letter-spacing:.12em}
+    h2{font-size:25px;letter-spacing:-.035em;margin:18px 0 14px}
+    p,li{color:#969cab;font-size:14px;line-height:1.8}
+    ul{padding-left:19px;display:grid;gap:8px}
+    strong{color:#e7e9ef;font-weight:560}
+    code{color:#bdb9ff;font:400 12px var(--mono);overflow-wrap:anywhere}
+    .contact{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:14px;padding-top:20px;border-top:1px solid var(--line2)}
+    .contact b{font-size:18px}.contact span{color:#8c93a2;font:400 10px var(--mono)}
+    footer{padding:28px 0 46px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:20px;color:#6e7584;font:400 9px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    footer a:hover{color:#d9dce5}
+    @media(max-width:700px){.shell{width:calc(100% - 28px)}.nav{height:66px}.back{padding:9px 12px}main{padding:68px 0 86px}h1{font-size:49px}.lede{font-size:15px}.grid{grid-template-columns:1fr;margin-top:48px}article{padding:24px}article.wide{grid-column:auto}.contact{align-items:flex-start;flex-direction:column}footer{align-items:flex-start;flex-direction:column}}
+    @media(max-width:360px){h1{font-size:42px}}
+  </style>
+</head>
+<body>
+  <header class="shell nav"><a class="brand" href="index.html"><span class="brand-mark">ZF</span><span>WZF / PRIVACY</span></a><a class="back" href="index.html">← 返回主页</a></header>
+  <main class="shell">
+    <div class="eyebrow">Privacy / Plain language / No dark patterns</div>
+    <h1>隐私，<em>说清楚。</em></h1>
+    <p class="lede">本站是一张公开的个人产品主页。我们只使用维持网站运行所需的托管服务，以及帮助理解页面是否有用的汇总访问统计；不出售访问数据，不用分析结果建立个人画像。</p>
+    <div class="status"><i aria-hidden="true"></i>UPDATED / 2026-08-16</div>
+
+    <section class="grid" aria-label="隐私说明内容">
+      <article>
+        <div class="num">01 / ANALYTICS</div>
+        <h2>汇总访问统计</h2>
+        <p>本站使用 <strong>Plausible Analytics</strong> 了解页面访问量、来源趋势和常见设备类型。统计脚本由 <code>plausible.shipsolo.io</code> 提供。它<strong>不设置分析 Cookie</strong>，也<strong>不进行跨站跟踪</strong>。</p>
+      </article>
+      <article>
+        <div class="num">02 / DATA</div>
+        <h2>可能处理的信息</h2>
+        <p>访问统计可能处理页面路径、来源页面、浏览器与设备类别，以及根据网络请求估算的国家或地区等汇总信息。本站不要求登录，不设联系表单，也不会通过该脚本收集你主动输入的内容。</p>
+      </article>
+      <article>
+        <div class="num">03 / HOSTING</div>
+        <h2>网站托管</h2>
+        <p>本站通过 <strong>GitHub Pages</strong> 发布。为交付页面、保障安全和排查故障，托管基础设施可能处理 IP 地址、浏览器标识、请求时间等标准网络日志；相关处理受 GitHub 自身条款约束。</p>
+      </article>
+      <article>
+        <div class="num">04 / CHOICE</div>
+        <h2>你的选择</h2>
+        <p>你可以通过浏览器的内容拦截功能阻止统计脚本，或关闭 JavaScript；这不会影响本站核心内容的阅读。若你通过微信联系，消息将由你所使用的通信平台按其规则处理。</p>
+      </article>
+      <article class="wide">
+        <div class="num">05 / CONTACT</div>
+        <h2>问题与联系</h2>
+        <p>本站运营者为 <strong>ZF Wang（王子凡）</strong>。如果你对本说明、访问统计或相关数据有疑问，可以通过主页公开的微信联系。</p>
+        <div class="contact"><div><span>WECHAT / PRIVACY CONTACT</span><br><b>wang1227928718</b></div><a class="back" href="index.html#contact">前往联系方式 →</a></div>
+      </article>
+    </section>
+  </main>
+  <footer class="shell"><span>© 2026 ZF WANG · PRIVACY IN PLAIN LANGUAGE</span><a href="index.html">HOME ↑</a></footer>
+</body>
+</html>

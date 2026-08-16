@@ -31,6 +31,7 @@ jobs:
           mkdir _site
           install -m 0644 index.html _site/index.html
           install -m 0644 favicon.svg _site/favicon.svg
+          install -m 0644 privacy.html _site/privacy.html
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
