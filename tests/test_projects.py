@@ -76,8 +76,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 25
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 25
+    assert html.count('data-status="live"') == 26
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 26
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -151,3 +151,15 @@ def test_projects_section_includes_live_burnt_for_you_card():
     assert '挑选歌曲、写下留言并生成数字混音带 CD' in html
     assert '通过单个链接分享' in html
     assert '无需注册，每首歌以 30 秒片段播放' in html
+
+
+def test_projects_section_includes_live_matchafilter_card():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert '<h3>MatchaFilter</h3>' in html
+    assert 'href="https://matchafilter.cc/"' in html
+    assert '<span>26 · 已上线</span><span>照片抹茶滤镜校色</span>' in html
+    assert '修正照片黄绿色偏色' in html
+    assert '支持 PNG、JPG 和 WebP 浏览器本地处理' in html
+    assert '调节校正强度、对比原图并导出 PNG' in html
+    assert '无需账户，免费处理时照片不会上传服务器' in html
