@@ -268,6 +268,18 @@ def test_release_filters_remain_compact_at_narrowest_width():
     assert "border:1px solid var(--line2)" in filter_rule.group(1)
 
 
+def test_mobile_release_card_microcopy_is_legible():
+    html = SITE.read_text(encoding="utf-8")
+    mobile_start = html.index("@media(max-width:700px){")
+    mobile_end = html.index("@media(max-width:360px){", mobile_start)
+    mobile_css = html[mobile_start:mobile_end]
+
+    meta_rule = re.search(r"\.site-category,\.site-meta\{([^}]*)\}", mobile_css)
+    link_rule = re.search(r"\.site-link\{([^}]*)\}", mobile_css)
+    assert meta_rule and "font-size:11px" in meta_rule.group(1)
+    assert link_rule and "font-size:12px" in link_rule.group(1)
+
+
 def test_release_artifact_is_allowlisted_and_mobile_safe():
     html = SITE.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
