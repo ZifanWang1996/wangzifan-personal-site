@@ -1,7 +1,11 @@
+import re
 from pathlib import Path
 
 
-SITE = Path(__file__).parents[1] / "index.html"
+ROOT = Path(__file__).parents[1]
+SITE = ROOT / "index.html"
+WORKFLOW = ROOT / ".github" / "workflows" / "deploy-pages.yml"
+FAVICON = ROOT / "favicon.svg"
 
 
 def test_projects_section_includes_live_palworldmap_v2_card():
@@ -163,3 +167,76 @@ def test_projects_section_includes_live_matchafilter_card():
     assert '支持 PNG、JPG 和 WebP 浏览器本地处理' in html
     assert '调节校正强度、对比原图并导出 PNG' in html
     assert '无需账户，免费处理时照片不会上传服务器' in html
+
+
+def test_homepage_uses_opc_only_information_architecture():
+    html = SITE.read_text(encoding="utf-8")
+
+    # OPC-only identity: no main-job, resume, or project-management positioning.
+    for removed in (
+        "主业",
+        "项目经理",
+        "项目管理",
+        "Project Management",
+        "个人履历",
+        "Resume",
+    ):
+        assert removed not in html
+
+    # Owner-approved narrative and evidence.
+    assert "一个人，也能把产品推向全球。" in html
+    assert "26 个产品" in html
+    assert "6 项证书" in html
+    assert "2026 开始持续构建" in html
+
+    # Six featured products plus the complete categorized deployment index.
+    assert html.count('data-featured="true"') == 6
+    assert html.count('data-status="live"') == 26
+    assert html.count('<article class="site" data-status="live">') == 26
+    assert html.count('data-category=') == 26
+    for value in ("all", "ai", "game", "tool", "creative"):
+        assert f'data-filter="{value}"' in html
+
+    # Required section order and OPC operating loop.
+    ordered_sections = (
+        'id="top"',
+        'id="proof"',
+        'id="work"',
+        'id="system"',
+        'id="manifesto"',
+        'id="contact"',
+    )
+    positions = [html.index(section) for section in ordered_sections]
+    assert positions == sorted(positions)
+    for step in ("判断", "构建", "上线", "反馈"):
+        assert f'data-step="{step}"' in html
+
+    assert "Founder Manifesto" in html
+    assert "wang1227928718" in html
+    assert "复制微信号" in html
+    assert 'aria-live="polite"' in html
+
+
+def test_release_artifact_is_allowlisted_and_mobile_safe():
+    html = SITE.read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+
+    # Long unbroken product names must wrap instead of being clipped at 320px.
+    site_heading_rule = re.search(r"\.site h3\{([^}]*)\}", html)
+    assert site_heading_rule
+    assert "overflow-wrap:anywhere" in site_heading_rule.group(1)
+    assert "font-size:clamp(25px,8vw,28px)" in site_heading_rule.group(1)
+    assert "<h3>HowManySleeps<wbr>Until</h3>" in html
+
+    # A real favicon prevents the browser's implicit /favicon.ico 404.
+    assert '<link rel="icon" href="favicon.svg" type="image/svg+xml">' in html
+    assert FAVICON.exists()
+    favicon = FAVICON.read_text(encoding="utf-8")
+    assert "<svg" in favicon and "</svg>" in favicon
+
+    # GitHub Pages may publish only the explicit public allowlist.
+    assert "path: _site" in workflow
+    assert "path: ." not in workflow
+    assert "test ! -e _site" in workflow
+    assert "install -m 0644 index.html _site/index.html" in workflow
+    assert "install -m 0644 favicon.svg _site/favicon.svg" in workflow

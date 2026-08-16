@@ -25,10 +25,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Prepare public artifact
+        run: |
+          test ! -e _site
+          mkdir _site
+          install -m 0644 index.html _site/index.html
+          install -m 0644 favicon.svg _site/favicon.svg
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
