@@ -12,6 +12,14 @@
 - 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
 
+## v4 更新：筛选计数 + HLLV 卡片 #29（2026-08-19）
+
+- 新增卡片 #29：HLLV Field Manual（hellletloosevietnam.blog，《Hell Let Loose: Vietnam》非官方野战手册），分类「游戏与内容」；上线日期 2026-08-17（按 Cloudflare Pages 首次 production 部署时间核实，08-16 仅为首个代码提交日）。
+- 筛选按钮新增计数胶囊：`data-count` 属性经 CSS `::after` 渲染（全部 29 / AI 3 / 游戏 10 / 工具 9 / 创意 7），button.textContent 保持原样，live 状态栏契约与主脚本零改动。
+- 「全部上线记录」subhead 新增 29 徽章；Timeline 标题 28→29，2026-08-17 变为 2 SHIPPED（牛来 + HLLV）；Changelog 28→29 entries，顶部新增 HLLV SHIP 记录。
+- 缩略图：Playwright 实站抓取 → 400×250 WebP base64 内联（13KB），workflow 白名单不变。
+- 回归：装配自检 38/38、pytest 27/27（新增 HLLV 卡片测试 + data-count 断言）、Node 交互测试通过；三视口（1440/390/320）零 JS 错误、零溢出、29 缩略图全加载。
+
 ## v3 换肤：奶油浅色编辑风（2026-08-19）
 
 - 子凡反馈 v2 整体偏黑，选择「浅色奶油编辑风」方向。纯颜色层变换：`:root` 调色板翻转为暖白纸感底（`#f7f3e8`）+ 墨色文字（`#191510`），荧光绿保留作填充色、文字场景加深（`#5c6b12`）。
@@ -87,7 +95,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（28）
+## 产品索引（29）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -119,6 +127,7 @@
 | 26 | MatchaFilter | 实用工具 | https://matchafilter.cc/ |
 | 27 | CraveLoop | 创意实验 | https://foodnevercomes.online/ |
 | 28 | 牛来 | 创意实验 | https://niulai.blog/ |
+| 29 | HLLV Field Manual | 游戏与内容 | https://hellletloosevietnam.blog/ |
 
 ## 发布产物边界
 
@@ -126,7 +135,7 @@
 - 仅复制 `index.html`、`favicon.svg` 与 `privacy.html`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；28 个项目外链均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；29 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 

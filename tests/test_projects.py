@@ -83,8 +83,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 28
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 28
+    assert html.count('data-status="live"') == 29
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 29
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -205,6 +205,22 @@ def test_projects_section_includes_live_niulai_card():
     assert '差评墙、黑话词典与在线答题' in card
 
 
+def test_projects_section_includes_live_hllv_card():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    matching = [card for card in cards if '<h3>HLLV Field Manual</h3>' in card]
+
+    assert len(matching) == 1
+    card = matching[0]
+    assert html.count('href="https://hellletloosevietnam.blog/"') == 1
+    assert 'data-category="game"' in card
+    assert '<span>29 · 已上线</span><span>HLLV 越南战场手册</span>' in card
+    assert '<span class="site-date">2026-08-17</span>' in card
+    assert 'Hell Let Loose: Vietnam' in card
+    assert '已知问题' in card
+    assert '每条结论均标注日期与依据' in card
+
+
 def test_homepage_uses_opc_launch_ledger_information_architecture():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
@@ -240,14 +256,19 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 28
-    assert html.count('<article class="site" data-status="live">') == 28
-    assert html.count('data-category=') == 28
+    assert html.count('data-status="live"') == 29
+    assert html.count('<article class="site" data-status="live">') == 29
+    assert html.count('data-category=') == 29
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
     for removed_label in ("全部 28", "AI 产品 3", "游戏与内容 9", "实用工具 9", "创意实验 7"):
         assert removed_label not in html
+    # v4: count chips live in data-count attributes, rendered via CSS ::after
+    # so button.textContent stays clean for the live status bar.
+    for value, count in (("all", "29"), ("ai", "3"), ("game", "10"), ("tool", "9"), ("creative", "7")):
+        assert f'data-filter="{value}" data-count="{count}"' in html
+    assert '<span class="ledger-count">29</span>' in html
 
     # Required section order and evidence-led motivational language.
     ordered_sections = (
