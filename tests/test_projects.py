@@ -1,5 +1,6 @@
 import re
 import subprocess
+from datetime import date
 from pathlib import Path
 
 
@@ -83,8 +84,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 29
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 29
+    assert html.count('data-status="live"') == 30
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 30
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -221,6 +222,81 @@ def test_projects_section_includes_live_hllv_card():
     assert '每条结论均标注日期与依据' in card
 
 
+def test_projects_section_includes_live_chinamaxxing_card():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    matching = [card for card in cards if '<h3>Chinamaxxing Online</h3>' in card]
+
+    assert len(matching) == 1
+    card = matching[0]
+    assert html.count('href="https://chinamaxxing.site/"') == 1
+    assert 'data-category="creative"' in card
+    assert '<span>30 · 已上线</span><span>多语文化指南</span>' in card
+    assert '<span class="site-date">2026-08-20</span>' in card
+    assert '英语、西班牙语和巴西葡萄牙语' in card
+    assert '附来源解释、生活与旅行指南' in card
+    assert '12 信号 Quiz 和浏览器本地路线生成器' in card
+
+
+def test_project_control_product_index_matches_live_card_ledger():
+    html = SITE.read_text(encoding="utf-8")
+    control = CONTROL.read_text(encoding="utf-8")
+    live_count = html.count('<article class="site" data-status="live">')
+    index = re.search(r'^## 产品索引（(\d+)）\n\n(.*?)(?=^## )', control, re.M | re.S)
+
+    assert index is not None
+    displayed_count = int(index.group(1))
+    row_numbers = [int(value) for value in re.findall(r'^\|\s*(\d+)\s*\|', index.group(2), re.M)]
+    assert row_numbers == list(range(1, live_count + 1))
+    assert displayed_count == live_count == len(row_numbers)
+
+
+def test_timeline_and_changelog_derive_from_live_card_ledger():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    ledger = []
+    for card in cards:
+        name_html = re.search(r'<h3>(.*?)</h3>', card, re.S)
+        shipped = re.search(r'<span class="site-date">(\d{4}-\d{2}-\d{2})</span>', card)
+        href = re.search(r'<a class="site-link" href="([^"]+)"', card)
+        assert name_html and shipped and href
+        name = re.sub(r'<[^>]+>', '', name_html.group(1))
+        ledger.append((shipped.group(1), name, href.group(1)))
+
+    shipped_dates = [date.fromisoformat(value) for value, _, _ in ledger]
+    expected_days = (max(shipped_dates) - min(shipped_dates)).days + 1
+    timeline_heading = re.search(
+        r'<h2 id="timeline-title">(\d+) 天，(\d+) 次真实上线。</h2>', html
+    )
+    assert timeline_heading is not None
+    assert int(timeline_heading.group(1)) == expected_days
+    assert int(timeline_heading.group(2)) == len(ledger)
+
+    timeline_counts = [
+        int(value) for value in re.findall(r'<div class="tl-count">(\d+) SHIPPED</div>', html)
+    ]
+    timeline_names = [
+        name
+        for group in re.findall(r'<div class="tl-names">(.*?)</div>', html, re.S)
+        for name in re.findall(r'<span>([^<]+)</span>', group)
+    ]
+    assert sum(timeline_counts) == len(ledger)
+    assert timeline_names == [name for _, name, _ in ledger]
+
+    chrome_count = re.search(r'release\.log — (\d+) entries', html)
+    prompt_count = re.search(r'<b>(\d+) releases</b>', html)
+    log_ledger = re.findall(
+        r'<div class="log-line"><span class="log-d">\[(\d{4}-\d{2}-\d{2})\]</span>'
+        r'<span class="log-ok">SHIP</span><span class="log-n">([^<]+)</span>'
+        r'<span class="log-u">→ ([^<]+)</span></div>',
+        html,
+    )
+    assert chrome_count and prompt_count
+    assert int(chrome_count.group(1)) == len(ledger)
+    assert int(prompt_count.group(1)) == len(ledger)
+    assert log_ledger == list(reversed(ledger))
+
+
 def test_homepage_uses_opc_launch_ledger_information_architecture():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
@@ -256,9 +332,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 29
-    assert html.count('<article class="site" data-status="live">') == 29
-    assert html.count('data-category=') == 29
+    assert html.count('data-status="live"') == 30
+    assert html.count('<article class="site" data-status="live">') == 30
+    assert html.count('data-category=') == 30
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
@@ -266,9 +342,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
         assert removed_label not in html
     # v4: count chips live in data-count attributes, rendered via CSS ::after
     # so button.textContent stays clean for the live status bar.
-    for value, count in (("all", "29"), ("ai", "3"), ("game", "10"), ("tool", "9"), ("creative", "7")):
+    for value, count in (("all", "30"), ("ai", "3"), ("game", "10"), ("tool", "9"), ("creative", "8")):
         assert f'data-filter="{value}" data-count="{count}"' in html
-    assert '<span class="ledger-count">29</span>' in html
+    assert '<span class="ledger-count">30</span>' in html
 
     # Required section order and evidence-led motivational language.
     ordered_sections = (

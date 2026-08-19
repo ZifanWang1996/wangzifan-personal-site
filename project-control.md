@@ -12,6 +12,14 @@
 - 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
 
+## Chinamaxxing Online 卡片 #30（2026-08-20）
+
+- 新增卡片 #30：Chinamaxxing Online（`https://chinamaxxing.site/`），分类「创意实验」，标签「多语文化指南」，上线日期 2026-08-20。
+- 筛选计数更新为：全部 30 / AI 3 / 游戏 10 / 工具 9 / 创意 8；Timeline 更新为 40 天、30 次真实上线，并新增 2026-08-20 节点；Changelog 更新为 30 entries / 30 releases。
+- 缩略图来自生产站真实首屏，经 Playwright 抓取并转为 400×250 WebP（14,448 bytes）后 base64 内联；GitHub Pages workflow 白名单不变。
+- 回归：pytest 30/30、Node 动态交互、确定性卡片检查均通过；1440×900、Android 390×844、Android 320×568 三视口通过，创意筛选 8 张、全部 30 张，无横向溢出、控制台错误、页面异常或同源失败请求。
+- 390px 真实触摸 CTA 已验证到达 `https://chinamaxxing.site/`，页面标题为 `Chinamaxxing Online: Meaning, Quiz & Culture Guides`。
+
 ## v4 更新：筛选计数 + HLLV 卡片 #29（2026-08-19）
 
 - 新增卡片 #29：HLLV Field Manual（hellletloosevietnam.blog，《Hell Let Loose: Vietnam》非官方野战手册），分类「游戏与内容」；上线日期 2026-08-17（按 Cloudflare Pages 首次 production 部署时间核实，08-16 仅为首个代码提交日）。
@@ -95,7 +103,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（29）
+## 产品索引（30）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -128,6 +136,7 @@
 | 27 | CraveLoop | 创意实验 | https://foodnevercomes.online/ |
 | 28 | 牛来 | 创意实验 | https://niulai.blog/ |
 | 29 | HLLV Field Manual | 游戏与内容 | https://hellletloosevietnam.blog/ |
+| 30 | Chinamaxxing Online | 创意实验 | https://chinamaxxing.site/ |
 
 ## 发布产物边界
 
@@ -135,18 +144,18 @@
 - 仅复制 `index.html`、`favicon.svg` 与 `privacy.html`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；29 个项目外链均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；30 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
 - 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录、AI 产品与创意实验筛选分别显示 28 / 3 / 7 条，类别标签和 `aria-pressed` 同步；牛来卡片在“创意实验”下唯一且可见，页面不展示数字成绩板。
-- 320px 筛选器保持双列三行并保有 44px 最小触控高度；牛来卡片正文、元数据和 CTA 完整位于容器内，CTA 高度 46px。
+- 全部记录、AI 产品与创意实验筛选分别显示 30 / 3 / 8 条，类别标签和 `aria-pressed` 同步；Chinamaxxing Online 卡片在“创意实验”下唯一且可见，页面不展示数字成绩板。
+- 320px 筛选器保持双列三行并保有 44px 最小触控高度；Chinamaxxing Online 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
 - 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
 - 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 28 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`CraveLoop=creative` 与 `牛来=creative` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
-- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 CTA 打开 `https://niulai.blog/`。
+- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 30 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game` 与 `Chinamaxxing Online=creative` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
+- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 Chinamaxxing Online CTA 打开 `https://chinamaxxing.site/`。
 
 ## 隐私与内容边界
 
