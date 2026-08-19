@@ -1,0 +1,19 @@
+
+/* ---- v2: product card thumbnails / badges / dates ---- */
+.site>div{perspective:900px}
+.site-shot{grid-column:1;grid-row:1/3;position:relative;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:8/5;background:#0b0b0f;transform-style:preserve-3d;transition:border-color .3s,transform .18s ease-out}
+.site:hover .site-shot{border-color:rgba(198,255,63,.45)}
+.site-shot img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92);transition:filter .4s}
+.site:hover .site-shot img{filter:saturate(1.08)}
+.site-shot:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(244,242,236,.16) 47%,transparent 62%);transform:translateX(-130%);pointer-events:none}
+.site:hover .site-shot:after{animation:sheen .9s ease forwards}
+@keyframes sheen{to{transform:translateX(130%)}}
+.site-badge{position:absolute;left:8px;top:8px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:rgba(8,8,10,.74);backdrop-filter:blur(6px);border:1px solid rgba(198,255,63,.42);color:var(--lime);font:700 8px var(--mono);letter-spacing:.16em}
+.site-badge i{width:4px;height:4px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2.4s ease-in-out infinite}
+.site-date{color:#605f59;letter-spacing:.06em}
+@media(max-width:1040px){
+  .site>div{grid-template-columns:158px 128px minmax(168px,.72fr) minmax(196px,1fr);gap:24px}
+}
+@media(max-width:700px){
+  .site-shot{width:100%;aspect-ratio:21/9;border-radius:10px;margin-bottom:2px}
+}
