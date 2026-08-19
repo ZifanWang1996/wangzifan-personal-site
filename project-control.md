@@ -9,8 +9,16 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前页面实现提交：`521bbe5`（v2 升级）
+- 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
+
+## v3 换肤：奶油浅色编辑风（2026-08-19）
+
+- 子凡反馈 v2 整体偏黑，选择「浅色奶油编辑风」方向。纯颜色层变换：`:root` 调色板翻转为暖白纸感底（`#f7f3e8`）+ 墨色文字（`#191510`），荧光绿保留作填充色、文字场景加深（`#5c6b12`）。
+- 深色终端锚点保留：SHIPPING ENGINE、system-log、changelog、命令面板维持深色，形成「纸面 + 驾驶舱」双质感。
+- 锁定内容零改动：74/74 自检、26/26 pytest、三视口验收全绿；线上字节一致 `1d7b67c4729ddccc`（382KB）。
+- 目检修正两处对比度：contact-note 与 tl-count 加深一档。
+- 已知事项：polskipilkarzsymulator.online 域名 DNS NXDOMAIN，缩略图为 NO SIGNAL 占位图；域名恢复后重跑 `scripts/shoot_thumbs.py` 中该条目即可替换。
 
 ## v2 升级：缩略图 + 时间轴 + 动效（2026-08-19）
 
