@@ -9,8 +9,19 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前页面实现提交：待提交（视觉重设计）
+- 当前页面实现提交：`521bbe5`（v2 升级）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
+
+## v2 升级：缩略图 + 时间轴 + 动效（2026-08-19）
+
+- 本轮为发布证据强化与动效升级，不改变 28 项产品索引内容、信息架构与交互契约。
+- 卡片升级：28 张真实站点截图（Playwright 实站抓取 → WebP 400×250 base64 内联，workflow 白名单不变）、LIVE 徽章、上线日期（git 历史 `-S` 首次出现提取）。
+- 新增 `02 / Shipping Timeline` 时间轴：18 个上线日期、渐变轴线横向滚动；kicker 编号顺延（系统 03 / 宣言 04 / 合作 05）。
+- 新增终端风格 `release.log`（28 条 SHIP 记录）于 OPC Operating System 区块。
+- 动效层：缩略图 tilt+光泽扫过、scramble 标题解码、磁性 CTA、光标 glow（尊重 prefers-reduced-motion 与触屏降级）。
+- 回归：装配自检 65/65、pytest 26/26、Node 交互测试通过；三视口浏览器验收（1440/390/320）零 JS 错误、零溢出、28 缩略图全加载。
+- 线上字节一致性：SHA-256 `10c0fe676ff3f578…`（377KB），本地与 wangzifan.store 完全一致。
+- 已知事项：polskipilkarzsymulator.online 域名 DNS NXDOMAIN，缩略图为 NO SIGNAL 占位图；域名恢复后重跑 `scripts/shoot_thumbs.py` 中该条目即可替换。
 
 ## 视觉系统重设计（2026-08-18）
 
