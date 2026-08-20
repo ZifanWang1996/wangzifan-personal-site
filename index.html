@@ -472,9 +472,7 @@ body:before{background:radial-gradient(680px circle at var(--mx) var(--my),rgba(
 .filter.active:after,.filter[aria-pressed="true"]:after{background:rgba(20,20,10,.14);border-color:transparent;color:#14140a}
 .ledger-count{display:inline-block;margin-left:12px;padding:5px 11px;border-radius:999px;background:#dff0a8;border:1px solid rgba(92,107,18,.5);color:#2a330c;font:700 11px var(--mono);letter-spacing:.08em;vertical-align:5px}
 
-/* v5: scoped performance and accessibility fixes */
-.site{content-visibility:auto;contain-intrinsic-size:auto 320px}
-#timeline,#system,#manifesto,#contact{content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* Lightweight, cache-friendly assets keep first paint stable without changing document flow. */
 .brand small,.hero-credo,.footer{color:#6b675e}
 .subhead p,.visible-count,.site-meta,.site-date{color:#6b675e}
 .band.ghost .band-set{color:#6b675e;-webkit-text-stroke:0}

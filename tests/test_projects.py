@@ -456,11 +456,8 @@ def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contai
     assert 'class="grain"' not in html
     assert "glowLoop" not in html
     assert "requestAnimationFrame(glowLoop)" not in html
-    assert ".site{content-visibility:auto;contain-intrinsic-size:auto 320px}" in html
-    assert (
-        "#timeline,#system,#manifesto,#contact{content-visibility:auto;"
-        "contain-intrinsic-size:auto 900px}"
-    ) in html
+    assert "content-visibility:auto" not in html
+    assert "contain-intrinsic-size" not in html
 
     assert "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2" in workflow
     assert "install -m 0644 assets/projects/*.webp _site/assets/projects/" in workflow
