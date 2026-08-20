@@ -84,8 +84,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 30
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 30
+    assert html.count('data-status="live"') == 31
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 31
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -238,6 +238,21 @@ def test_projects_section_includes_live_chinamaxxing_card():
     assert '12 信号 Quiz 和浏览器本地路线生成器' in card
 
 
+def test_projects_section_includes_live_sinking_city_2_field_guide_card():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    matching = [card for card in cards if '<h3>The Sinking City 2 Field Guide</h3>' in card]
+
+    assert len(matching) == 1
+    card = matching[0]
+    assert html.count('href="https://thesinkingcity2.top/"') == 1
+    assert 'data-category="game"' in card
+    assert '<span>31 · 已上线</span><span>克苏鲁侦探攻略站</span>' in card
+    assert '<span class="site-date">2026-08-20</span>' in card
+    assert '保险柜密码、章节路线、成就、调查与战斗参考' in card
+    assert '区分实证、实测与暂缺资料' in card
+
+
 def test_project_control_product_index_matches_live_card_ledger():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
@@ -332,9 +347,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 30
-    assert html.count('<article class="site" data-status="live">') == 30
-    assert html.count('data-category=') == 30
+    assert html.count('data-status="live"') == 31
+    assert html.count('<article class="site" data-status="live">') == 31
+    assert html.count('data-category=') == 31
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
@@ -342,9 +357,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
         assert removed_label not in html
     # v4: count chips live in data-count attributes, rendered via CSS ::after
     # so button.textContent stays clean for the live status bar.
-    for value, count in (("all", "30"), ("ai", "3"), ("game", "10"), ("tool", "9"), ("creative", "8")):
+    for value, count in (("all", "31"), ("ai", "3"), ("game", "11"), ("tool", "9"), ("creative", "8")):
         assert f'data-filter="{value}" data-count="{count}"' in html
-    assert '<span class="ledger-count">30</span>' in html
+    assert '<span class="ledger-count">31</span>' in html
 
     # Required section order and evidence-led motivational language.
     ordered_sections = (
@@ -427,6 +442,18 @@ def test_mobile_release_card_microcopy_is_legible():
 
 
 
+def test_narrow_mobile_release_metadata_does_not_split_status_or_date():
+    html = SITE.read_text(encoding="utf-8")
+    narrow_start = html.index("@media(max-width:360px){")
+    narrow_end = html.index("@media(max-width:700px) and (max-height:380px)", narrow_start)
+    narrow_css = html[narrow_start:narrow_end]
+
+    assert ".site-meta{display:grid;grid-template-columns:1fr auto;gap:5px 12px}" in narrow_css
+    assert ".site-meta span:first-child,.site-date{white-space:nowrap}" in narrow_css
+    assert ".site-meta span:nth-child(2){grid-column:1/-1;grid-row:2}" in narrow_css
+    assert ".site-date{grid-column:2;grid-row:1}" in narrow_css
+
+
 def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contained():
     html = SITE.read_text(encoding="utf-8")
     privacy = PRIVACY.read_text(encoding="utf-8")
@@ -438,13 +465,13 @@ def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contai
     assert "url('assets/archivo.woff2')" in privacy
 
     image_refs = re.findall(r'src="(assets/projects/project-\d{2}\.webp)"', html)
-    assert len(image_refs) == 30
-    assert len(set(image_refs)) == 30
+    assert len(image_refs) == 31
+    assert len(set(image_refs)) == 31
     for image_ref in image_refs:
         assert (ROOT / image_ref).is_file()
 
     image_tags = re.findall(r'<img\s+[^>]*src="assets/projects/project-\d{2}\.webp"[^>]*>', html)
-    assert len(image_tags) == 30
+    assert len(image_tags) == 31
     for image_tag in image_tags:
         assert 'width="400"' in image_tag
         assert 'height="250"' in image_tag
@@ -543,7 +570,7 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
         "install -m 0644 favicon.svg _site/favicon.svg",
         "install -m 0644 privacy.html _site/privacy.html",
         "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2",
-        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 30',
+        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 31',
         "install -m 0644 assets/projects/*.webp _site/assets/projects/",
     ]
 

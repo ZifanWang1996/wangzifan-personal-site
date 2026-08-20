@@ -12,6 +12,15 @@
 - 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
 
+## The Sinking City 2 Field Guide 卡片 #31（2026-08-20）
+
+- 新增卡片 #31：The Sinking City 2 Field Guide（`https://thesinkingcity2.top/`），分类「游戏与内容」，标签「克苏鲁侦探攻略站」，上线日期 2026-08-20。
+- 筛选计数目标：全部 31 / AI 3 / 游戏 11 / 工具 9 / 创意 8；Timeline 保持 40 天并更新为 31 次真实上线，2026-08-20 节点更新为 2 SHIPPED；Changelog 更新为 31 entries / 31 releases。
+- 缩略图来自生产站真实首屏，经系统 Chrome 抓取并以 Lanczos 缩为 400×250 WebP；GitHub Pages artifact allowlist 同步要求精确发布 31 张缩略图。
+- 回归结果：pytest 36/36、Node 动态交互通过；1440×900、390×844、320×568 三视口均显示 31 张卡，游戏筛选 11 张，31 张图片全部加载，控制台错误、页面异常、横向溢出、同源失败请求均为 0。
+- 390px CDP 真实 touch 已打开 `https://thesinkingcity2.top/`；320px 目检后将 metadata 优化为“状态+日期同排、标签独占第二行”，复测无拆字、重叠、裁切或破图。
+- `project-31.webp` 为 400×250、11,154 bytes，SHA-256 `3abf05208ba7ee89ceca3adec358f95c30c67de6ff220de0c38c026093a7bd6e`；exact-tree 独立复审及线上字节核验通过后才允许发布。
+
 ## Chinamaxxing Online 卡片 #30（2026-08-20）
 
 - 新增卡片 #30：Chinamaxxing Online（`https://chinamaxxing.site/`），分类「创意实验」，标签「多语文化指南」，上线日期 2026-08-20。
@@ -103,7 +112,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（30）
+## 产品索引（31）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -137,25 +146,26 @@
 | 28 | 牛来 | 创意实验 | https://niulai.blog/ |
 | 29 | HLLV Field Manual | 游戏与内容 | https://hellletloosevietnam.blog/ |
 | 30 | Chinamaxxing Online | 创意实验 | https://chinamaxxing.site/ |
+| 31 | The Sinking City 2 Field Guide | 游戏与内容 | https://thesinkingcity2.top/ |
 
 ## 发布产物边界
 
 - workflow 先创建全新的 `_site` 目录。
-- 仅复制 `index.html`、`favicon.svg` 与 `privacy.html`。
+- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-31.webp`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；30 个项目外链均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；31 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
 - 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录、AI 产品与创意实验筛选分别显示 30 / 3 / 8 条，类别标签和 `aria-pressed` 同步；Chinamaxxing Online 卡片在“创意实验”下唯一且可见，页面不展示数字成绩板。
-- 320px 筛选器保持双列三行并保有 44px 最小触控高度；Chinamaxxing Online 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
+- 全部记录、AI 产品、游戏与内容、创意实验筛选分别显示 31 / 3 / 11 / 8 条，类别标签和 `aria-pressed` 同步；The Sinking City 2 Field Guide 卡片在“游戏与内容”下唯一且可见，页面不展示数字成绩板。
+- 320px 筛选器保持双列三行并保有 44px 最小触控高度；The Sinking City 2 Field Guide 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
 - 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
 - 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 30 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game` 与 `Chinamaxxing Online=creative` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
-- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 Chinamaxxing Online CTA 打开 `https://chinamaxxing.site/`。
+- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 31 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative` 与 `The Sinking City 2 Field Guide=game` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
+- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 The Sinking City 2 Field Guide CTA 打开 `https://thesinkingcity2.top/`。
 
 ## 隐私与内容边界
 

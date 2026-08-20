@@ -34,7 +34,7 @@ jobs:
           install -m 0644 favicon.svg _site/favicon.svg
           install -m 0644 privacy.html _site/privacy.html
           install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2
-          test "$(printf '%s\n' assets/projects/*.webp | wc -l)" -eq 30
+          test "$(printf '%s\n' assets/projects/*.webp | wc -l)" -eq 31
           install -m 0644 assets/projects/*.webp _site/assets/projects/
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
