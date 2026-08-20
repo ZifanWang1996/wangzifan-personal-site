@@ -216,7 +216,7 @@ def test_projects_section_includes_live_hllv_card():
     assert html.count('href="https://hellletloosevietnam.blog/"') == 1
     assert 'data-category="game"' in card
     assert '<span>29 · 已上线</span><span>HLLV 越南战场手册</span>' in card
-    assert '<span class="site-date">2026-08-17</span>' in card
+    assert '<span class="site-date">2026-08-18</span>' in card
     assert 'Hell Let Loose: Vietnam' in card
     assert '已知问题' in card
     assert '每条结论均标注日期与依据' in card
@@ -498,6 +498,7 @@ def test_light_theme_and_privacy_footer_colors_meet_the_aa_token_contract():
     assert ".brand small,.hero-credo,.footer{color:#6b675e}" in html
     assert ".subhead p,.visible-count,.site-meta,.site-date{color:#6b675e}" in html
     assert ".band.ghost .band-set{color:#6b675e;-webkit-text-stroke:0}" in html
+    assert ".band.ghost .band-set i{color:#c86544;-webkit-text-stroke:0;opacity:.9}" in html
     assert ".filter:after" in html and "color:#625f57" in html
     assert "footer{padding:30px 0 48px" in privacy
     assert "color:#94928a" in privacy

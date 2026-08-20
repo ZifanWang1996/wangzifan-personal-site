@@ -12,6 +12,12 @@
 - 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
 - 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
 
+## HLLV 上线日期修正 + 跑马灯 ✦ 配色（2026-08-20）
+
+- 子凡确认 HLLV Field Manual 上线日期应为 **2026-08-18**（08-17 为部署迭代日）。Cloudflare API 核实：首次 production 部署 08-16 23:42 CST，08-17 全天 6 次迭代部署，08-18 15:30 CST 为域名绑定后的首次正式生产部署——与 08-18 口径一致。
+- 全链路修正：卡片 #29 日期 08-17→08-18；Timeline 08-17 恢复为牛来 1 SHIPPED、新增 2026-08-18 独立节点（HLLV 1 SHIPPED）；Changelog HLLV SHIP 行改为 `[2026-08-18]`；pytest 断言与 assemble_v4.py 记录同步。时间轴跨度与标题不变（07-12→08-20，40 天，31 次真实上线）。
+- 跑马灯（ghost band）配色调整：✦ 分隔符由高饱和 `var(--flame)`（#e8401a）改为陶土色 `#c86544`（opacity .9），与奶油底和 `#6b675e` 实心文字形成受控暖色节奏；文字实心化已于 d747a13 完成。
+
 ## The Sinking City 2 Field Guide 卡片 #31（2026-08-20）
 
 - 新增卡片 #31：The Sinking City 2 Field Guide（`https://thesinkingcity2.top/`），分类「游戏与内容」，标签「克苏鲁侦探攻略站」，上线日期 2026-08-20。
@@ -31,9 +37,9 @@
 
 ## v4 更新：筛选计数 + HLLV 卡片 #29（2026-08-19）
 
-- 新增卡片 #29：HLLV Field Manual（hellletloosevietnam.blog，《Hell Let Loose: Vietnam》非官方野战手册），分类「游戏与内容」；上线日期 2026-08-17（按 Cloudflare Pages 首次 production 部署时间核实，08-16 仅为首个代码提交日）。
+- 新增卡片 #29：HLLV Field Manual（hellletloosevietnam.blog，《Hell Let Loose: Vietnam》非官方野战手册），分类「游戏与内容」；上线日期 2026-08-17（按 Cloudflare Pages 首次 production 部署时间核实，08-16 仅为首个代码提交日）。**该日期已于 2026-08-20 修正为 2026-08-18**（08-17 属部署迭代，08-18 为域名绑定后正式发布），见顶部修正记录。
 - 筛选按钮新增计数胶囊：`data-count` 属性经 CSS `::after` 渲染（全部 29 / AI 3 / 游戏 10 / 工具 9 / 创意 7），button.textContent 保持原样，live 状态栏契约与主脚本零改动。
-- 「全部上线记录」subhead 新增 29 徽章；Timeline 标题 28→29，2026-08-17 变为 2 SHIPPED（牛来 + HLLV）；Changelog 28→29 entries，顶部新增 HLLV SHIP 记录。
+- 「全部上线记录」subhead 新增 29 徽章；Timeline 标题 28→29，2026-08-17 变为 2 SHIPPED（牛来 + HLLV；后于 2026-08-20 拆分为 08-17 / 08-18 两个节点）；Changelog 28→29 entries，顶部新增 HLLV SHIP 记录。
 - 缩略图：Playwright 实站抓取 → 400×250 WebP base64 内联（13KB），workflow 白名单不变。
 - 回归：装配自检 38/38、pytest 27/27（新增 HLLV 卡片测试 + data-count 断言）、Node 交互测试通过；三视口（1440/390/320）零 JS 错误、零溢出、29 缩略图全加载。
 

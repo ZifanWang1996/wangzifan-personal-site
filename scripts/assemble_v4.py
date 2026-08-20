@@ -5,10 +5,11 @@ Pure incremental transform on the v3 cream theme:
 - 5 filter buttons get data-count chips rendered via CSS ::after
   (button.textContent stays clean -> live status bar contract unchanged)
 - subhead h3 gets <span class="ledger-count">29</span>
-- timeline title 28 -> 29; HLLV joins the 2026-08-17 latest item (first public
-  Pages deployment = 08-17, verified via `wrangler pages deployment list`;
-  08-16 was first code commit only)
-- changelog 28 -> 29 entries/releases + new HLLV log line at top (08-17)
+- timeline title 28 -> 29; HLLV ships as its own 2026-08-18 node (public
+  launch = domain-bound production deploy on 08-18 15:30 CST, verified via
+  Cloudflare API; 08-16/08-17 were first commit + iteration deploys.
+  Corrected 2026-08-20 per ZF Wang: originally recorded 08-17)
+- changelog 28 -> 29 entries/releases + new HLLV log line at top (08-18)
 - new card #29 (game) with base64-inlined thumb (workflow allowlist untouched)
 - main inline script untouched (Node interaction contract preserved)
 """
@@ -51,20 +52,20 @@ rep('<button class="filter" data-filter="creative" aria-pressed="false">创意�
 rep('<h3>全部上线记录</h3>',
     '<h3>全部上线记录<span class="ledger-count">29</span></h3>')
 
-# ---------------- 4. timeline: 29 launches, HLLV joins 2026-08-17 latest -----
+# ---------------- 4. timeline: 29 launches, HLLV own 2026-08-18 node --------
 rep('<h2 id="timeline-title">37 天，28 次真实上线。</h2>',
     '<h2 id="timeline-title">37 天，29 次真实上线。</h2>')
 rep('从第一个产品到第 28 个，每一次上线都在同一条时间轴上留下坐标。',
     '从第一个产品到第 29 个，每一次上线都在同一条时间轴上留下坐标。')
 rep('<div class="tl-names"><span>牛来</span></div><div class="tl-count">1 SHIPPED</div></div></div>',
-    '<div class="tl-names"><span>牛来</span><span>HLLV Field Manual</span></div><div class="tl-count">2 SHIPPED</div></div></div>')
+    '<div class="tl-names"><span>牛来</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-18</div><div class="tl-names"><span>HLLV Field Manual</span></div><div class="tl-count">1 SHIPPED</div></div></div>')
 
 # ---------------- 5. changelog: 29 entries + HLLV log line -------------------
 rep('~/venture-os — release.log — 28 entries',
     '~/venture-os — release.log — 29 entries')
 rep('<b>28 releases</b>', '<b>29 releases</b>')
 rep('<div class="log-line"><span class="log-d">[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">牛来</span>',
-    '<div class="log-line"><span class="log-d">[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">HLLV Field Manual</span><span class="log-u">→ https://hellletloosevietnam.blog/</span></div><div class="log-line"><span class="log-d">[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">牛来</span>')
+    '<div class="log-line"><span class="log-d">[2026-08-18]</span><span class="log-ok">SHIP</span><span class="log-n">HLLV Field Manual</span><span class="log-u">→ https://hellletloosevietnam.blog/</span></div><div class="log-line"><span class="log-d">[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">牛来</span>')
 
 # ---------------- 6. new card #29 after the 牛来 card -------------------------
 hllv_card = (
@@ -72,7 +73,7 @@ hllv_card = (
     '<figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span>'
     f'<img src="data:image/webp;base64,{b64}" alt="" loading="lazy" decoding="async"></figure>'
     '<div class="site-category">游戏与内容</div>'
-    '<div class="site-meta"><span>29 · 已上线</span><span>HLLV 越南战场手册</span><span class="site-date">2026-08-17</span></div>'
+    '<div class="site-meta"><span>29 · 已上线</span><span>HLLV 越南战场手册</span><span class="site-date">2026-08-18</span></div>'
     '<h3>HLLV Field Manual</h3>'
     '<p>面向《Hell Let Loose: Vietnam》玩家的非官方野战手册，提供经来源核验的已知问题、新手指南、地图、兵种与模式情报，每条结论均标注日期与依据。</p>'
     '</div><a class="site-link" href="https://hellletloosevietnam.blog/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>'
@@ -109,15 +110,15 @@ ck('hllv card h3', '<h3>HLLV Field Manual</h3>' in html)
 ck('hllv card href once', html.count('href="https://hellletloosevietnam.blog/"') == 1)
 ck('hllv url text twice', html.count('https://hellletloosevietnam.blog/') == 2)
 ck('hllv meta', '<span>29 · 已上线</span><span>HLLV 越南战场手册</span>' in html)
-ck('hllv date 08-17', '<span class="site-date">2026-08-17</span>' in html)
+ck('hllv date 08-18', '<span class="site-date">2026-08-18</span>' in html)
 ck('timeline title 37d 29', '37 天，29 次真实上线。' in html)
 ck('timeline copy 29th', '从第一个产品到第 29 个' in html)
-ck('tl 08-17 two shipped', '<div class="tl-count">2 SHIPPED</div>' in html)
+ck('tl 08-18 node', '<div class="tl-date">2026-08-18</div>' in html)
 ck('tl hllv name', '<span>HLLV Field Manual</span>' in html)
-ck('tl latest has both', '<span>牛来</span><span>HLLV Field Manual</span>' in html)
+ck('tl 08-17 niulai only', '<div class="tl-names"><span>牛来</span></div><div class="tl-count">1 SHIPPED</div>' in html)
 ck('changelog 29 entries', 'release.log — 29 entries' in html)
 ck('changelog 29 releases', '<b>29 releases</b>' in html)
-ck('changelog hllv line top', '[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">HLLV Field Manual</span><span class="log-u">→ https://hellletloosevietnam.blog/</span>' in html)
+ck('changelog hllv line top', '[2026-08-18]</span><span class="log-ok">SHIP</span><span class="log-n">HLLV Field Manual</span><span class="log-u">→ https://hellletloosevietnam.blog/</span>' in html)
 ck('ledger heading kept', '全部上线记录' in html)
 ck('modal link kept', '浏览全部上线记录' in html)
 ck('visibleCount initial kept', 'id="visibleCount" aria-live="polite">ALL RELEASES' in html)
