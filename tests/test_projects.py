@@ -426,6 +426,86 @@ def test_mobile_release_card_microcopy_is_legible():
     assert link_rule and "font-size:12px" in link_rule.group(1)
 
 
+
+def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contained():
+    html = SITE.read_text(encoding="utf-8")
+    privacy = PRIVACY.read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+
+    assert "data:image/webp;base64" not in html
+    assert "data:font/woff2;base64" not in html
+    assert "data:font/woff2;base64" not in privacy
+    assert "url('assets/archivo.woff2')" in privacy
+
+    image_refs = re.findall(r'src="(assets/projects/project-\d{2}\.webp)"', html)
+    assert len(image_refs) == 30
+    assert len(set(image_refs)) == 30
+    for image_ref in image_refs:
+        assert (ROOT / image_ref).is_file()
+
+    image_tags = re.findall(r'<img\s+[^>]*src="assets/projects/project-\d{2}\.webp"[^>]*>', html)
+    assert len(image_tags) == 30
+    for image_tag in image_tags:
+        assert 'width="400"' in image_tag
+        assert 'height="250"' in image_tag
+        assert 'loading="lazy"' in image_tag
+        assert 'decoding="async"' in image_tag
+
+    assert (ROOT / "assets" / "archivo.woff2").is_file()
+    assert "url('assets/archivo.woff2')" in html
+    assert 'class="grain"' not in html
+    assert "glowLoop" not in html
+    assert "requestAnimationFrame(glowLoop)" not in html
+    assert ".site{content-visibility:auto;contain-intrinsic-size:auto 320px}" in html
+    assert (
+        "#timeline,#system,#manifesto,#contact{content-visibility:auto;"
+        "contain-intrinsic-size:auto 900px}"
+    ) in html
+
+    assert "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2" in workflow
+    assert "install -m 0644 assets/projects/*.webp _site/assets/projects/" in workflow
+
+
+
+def test_light_theme_and_privacy_footer_colors_meet_the_aa_token_contract():
+    html = SITE.read_text(encoding="utf-8")
+    privacy = PRIVACY.read_text(encoding="utf-8")
+
+    assert ".brand small,.hero-credo,.footer{color:#6b675e}" in html
+    assert ".subhead p,.visible-count,.site-meta,.site-date{color:#6b675e}" in html
+    assert ".band.ghost .band-set{color:#6b675e;-webkit-text-stroke:0}" in html
+    assert ".filter:after" in html and "color:#625f57" in html
+    assert "footer{padding:30px 0 48px" in privacy
+    assert "color:#94928a" in privacy
+
+
+
+def test_scrollable_timeline_and_changelog_are_named_keyboard_regions():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert (
+        '<div class="tl-rail" tabindex="0" role="region" '
+        'aria-label="上线时间线，可横向滚动">'
+    ) in html
+    assert (
+        '<div class="log-body" tabindex="0" role="region" '
+        'aria-label="发布日志，可横向和纵向滚动">'
+    ) in html
+
+
+
+def test_command_palette_is_scroll_safe_in_low_height_viewports():
+    html = SITE.read_text(encoding="utf-8")
+
+    assert "@media(max-height:420px)" in html
+    assert ".modal{align-items:flex-start;overflow-y:auto;padding:8px}" in html
+    assert (
+        ".palette{margin:auto;max-height:calc(100dvh - 16px);"
+        "overflow-y:auto;overscroll-behavior:contain}"
+    ) in html
+
+
+
 def test_release_artifact_is_allowlisted_and_mobile_safe():
     html = SITE.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
@@ -461,9 +541,13 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
     assert prepare_commands == [
         "test ! -e _site",
         "mkdir _site",
+        "mkdir -p _site/assets/projects",
         "install -m 0644 index.html _site/index.html",
         "install -m 0644 favicon.svg _site/favicon.svg",
         "install -m 0644 privacy.html _site/privacy.html",
+        "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2",
+        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 30',
+        "install -m 0644 assets/projects/*.webp _site/assets/projects/",
     ]
 
 
