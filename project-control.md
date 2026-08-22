@@ -9,8 +9,8 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`a15c07af1fc62745931a91bc761de057443f9ffa`（v5 最新在前网格）
-- 当前生产 `index.html` blob：`92c1266a9fe5a68acccb72f6f0b2fdd9606b9d08`（本次 #32 候选以最终发布 commit/tree 与生产字节回读为准）
+- 当前生产页面实现提交：`0cb015703ab75e53b966c98c16c14d1ef027412d`（v5 最新在前网格 + OxAlpha #32）
+- 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`
 
 ## OxAlpha 卡片 #32（2026-08-22）
 
@@ -22,6 +22,11 @@
 - Pages workflow 在 artifact upload/deploy 前强制运行 pytest、Node 动态交互与 Python syntax；将 `index.html` 置空的 mutation 使 pytest 返回 1，部署在 upload 前被阻断。Timeline H2 使用 `aria-hidden` 视觉副本执行 scramble，14 次动画期 accessibility snapshot 始终只暴露稳定名称；32 个项目 CTA 均提供项目专属“新窗口”可访问名。
 - Chrome 147 三视口 1440×900 / 390×844 / 320×568 全 PASS：32 卡、32 图、timeline 顺序、tool=10、OxAlpha 可见、CTA 46px、横向溢出与 JS error 均为 0；三张完整卡片元素截图（含 320px 下高于视口的整卡）目检无重叠、裁切、破图或异常拆行。
 - 390px `has_touch` 真实触摸 CTA 到达 `https://oxalpha.site/`，title 为 `Ox Alpha AI — Model, API, Benchmarks, Pricing & Identity`。
+- 独立只读复审：冻结 tree `cd22a287693713bb5315fea7e71bb1aaddc24a39` 判定 READY；旧 manifest、v3 基线、mutable-path harness、CI false-green、scramble a11y、CTA 名称和 320px 整卡证据问题均已关闭。
+- 生产发布：commit `0cb015703ab75e53b966c98c16c14d1ef027412d`；GitHub Actions run `32568517376` 全步骤成功（含 regression gates、artifact、deploy）。
+- 生产字节：`index.html` SHA-256 `591492bb0543edb5a432281aeadb9327b5d86a286f9d0e17beaadc0bbad86a40` 与候选一致；`project-32.webp` SHA-256 `d850fc9eb00ab13996f37c448f8b284eb553e162029b75f4b61f960776189f19`，WebP 400×250；HTTP 单次 301 到 HTTPS，HTTPS 200。
+- 生产浏览器：1440×900 / 390×844 / 320×568 全 PASS；32 卡/32 图/32 reveal、tool=10、NEW=9、唯一 latest、32 个唯一 CTA 名称、Timeline 键盘、无横向溢出/JS error/同源网络错误；390px 真实 touch 到达 OxAlpha；三张完整卡片元素截图目检通过。
+- 生产 artifact 边界：`privacy.html`、`favicon.svg`、`assets/archivo.woff2` 为 200；`project-control.md`、`scripts/`、`tests/`、`.github/` 探针均为 404。
 
 ## v5 改版：最新在前的发布网格 + Spotlight + 动效（2026-08-22）
 
