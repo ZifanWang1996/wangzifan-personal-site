@@ -9,8 +9,22 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`0cb015703ab75e53b966c98c16c14d1ef027412d`（v5 最新在前网格 + OxAlpha #32）
-- 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`
+- 当前生产页面实现提交：`47533ab`（v6 Launch Console hero）；前一个：`0cb015703ab75e53b966c98c16c14d1ef027412d`（v5 最新在前网格 + OxAlpha #32）
+- 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
+
+## v6 改版：Launch Console 发射指挥舱 hero（2026-08-22）
+
+方案 A（子凡选定并确认）：hero 从"编辑宣言"升级为"实时发射控制台"。
+
+- **深空仪表色板**：深墨底 `#0b0d09` + 电青 `#0e7f9d` / 火焰橙 `#e8401a` 径向光晕 + 青柠信号光 `#c6ff3f`；正文区保留暖纸编辑感，hero 下方用 `.launch-bridge` 渐变桥过渡。
+- **Canvas 星场轨道**：`orbit-canvas` 画星点 + 32 个轨道光点（每个代表一次发布），鼠标视差 + 光标引力弯曲轨道；`prefers-reduced-motion` 下静止。
+- **T- 倒计时**：`#tminus` 按真实发布节奏（1.3 天/船）从最新发布日期推算下次发射 ETA，秒级跳动。
+- **遥测流**：最新 5 条 SHIP 日志逐行浮入（日期/SHIP/项目名）。
+- **32 状态矩阵**：16×2 像素阵（最老在左 #1，最新在右 #32），hover tooltip 显项目名+日期，点击平滑滚动到对应卡片并高亮。
+- **零 DOM 锚点破坏**：32 卡、filter chips、timeline、changelog、32 条 visit 链接全部原样。
+- 构建：`scripts/assemble_v6.py`（原子性，CSS/JS 片段来自 `scripts/_v6.css`/`_v6.js`，JS 注入前 `node --check`）。
+- 验证：pytest 42/42（新增 `test_v6_launch_console_hero_contract`）、Node 交互、accept_v6 三视口（1440/390/320）全 PASS。
+- 旧 hero 文案 `SHIPPING ENGINE` 演进为 `LAUNCH CONSOLE`（IA 测试同步更新）。
 
 ## OxAlpha 卡片 #32（2026-08-22）
 
