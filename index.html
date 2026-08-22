@@ -551,6 +551,79 @@ html.js .site.in{opacity:1;transform:none}
   .site:hover{translate:none}
   .site:hover .site-shot img{transform:none}
 }
+
+/* ---- v6: Launch Console hero (deep-instrument theme) ---- */
+[data-launch]{position:relative;min-height:calc(100vh - 78px);display:flex;flex-direction:column;justify-content:center;
+  box-sizing:border-box;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  padding:clamp(28px,4vh,56px) max(24px,calc(50vw - 620px)) clamp(24px,4vh,44px);
+  background:
+    radial-gradient(1200px 620px at 78% -8%,rgba(14,127,157,.16),transparent 62%),
+    radial-gradient(900px 520px at 12% 108%,rgba(232,64,26,.10),transparent 58%),
+    linear-gradient(180deg,#0b0d09 0%,#0e120c 55%,#101309 100%);
+  border-bottom:1px solid rgba(198,255,63,.14);overflow:hidden;isolation:isolate}
+[data-launch] .orbit-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+[data-launch] .launch-head,[data-launch] .launch-grid,[data-launch] .launch-matrix{position:relative;z-index:1}
+[data-launch] .launch-head{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:clamp(20px,3.5vh,44px)}
+[data-launch] .eyebrow{color:#9fae5a}
+[data-launch] .eyebrow .pulse{background:var(--lime);box-shadow:0 0 10px var(--lime),0 0 22px rgba(198,255,63,.5)}
+[data-launch] .engine-status{display:inline-flex;align-items:center;gap:7px;font:700 9.5px var(--mono);
+  letter-spacing:.22em;color:#c6ff3f;border:1px solid rgba(198,255,63,.4);border-radius:999px;padding:5px 11px;
+  background:rgba(198,255,63,.06);backdrop-filter:blur(4px)}
+[data-launch] .engine-status i{width:6px;height:6px;border-radius:50%;background:var(--lime);
+  box-shadow:0 0 8px var(--lime);animation:blink 1.6s ease-in-out infinite}
+[data-launch] .launch-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:center}
+[data-launch] h1{color:#f4f1e4;text-shadow:0 0 40px rgba(198,255,63,.12)}
+[data-launch] h1 .gradient-word{background:linear-gradient(92deg,var(--lime) 0%,#eaffb0 40%,var(--flame2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+[data-launch] .lede{color:#c9c6b4}
+[data-launch] .lede strong{color:#f0edda}
+[data-launch] .hero-credo{color:#8fae4a}
+[data-launch] .hero-credo i{background:rgba(198,255,63,.35)}
+[data-launch] .btn-ghost{color:#d8d5c2;border-color:rgba(216,213,194,.3)}
+[data-launch] .btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+[data-launch] .launch-panel{display:flex;flex-direction:column;gap:14px}
+[data-launch] .tminus{border:1px solid rgba(198,255,63,.22);border-radius:14px;padding:16px 18px;
+  background:linear-gradient(160deg,rgba(198,255,63,.05),rgba(11,13,9,.4));backdrop-filter:blur(6px)}
+[data-launch] .tminus-label{display:block;font:700 8.5px var(--mono);letter-spacing:.3em;color:#8fae4a;margin-bottom:6px}
+[data-launch] .tminus-val{display:block;font:800 clamp(34px,4.4vw,52px)/1 var(--mono);color:#eaffb0;
+  letter-spacing:.02em;text-shadow:0 0 24px rgba(198,255,63,.35);font-variant-numeric:tabular-nums}
+[data-launch] .tminus-sub{display:block;margin-top:6px;font:600 9px var(--mono);letter-spacing:.18em;color:#6f7a45}
+[data-launch] .telemetry{border:1px solid rgba(198,255,63,.16);border-radius:14px;padding:14px 16px;
+  background:rgba(9,11,7,.5);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:9px}
+.tele-line{display:flex;align-items:baseline;gap:9px;font:600 10.5px var(--mono);color:#b9bd9f;
+  opacity:0;transform:translateX(-6px)}
+.tele-line.on{opacity:1;transform:none;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
+.tele-dot{width:5px;height:5px;border-radius:50%;background:var(--flame2);box-shadow:0 0 7px rgba(240,106,44,.7);flex:none}
+.tele-date{color:#6f7a45}
+.tele-verb{color:#c6ff3f;font-weight:800;letter-spacing:.08em}
+.tele-name{color:#e6e3d0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-launch] .launch-matrix{display:grid;grid-template-columns:repeat(16,1fr);gap:7px;margin-top:clamp(20px,3.5vh,44px);
+  padding:14px;border:1px solid rgba(198,255,63,.14);border-radius:14px;background:rgba(9,11,7,.45);backdrop-filter:blur(6px)}
+.px{position:relative;aspect-ratio:1;border:1px solid rgba(198,255,63,.14);border-radius:4px;background:rgba(198,255,63,.05);
+  cursor:pointer;padding:0;transition:transform .18s,border-color .18s,background .18s}
+.px i{position:absolute;inset:2px;border-radius:2px;background:linear-gradient(180deg,rgba(198,255,63,.85),rgba(198,255,63,.3));
+  opacity:.5;transition:opacity .18s,box-shadow .18s}
+.px:hover,.px:focus-visible{transform:scale(1.18);border-color:var(--lime);z-index:2}
+.px:hover i,.px:focus-visible i{opacity:1;box-shadow:0 0 12px rgba(198,255,63,.7)}
+.px:after{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);
+  white-space:nowrap;font:600 9px var(--mono);letter-spacing:.04em;color:#e6e3d0;background:rgba(9,11,7,.95);
+  border:1px solid rgba(198,255,63,.3);border-radius:6px;padding:4px 8px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:3}
+.px:hover:after,.px:focus-visible:after{opacity:1;transform:translateX(-50%) translateY(0)}
+.launch-bridge{height:clamp(48px,9vh,120px);background:linear-gradient(180deg,#101309 0%,#fbf7ec 100%)}
+@media(max-width:900px){
+  [data-launch] .launch-grid{grid-template-columns:1fr;gap:22px}
+  [data-launch] .launch-matrix{grid-template-columns:repeat(8,1fr)}
+}
+@media(max-width:560px){
+  [data-launch]{padding-top:44px;padding-bottom:36px}
+  [data-launch] .launch-matrix{gap:5px;padding:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .tele-line{opacity:1;transform:none}
+  [data-launch] .engine-status i{animation:none}
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 </style>
 </head>
 <body>
@@ -560,24 +633,28 @@ html.js .site.in{opacity:1;transform:none}
     <nav class="nav-links" aria-label="页面导航"><a href="#work">上线记录</a><a href="#system">系统</a><a href="#manifesto">宣言</a><a href="#contact">合作</a><button class="nav-command" id="commandBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="commandDialog">导航 / ⌘K</button></nav>
   </header>
   <main id="top">
-    <section class="shell hero" aria-labelledby="intro-title">
-      <div class="hero-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="badge-circle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><circle class="core" cx="60" cy="60" r="5"/><text><textPath href="#badge-circle" textLength="274">WZF · VENTURE OS · SHIP REAL · ALWAYS ·</textPath></text></svg></div>
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="pulse"></span>ONE PERSON · REAL PRODUCTS · GLOBAL USERS</div>
-        <h1 id="intro-title"><span>先把想法做出来，</span><span class="gradient-word">再让世界给答案。</span></h1>
-        <p class="lede">我是王子凡，一名持续构建、上线和迭代产品的 OPC 创业者。<strong>不等完美时机，用 AI 放大单人产能，把每一次真实发布变成下一次增长的起点。</strong></p>
-        <div class="hero-actions"><a class="btn btn-primary" href="#work">进入发布现场 <span>↘</span></a><a class="btn btn-ghost" href="#system">查看我的创业系统</a></div>
-        <div class="hero-credo"><span>不等万事俱备</span><i aria-hidden="true"></i><span>只做真实上线</span><i aria-hidden="true"></i><span>让每次发布产生复利</span></div>
+    <section class="shell hero" aria-labelledby="intro-title" data-launch>
+      <canvas class="orbit-canvas" aria-hidden="true"></canvas>
+      <div class="launch-head">
+        <div class="eyebrow"><span class="pulse"></span>LAUNCH CONSOLE · WZF-OS · ONLINE</div>
+        <div class="engine-status"><i></i>32 SHIPS LIVE</div>
       </div>
-      <aside class="shipping-engine reveal" aria-label="持续发布引擎">
-        <div class="engine-head"><span>SHIPPING ENGINE / ONLINE</span><span class="engine-status"><i aria-hidden="true"></i>LIVE</span></div>
-        <div class="engine-body">
-          <div class="engine-stage"><strong>SHIP<em>REAL.</em></strong><p>别把“准备中”当作进展。把最小但真实的版本交到用户手里，让市场替想法投票。</p></div>
-          <div class="engine-loop" aria-label="持续发布循环"><span>Signal</span><span>Build</span><span>Ship</span><span>Compound</span></div>
-          <div class="engine-log"><div><span class="ok">●</span> courage.mode = <span class="ok">active</span></div><div><span class="run">→</span> next_move = ship_something_real</div></div>
+      <div class="launch-grid">
+        <div class="launch-copy reveal">
+          <h1 id="intro-title"><span>先把想法做出来，</span><span class="gradient-word">再让世界给答案。</span></h1>
+          <p class="lede">我是王子凡，一名持续构建、上线和迭代产品的 OPC 创业者。<strong>不等完美时机，用 AI 放大单人产能，把每一次真实发布变成下一次增长的起点。</strong></p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#work">进入发布现场 <span>↘</span></a><a class="btn btn-ghost" href="#system">查看我的创业系统</a></div>
+          <div class="hero-credo"><span>不等万事俱备</span><i></i><span>只做真实上线</span><i></i><span>让每次发布产生复利</span></div>
         </div>
-      </aside>
+        <div class="launch-panel reveal">
+          <div class="tminus"><span class="tminus-label">T-MINUS NEXT SHIP</span><span class="tminus-val" id="tminus">--:--:--</span><span class="tminus-sub">avg cadence 1.3d / ship</span></div>
+          <div class="telemetry" aria-label="最近发射遥测"><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-22]</span><span class="tele-verb">SHIP</span><span class="tele-name">OxAlpha</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-20]</span><span class="tele-verb">SHIP</span><span class="tele-name">The Sinking City 2 Field Guide</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-20]</span><span class="tele-verb">SHIP</span><span class="tele-name">Chinamaxxing Online</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-18]</span><span class="tele-verb">SHIP</span><span class="tele-name">HLLV Field Manual</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-17]</span><span class="tele-verb">SHIP</span><span class="tele-name">牛来</span></div></div>
+        </div>
+      </div>
+      <div class="launch-matrix" role="list" aria-label="32 次发布状态矩阵"><button class="px" data-i="0" title="AIStoryNest · 2026-07-12" aria-label="AIStoryNest, 2026-07-12"><i></i></button><button class="px" data-i="1" title="Build a Hooper · 2026-07-12" aria-label="Build a Hooper, 2026-07-12"><i></i></button><button class="px" data-i="2" title="FalloutDay · 2026-07-12" aria-label="FalloutDay, 2026-07-12"><i></i></button><button class="px" data-i="3" title="PalworldMap · 2026-07-14" aria-label="PalworldMap, 2026-07-14"><i></i></button><button class="px" data-i="4" title="CodexSkin.space · 2026-07-17" aria-label="CodexSkin.space, 2026-07-17"><i></i></button><button class="px" data-i="5" title="llmstxt · 2026-07-18" aria-label="llmstxt, 2026-07-18"><i></i></button><button class="px" data-i="6" title="All Wishes Come True · 2026-07-25" aria-label="All Wishes Come True, 2026-07-25"><i></i></button><button class="px" data-i="7" title="TaskbarHeroWiki · 2026-07-26" aria-label="TaskbarHeroWiki, 2026-07-26"><i></i></button><button class="px" data-i="8" title="Chinese Coins Atlas · 2026-07-26" aria-label="Chinese Coins Atlas, 2026-07-26"><i></i></button><button class="px" data-i="9" title="Rot Check · 2026-07-26" aria-label="Rot Check, 2026-07-26"><i></i></button><button class="px" data-i="10" title="SpiritVale Wiki · 2026-07-28" aria-label="SpiritVale Wiki, 2026-07-28"><i></i></button><button class="px" data-i="11" title="DragonSword Wiki · 2026-07-29" aria-label="DragonSword Wiki, 2026-07-29"><i></i></button><button class="px" data-i="12" title="CopyPlaintext · 2026-07-31" aria-label="CopyPlaintext, 2026-07-31"><i></i></button><button class="px" data-i="13" title="IsItDown · 2026-07-31" aria-label="IsItDown, 2026-07-31"><i></i></button><button class="px" data-i="14" title="HowManySleepsUntil · 2026-07-31" aria-label="HowManySleepsUntil, 2026-07-31"><i></i></button><button class="px" data-i="15" title="Cash Flow Lifestyle · 2026-08-03" aria-label="Cash Flow Lifestyle, 2026-08-03"><i></i></button><button class="px" data-i="16" title="竹知了 · 2026-08-04" aria-label="竹知了, 2026-08-04"><i></i></button><button class="px" data-i="17" title="Shift at Midnight Guide · 2026-08-05" aria-label="Shift at Midnight Guide, 2026-08-05"><i></i></button><button class="px" data-i="18" title="Merge a Nuke! Guide · 2026-08-08" aria-label="Merge a Nuke! Guide, 2026-08-08"><i></i></button><button class="px" data-i="19" title="AI Scanner · 2026-08-09" aria-label="AI Scanner, 2026-08-09"><i></i></button><button class="px" data-i="20" title="RSP Editor · 2026-08-09" aria-label="RSP Editor, 2026-08-09"><i></i></button><button class="px" data-i="21" title="Remove Matcha Filter · 2026-08-12" aria-label="Remove Matcha Filter, 2026-08-12"><i></i></button><button class="px" data-i="22" title="DSH Field Guide · 2026-08-15" aria-label="DSH Field Guide, 2026-08-15"><i></i></button><button class="px" data-i="23" title="Polski Piłkarz Simulator · 2026-08-16" aria-label="Polski Piłkarz Simulator, 2026-08-16"><i></i></button><button class="px" data-i="24" title="burnt for you · 2026-08-16" aria-label="burnt for you, 2026-08-16"><i></i></button><button class="px" data-i="25" title="MatchaFilter · 2026-08-16" aria-label="MatchaFilter, 2026-08-16"><i></i></button><button class="px" data-i="26" title="CraveLoop · 2026-08-16" aria-label="CraveLoop, 2026-08-16"><i></i></button><button class="px" data-i="27" title="牛来 · 2026-08-17" aria-label="牛来, 2026-08-17"><i></i></button><button class="px" data-i="28" title="HLLV Field Manual · 2026-08-18" aria-label="HLLV Field Manual, 2026-08-18"><i></i></button><button class="px" data-i="29" title="Chinamaxxing Online · 2026-08-20" aria-label="Chinamaxxing Online, 2026-08-20"><i></i></button><button class="px" data-i="30" title="The Sinking City 2 Field Guide · 2026-08-20" aria-label="The Sinking City 2 Field Guide, 2026-08-20"><i></i></button><button class="px" data-i="31" title="OxAlpha · 2026-08-22" aria-label="OxAlpha, 2026-08-22"><i></i></button></div>
     </section>
+
+    <div class="launch-bridge" aria-hidden="true"></div>
 
     <div class="band" aria-hidden="true"><div class="band-track"><div class="band-set"><span>先把想法做出来</span><i>✦</i><span>再让世界给答案</span><i>✦</i><span>SHIP REAL</span><i>✦</i><span>不等万事俱备 · 只做真实上线</span><i>✦</i><span>BUILD → SHIP → LEARN → REPEAT</span><i>✦</i><span>KEEP GOING</span><i>✦</i></div><div class="band-set"><span>先把想法做出来</span><i>✦</i><span>再让世界给答案</span><i>✦</i><span>SHIP REAL</span><i>✦</i><span>不等万事俱备 · 只做真实上线</span><i>✦</i><span>BUILD → SHIP → LEARN → REPEAT</span><i>✦</i><span>KEEP GOING</span><i>✦</i></div></div></div>
 
@@ -789,5 +866,91 @@ html.js .site.in{opacity:1;transform:none}
 })();
 
   </script>
+<script data-ui="launch">
+(function(){
+  'use strict';
+  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
+  var host=document.querySelector('[data-launch]');
+  if(!host)return;
+  var SHIPS=[{"n": 1, "name": "AIStoryNest", "d": "2026-07-12"}, {"n": 2, "name": "Build a Hooper", "d": "2026-07-12"}, {"n": 3, "name": "FalloutDay", "d": "2026-07-12"}, {"n": 4, "name": "PalworldMap", "d": "2026-07-14"}, {"n": 5, "name": "CodexSkin.space", "d": "2026-07-17"}, {"n": 6, "name": "llmstxt", "d": "2026-07-18"}, {"n": 7, "name": "All Wishes Come True", "d": "2026-07-25"}, {"n": 8, "name": "TaskbarHeroWiki", "d": "2026-07-26"}, {"n": 9, "name": "Chinese Coins Atlas", "d": "2026-07-26"}, {"n": 10, "name": "Rot Check", "d": "2026-07-26"}, {"n": 11, "name": "SpiritVale Wiki", "d": "2026-07-28"}, {"n": 12, "name": "DragonSword Wiki", "d": "2026-07-29"}, {"n": 13, "name": "CopyPlaintext", "d": "2026-07-31"}, {"n": 14, "name": "IsItDown", "d": "2026-07-31"}, {"n": 15, "name": "HowManySleepsUntil", "d": "2026-07-31"}, {"n": 16, "name": "Cash Flow Lifestyle", "d": "2026-08-03"}, {"n": 17, "name": "竹知了", "d": "2026-08-04"}, {"n": 18, "name": "Shift at Midnight Guide", "d": "2026-08-05"}, {"n": 19, "name": "Merge a Nuke! Guide", "d": "2026-08-08"}, {"n": 20, "name": "AI Scanner", "d": "2026-08-09"}, {"n": 21, "name": "RSP Editor", "d": "2026-08-09"}, {"n": 22, "name": "Remove Matcha Filter", "d": "2026-08-12"}, {"n": 23, "name": "DSH Field Guide", "d": "2026-08-15"}, {"n": 24, "name": "Polski Piłkarz Simulator", "d": "2026-08-16"}, {"n": 25, "name": "burnt for you", "d": "2026-08-16"}, {"n": 26, "name": "MatchaFilter", "d": "2026-08-16"}, {"n": 27, "name": "CraveLoop", "d": "2026-08-16"}, {"n": 28, "name": "牛来", "d": "2026-08-17"}, {"n": 29, "name": "HLLV Field Manual", "d": "2026-08-18"}, {"n": 30, "name": "Chinamaxxing Online", "d": "2026-08-20"}, {"n": 31, "name": "The Sinking City 2 Field Guide", "d": "2026-08-20"}, {"n": 32, "name": "OxAlpha", "d": "2026-08-22"}];
+
+  /* ---- canvas: starfield + orbital ships, mouse parallax + attraction ---- */
+  var cv=host.querySelector('.orbit-canvas'),ctx=cv.getContext('2d');
+  var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+  var mx=.5,my=.4,tmx=.5,tmy=.4,stars=[],ships=[];
+  function size(){
+    W=host.clientWidth;H=host.clientHeight;
+    cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    stars=[];var n=Math.round(W*H/6500);
+    for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+.2,a:Math.random()*.5+.12,p:Math.random()*6.28});
+    ships=[];for(var j=0;j<SHIPS.length;j++){var t=j/(SHIPS.length-1||1);
+      ships.push({a:t*6.283-1.57,rx:W*.20+t*W*.16,ry:H*.13+t*H*.10,sp:.00006+t*.00009,s:1.1+t*1.3,t:t});}
+  }
+  function frame(ts){
+    ctx.clearRect(0,0,W,H);
+    var cx=W/2,cy=H*.52;
+    mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
+    var ox=(mx-.5)*18,oy=(my-.5)*14;
+    for(var i=0;i<stars.length;i++){var s=stars[i];
+      var tw=s.a*(reduced?1:(.6+.4*Math.sin(ts*.001+s.p)));
+      ctx.fillStyle='rgba(198,255,63,'+tw+')';
+      ctx.fillRect(s.x+ox*(s.r*.4),s.y+oy*(s.r*.4),s.r,s.r);}
+    if(!reduced){
+      var mxx=mx*W,myy=my*H;
+      for(var j=0;j<ships.length;j++){var p=ships[j];
+        p.a+=p.sp*16.6;
+        var x=cx+Math.cos(p.a)*p.rx+ox*(.5+p.t);
+        var y=cy+Math.sin(p.a)*p.ry+oy*(.5+p.t);
+        var dx=mxx-x,dy=myy-y,d2=dx*dx+dy*dy;
+        if(d2<90000){var f=(1-d2/90000)*26;x+=dx/Math.sqrt(d2+1)*f;y+=dy/Math.sqrt(d2+1)*f;}
+        var g=ctx.createRadialGradient(x,y,0,x,y,p.s*7);
+        g.addColorStop(0,'rgba(198,255,63,.85)');g.addColorStop(.4,'rgba(198,255,63,.28)');g.addColorStop(1,'rgba(198,255,63,0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,p.s*7,0,6.283);ctx.fill();
+        ctx.fillStyle='rgba(234,255,176,.95)';ctx.beginPath();ctx.arc(x,y,p.s*.8,0,6.283);ctx.fill();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  size();requestAnimationFrame(frame);
+  window.addEventListener('resize',size,{passive:true});
+  if(fine&&!reduced){host.addEventListener('pointermove',function(e){
+    var r=host.getBoundingClientRect();tmx=(e.clientX-r.left)/r.width;tmy=(e.clientY-r.top)/r.height;
+  },{passive:true});}
+
+  /* ---- telemetry cascade ---- */
+  var lines=host.querySelectorAll('.tele-line');
+  for(var l=0;l<lines.length;l++){(function(el,i){setTimeout(function(){el.classList.add('on')},500+i*260);})(lines[l],l);}
+
+  /* ---- T-minus countdown (cadence-derived) ---- */
+  var tm=document.getElementById('tminus');
+  if(tm){
+    var newest=new Date(SHIPS[SHIPS.length-1].d+'T00:00:00');
+    var eta=new Date(newest.getTime()+1.3*86400000);
+    var pad=function(n){return String(n).padStart(2,'0')};
+    var tick=function(){
+      var d=eta-Date.now();
+      if(d<=0){tm.textContent='SHIP TODAY';return}
+      var hh=Math.floor(d/3600000),mm=Math.floor(d%3600000/60000),ss=Math.floor(d%60000/1000);
+      tm.textContent=pad(hh)+':'+pad(mm)+':'+pad(ss);
+    };
+    tick();if(!reduced)setInterval(tick,1000);
+  }
+
+  /* ---- matrix: click scrolls to card ---- */
+  var px=host.querySelectorAll('.px');
+  var cards=document.querySelectorAll('article.site');
+  for(var p=0;p<px.length;p++){(function(btn){
+    btn.addEventListener('click',function(){
+      var idx=parseInt(btn.dataset.i,10);
+      var card=cards[cards.length-1-idx];
+      if(card){card.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
+        card.style.transition='box-shadow .4s';card.style.boxShadow='0 0 0 3px rgba(198,255,63,.8)';
+        setTimeout(function(){card.style.boxShadow=''},1400);}
+    });
+  })(px[p]);}
+})();
+
+</script>
 </body>
 </html>

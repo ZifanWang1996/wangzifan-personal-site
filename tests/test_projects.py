@@ -357,7 +357,7 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     # The hero is an action-led shipping statement, not a scorecard.
     assert "先把想法做出来" in html
     assert "再让世界给答案。" in html
-    assert "SHIPPING ENGINE" in html
+    assert "LAUNCH CONSOLE" in html
     for removed in (
         "26 个产品",
         "6 项证书",
@@ -724,9 +724,12 @@ def test_v5_card_grid_spotlight_and_motion_contracts():
     assert 'html.js .site.in{opacity:1;transform:none}' in html
 
     # prefers-reduced-motion keeps every card visible and calm
-    # (the v5 block is the last such media query, appended before </style>).
-    reduced_start = html.rindex('@media(prefers-reduced-motion:reduce){')
-    reduced_css = html[reduced_start:html.index('</style>', reduced_start)]
+    # (locate the v5 card-motion block specifically; v6 appends its own block later).
+    reduced_css = html
+    for block in re.findall(r'@media\(prefers-reduced-motion:reduce\)\{.*?\n\}', html, re.S):
+        if 'html.js .site' in block:
+            reduced_css = block
+            break
     assert 'html.js .site{opacity:1;transform:none}' in reduced_css
     assert '.site:hover{translate:none}' in reduced_css
     assert '.site:hover .site-shot img{transform:none}' in reduced_css
@@ -737,3 +740,52 @@ def test_v5_card_grid_spotlight_and_motion_contracts():
     # Card DOM anchor stays byte-identical for every assertion downstream.
     assert html.count('<article class="site" data-status="live">') == 32
     assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32
+
+
+def test_v6_launch_console_hero_contract():
+    html = SITE.read_text(encoding="utf-8")
+
+    # Console scope + full-viewport instrument panel.
+    assert '<section class="shell hero" aria-labelledby="intro-title" data-launch>' in html
+    assert '<canvas class="orbit-canvas" aria-hidden="true"></canvas>' in html
+    assert '[data-launch]{position:relative;min-height:calc(100vh - 78px)' in html
+
+    # Head bar: console eyebrow + live ship count.
+    assert 'LAUNCH CONSOLE · WZF-OS · ONLINE' in html
+    assert '32 SHIPS LIVE' in html
+
+    # T-minus countdown wiring.
+    assert 'id="tminus"' in html
+    assert 'T-MINUS NEXT SHIP' in html
+    assert "new Date(SHIPS[SHIPS.length-1].d+'T00:00:00')" in html
+
+    # Telemetry feed mirrors the 5 newest cards, newest first.
+    tele = re.findall(r'<div class="tele-line">.*?<span class="tele-name">([^<]+)</span></div>', html, re.S)
+    assert tele == [
+        "OxAlpha",
+        "The Sinking City 2 Field Guide",
+        "Chinamaxxing Online",
+        "HLLV Field Manual",
+        "牛来",
+    ]
+
+    # Status matrix: 32 cells, oldest first so #32 is newest.
+    px = re.findall(r'<button class="px" data-i="(\d+)" title="([^"]+) · ([0-9-]+)"', html)
+    assert [int(i) for i, _, _ in px] == list(range(32))
+    assert px[0][1] == "AIStoryNest"
+    assert px[-1][1] == "OxAlpha"
+    assert "document.querySelectorAll('article.site')" in html
+
+    # Bridge into the editorial (paper) zone.
+    assert '<div class="launch-bridge" aria-hidden="true"></div>' in html
+    assert '.launch-bridge{height:clamp(48px,9vh,120px)' in html
+
+    # prefers-reduced-motion: telemetry visible, orbit/ticker stilled.
+    block = re.search(r'@media\(prefers-reduced-motion:reduce\)\{\n  \.tele-line.*?\n\}', html, re.S)
+    assert block
+    assert '.tele-line{opacity:1;transform:none}' in block.group(0)
+    assert '[data-launch] .engine-status i{animation:none}' in block.group(0)
+
+    # Launch script is syntax-checked at build time and self-contained.
+    assert '<script data-ui="launch">' in html
+    assert 'SHIPS=[{"n": 1,' in html
