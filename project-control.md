@@ -9,8 +9,19 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前页面实现提交：`a31269f`（v3 奶油浅色主题）
-- 已审查页面 tree：`07fe51abdca09d2518773948aca52e4e1203c4aa`
+- 当前生产页面实现提交：`a15c07af1fc62745931a91bc761de057443f9ffa`（v5 最新在前网格）
+- 当前生产 `index.html` blob：`92c1266a9fe5a68acccb72f6f0b2fdd9606b9d08`（本次 #32 候选以最终发布 commit/tree 与生产字节回读为准）
+
+## OxAlpha 卡片 #32（2026-08-22）
+
+- 新增卡片 #32：OxAlpha（`https://oxalpha.site/`），分类「实用工具」，标签「AI 模型证据站」，上线日期 2026-08-22；文案依据正式站 title、H1、description 与公开能力现场核验。
+- 筛选计数目标：全部 32 / AI 3 / 游戏 11 / 工具 10 / 创意 8；Timeline 更新为 42 天、32 次真实上线并新增 2026-08-22 节点；Changelog 更新为 32 entries / 32 releases。
+- `project-32.webp` 来自 Chrome 147 的 1440×900 正式站拒绝分析态真实首屏，经 Lanczos 无裁切缩至 400×250 WebP；11,178 bytes，SHA-256 `d850fc9eb00ab13996f37c448f8b284eb553e162029b75f4b61f960776189f19`。
+- Pages artifact allowlist 精确更新为 32 张 WebP；源码、测试、控制文档仍不得进入公开 artifact。
+- 本地回归：pytest 41/41、Node 动态交互、Python syntax、`git diff --check` 全绿；exact artifact 为 36 个文件（32 图）。公开 artifact 使用 sha256sum-compatible manifest（每行 `<file_sha256>  <relative_path>\n`，relative path 按字典序），manifest SHA-256 `a6048999cf0d613d7702585f762686a7e6cbe9413c22291ace8e1e33b552a893`；`accept_v5.py` 从自身 checkout 启动本地 HTTP，可在 immutable snapshot 内验收 exact tree。
+- Pages workflow 在 artifact upload/deploy 前强制运行 pytest、Node 动态交互与 Python syntax；将 `index.html` 置空的 mutation 使 pytest 返回 1，部署在 upload 前被阻断。Timeline H2 使用 `aria-hidden` 视觉副本执行 scramble，14 次动画期 accessibility snapshot 始终只暴露稳定名称；32 个项目 CTA 均提供项目专属“新窗口”可访问名。
+- Chrome 147 三视口 1440×900 / 390×844 / 320×568 全 PASS：32 卡、32 图、timeline 顺序、tool=10、OxAlpha 可见、CTA 46px、横向溢出与 JS error 均为 0；三张完整卡片元素截图（含 320px 下高于视口的整卡）目检无重叠、裁切、破图或异常拆行。
+- 390px `has_touch` 真实触摸 CTA 到达 `https://oxalpha.site/`，title 为 `Ox Alpha AI — Model, API, Benchmarks, Pricing & Identity`。
 
 ## v5 改版：最新在前的发布网格 + Spotlight + 动效（2026-08-22）
 
@@ -132,7 +143,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（31）
+## 产品索引（32）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -167,25 +178,26 @@
 | 29 | HLLV Field Manual | 游戏与内容 | https://hellletloosevietnam.blog/ |
 | 30 | Chinamaxxing Online | 创意实验 | https://chinamaxxing.site/ |
 | 31 | The Sinking City 2 Field Guide | 游戏与内容 | https://thesinkingcity2.top/ |
+| 32 | OxAlpha | 实用工具 | https://oxalpha.site/ |
 
 ## 发布产物边界
 
 - workflow 先创建全新的 `_site` 目录。
-- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-31.webp`。
+- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-32.webp`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；31 个项目外链均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；32 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
 - 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录、AI 产品、游戏与内容、创意实验筛选分别显示 31 / 3 / 11 / 8 条，类别标签和 `aria-pressed` 同步；The Sinking City 2 Field Guide 卡片在“游戏与内容”下唯一且可见，页面不展示数字成绩板。
-- 320px 筛选器保持双列三行并保有 44px 最小触控高度；The Sinking City 2 Field Guide 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
+- 全部记录、AI 产品、游戏与内容、实用工具、创意实验筛选分别显示 32 / 3 / 11 / 10 / 8 条，类别标签和 `aria-pressed` 同步；OxAlpha 卡片在“实用工具”下唯一且可见，页面不展示数字成绩板。
+- 320px 筛选器保持双列三行并保有 44px 最小触控高度；OxAlpha 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
 - 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
 - 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 31 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative` 与 `The Sinking City 2 Field Guide=game` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
-- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 The Sinking City 2 Field Guide CTA 打开 `https://thesinkingcity2.top/`。
+- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 32 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative`、`The Sinking City 2 Field Guide=game` 与 `OxAlpha=tool` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
+- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 OxAlpha CTA 打开 `https://oxalpha.site/`。
 
 ## 隐私与内容边界
 

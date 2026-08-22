@@ -84,8 +84,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 31
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 31
+    assert html.count('data-status="live"') == 32
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -253,6 +253,22 @@ def test_projects_section_includes_live_sinking_city_2_field_guide_card():
     assert '区分实证、实测与暂缺资料' in card
 
 
+def test_projects_section_includes_live_oxalpha_card():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    matching = [card for card in cards if '<h3>OxAlpha</h3>' in card]
+
+    assert len(matching) == 1
+    card = matching[0]
+    assert html.count('href="https://oxalpha.site/"') == 1
+    assert 'data-category="tool"' in card
+    assert '<span>32 · 已上线</span><span>AI 模型证据站</span>' in card
+    assert '<span class="site-date">2026-08-22</span>' in card
+    assert '身份、状态、API、定价、代码能力' in card
+    assert '约 1M 上下文与基准测试' in card
+    assert '平台记录、可复现证据、观察和推测' in card
+
+
 def test_project_control_product_index_matches_live_card_ledger():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
@@ -266,6 +282,13 @@ def test_project_control_product_index_matches_live_card_ledger():
     assert displayed_count == live_count == len(row_numbers)
 
 
+def test_project_control_records_reproducible_public_artifact_manifest():
+    control = CONTROL.read_text(encoding="utf-8")
+    assert "sha256sum-compatible manifest" in control
+    assert '每行 `<file_sha256>  <relative_path>\\n`，relative path 按字典序' in control
+    assert "a6048999cf0d613d7702585f762686a7e6cbe9413c22291ace8e1e33b552a893" in control
+
+
 def test_timeline_and_changelog_derive_from_live_card_ledger():
     html = SITE.read_text(encoding="utf-8")
     cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
@@ -273,7 +296,7 @@ def test_timeline_and_changelog_derive_from_live_card_ledger():
     for card in cards:
         name_html = re.search(r'<h3>(.*?)</h3>', card, re.S)
         shipped = re.search(r'<span class="site-date">(\d{4}-\d{2}-\d{2})</span>', card)
-        href = re.search(r'<a class="site-link" href="([^"]+)"', card)
+        href = re.search(r'<a class="site-link"[^>]* href="([^"]+)"', card)
         assert name_html and shipped and href
         name = re.sub(r'<[^>]+>', '', name_html.group(1))
         ledger.append((shipped.group(1), name, href.group(1)))
@@ -281,7 +304,7 @@ def test_timeline_and_changelog_derive_from_live_card_ledger():
     shipped_dates = [date.fromisoformat(value) for value, _, _ in ledger]
     expected_days = (max(shipped_dates) - min(shipped_dates)).days + 1
     timeline_heading = re.search(
-        r'<h2 id="timeline-title">(\d+) 天，(\d+) 次真实上线。</h2>', html
+        r'<h2 id="timeline-title" aria-label="\d+ 天，\d+ 次真实上线。"><span aria-hidden="true" data-scramble-visual>(\d+) 天，(\d+) 次真实上线。</span></h2>', html
     )
     assert timeline_heading is not None
     assert int(timeline_heading.group(1)) == expected_days
@@ -349,9 +372,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 31
-    assert html.count('<article class="site" data-status="live">') == 31
-    assert html.count('data-category=') == 31
+    assert html.count('data-status="live"') == 32
+    assert html.count('<article class="site" data-status="live">') == 32
+    assert html.count('data-category=') == 32
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
@@ -359,9 +382,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
         assert removed_label not in html
     # v4: count chips live in data-count attributes, rendered via CSS ::after
     # so button.textContent stays clean for the live status bar.
-    for value, count in (("all", "31"), ("ai", "3"), ("game", "11"), ("tool", "9"), ("creative", "8")):
+    for value, count in (("all", "32"), ("ai", "3"), ("game", "11"), ("tool", "10"), ("creative", "8")):
         assert f'data-filter="{value}" data-count="{count}"' in html
-    assert '<span class="ledger-count">31</span>' in html
+    assert '<span class="ledger-count">32</span>' in html
 
     # Required section order and evidence-led motivational language.
     ordered_sections = (
@@ -390,6 +413,19 @@ def test_command_palette_opens_on_first_destination():
     html = SITE.read_text(encoding="utf-8")
 
     assert "modal.querySelector('a').focus()" in html
+
+
+def test_browser_acceptance_harness_is_bound_to_its_own_checkout():
+    harness = (ROOT / "scripts" / "accept_v5.py").read_text(encoding="utf-8")
+    assert "Path(__file__).resolve().parents[1]" in harness
+    assert "/root/projects/zf-wang-personal-site" not in harness
+    assert "ThreadingHTTPServer" in harness
+    assert "http://127.0.0.1" in harness
+    assert ".as_uri()" not in harness
+    assert 'playwright==1.' in harness
+    assert "first.screenshot" in harness
+    assert "requestfailed" in harness
+    assert 'revealedCount\"] == 32' in harness
 
 
 def test_interactions_execute_across_filters_keyboard_and_copy_fallbacks():
@@ -467,13 +503,13 @@ def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contai
     assert "url('assets/archivo.woff2')" in privacy
 
     image_refs = re.findall(r'src="(assets/projects/project-\d{2}\.webp)"', html)
-    assert len(image_refs) == 31
-    assert len(set(image_refs)) == 31
+    assert len(image_refs) == 32
+    assert len(set(image_refs)) == 32
     for image_ref in image_refs:
         assert (ROOT / image_ref).is_file()
 
     image_tags = re.findall(r'<img\s+[^>]*src="assets/projects/project-\d{2}\.webp"[^>]*>', html)
-    assert len(image_tags) == 31
+    assert len(image_tags) == 32
     for image_tag in image_tags:
         assert 'width="400"' in image_tag
         assert 'height="250"' in image_tag
@@ -518,6 +554,17 @@ def test_scrollable_timeline_and_changelog_are_named_keyboard_regions():
         '<div class="log-body" tabindex="0" role="region" '
         'aria-label="发布日志，可横向和纵向滚动">'
     ) in html
+    assert '<h2 id="timeline-title" aria-label="42 天，32 次真实上线。">' in html
+    assert '<span aria-hidden="true" data-scramble-visual>42 天，32 次真实上线。</span>' in html
+    assert "document.querySelector('#timeline-title [data-scramble-visual]')" in html
+
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    assert len(cards) == 32
+    for card in cards:
+        title = re.sub(r'<[^>]+>', '', re.search(r'<h3>(.*?)</h3>', card, re.S).group(1))
+        link = re.search(r'<a class="site-link" aria-label="([^"]+)" href="([^"]+)" target="_blank" rel="noopener noreferrer">', card)
+        assert link is not None
+        assert link.group(1) == f"访问 {title} 项目（新窗口）"
 
 
 
@@ -550,6 +597,19 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
     favicon = FAVICON.read_text(encoding="utf-8")
     assert "<svg" in favicon and "</svg>" in favicon
 
+    # CI must reject a broken page before artifact upload or deployment.
+    for gate in (
+        "actions/setup-python@v5",
+        "python -m pip install --disable-pip-version-check pytest pillow",
+        "python -m pytest -q",
+        "node tests/browser_interactions.mjs",
+        "python -m compileall -q scripts tests",
+    ):
+        assert gate in workflow
+    gate_pos = workflow.index("python -m pytest -q")
+    assert gate_pos < workflow.index("      - name: Upload site artifact")
+    assert gate_pos < workflow.index("      - name: Deploy to GitHub Pages")
+
     # GitHub Pages may publish only the explicit public allowlist.
     assert "path: _site" in workflow
     assert "path: ." not in workflow
@@ -573,7 +633,7 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
         "install -m 0644 favicon.svg _site/favicon.svg",
         "install -m 0644 privacy.html _site/privacy.html",
         "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2",
-        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 31',
+        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 32',
         "install -m 0644 assets/projects/*.webp _site/assets/projects/",
     ]
 
@@ -613,7 +673,7 @@ def test_v5_release_grid_is_newest_first_with_spotlight():
 
     keys = [key(card) for card in cards]
     assert keys == sorted(keys, reverse=True), "cards must run newest-first"
-    assert '<h3>The Sinking City 2 Field Guide</h3>' in cards[0], "latest release must lead"
+    assert '<h3>OxAlpha</h3>' in cards[0], "latest release must lead"
     assert '<h3>AIStoryNest</h3>' in cards[-1], "first release must come last"
 
     # Spotlight badge on the lead card only; NEW badges within the 7-day window.
@@ -675,5 +735,5 @@ def test_v5_card_grid_spotlight_and_motion_contracts():
     assert 'Every release leaves a trail · 最新在前' in html
 
     # Card DOM anchor stays byte-identical for every assertion downstream.
-    assert html.count('<article class="site" data-status="live">') == 31
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 31
+    assert html.count('<article class="site" data-status="live">') == 32
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32

@@ -100,7 +100,7 @@ const filters = filterSpecs.map(([value, label], index) => {
 const projectSpecs = [...html.matchAll(
   /<article class="site" data-status="live"><div data-category="(ai|game|tool|creative)">[\s\S]*?<h3>([\s\S]*?)<\/h3>[\s\S]*?<\/article>/g,
 )].map(([, category, titleHtml]) => ({ category, title: titleHtml.replace(/<[^>]+>/g, '') }));
-assert.equal(projectSpecs.length, 31, 'dynamic fixture must include every live project card');
+assert.equal(projectSpecs.length, 32, 'dynamic fixture must include every live project card');
 const projects = projectSpecs.map(({ category, title }, index) => {
   const card = new Element(`project-${index + 1}`, { dataset: { title }, classes: ['site'] });
   card.one.set('[data-category]', new Element(`category-${index + 1}`, { dataset: { category } }));
@@ -121,6 +121,9 @@ assert.equal(chinamaxxing.querySelector('[data-category]').dataset.category, 'cr
 const sinkingCity2 = projects.find(card => card.dataset.title === 'The Sinking City 2 Field Guide');
 assert.ok(sinkingCity2, 'dynamic fixture must include The Sinking City 2 Field Guide');
 assert.equal(sinkingCity2.querySelector('[data-category]').dataset.category, 'game');
+const oxalpha = projects.find(card => card.dataset.title === 'OxAlpha');
+assert.ok(oxalpha, 'dynamic fixture must include OxAlpha');
+assert.equal(oxalpha.querySelector('[data-category]').dataset.category, 'tool');
 
 const visibleCount = new Element('visibleCount', { textContent: 'ALL RELEASES' });
 const modal = new Element('commandDialog', { hidden: true, classes: ['modal'] });
@@ -172,7 +175,7 @@ new Function('document', 'navigator', 'matchMedia', 'addEventListener', 'request
   document, navigator, matchMedia, addEventListener, requestAnimationFrame,
 );
 
-for (const [value, expected] of [['ai', 3], ['game', 11], ['tool', 9], ['creative', 8], ['all', 31]]) {
+for (const [value, expected] of [['ai', 3], ['game', 11], ['tool', 10], ['creative', 8], ['all', 32]]) {
   const button = filters.find(item => item.dataset.filter === value);
   await button.emit('click');
   assert.equal(projects.filter(card => !card.classList.contains('hide')).length, expected, `${value} visible count`);
