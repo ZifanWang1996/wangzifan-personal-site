@@ -1,6 +1,6 @@
 import re
 import subprocess
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 
@@ -309,7 +309,9 @@ def test_timeline_and_changelog_derive_from_live_card_ledger():
     assert chrome_count and prompt_count
     assert int(chrome_count.group(1)) == len(ledger)
     assert int(prompt_count.group(1)) == len(ledger)
-    assert log_ledger == list(reversed(ledger))
+    # v5: cards render newest-first, and the changelog is also newest-first,
+    # so the two sequences now agree in the same order.
+    assert log_ledger == ledger
 
 
 def test_homepage_uses_opc_launch_ledger_information_architecture():
@@ -598,3 +600,80 @@ def test_plausible_analytics_is_disclosed_and_allowlisted():
         assert disclosure in privacy
 
     assert "install -m 0644 privacy.html _site/privacy.html" in workflow
+
+
+def test_v5_release_grid_is_newest_first_with_spotlight():
+    html = SITE.read_text(encoding="utf-8")
+    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+
+    def key(card):
+        num = int(re.search(r'<span>(\d+)\s*·', card).group(1))
+        shipped = re.search(r'<span class="site-date">(\d{4}-\d{2}-\d{2})</span>', card).group(1)
+        return shipped, num
+
+    keys = [key(card) for card in cards]
+    assert keys == sorted(keys, reverse=True), "cards must run newest-first"
+    assert '<h3>The Sinking City 2 Field Guide</h3>' in cards[0], "latest release must lead"
+    assert '<h3>AIStoryNest</h3>' in cards[-1], "first release must come last"
+
+    # Spotlight badge on the lead card only; NEW badges within the 7-day window.
+    assert '<span class="site-latest">★ 最新上线</span>' in cards[0]
+    assert html.count('<span class="site-latest">★ 最新上线</span>') == 1
+    for card in cards[1:]:
+        assert '<span class="site-latest">' not in card
+
+    build_date = date(2026, 8, 22)
+    cutoff = build_date - timedelta(days=7)
+    for card in cards[1:]:
+        shipped = date.fromisoformat(key(card)[0])
+        if shipped >= cutoff:
+            assert '<span class="site-new">NEW</span>' in card
+        else:
+            assert '<span class="site-new">' not in card
+
+    # Timeline rail mirrors the newest-first card order (name-sequence contract).
+    timeline_names = [
+        name
+        for group in re.findall(r'<div class="tl-names">(.*?)</div>', html, re.S)
+        for name in re.findall(r'<span>([^<]+)</span>', group)
+    ]
+    card_names = [re.sub(r'<[^>]+>', '', re.search(r'<h3>(.*?)</h3>', card, re.S).group(1)) for card in cards]
+    assert timeline_names == card_names
+    assert html.index('tl-item latest') < html.index('<div class="tl-date">2026-07-12</div>')
+
+
+def test_v5_card_grid_spotlight_and_motion_contracts():
+    html = SITE.read_text(encoding="utf-8")
+
+    # Responsive card grid: 3 columns -> 2 -> 1.
+    assert '.sites{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))' in html
+    assert '.sites{grid-template-columns:repeat(2,minmax(0,1fr))}' in html
+    assert '.sites{grid-template-columns:1fr;gap:16px;padding:16px}' in html
+
+    # Spotlight layout for the lead card.
+    assert '.site:first-child{grid-column:1/-1;display:grid' in html
+
+    # Hover lift + gradient accent + image zoom.
+    assert '.site:hover{background:#fffef8;border-color:rgba(92,107,18,.55);translate:0 -5px' in html
+    assert '.site:hover:after{opacity:1}' in html
+    assert '.site:hover .site-shot img{transform:scale(1.05)}' in html
+
+    # Scroll-in reveal wired through the existing motion observer.
+    assert "var nodes=document.querySelectorAll('.reveal,.site');" in html
+    assert 'html.js .site{opacity:0;transform:translateY(30px)}' in html
+    assert 'html.js .site.in{opacity:1;transform:none}' in html
+
+    # prefers-reduced-motion keeps every card visible and calm
+    # (the v5 block is the last such media query, appended before </style>).
+    reduced_start = html.rindex('@media(prefers-reduced-motion:reduce){')
+    reduced_css = html[reduced_start:html.index('</style>', reduced_start)]
+    assert 'html.js .site{opacity:1;transform:none}' in reduced_css
+    assert '.site:hover{translate:none}' in reduced_css
+    assert '.site:hover .site-shot img{transform:none}' in reduced_css
+
+    # Newest-first hint next to the ledger subhead.
+    assert 'Every release leaves a trail · 最新在前' in html
+
+    # Card DOM anchor stays byte-identical for every assertion downstream.
+    assert html.count('<article class="site" data-status="live">') == 31
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 31
