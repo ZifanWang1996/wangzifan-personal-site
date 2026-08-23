@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="王子凡的 OPC 创业主页：把机会做成真实产品，用持续上线与用户反馈推动下一轮增长。">
-  <meta name="theme-color" content="#f7f3e8">
+  <meta name="theme-color" content="#f5f0e4">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>
   <title>王子凡 ZF Wang — OPC 创业与全球产品</title>
@@ -624,10 +624,147 @@ html.js .site.in{opacity:1;transform:none}
   [data-launch] .engine-status i{animation:none}
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---- v7: GAZETTE — one-person press editorial skin (layered over the v6 console) ---- */
+:root{--gz-paper:#f5f0e4;--gz-paper2:#fffdf6;--gz-ink:#191510;--gz-ink2:#3c362c;--gz-dim:#6f6858;--gz-accent:#c8401a;--gz-hair:rgba(25,21,16,.28);--gz-serif:Georgia,"Times New Roman","Songti SC","STSong","SimSun",serif}
+html{background:var(--gz-paper)}
+html body{background-color:var(--gz-paper);background-image:radial-gradient(rgba(25,21,16,.03) 1px,transparent 1px);background-size:5px 5px}
+::selection{background:var(--gz-ink);color:var(--gz-paper)}
+:focus-visible{outline:2px solid var(--gz-accent);outline-offset:3px}
+.skip-link{background:var(--gz-ink);color:var(--gz-paper);border-radius:2px}
+
+/* folio topline + masthead nav */
+.topline{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:11px 0 9px;border-bottom:1px solid var(--gz-ink);font:600 9px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gz-dim)}
+.topline span:nth-child(2){color:var(--gz-ink2);letter-spacing:.3em}
+.nav{border-bottom:3px double rgba(25,21,16,.85)}
+.brand-mark{background:var(--gz-ink);color:var(--gz-paper);border-radius:3px;box-shadow:none}
+.nav-links>a:after{background:var(--gz-accent);height:1px}
+.nav-links>a:hover{color:var(--gz-ink)}
+.nav-command{border-radius:2px;border:1px solid rgba(25,21,16,.5);background:transparent}
+.nav-command:hover,.nav-command:focus-visible{border-color:var(--gz-ink);background:var(--gz-ink);color:var(--gz-paper)}
+
+/* serif display type */
+h1,.section h2,.subhead h3,.site h3,.system-step h3,.manifesto h2,.contact-main h2,.tl-names span{font-family:var(--gz-serif)}
+h1{letter-spacing:-.01em}
+.section h2,.site h3,.system-step h3{letter-spacing:0}
+
+/* bands as ink masthead strips */
+.band{background:var(--gz-ink);color:var(--gz-paper)}
+.band-set{font-family:var(--gz-serif);font-stretch:100%;letter-spacing:.08em}
+.band.ghost{border-block:1px solid rgba(25,21,16,.4)}
+.band.ghost .band-set{color:transparent;-webkit-text-stroke:1px rgba(25,21,16,.42)}
+.band.ghost .band-set i{color:var(--gz-accent);-webkit-text-stroke:0}
+
+/* section furniture */
+.section{border-bottom:1px solid var(--gz-hair)}
+.kicker{color:var(--gz-dim)}
+.kicker:before{width:34px;height:1px;background:var(--gz-accent)}
+
+/* founder rally */
+.release-rally{background:var(--gz-paper2);border:1px solid rgba(25,21,16,.5);border-radius:10px}
+.release-rally:before{color:rgba(200,64,26,.09)}
+.release-rally strong em{background:none;color:var(--gz-accent)}
+.ledger-count{background:var(--gz-ink);border-color:var(--gz-ink);color:var(--gz-paper);border-radius:2px}
+
+/* ledger + square ink filters */
+.release-ledger{background:var(--gz-paper2);border:1px solid rgba(25,21,16,.5);border-radius:8px;box-shadow:0 24px 60px rgba(25,21,16,.08)}
+.filters-wrap{background:rgba(245,240,228,.94);border-bottom:1px solid rgba(25,21,16,.35)}
+.filter{border-radius:2px;background:transparent;color:var(--gz-ink2)}
+.filter.active,.filter[aria-pressed="true"]{background:var(--gz-ink);border-color:var(--gz-ink);color:var(--gz-paper);box-shadow:none}
+.filter.active:after,.filter[aria-pressed="true"]:after{background:rgba(245,240,228,.16);border-color:rgba(245,240,228,.4);color:var(--gz-paper)}
+.filter:after{border-radius:2px}
+.visible-count{color:var(--gz-dim)}
+
+/* cards: paper stock, hairline frames, offset-print hover */
+.site{border:1px solid var(--gz-hair);border-radius:5px;background:var(--gz-paper2);box-shadow:none}
+.site:after{background:var(--gz-accent);height:2px}
+.site:hover{background:var(--gz-paper2);border-color:var(--gz-ink);box-shadow:7px 7px 0 rgba(25,21,16,.1)}
+.site-shot{background:var(--gz-paper);border-bottom:1px solid var(--gz-hair)}
+.site-shot img{filter:saturate(.82) sepia(.07) contrast(1.02)}
+.site:hover .site-shot img{filter:saturate(1) sepia(0) contrast(1)}
+.site-category{align-self:flex-start;border:1px solid rgba(25,21,16,.5);border-radius:2px;padding:4px 9px;color:var(--gz-accent)}
+.site p{color:#57534a}
+.site-meta{border-top:1px solid rgba(25,21,16,.2)}
+.site-meta span:first-child{color:var(--gz-ink);font-family:var(--gz-serif);font-style:italic;font-weight:700}
+.site-date{color:var(--gz-dim)}
+.site-link{border-radius:2px;border:1px solid var(--gz-ink);color:var(--gz-ink);background:transparent}
+.site-link:hover,.site-link:focus-visible{background:var(--gz-ink);color:var(--gz-paper);border-color:var(--gz-ink);box-shadow:none}
+.site-new{background:var(--gz-ink);color:var(--gz-paper);border-radius:2px;box-shadow:none}
+.site-latest{background:var(--gz-accent);border-radius:2px;box-shadow:none}
+.site:first-child{background:var(--gz-paper2);border:1px solid var(--gz-ink);box-shadow:9px 9px 0 rgba(25,21,16,.09)}
+.site-badge{border-radius:2px;background:rgba(25,21,16,.82);border-color:rgba(245,240,228,.35);color:var(--gz-paper)}
+.site-badge i{background:#ff8a5f;box-shadow:0 0 8px rgba(255,138,95,.9)}
+
+/* timeline: hairline rail, ink dots, accent latest */
+.tl-rail-wrap:before{background:linear-gradient(90deg,var(--gz-paper),transparent)}
+.tl-rail-wrap:after{background:linear-gradient(-90deg,var(--gz-paper),transparent)}
+.tl-rail:before{background:rgba(25,21,16,.45);height:1px}
+.tl-rail{scrollbar-color:rgba(25,21,16,.35) transparent}
+.tl-item{background:var(--gz-paper2);border:1px solid var(--gz-hair);border-radius:5px}
+.tl-item:hover{background:var(--gz-paper2);border-color:var(--gz-ink)}
+.tl-item:before{background:var(--gz-paper);border-color:var(--gz-ink);box-shadow:none}
+.tl-item.latest{border-color:var(--gz-accent);box-shadow:5px 5px 0 rgba(200,64,26,.12)}
+.tl-item.latest:before{background:var(--gz-accent);border-color:var(--gz-accent)}
+.tl-date{color:var(--gz-accent)}
+.tl-names span{font-weight:700}
+.tl-count{color:var(--gz-dim)}
+
+/* system grid: print columns */
+.system-grid{background:var(--gz-paper2);border:1px solid rgba(25,21,16,.45);border-radius:8px}
+.system-step{border-right:1px solid rgba(25,21,16,.18)}
+.system-step:hover{background:rgba(200,64,26,.05)}
+.system-step .step-orb{-webkit-text-stroke:1.5px rgba(25,21,16,.75)}
+.system-step:after{background:var(--gz-paper);color:var(--gz-ink);box-shadow:0 0 0 1px rgba(25,21,16,.4)}
+.system-log{border:1px solid rgba(25,21,16,.55);border-radius:10px}
+.system-status{color:var(--gz-ink);border-color:rgba(25,21,16,.5)}
+.changelog{border:1px solid rgba(25,21,16,.55);border-radius:10px}
+
+/* manifesto on the same paper stock */
+.paper-zone{background:var(--gz-paper)}
+.paper-zone .section{border-top:3px double rgba(25,21,16,.55)}
+.manifesto:before{color:rgba(25,21,16,.055)}
+.manifesto h2 em{color:var(--gz-accent)}
+.manifesto-principles div{border-bottom:1px solid rgba(25,21,16,.22)}
+.manifesto-principles div:first-child{border-top:1px solid rgba(25,21,16,.22)}
+.manifesto-principles b:before{color:var(--gz-accent)}
+
+/* contact: letterpress card */
+.contact-card{background:var(--gz-paper2);border:1px solid rgba(25,21,16,.5);border-radius:10px}
+.contact-side{border-left:1px solid rgba(25,21,16,.22)}
+.contact-fire i{background:var(--gz-accent);box-shadow:none}
+.copy-status{color:var(--gz-accent)}
+.contact-actions .btn-primary{background:var(--gz-ink);border-color:var(--gz-ink);color:var(--gz-paper);box-shadow:none}
+.contact-actions .btn-primary:hover{background:var(--gz-accent);border-color:var(--gz-accent)}
+
+/* colophon footer */
+.footer{border-top:3px double rgba(25,21,16,.55);padding-top:26px;color:var(--gz-dim)}
+.footer a:hover{color:var(--gz-accent)}
+
+/* command palette on paper */
+.modal{background:rgba(25,21,16,.55)}
+.palette{background:var(--gz-paper);border:1px solid rgba(25,21,16,.55);border-radius:10px}
+.palette-head{border-bottom:1px solid rgba(25,21,16,.25);color:var(--gz-dim)}
+.palette-close{border-color:rgba(25,21,16,.4);color:var(--gz-ink)}
+.palette-close:hover{border-color:var(--gz-accent);color:var(--gz-accent)}
+.palette-list a{color:var(--gz-ink2);border-radius:4px}
+.palette-list a:hover,.palette-list a:focus-visible{background:rgba(25,21,16,.07);color:var(--gz-ink)}
+.palette-list kbd{border-color:rgba(25,21,16,.3);color:var(--gz-dim)}
+
+/* console -> paper bridge */
+.launch-bridge{background:linear-gradient(180deg,#101309 0%,var(--gz-paper) 100%)}
+
+@media(max-width:1040px){
+  .contact-side{border-left:0;border-top:1px solid rgba(25,21,16,.22)}
+}
+@media(max-width:700px){
+  .topline{font-size:8px;letter-spacing:.16em;padding:9px 0 8px}
+  .topline span:nth-child(2){display:none}
+}
 </style>
 </head>
 <body>
   <a class="skip-link" href="#work">跳到上线记录</a>
+  <div class="topline shell" aria-hidden="true"><span>WANG ZIFAN · ONE PERSON PRESS</span><span>把想法做出来 · 再让世界给答案</span><span>北京 · BEIJING</span></div>
   <header class="shell nav">
     <a class="brand" href="#top"><span class="brand-mark">ZF</span><span>WZF / VENTURE OS<small>ONE PERSON · ALWAYS SHIPPING</small></span></a>
     <nav class="nav-links" aria-label="页面导航"><a href="#work">上线记录</a><a href="#system">系统</a><a href="#manifesto">宣言</a><a href="#contact">合作</a><button class="nav-command" id="commandBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="commandDialog">导航 / ⌘K</button></nav>
