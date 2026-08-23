@@ -9,8 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`47533ab`（v6 Launch Console hero）；前一个：`0cb015703ab75e53b966c98c16c14d1ef027412d`（v5 最新在前网格 + OxAlpha #32）
+- 当前生产页面实现提交：`cbdff37`（v8 DEPARTURE BOARD 皮肤）；前一个：`e37b80d`（v7 GAZETTE 报纸编辑皮肤）；再前：`47533ab`（v6 Launch Console hero）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
+
+## v8 改版：DEPARTURE BOARD 出发大屏皮肤（2026-08-24）
+
+方案 D（子凡选定并确认）：全站从 v7 报纸编辑风切换为「一人航运公司出发大屏」。
+
+- **隐喻**：单人航运公司（WZF LINES · ONE-PERSON FREIGHT）——每个产品是一班已起飞的航班，域名是目的地；42 天 32 次发布的节奏本身就是品牌。
+- **色板**：米色场 `#f5f1e6` + 黑板墨色 `#121212` + 信号橙 `#ff4d00` + 琥珀 `#f5b800` + 板绿 `#0e7c3d`；方角、2-3px 墨线、硬偏移阴影、等宽字主导、零衬线（与 v7 完全断开）。
+- **实现**：纯 CSS 皮肤 `scripts/_v8.css`（155 规则），原子替换 v7 GAZETTE 块（8389→12053 字符）；DOM 锚点、内联脚本、workflow 零改动。`scripts/assemble_v8.py` 装配（原子性 + 19 项自检）。
+- **Hero**：v6 发射控制台重蒙皮为琥珀色系出发大屏（T-MINUS、遥测流、32 格状态矩阵全部保留功能）。
+- **解锁文案**：顶条改为 `WZF LINES · 一人航运 · ONE-PERSON FREIGHT` / `32 SHIPS LIVE · EVERY RELEASE IS A DEPARTURE`；theme-color `#f5f1e6`。
+- **验证**：pytest 42/42 ✅、Node 动态交互 ✅、`accept_v8.py` 三视口（1440/390/320）全 PASS（零溢出、零 JS 错误、米色底生效）；桌面程序化 QA 0 裁切 0 对比度问题。
+- 生产发布：commit `cbdff37`，GitHub Actions run `32662793075`。
 
 ## v6 改版：Launch Console 发射指挥舱 hero（2026-08-22）
 
