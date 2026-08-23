@@ -1,0 +1,103 @@
+
+/* ---- v7: Constellation star-map for the launch ledger ---- */
+.sites{position:relative;display:block;height:clamp(560px,68vw,760px);margin:0 -8px;
+  background:
+    radial-gradient(700px 340px at 24% 24%,rgba(55,213,255,.07),transparent 60%),
+    radial-gradient(700px 340px at 74% 20%,rgba(201,107,255,.07),transparent 60%),
+    radial-gradient(700px 340px at 27% 72%,rgba(240,106,44,.07),transparent 60%),
+    radial-gradient(700px 340px at 75% 74%,rgba(255,95,162,.07),transparent 60%),
+    linear-gradient(180deg,#0a0c08 0%,#0d100b 100%);
+  background-image:
+    radial-gradient(rgba(198,255,63,.05) 1px,transparent 1px),
+    radial-gradient(700px 340px at 24% 24%,rgba(55,213,255,.07),transparent 60%),
+    radial-gradient(700px 340px at 74% 20%,rgba(201,107,255,.07),transparent 60%),
+    radial-gradient(700px 340px at 27% 72%,rgba(240,106,44,.07),transparent 60%),
+    radial-gradient(700px 340px at 75% 74%,rgba(255,95,162,.07),transparent 60%);
+  background-size:34px 34px,auto,auto,auto,auto;
+  border:1px solid rgba(198,255,63,.12);border-radius:18px;overflow:hidden}
+.constellation-links{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.cl{transition:stroke-opacity .3s,stroke-width .3s}
+
+/* node = compact glowing chip; expands to full card on hover/focus */
+.site.star-node{position:absolute;z-index:2;width:188px;transform:translate(-50%,-50%);
+  border-radius:12px;padding:0;cursor:pointer;
+  background:rgba(12,14,10,.92);border:1px solid rgba(198,255,63,.22);
+  box-shadow:0 0 0 0 rgba(198,255,63,0);backdrop-filter:blur(3px);
+  transition:box-shadow .3s,border-color .3s,transform .3s,width .3s,background .3s;
+  overflow:hidden}
+.site.star-node>div{padding:0;display:flex;flex-direction:column}
+.site.star-node .site-shot{display:none}
+.site.star-node .site-category{display:none}
+.site.star-node .site-meta{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;padding:9px 11px 3px;
+  margin:0;border:0;font:600 8.5px var(--mono);letter-spacing:.04em;color:#8fae4a}
+.site.star-node .site-meta .site-date{grid-column:1/-1;color:#5d6a3a}
+.site.star-node h3{margin:0;padding:2px 11px 4px;font-size:13px;color:#f0edda;line-height:1.3}
+.site.star-node p{display:none;margin:0;padding:0 11px;font-size:11px;color:#b9bd9f;line-height:1.5}
+.site.star-node .site-link{display:inline-block;margin:4px 11px 10px;font:700 9px var(--mono);
+  letter-spacing:.08em;color:#c6ff3f;text-decoration:none;opacity:0;max-height:0;transition:opacity .25s}
+.site.star-node .site-new{position:absolute;top:6px;right:6px;font:800 7.5px var(--mono);color:#0b0d09;
+  background:var(--lime);border-radius:4px;padding:1px 5px;letter-spacing:.06em}
+.site.star-node .site-latest{position:absolute;top:6px;left:6px;font:800 7.5px var(--mono);color:#0b0d09;
+  background:linear-gradient(90deg,var(--lime),#eaffb0);border-radius:4px;padding:1px 6px;letter-spacing:.06em}
+
+/* category hue ring per node */
+.site.star-node[data-cat="ai"]{border-color:rgba(55,213,255,.4)}
+.site.star-node[data-cat="game"]{border-color:rgba(201,107,255,.4)}
+.site.star-node[data-cat="tool"]{border-color:rgba(240,106,44,.45)}
+.site.star-node[data-cat="creative"]{border-color:rgba(255,95,162,.45)}
+.site.star-node[data-cat="ai"]:hover{box-shadow:0 0 26px rgba(55,213,255,.3)}
+.site.star-node[data-cat="game"]:hover{box-shadow:0 0 26px rgba(201,107,255,.3)}
+.site.star-node[data-cat="tool"]:hover{box-shadow:0 0 26px rgba(240,106,44,.32)}
+.site.star-node[data-cat="creative"]:hover{box-shadow:0 0 26px rgba(255,95,162,.3)}
+
+/* expanded node */
+.site.star-node:hover,.site.star-node:focus-within{z-index:6;width:262px;transform:translate(-50%,-50%) scale(1.02);
+  background:rgba(16,19,13,.98);border-color:var(--lime)}
+.site.star-node:hover .site-shot,.site.star-node:focus-within .site-shot{display:block}
+.site.star-node:hover .site-shot img,.site.star-node:focus-within .site-shot img{width:100%;height:auto;display:block}
+.site.star-node:hover .site-category,.site.star-node:focus-within .site-category{display:block;
+  padding:8px 11px 0;font:700 8.5px var(--mono);letter-spacing:.14em;color:#c6ff3f;text-transform:uppercase}
+.site.star-node:hover p,.site.star-node:focus-within p{display:block}
+.site.star-node:hover .site-link,.site.star-node:focus-within .site-link{opacity:1;max-height:30px}
+
+/* filter = focus a cluster (dim others); 'all' shows everything */
+.sites.focus-ai .star-node:not([data-cat="ai"]),
+.sites.focus-game .star-node:not([data-cat="game"]),
+.sites.focus-tool .star-node:not([data-cat="tool"]),
+.sites.focus-creative .star-node:not([data-cat="creative"]){opacity:.16;filter:saturate(.4);pointer-events:none}
+.sites.focus-ai .cl:not([data-cat="ai"]),
+.sites.focus-game .cl:not([data-cat="game"]),
+.sites.focus-tool .cl:not([data-cat="tool"]),
+.sites.focus-creative .cl:not([data-cat="creative"]){stroke-opacity:.06}
+.sites.focus-ai .cl[data-cat="ai"],.sites.focus-game .cl[data-cat="game"],
+.sites.focus-tool .cl[data-cat="tool"],.sites.focus-creative .cl[data-cat="creative"]{stroke-opacity:.85;stroke-width:.22}
+
+/* timeline nodes as launch pads */
+.tl-item{transition:border-color .3s,background .3s,transform .3s,box-shadow .3s}
+.tl-item:hover{box-shadow:0 0 24px rgba(198,255,63,.18)}
+.tl-item.latest:after{content:"";position:absolute;right:12px;top:12px;width:8px;height:8px;border-radius:50%;
+  background:var(--lime);box-shadow:0 0 12px var(--lime);animation:blink 1.8s ease-in-out infinite}
+
+/* deep-space glass for system / manifesto / contact cards */
+.system-grid>*,.manifesto-principles>div,.contact-card{
+  background:linear-gradient(160deg,rgba(20,23,16,.9),rgba(12,14,10,.94));
+  border:1px solid rgba(198,255,63,.16);border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(198,255,63,.06),0 18px 50px rgba(0,0,0,.28)}
+.manifesto-principles>div{padding:16px 18px}
+.manifesto-principles b{color:#eaffb0}
+
+/* mobile: degrade star-map to compact flow */
+@media(max-width:900px){
+  .sites{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px;background:linear-gradient(180deg,#0a0c08,#0d100b)}
+  .constellation-links{display:none}
+  .site.star-node{position:static;transform:none;width:auto}
+  .site.star-node:hover,.site.star-node:focus-within{width:auto;transform:none}
+  .site.star-node .site-link{opacity:1;max-height:30px}
+}
+@media(max-width:560px){
+  .sites{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .tl-item.latest:after{animation:none}
+  .site.star-node{transition:none}
+}

@@ -175,7 +175,7 @@ def test_projects_section_includes_live_matchafilter_card():
 
 def test_projects_section_includes_live_craveloop_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>CraveLoop</h3>' in card]
 
     assert len(matching) == 1
@@ -192,7 +192,7 @@ def test_projects_section_includes_live_craveloop_card():
 
 def test_projects_section_includes_live_niulai_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>牛来</h3>' in card]
 
     assert len(matching) == 1
@@ -208,7 +208,7 @@ def test_projects_section_includes_live_niulai_card():
 
 def test_projects_section_includes_live_hllv_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>HLLV Field Manual</h3>' in card]
 
     assert len(matching) == 1
@@ -224,7 +224,7 @@ def test_projects_section_includes_live_hllv_card():
 
 def test_projects_section_includes_live_chinamaxxing_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>Chinamaxxing Online</h3>' in card]
 
     assert len(matching) == 1
@@ -240,7 +240,7 @@ def test_projects_section_includes_live_chinamaxxing_card():
 
 def test_projects_section_includes_live_sinking_city_2_field_guide_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>The Sinking City 2 Field Guide</h3>' in card]
 
     assert len(matching) == 1
@@ -255,7 +255,7 @@ def test_projects_section_includes_live_sinking_city_2_field_guide_card():
 
 def test_projects_section_includes_live_oxalpha_card():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     matching = [card for card in cards if '<h3>OxAlpha</h3>' in card]
 
     assert len(matching) == 1
@@ -272,7 +272,7 @@ def test_projects_section_includes_live_oxalpha_card():
 def test_project_control_product_index_matches_live_card_ledger():
     html = SITE.read_text(encoding="utf-8")
     control = CONTROL.read_text(encoding="utf-8")
-    live_count = html.count('<article class="site" data-status="live">')
+    live_count = html.count('<article class="site" data-status="live"')
     index = re.search(r'^## 产品索引（(\d+)）\n\n(.*?)(?=^## )', control, re.M | re.S)
 
     assert index is not None
@@ -291,7 +291,7 @@ def test_project_control_records_reproducible_public_artifact_manifest():
 
 def test_timeline_and_changelog_derive_from_live_card_ledger():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     ledger = []
     for card in cards:
         name_html = re.search(r'<h3>(.*?)</h3>', card, re.S)
@@ -373,7 +373,7 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
     assert html.count('data-status="live"') == 32
-    assert html.count('<article class="site" data-status="live">') == 32
+    assert html.count('<article class="site" data-status="live"') == 32
     assert html.count('data-category=') == 32
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
@@ -558,7 +558,7 @@ def test_scrollable_timeline_and_changelog_are_named_keyboard_regions():
     assert '<span aria-hidden="true" data-scramble-visual>42 天，32 次真实上线。</span>' in html
     assert "document.querySelector('#timeline-title [data-scramble-visual]')" in html
 
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
     assert len(cards) == 32
     for card in cards:
         title = re.sub(r'<[^>]+>', '', re.search(r'<h3>(.*?)</h3>', card, re.S).group(1))
@@ -664,7 +664,7 @@ def test_plausible_analytics_is_disclosed_and_allowlisted():
 
 def test_v5_release_grid_is_newest_first_with_spotlight():
     html = SITE.read_text(encoding="utf-8")
-    cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
+    cards = re.findall(r'<article class="site" data-status="live"[^>]*>.*?</article>', html, re.S)
 
     def key(card):
         num = int(re.search(r'<span>(\d+)\s*·', card).group(1))
@@ -702,43 +702,42 @@ def test_v5_release_grid_is_newest_first_with_spotlight():
     assert html.index('tl-item latest') < html.index('<div class="tl-date">2026-07-12</div>')
 
 
-def test_v5_card_grid_spotlight_and_motion_contracts():
+def test_v7_star_map_contracts():
     html = SITE.read_text(encoding="utf-8")
 
-    # Responsive card grid: 3 columns -> 2 -> 1.
-    assert '.sites{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))' in html
-    assert '.sites{grid-template-columns:repeat(2,minmax(0,1fr))}' in html
-    assert '.sites{grid-template-columns:1fr;gap:16px;padding:16px}' in html
+    # Star-map layout: nodes absolutely positioned by inline left/top on the article.
+    assert '.sites .site[style]{position:absolute' in html
+    # 32 nodes each carry an inline coordinate style on the article element.
+    coords = re.findall(
+        r'<article class="site" data-status="live" style="left:[\d.]+%;top:[\d.]+%">', html
+    )
+    assert len(coords) == 32
+    # Category hue ring keyed off the inner div's data-cat.
+    for cat in ("ai", "game", "tool", "creative"):
+        assert f'.sites .site:has(>[data-cat="{cat}"])' in html
 
-    # Spotlight layout for the lead card.
-    assert '.site:first-child{grid-column:1/-1;display:grid' in html
+    # Filter chips focus a cluster by dimming the others.
+    assert '.sites.focus-ai .site:not(:has(>[data-cat="ai"]))' in html
+    assert '.sites.focus-creative .site:not(:has(>[data-cat="creative"]))' in html
 
-    # Hover lift + gradient accent + image zoom.
-    assert '.site:hover{background:#fffef8;border-color:rgba(92,107,18,.55);translate:0 -5px' in html
-    assert '.site:hover:after{opacity:1}' in html
-    assert '.site:hover .site-shot img{transform:scale(1.05)}' in html
+    # Star nodes keep translate(-50%,-50%) centering; .in only scales/fades in.
+    assert (
+        'html.js .sites .site[style].in{transform:translate(-50%,-50%) scale(1)}'
+        in html
+    )
 
-    # Scroll-in reveal wired through the existing motion observer.
+    # Scroll-in reveal still wired through the shared motion observer.
     assert "var nodes=document.querySelectorAll('.reveal,.site');" in html
     assert 'html.js .site{opacity:0;transform:translateY(30px)}' in html
     assert 'html.js .site.in{opacity:1;transform:none}' in html
 
-    # prefers-reduced-motion keeps every card visible and calm
-    # (locate the v5 card-motion block specifically; v6 appends its own block later).
-    reduced_css = html
-    for block in re.findall(r'@media\(prefers-reduced-motion:reduce\)\{.*?\n\}', html, re.S):
-        if 'html.js .site' in block:
-            reduced_css = block
-            break
-    assert 'html.js .site{opacity:1;transform:none}' in reduced_css
-    assert '.site:hover{translate:none}' in reduced_css
-    assert '.site:hover .site-shot img{transform:none}' in reduced_css
+    # prefers-reduced-motion keeps nodes visible and kills transitions.
+    assert 'html.js .site{opacity:1;transform:none}' in html
+    assert '.sites .site[style]{transition:none}' in html
 
-    # Newest-first hint next to the ledger subhead.
-    assert 'Every release leaves a trail · 最新在前' in html
-
-    # Card DOM anchor stays byte-identical for every assertion downstream.
-    assert html.count('<article class="site" data-status="live">') == 32
+    # Card DOM anchor stays stable for every assertion downstream
+    # (class + data-status prefix locked; inline style allowed after).
+    assert html.count('<article class="site" data-status="live"') == 32
     assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32
 
 

@@ -10,8 +10,8 @@ assert.ok(scriptMatch, 'inline script not found');
 
 class ClassList {
   constructor(...tokens) { this.tokens = new Set(tokens.filter(Boolean)); }
-  add(token) { this.tokens.add(token); }
-  remove(token) { this.tokens.delete(token); }
+  add(...tokens) { for (const t of tokens) this.tokens.add(t); }
+  remove(...tokens) { for (const t of tokens) this.tokens.delete(t); }
   contains(token) { return this.tokens.has(token); }
   toggle(token, force) {
     const enabled = force === undefined ? !this.tokens.has(token) : Boolean(force);
@@ -98,7 +98,7 @@ const filters = filterSpecs.map(([value, label], index) => {
   return element;
 });
 const projectSpecs = [...html.matchAll(
-  /<article class="site" data-status="live"><div data-category="(ai|game|tool|creative)">[\s\S]*?<h3>([\s\S]*?)<\/h3>[\s\S]*?<\/article>/g,
+  /<article class="site(?:[^"]*)" data-status="live"[^>]*><div data-category="(ai|game|tool|creative)"[^>]*>[\s\S]*?<h3>([\s\S]*?)<\/h3>[\s\S]*?<\/article>/g,
 )].map(([, category, titleHtml]) => ({ category, title: titleHtml.replace(/<[^>]+>/g, '') }));
 assert.equal(projectSpecs.length, 32, 'dynamic fixture must include every live project card');
 const projects = projectSpecs.map(({ category, title }, index) => {
@@ -126,6 +126,7 @@ assert.ok(oxalpha, 'dynamic fixture must include OxAlpha');
 assert.equal(oxalpha.querySelector('[data-category]').dataset.category, 'tool');
 
 const visibleCount = new Element('visibleCount', { textContent: 'ALL RELEASES' });
+const sitesEl = new Element('sites', { classes: ['sites'] });
 const modal = new Element('commandDialog', { hidden: true, classes: ['modal'] });
 const openButton = new Element('commandBtn');
 openButton.setAttribute('aria-expanded', 'false');
@@ -145,6 +146,7 @@ const year = new Element('year');
 const allSelectors = new Map([
   ['#visibleCount', visibleCount], ['#commandDialog', modal], ['#commandBtn', openButton],
   ['#commandClose', closeButton], ['#copyWechat', copyButton], ['#copyStatus', copyStatus], ['#year', year],
+  ['.sites', sitesEl],
 ]);
 document = {
   activeElement: body,
@@ -178,9 +180,15 @@ new Function('document', 'navigator', 'matchMedia', 'addEventListener', 'request
 for (const [value, expected] of [['ai', 3], ['game', 11], ['tool', 10], ['creative', 8], ['all', 32]]) {
   const button = filters.find(item => item.dataset.filter === value);
   await button.emit('click');
-  assert.equal(projects.filter(card => !card.classList.contains('hide')).length, expected, `${value} visible count`);
+  // v7: filters FOCUS a constellation cluster on .sites (cards are never hidden).
+  const focusCls = value === 'all' ? null : `focus-${value}`;
+  for (const cls of ['focus-ai', 'focus-game', 'focus-tool', 'focus-creative']) {
+    assert.equal(sitesEl.classList.contains(cls), cls === focusCls, `${value} ${cls} focus state`);
+  }
   for (const item of filters) assert.equal(item.getAttribute('aria-pressed'), String(item === button), `${value} aria state`);
-  assert.equal(visibleCount.textContent, value === 'all' ? 'ALL RELEASES' : button.textContent.toUpperCase());
+  const expectedLabel = value === 'all' ? 'ALL RELEASES'
+    : { ai: 'AI CLUSTER · 3', game: 'GAME CLUSTER · 11', tool: 'TOOL CLUSTER · 10', creative: 'CREATIVE CLUSTER · 8' }[value];
+  assert.equal(visibleCount.textContent, expectedLabel, `${value} visible count label`);
 }
 
 assert.equal(document.activeElement, body);
