@@ -595,8 +595,37 @@ def test_wechat_qr_is_publishable_and_allowlisted():
     assert "wang1227928718" in img_tag  # alt text carries the contact id
 
     assert ".qr-card{" in html and ".qr-card figcaption{" in html
+    assert "max-width:min(212px,100%)" in html  # mobile: never overflow the 198px contact side
     assert "扫码添加" in html
     assert "install -m 0644 assets/wechat-qr.webp _site/assets/wechat-qr.webp" in workflow
+
+
+def test_v9_design_token_unification():
+    """v9 coordination contract: one radius scale, 8-base section breath, display weight
+    gradient topped at 900, and no residual v5/v6 lime/teal hues in visible chrome."""
+    html = SITE.read_text(encoding="utf-8")
+    style = html.split("<style>")[1].split("</style>")[0]
+
+    # radius scale tokens exist and drive the structural components
+    for tok in ("--r-0:0", "--r-sm:3px", "--r-md:6px", "--r-lg:12px", "--r-pill:999px"):
+        assert tok in style
+    for ref in ("border-radius:var(--r-sm)", "border-radius:var(--r-lg)", "border-radius:var(--r-pill)"):
+        assert ref in style
+
+    # 8-base section breath: one cadence shared by paper zone + dark anchors
+    assert "--sec-breath:120px" in style and "--sec-breath-sm:80px" in style
+    assert ".section{padding-top:var(--sec-breath)" in style
+    assert ".paper-zone .section{padding-top:var(--sec-breath)" in style
+
+    # display weight gradient tops at 900 (up from flat 800) on the four display tiers
+    assert style.count("font-weight:900") >= 4
+    assert "h1{font-weight:900;font-stretch:105%}" in style
+
+    # no residual v5/v6 lime / teal hues leaking into the visible chrome
+    for stale in ("#c6ff3f", "#6b8f00", "#0e7f9d", "#e8401a", "rgba(92,107,18"):
+        assert stale not in style, f"stale hue leaked: {stale}"
+    # lime root variable is remapped onto the v8 amber signal
+    assert "--lime:var(--db-amber)" in style
 
 
 def test_release_artifact_is_allowlisted_and_mobile_safe():
@@ -734,7 +763,7 @@ def test_v5_card_grid_spotlight_and_motion_contracts():
     assert '.site:first-child{grid-column:1/-1;display:grid' in html
 
     # Hover lift + gradient accent + image zoom.
-    assert '.site:hover{background:#fffef8;border-color:rgba(92,107,18,.55);translate:0 -5px' in html
+    assert '.site:hover{background:#fffef8;border-color:rgba(245,184,0,.55);translate:0 -5px' in html
     assert '.site:hover:after{opacity:1}' in html
     assert '.site:hover .site-shot img{transform:scale(1.05)}' in html
 
