@@ -12,6 +12,15 @@
 - 当前生产页面实现提交：`cbdff37`（v8 DEPARTURE BOARD 皮肤）；前一个：`e37b80d`（v7 GAZETTE 报纸编辑皮肤）；再前：`47533ab`（v6 Launch Console hero）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
 
+## Mortal Shell II Wiki 卡片 #33（2026-08-25）
+
+- 新增卡片 #33：Mortal Shell II Wiki（`https://mortalshell2.quest/`），分类「游戏与内容」，标签「MS2 粉丝维基」，上线日期 2026-08-25；文案依据正式站 title、H1 与公开页面内容现场核验。
+- 筛选计数目标：全部 33 / AI 3 / 游戏 12 / 工具 10 / 创意 8；Timeline 更新为 45 天、33 次真实上线并新增 2026-08-25 节点；Changelog 更新为 33 entries / 33 releases；遥测流首位换为 Mortal Shell II Wiki，矩阵扩为 33 格（#32 = Mortal Shell II Wiki，最右）。
+- `project-33.webp` 为 1440×900 正式站真实首屏，Lanczos 无裁切缩至 400×250 WebP；8,322 bytes，SHA-256 `ef268450a5098096f5a522e31d90524d103dc12a05182e9e4030f7b69d3edaa2`。
+- Pages artifact allowlist 精确更新为 33 张 WebP。
+- OxAlpha 卡片从 ★ 最新上线 降级为 NEW；NEW 徽章按构建日期 2026-08-25 的 7 天窗口重算（本轮 4 张：Mortal Shell II Wiki、OxAlpha、The Sinking City 2 Field Guide、Chinamaxxing Online）。
+- 验证：`accept_v5.py` 断言目标同步切换为 Mortal Shell II Wiki（首卡/元数据/描述证据/游戏筛选探针/390px 真实 touch）。
+
 ## v8 改版：DEPARTURE BOARD 出发大屏皮肤（2026-08-24）
 
 方案 D（子凡选定并确认）：全站从 v7 报纸编辑风切换为「一人航运公司出发大屏」。
@@ -174,7 +183,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（32）
+## 产品索引（33）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -210,25 +219,26 @@
 | 30 | Chinamaxxing Online | 创意实验 | https://chinamaxxing.site/ |
 | 31 | The Sinking City 2 Field Guide | 游戏与内容 | https://thesinkingcity2.top/ |
 | 32 | OxAlpha | 实用工具 | https://oxalpha.site/ |
+| 33 | Mortal Shell II Wiki | 游戏与内容 | https://mortalshell2.quest/ |
 
 ## 发布产物边界
 
 - workflow 先创建全新的 `_site` 目录。
-- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-32.webp`。
+- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-33.webp`。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
 - 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；32 个项目外链均使用新窗口及 `noopener noreferrer`。
+- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；33 个项目外链均使用新窗口及 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
 - 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录、AI 产品、游戏与内容、实用工具、创意实验筛选分别显示 32 / 3 / 11 / 10 / 8 条，类别标签和 `aria-pressed` 同步；OxAlpha 卡片在“实用工具”下唯一且可见，页面不展示数字成绩板。
+- 全部记录、AI 产品、游戏与内容、实用工具、创意实验筛选分别显示 33 / 3 / 12 / 10 / 8 条，类别标签和 `aria-pressed` 同步；Mortal Shell II Wiki 卡片在“游戏与内容”下唯一且可见，页面不展示数字成绩板。
 - 320px 筛选器保持双列三行并保有 44px 最小触控高度；OxAlpha 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
 - 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
 - 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 32 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative`、`The Sinking City 2 Field Guide=game` 与 `OxAlpha=tool` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
-- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 OxAlpha CTA 打开 `https://oxalpha.site/`。
+- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 33 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative`、`The Sinking City 2 Field Guide=game`、`OxAlpha=tool` 与 `Mortal Shell II Wiki=game` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
+- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 Mortal Shell II Wiki CTA 打开 `https://mortalshell2.quest/`。
 
 ## 隐私与内容边界
 

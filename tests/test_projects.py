@@ -84,8 +84,8 @@ def test_projects_section_includes_live_spiritvale_card():
     assert 'href="https://spiritvale.blog/"' in html
     assert '<span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span>' in html
     assert '16 个职业流派、230+ 怪物数据库' in html
-    assert html.count('data-status="live"') == 32
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32
+    assert html.count('data-status="live"') == 33
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 33
 
 
 def test_projects_section_includes_live_mergeanuke_card():
@@ -372,9 +372,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
     assert 'class="release-ledger"' in html
     assert "全部上线记录" in html
     assert "把想法做成网址" in html
-    assert html.count('data-status="live"') == 32
-    assert html.count('<article class="site" data-status="live">') == 32
-    assert html.count('data-category=') == 32
+    assert html.count('data-status="live"') == 33
+    assert html.count('<article class="site" data-status="live">') == 33
+    assert html.count('data-category=') == 33
     assert 'id="visibleCount" aria-live="polite">ALL RELEASES' in html
     for value in ("all", "ai", "game", "tool", "creative"):
         assert f'data-filter="{value}"' in html
@@ -382,9 +382,9 @@ def test_homepage_uses_opc_launch_ledger_information_architecture():
         assert removed_label not in html
     # v4: count chips live in data-count attributes, rendered via CSS ::after
     # so button.textContent stays clean for the live status bar.
-    for value, count in (("all", "32"), ("ai", "3"), ("game", "11"), ("tool", "10"), ("creative", "8")):
+    for value, count in (("all", "33"), ("ai", "3"), ("game", "12"), ("tool", "10"), ("creative", "8")):
         assert f'data-filter="{value}" data-count="{count}"' in html
-    assert '<span class="ledger-count">32</span>' in html
+    assert '<span class="ledger-count">33</span>' in html
 
     # Required section order and evidence-led motivational language.
     ordered_sections = (
@@ -425,7 +425,7 @@ def test_browser_acceptance_harness_is_bound_to_its_own_checkout():
     assert 'playwright==1.' in harness
     assert "first.screenshot" in harness
     assert "requestfailed" in harness
-    assert 'revealedCount\"] == 32' in harness
+    assert 'revealedCount\"] == 33' in harness
 
 
 def test_interactions_execute_across_filters_keyboard_and_copy_fallbacks():
@@ -503,13 +503,13 @@ def test_homepage_performance_assets_are_cacheable_and_below_fold_work_is_contai
     assert "url('assets/archivo.woff2')" in privacy
 
     image_refs = re.findall(r'src="(assets/projects/project-\d{2}\.webp)"', html)
-    assert len(image_refs) == 32
-    assert len(set(image_refs)) == 32
+    assert len(image_refs) == 33
+    assert len(set(image_refs)) == 33
     for image_ref in image_refs:
         assert (ROOT / image_ref).is_file()
 
     image_tags = re.findall(r'<img\s+[^>]*src="assets/projects/project-\d{2}\.webp"[^>]*>', html)
-    assert len(image_tags) == 32
+    assert len(image_tags) == 33
     for image_tag in image_tags:
         assert 'width="400"' in image_tag
         assert 'height="250"' in image_tag
@@ -554,12 +554,12 @@ def test_scrollable_timeline_and_changelog_are_named_keyboard_regions():
         '<div class="log-body" tabindex="0" role="region" '
         'aria-label="发布日志，可横向和纵向滚动">'
     ) in html
-    assert '<h2 id="timeline-title" aria-label="42 天，32 次真实上线。">' in html
-    assert '<span aria-hidden="true" data-scramble-visual>42 天，32 次真实上线。</span>' in html
+    assert '<h2 id="timeline-title" aria-label="45 天，33 次真实上线。">' in html
+    assert '<span aria-hidden="true" data-scramble-visual>45 天，33 次真实上线。</span>' in html
     assert "document.querySelector('#timeline-title [data-scramble-visual]')" in html
 
     cards = re.findall(r'<article class="site" data-status="live">.*?</article>', html, re.S)
-    assert len(cards) == 32
+    assert len(cards) == 33
     for card in cards:
         title = re.sub(r'<[^>]+>', '', re.search(r'<h3>(.*?)</h3>', card, re.S).group(1))
         link = re.search(r'<a class="site-link" aria-label="([^"]+)" href="([^"]+)" target="_blank" rel="noopener noreferrer">', card)
@@ -633,7 +633,7 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
         "install -m 0644 favicon.svg _site/favicon.svg",
         "install -m 0644 privacy.html _site/privacy.html",
         "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2",
-        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 32',
+        'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 33',
         "install -m 0644 assets/projects/*.webp _site/assets/projects/",
     ]
 
@@ -673,7 +673,7 @@ def test_v5_release_grid_is_newest_first_with_spotlight():
 
     keys = [key(card) for card in cards]
     assert keys == sorted(keys, reverse=True), "cards must run newest-first"
-    assert '<h3>OxAlpha</h3>' in cards[0], "latest release must lead"
+    assert '<h3>Mortal Shell II Wiki</h3>' in cards[0], "latest release must lead"
     assert '<h3>AIStoryNest</h3>' in cards[-1], "first release must come last"
 
     # Spotlight badge on the lead card only; NEW badges within the 7-day window.
@@ -682,7 +682,7 @@ def test_v5_release_grid_is_newest_first_with_spotlight():
     for card in cards[1:]:
         assert '<span class="site-latest">' not in card
 
-    build_date = date(2026, 8, 22)
+    build_date = date(2026, 8, 25)
     cutoff = build_date - timedelta(days=7)
     for card in cards[1:]:
         shipped = date.fromisoformat(key(card)[0])
@@ -738,8 +738,8 @@ def test_v5_card_grid_spotlight_and_motion_contracts():
     assert 'Every release leaves a trail · 最新在前' in html
 
     # Card DOM anchor stays byte-identical for every assertion downstream.
-    assert html.count('<article class="site" data-status="live">') == 32
-    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 32
+    assert html.count('<article class="site" data-status="live">') == 33
+    assert html.count('target="_blank" rel="noopener noreferrer">访问项目 ↗</a>') == 33
 
 
 def test_v6_launch_console_hero_contract():
@@ -752,7 +752,7 @@ def test_v6_launch_console_hero_contract():
 
     # Head bar: console eyebrow + live ship count.
     assert 'LAUNCH CONSOLE · WZF-OS · ONLINE' in html
-    assert '32 SHIPS LIVE' in html
+    assert '33 SHIPS LIVE' in html
 
     # T-minus countdown wiring.
     assert 'id="tminus"' in html
@@ -762,18 +762,18 @@ def test_v6_launch_console_hero_contract():
     # Telemetry feed mirrors the 5 newest cards, newest first.
     tele = re.findall(r'<div class="tele-line">.*?<span class="tele-name">([^<]+)</span></div>', html, re.S)
     assert tele == [
+        "Mortal Shell II Wiki",
         "OxAlpha",
         "The Sinking City 2 Field Guide",
         "Chinamaxxing Online",
         "HLLV Field Manual",
-        "牛来",
     ]
 
     # Status matrix: 32 cells, oldest first so #32 is newest.
     px = re.findall(r'<button class="px" data-i="(\d+)" title="([^"]+) · ([0-9-]+)"', html)
-    assert [int(i) for i, _, _ in px] == list(range(32))
+    assert [int(i) for i, _, _ in px] == list(range(33))
     assert px[0][1] == "AIStoryNest"
-    assert px[-1][1] == "OxAlpha"
+    assert px[-1][1] == "Mortal Shell II Wiki"
     assert "document.querySelectorAll('article.site')" in html
 
     # Bridge into the editorial (paper) zone.

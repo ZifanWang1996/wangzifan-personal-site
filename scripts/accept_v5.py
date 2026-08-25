@@ -22,8 +22,8 @@ from playwright.async_api import async_playwright
 ROOT = Path(__file__).resolve().parents[1]
 VIEWPORTS = [(1440, 900), (390, 844), (320, 568)]
 EXPECTED_COLS = {"1440x900": 3, "390x844": 1, "320x568": 1}
-EXPECTED_META = ["32 · 已上线", "AI 模型证据站", "2026-08-22"]
-EXPECTED_CTA_ARIA = "访问 OxAlpha 项目（新窗口）"
+EXPECTED_META = ["33 · 已上线", "MS2 粉丝维基", "2026-08-25"]
+EXPECTED_CTA_ARIA = "访问 Mortal Shell II Wiki 项目（新窗口）"
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -102,14 +102,14 @@ async def main():
                         [...g.querySelectorAll('span')].map(s => s.textContent.trim()));
                       const allImgs = [...document.querySelectorAll('.site img')];
                       const cta = first.querySelector('.site-link');
-                      const tool = document.querySelector('[data-filter="tool"]');
-                      tool.click();
+                      const gameFilter = document.querySelector('[data-filter="game"]');
+                      gameFilter.click();
                       const visible = cards.filter(c => !c.classList.contains('hide'));
-                      const toolProbe = {
+                      const gameProbe = {
                         status: document.querySelector('#visibleCount').textContent,
                         count: visible.length,
-                        oxalphaVisible: visible.some(c => c.querySelector('h3')?.textContent.trim() === 'OxAlpha'),
-                        pressed: tool.getAttribute('aria-pressed'),
+                        ms2Visible: visible.some(c => c.querySelector('h3')?.textContent.trim() === 'Mortal Shell II Wiki'),
+                        pressed: gameFilter.getAttribute('aria-pressed'),
                       };
                       document.querySelector('[data-filter="all"]').click();
                       return {
@@ -126,7 +126,7 @@ async def main():
                         allImgsLoaded: allImgs.every(i => i.complete && i.naturalWidth > 0),
                         revealedCount: cards.filter(c => c.classList.contains('in')).length,
                         hScrollOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 2,
-                        toolProbe,
+                        gameProbe,
                         firstCtaText: cta?.textContent.trim(),
                         firstCtaAria: cta?.getAttribute('aria-label'),
                         firstCtaHref: cta?.href,
@@ -153,9 +153,9 @@ async def main():
                 await first.scroll_into_view_if_needed()
                 await page.wait_for_timeout(120)
                 await page.screenshot(
-                    path=f"/tmp/v5_accept_{w}x{h}_project32.png", full_page=False
+                    path=f"/tmp/v5_accept_{w}x{h}_project33.png", full_page=False
                 )
-                await first.screenshot(path=f"/tmp/v5_accept_{w}x{h}_project32_full-card.png")
+                await first.screenshot(path=f"/tmp/v5_accept_{w}x{h}_project33_full-card.png")
 
                 if (w, h) == (390, 844):
                     link = first.locator(".site-link")
@@ -180,46 +180,46 @@ async def main():
     ok = True
     for vp, d in results.items():
         checks = {
-            "32 cards": d["cards"] == 32,
-            "first is OxAlpha": d["firstTitle"] == "OxAlpha",
+            "33 cards": d["cards"] == 33,
+            "first is Mortal Shell II Wiki": d["firstTitle"] == "Mortal Shell II Wiki",
             "last is AIStoryNest": d["lastTitle"] == "AIStoryNest",
             "timeline == card order": d["tlNames"] == d["names"],
-            "OxAlpha metadata exact": d["firstMeta"] == EXPECTED_META,
-            "OxAlpha description evidence": all(
+            "MS2 metadata exact": d["firstMeta"] == EXPECTED_META,
+            "MS2 description evidence": all(
                 phrase in d["firstDescription"]
-                for phrase in ("API", "约 1M 上下文", "可复现证据")
+                for phrase in ("8 种 Shell", "新手指南", "已知问题")
             ),
             "spotlight wider than card (multi-col only)": d["gridCols"] == 1
             or d["firstIsSpotlight"],
             "latest badge on spotlight": d["firstHasLatestBadge"],
-            "new badges == 9": d["newBadges"] == 9,
+            "new badges == 4": d["newBadges"] == 4,
             f"grid cols == {EXPECTED_COLS[vp]}": d["gridCols"] == EXPECTED_COLS[vp],
             "all imgs loaded": d["allImgsLoaded"],
-            "all 32 scroll reveals fired": d["revealedCount"] == 32,
+            "all 33 scroll reveals fired": d["revealedCount"] == 33,
             "no horizontal overflow": not d["hScrollOverflow"],
-            "tool filter status": d["toolProbe"]["status"] == "实用工具",
-            "tool filter count == 10": d["toolProbe"]["count"] == 10,
-            "OxAlpha visible under tool": d["toolProbe"]["oxalphaVisible"],
-            "tool aria-pressed": d["toolProbe"]["pressed"] == "true",
+            "game filter status": d["gameProbe"]["status"] == "游戏与内容",
+            "game filter count == 12": d["gameProbe"]["count"] == 12,
+            "MS2 visible under game": d["gameProbe"]["ms2Visible"],
+            "game aria-pressed": d["gameProbe"]["pressed"] == "true",
             "CTA visible text": d["firstCtaText"] == "访问项目 ↗",
             "CTA accessible name": d["firstCtaAria"] == EXPECTED_CTA_ARIA,
-            "CTA exact HTTPS URL": d["firstCtaHref"] == "https://oxalpha.site/",
+            "CTA exact HTTPS URL": d["firstCtaHref"] == "https://mortalshell2.quest/",
             "CTA safe new window": d["firstCtaTarget"] == "_blank"
             and set(d["firstCtaRel"].split()) >= {"noopener", "noreferrer"},
             "mobile CTA >= 44px": d["firstCtaHeight"] >= 44
             if vp != "1440x900"
             else d["firstCtaHeight"] > 0,
             "stable timeline accessible name": d["timelineAria"]
-            == "42 天，32 次真实上线。",
+            == "45 天，33 次真实上线。",
             "named timeline region": d["timelineRegionAria"] == "上线时间线，可横向滚动",
             "timeline keyboard scroll": d["timelineKeyboardMoved"],
             "no JS errors": not d["errors"],
             "no same-origin request/HTTP errors": not d["networkErrors"],
         }
         if vp == "390x844":
-            checks["390px real touch reaches OxAlpha"] = d.get("touchTargetUrl", "").startswith(
-                "https://oxalpha.site/"
-            ) and d.get("touchTargetTitle", "").startswith("Ox Alpha AI")
+            checks["390px real touch reaches Mortal Shell II Wiki"] = d.get("touchTargetUrl", "").startswith(
+                "https://mortalshell2.quest/"
+            ) and d.get("touchTargetTitle", "").startswith("Mortal Shell II Wiki")
         fails = [name for name, passed in checks.items() if not passed]
         if fails:
             ok = False
@@ -232,7 +232,7 @@ async def main():
         "firstMeta",
         "gridCols",
         "newBadges",
-        "toolProbe",
+        "gameProbe",
         "firstCtaAria",
         "firstCtaHeight",
         "revealedCount",
