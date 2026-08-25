@@ -580,6 +580,25 @@ def test_command_palette_is_scroll_safe_in_low_height_viewports():
 
 
 
+def test_wechat_qr_is_publishable_and_allowlisted():
+    html = SITE.read_text(encoding="utf-8")
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    qr = ROOT / "assets" / "wechat-qr.webp"
+    assert qr.is_file(), "wechat qr asset must exist"
+    assert qr.stat().st_size < 80_000, "qr must stay lightweight"
+
+    tag = re.search(r'<img\s+[^>]*src="assets/wechat-qr\.webp"[^>]*>', html)
+    assert tag is not None
+    img_tag = tag.group(0)
+    assert 'width="560"' in img_tag and 'height="560"' in img_tag
+    assert 'loading="lazy"' in img_tag and 'decoding="async"' in img_tag
+    assert "wang1227928718" in img_tag  # alt text carries the contact id
+
+    assert ".qr-card{" in html and ".qr-card figcaption{" in html
+    assert "扫码添加" in html
+    assert "install -m 0644 assets/wechat-qr.webp _site/assets/wechat-qr.webp" in workflow
+
+
 def test_release_artifact_is_allowlisted_and_mobile_safe():
     html = SITE.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
@@ -635,6 +654,7 @@ def test_release_artifact_is_allowlisted_and_mobile_safe():
         "install -m 0644 assets/archivo.woff2 _site/assets/archivo.woff2",
         'test "$(printf \'%s\\n\' assets/projects/*.webp | wc -l)" -eq 33',
         "install -m 0644 assets/projects/*.webp _site/assets/projects/",
+        "install -m 0644 assets/wechat-qr.webp _site/assets/wechat-qr.webp",
     ]
 
 

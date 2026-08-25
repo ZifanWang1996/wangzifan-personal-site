@@ -1,4 +1,5 @@
 .pdf-venv/
+.test-venv/
 resume-extracted.txt
 __pycache__/
 .DS_Store

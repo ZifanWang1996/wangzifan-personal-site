@@ -12,6 +12,18 @@
 - 当前生产页面实现提交：`cbdff37`（v8 DEPARTURE BOARD 皮肤）；前一个：`e37b80d`（v7 GAZETTE 报纸编辑皮肤）；再前：`47533ab`（v6 Launch Console hero）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
 
+## 微信二维码 + OPC 宣言金句（2026-08-25）
+
+- Contact 区挂上个人微信二维码：源图为子凡提供的薄荷绿微信码（800×757），经 `zxing-cpp` 解码核验指向微信快加快链 `https://u.wechat.com/MHBiZ7OETdLY6mE--lrPphA?s=0`；裁出码区并加 10% quiet zone 后 Lanczos 缩为 560×560，另存 `assets/wechat-qr.webp`（34,694 bytes，SHA-256 `d303243aad00d65cb8ca045194a317b48f2573d1899ddb5617e3b2a0669eedfa`），缩放后二次解码仍通过。
+- 二维码以 `<figure class="qr-card">` 挂入 `.contact-side`（微信号与复制按钮之上），`loading="lazy" decoding="async" width/height=560`，alt 含微信号 `wang1227928718`；配色沿用站点的米白卡底 + 薄荷绿码面。
+- Pages artifact allowlist 新增 `install -m 0644 assets/wechat-qr.webp _site/assets/wechat-qr.webp`；公开 artifact 构成由 37 文件（33 图）变为 38 文件。历史 manifest 哈希记录（`a6048999…`，32 图时代）保留为历史事实，不做回溯改写。
+- 三条跑马灯各新增 3 条 OPC 宣言金句（中/英混排，每条跑马灯的两个对称 set 同步更新）：
+  - 橙色主带：一个人就是一支完整的船队 / ONE PERSON · FULL CREW · ZERO EXCUSES / 今天的上线胜过明天的计划
+  - ghost 带：速度即诚意 · 交付即答案 / NO COMMITTEE · NO CONSENSUS · JUST SHIP / 每一次上线都在留下航迹
+  - 尾部带：不等万事俱备 · 上线造东风 / SPEED IS THE STRATEGY / 单人不成军 · 但全世界都是甲板
+- 测试：新增 `test_wechat_qr_is_publishable_and_allowlisted`（资产存在、<80KB、img 属性、CSS、workflow 行），全套 43 passed；`accept_v5.py` 每视口新增 `wechat qr rendered` 断言（complete + naturalWidth + 渲染宽度 >100px）。
+- 验证：三视口浏览器验收全 PASS；1440px 实截图目检二维码清晰、无变形、无文字溢出。
+
 ## Mortal Shell II Wiki 卡片 #33（2026-08-25）
 
 - 新增卡片 #33：Mortal Shell II Wiki（`https://mortalshell2.quest/`），分类「游戏与内容」，标签「MS2 粉丝维基」，上线日期 2026-08-25；文案依据正式站 title、H1 与公开页面内容现场核验。

@@ -124,6 +124,7 @@ async def main():
                         newBadges: document.querySelectorAll('.site-new').length,
                         gridCols,
                         allImgsLoaded: allImgs.every(i => i.complete && i.naturalWidth > 0),
+                        qrImg: (() => { const q = document.querySelector('.qr-card img'); return q ? { complete: q.complete, naturalWidth: q.naturalWidth, w: q.getBoundingClientRect().width } : null; })(),
                         revealedCount: cards.filter(c => c.classList.contains('in')).length,
                         hScrollOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 2,
                         gameProbe,
@@ -195,6 +196,10 @@ async def main():
             "new badges == 4": d["newBadges"] == 4,
             f"grid cols == {EXPECTED_COLS[vp]}": d["gridCols"] == EXPECTED_COLS[vp],
             "all imgs loaded": d["allImgsLoaded"],
+            "wechat qr rendered": bool(d["qrImg"])
+            and d["qrImg"]["complete"]
+            and d["qrImg"]["naturalWidth"] > 0
+            and d["qrImg"]["w"] > 100,
             "all 33 scroll reveals fired": d["revealedCount"] == 33,
             "no horizontal overflow": not d["hScrollOverflow"],
             "game filter status": d["gameProbe"]["status"] == "游戏与内容",
