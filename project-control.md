@@ -9,7 +9,7 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`0f95b60`（v9 设计 token 统一）；前一个：`1c42a4f`（微信二维码 + 9 条 OPC 标语）；再前：`cbdff37`（v8 DEPARTURE BOARD 皮肤）
+- 当前生产页面实现提交：`f5b967e`（v10 EDITORIAL TIMELINE 皮肤）；前一个：`0f95b60`（v9 设计 token 统一）；再前：`1c42a4f`（微信二维码 + 9 条 OPC 标语）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
 
 ## v9 改版：设计 token 统一 + 移动健康（2026-08-25）
