@@ -9,8 +9,21 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`cbdff37`（v8 DEPARTURE BOARD 皮肤）；前一个：`e37b80d`（v7 GAZETTE 报纸编辑皮肤）；再前：`47533ab`（v6 Launch Console hero）
+- 当前生产页面实现提交：`0f95b60`（v9 设计 token 统一）；前一个：`1c42a4f`（微信二维码 + 9 条 OPC 标语）；再前：`cbdff37`（v8 DEPARTURE BOARD 皮肤）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
+
+## v9 改版：设计 token 统一 + 移动健康（2026-08-25）
+
+方案 A（子凡选定并确认）：不换 v8 骨架，纯做协调统一——圆角/色系/字重/间距 token 化，消除 v2→v8 叠加残留。
+
+- **圆角收敛**：15 种半径 → 4 档（`--r-none` 0 / `--r-std` 3px / `--r-soft` 8px / `--r-pill` ∞）；所有卡片/按钮/表单统一引用 token。
+- **色系统一**：残留旧色（v6 深空 `#0e7f9d`、v6 火焰 `#e8401a`、v5 石灰绿 `#c6ff3f`/`#6b8f00`）全部映射到 v8 信号橙/琥珀板（`--db-or` `#ff4d00` / `--db-amber` `#f5b800`）；新增 `--lime:var(--db-amber)` 兼容旧引用，消除同屏 4 套色相打架。
+- **字重梯度**：Archivo 补 900 字重（大屏 H1），形成 900/800/500/400 四档；新增 `--sec-breath` section 呼吸间距（120px/80px 节拍）替代随手值（60/88/90/94）。
+- **QR 修复**：`.qr-card` 从固定 `max-width:212px` 改为 `min(212px,100%)`，修复 320px 视口下被 `.contact-card` `overflow:hidden` 裁切的问题（实证：212px 卡进 198px 容器溢出 14px）。
+- **实现**：纯 CSS/JS 皮肤层改动，DOM 锚点/33 卡/交互/workflow 零改动；`scripts/assemble_v9.py` 装配（原子性 + 自检）。
+- **验证**：pytest 44/44 ✅（新增 `test_v9_design_token_unification` 4 断言）；`accept_v5.py` 三视口（1440/390/320）全 PASS（h1 weight 900、QR `fits:true`、零横向溢出、零 JS 错误）；生产实测 QR 192px 完整装入 212px 卡内。
+- 生产发布：commit `0f95b60`，生产验证 `wangzifan.store` HTTP 200 + 三视口实测全绿。
+- 子凡反馈确认：发布后子凡主动说"二维码在手机端显示不全"→ 定位修复 → 又说"几个页面感觉还能升级一版，整体协调性不足"→ 触发本方案 A。
 
 ## 微信二维码 + OPC 宣言金句（2026-08-25）
 
