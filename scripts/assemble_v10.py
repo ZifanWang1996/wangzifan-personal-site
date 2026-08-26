@@ -25,20 +25,27 @@ def rep(old, new, n=1):
 CSS = (ROOT / "scripts" / "_v10.css").read_text(encoding="utf-8").rstrip("\n") + "\n"
 
 # ---------------- 1. swap the skin block -------------------------------------
-START = "/* ---- v8: DEPARTURE BOARD — one-person freight line skin (layered over the v6 console) ----"
-i = html.find(START)
-assert i >= 0, "v8 skin start marker not found"
+# idempotent: works from either the v8 marker (first run) or the v10 marker (re-run)
+START_V8 = "/* ---- v8: DEPARTURE BOARD — one-person freight line skin (layered over the v6 console) ----"
+START_V10 = "/* ---- v10: EDITORIAL TIMELINE — one-person publishing house (layered over v9 tokens) ----"
+i = html.find(START_V8)
+if i < 0:
+    i = html.find(START_V10)
+assert i >= 0, "neither v8 nor v10 skin start marker found"
 j = html.find("</style>", i)
-assert j > i, "style close not found after v8 block"
+assert j > i, "style close not found after skin block"
+old_len = j - i
 html = html[:i] + CSS + html[j:]
-print(f"[1] v8+v9 block ({j - i} chars) replaced with v10 skin ({len(CSS)} chars)")
+print(f"[1] skin block ({old_len} chars) replaced with v10 skin ({len(CSS)} chars)")
 
 # ---------------- 2. unlocked copy refresh ------------------------------------
-rep(
-    '<div class="topline shell" aria-hidden="true"><span>WZF LINES · 一人航运 · ONE-PERSON FREIGHT</span><span>33 SHIPS LIVE · EVERY RELEASE IS A DEPARTURE</span><span>北京 · BEIJING</span></div>',
+# idempotent: match either the v8/v9 or the v10 topline
+import re
+html = re.sub(
+    r'<div class="topline shell" aria-hidden="true"><span>[^<]*</span><span>[^<]*</span><span>[^<]*</span></div>',
     '<div class="topline shell" aria-hidden="true"><span>WZF PRESS · 一人出版 · ONE-PERSON PRESS</span><span>33 ISSUES LIVE · EVERY RELEASE IS A CHAPTER</span><span>北京 · BEIJING</span></div>',
-)
-rep('<meta name="theme-color" content="#f5f1e6">', '<meta name="theme-color" content="#faf9f5">')
+    html, count=1)
+html = re.sub(r'<meta name="theme-color" content="#[^"]*">', '<meta name="theme-color" content="#faf9f5">', html, count=1)
 print("[2] topline + theme-color refreshed")
 
 # ---------------- self-checks -------------------------------------------------

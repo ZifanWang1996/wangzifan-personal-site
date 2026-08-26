@@ -577,26 +577,83 @@ h1{font-weight:900;font-stretch:105%}
 .tele-date{color:var(--ed-dim)}
 .tele-verb{color:var(--ed-red)}
 .tele-name{color:var(--ed-ink)}
-.launch-matrix{
+/* launch-matrix: board pixel grid → editorial index strip */
+[data-launch] .launch-matrix{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:clamp(16px,2.5vh,32px);
+  padding:0;
   background:transparent;
-  border-color:var(--ed-line);
+  border:none;
   backdrop-filter:none;
+  counter-reset:ship;
 }
-.px{
-  border-color:var(--ed-line);
-  background:var(--ed-line-soft);
+[data-launch] .launch-matrix .px{
+  position:relative;
+  width:36px;
+  height:36px;
+  aspect-ratio:auto;
+  border:1px solid var(--ed-line);
+  border-radius:var(--r-sm);
+  background:var(--ed-card);
+  cursor:pointer;
+  transition:border-color .22s,background .22s,transform .22s;
+  counter-increment:ship;
 }
-.px i{
-  background:linear-gradient(180deg,var(--ed-red),var(--ed-red-deep));
+[data-launch] .launch-matrix .px i{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font:600 11px var(--mono-ed);
+  color:var(--ed-dim);
+  background:none;
+  border-radius:0;
+  transition:color .22s;
 }
-.px:hover,.px:focus-visible{
+/* replace the decorative dot with the ship index number */
+[data-launch] .launch-matrix .px i:before{
+  content:counter(ship,decimal-leading-zero);
+}
+[data-launch] .launch-matrix .px i i{display:none}
+[data-launch] .launch-matrix .px:hover,
+[data-launch] .launch-matrix .px:focus-visible{
   border-color:var(--ed-red);
-  transform:scale(1.15);
+  background:var(--ed-red-tint);
+  transform:translateY(-2px);
 }
-.px:after{
+[data-launch] .launch-matrix .px:hover i,
+[data-launch] .launch-matrix .px:focus-visible i{
+  color:var(--ed-red);
+}
+[data-launch] .launch-matrix .px:after{
+  content:attr(title);
+  position:absolute;
+  bottom:calc(100% + 6px);
+  left:50%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font:500 9px var(--mono-ed);
+  letter-spacing:.04em;
   color:var(--ed-ink);
   background:var(--ed-card);
   border:1px solid var(--ed-line);
+  border-radius:var(--r-sm);
+  padding:4px 8px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s;
+  z-index:10;
+}
+[data-launch] .launch-matrix .px:hover:after{
+  opacity:1;
+}
+@media(max-width:700px){
+  [data-launch] .launch-matrix{gap:4px}
+  [data-launch] .launch-matrix .px{width:32px;height:32px}
+  [data-launch] .launch-matrix .px i{font-size:10px}
+  [data-launch] .launch-matrix .px:after{display:none}
 }
 .launch-bridge{
   height:1px;
