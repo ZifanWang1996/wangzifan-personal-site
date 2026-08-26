@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>暗房 · 王子凡的 32 次上线</title><style>
+:root{--bg:#12100c;--bg2:#1a1712;--fg:#ece5d3;--dim:#8f8776;--edge:#2e2a20;--red:#ff4b1f;--tape:rgba(236,229,211,.07);
+--sans:"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;
+background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.6"/></svg>')}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1220px;margin:0 auto;padding:0 26px}
+/* header */
+header{padding:38px 0 10px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.brand{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:var(--dim)}
+.brand b{color:var(--fg)}
+h1{font-size:clamp(34px,5.4vw,62px);font-weight:800;line-height:1.06;letter-spacing:-.015em;max-width:16ch;padding:18px 0 12px}
+h1 em{font-style:normal;color:var(--red)}
+.lede{color:var(--dim);font-size:15px;line-height:1.75;max-width:58ch}
+.lede b{color:var(--fg);font-weight:600}
+.counter{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--dim);margin-top:18px}
+.counter b{color:var(--red);font-size:22px;letter-spacing:0}
+/* contact sheet */
+.sheet{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin:44px 0 70px}
+.cell{position:relative;background:var(--bg2);border:1px solid var(--edge);padding:8px;cursor:pointer;
+transition:transform .25s cubic-bezier(.2,.9,.3,1.3),border-color .25s,box-shadow .25s}
+.cell img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;filter:grayscale(.25) contrast(1.06);transition:filter .25s}
+.cell .cap{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:10.5px;color:var(--dim);padding-top:7px;letter-spacing:.04em}
+.cell .cap b{color:var(--fg);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell .frame-no{position:absolute;top:2px;right:10px;font-family:var(--mono);font-size:10px;color:rgba(236,229,211,.4)}
+.cell:hover{transform:translateY(-5px) rotate(-.5deg);border-color:var(--red);box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.cell:hover img{filter:grayscale(0) contrast(1.02)}
+.cell.off{display:none}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,9,7,.88);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:26px}
+.lb.open{display:flex}
+.lb-card{width:min(880px,100%);background:var(--bg2);border:1px solid var(--edge);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.lb-body{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;flex-wrap:wrap}
+.lb-body h3{font-size:22px;font-weight:750;letter-spacing:-.01em}
+.lb-meta{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
+.lb-actions{display:flex;gap:10px}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:11px 18px;border:1px solid var(--edge);color:var(--fg);background:none;cursor:pointer;transition:.2s}
+.btn:hover{border-color:var(--red);color:var(--red)}
+.btn.hot{background:var(--red);border-color:var(--red);color:#140c08;font-weight:700}
+.btn.hot:hover{filter:brightness(1.12);color:#140c08}
+.lb-close{position:absolute;top:22px;right:26px;font-family:var(--mono);color:var(--dim);background:none;border:none;font-size:13px;cursor:pointer;letter-spacing:.1em}
+.lb-close:hover{color:var(--fg)}
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.f{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;padding:8px 14px;border:1px solid var(--edge);background:none;color:var(--dim);cursor:pointer;transition:.2s}
+.f:hover{color:var(--fg);border-color:var(--dim)}
+.f.on{color:#140c08;background:var(--fg);border-color:var(--fg)}
+/* footer */
+footer{border-top:1px solid var(--edge);margin-top:10px;padding:24px 0 46px;display:flex;justify-content:space-between;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);flex-wrap:wrap}
+@media(max-width:980px){.sheet{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.sheet{grid-template-columns:repeat(2,1fr)} .lb-body{padding:14px}}
+</style></head>
+<body>
+<div class="wrap">
+<header><span class="brand"><b>WZF</b> / DARKROOM INDEX</span><span class="brand">2026.07.12 — 08.22 · 北京</span></header>
+<h1>四十二天，我在暗房里<em>冲印了三十二张</em>。</h1>
+<p class="lede">我是王子凡。每张底片是一个真实上线的产品：域名是真的，流量是真的，用户也是真的。点击任意一格，<b>放大查看原片</b>。</p>
+<div class="filters">
+<button class="f on" data-f="all">ALL · 32</button>
+<button class="f" data-f="game">GAME · 11</button>
+<button class="f" data-f="tool">TOOL · 10</button>
+<button class="f" data-f="creative">CREATIVE · 8</button>
+<button class="f" data-f="ai">AI · 3</button>
+</div>
+<div class="counter">CONTACT SHEET · <b>32</b> FRAMES · 1.3 天 / 张</div>
+<div class="sheet" id="sheet">
+<div class="cell" role="button" tabindex="0" aria-label="OxAlpha"><span class="frame-no">32</span><img src="../../assets/projects/project-32.webp" alt="OxAlpha" loading="lazy"><div class="cap"><b>OxAlpha</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="The Sinking City 2 Field Guide"><span class="frame-no">31</span><img src="../../assets/projects/project-31.webp" alt="The Sinking City 2 Field Guide" loading="lazy"><div class="cap"><b>The Sinking City 2 Field Guide</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Chinamaxxing Online"><span class="frame-no">30</span><img src="../../assets/projects/project-30.webp" alt="Chinamaxxing Online" loading="lazy"><div class="cap"><b>Chinamaxxing Online</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="HLLV Field Manual"><span class="frame-no">29</span><img src="../../assets/projects/project-29.webp" alt="HLLV Field Manual" loading="lazy"><div class="cap"><b>HLLV Field Manual</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="牛来"><span class="frame-no">28</span><img src="../../assets/projects/project-28.webp" alt="牛来" loading="lazy"><div class="cap"><b>牛来</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="CraveLoop"><span class="frame-no">27</span><img src="../../assets/projects/project-27.webp" alt="CraveLoop" loading="lazy"><div class="cap"><b>CraveLoop</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="MatchaFilter"><span class="frame-no">26</span><img src="../../assets/projects/project-26.webp" alt="MatchaFilter" loading="lazy"><div class="cap"><b>MatchaFilter</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="burnt for you"><span class="frame-no">25</span><img src="../../assets/projects/project-25.webp" alt="burnt for you" loading="lazy"><div class="cap"><b>burnt for you</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Polski Piłkarz Simulator"><span class="frame-no">24</span><img src="../../assets/projects/project-24.webp" alt="Polski Piłkarz Simulator" loading="lazy"><div class="cap"><b>Polski Piłkarz Simulator</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="DSH Field Guide"><span class="frame-no">23</span><img src="../../assets/projects/project-23.webp" alt="DSH Field Guide" loading="lazy"><div class="cap"><b>DSH Field Guide</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Remove Matcha Filter"><span class="frame-no">22</span><img src="../../assets/projects/project-22.webp" alt="Remove Matcha Filter" loading="lazy"><div class="cap"><b>Remove Matcha Filter</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="RSP Editor"><span class="frame-no">21</span><img src="../../assets/projects/project-21.webp" alt="RSP Editor" loading="lazy"><div class="cap"><b>RSP Editor</b><span>AI</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="AI Scanner"><span class="frame-no">20</span><img src="../../assets/projects/project-20.webp" alt="AI Scanner" loading="lazy"><div class="cap"><b>AI Scanner</b><span>AI</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Merge a Nuke! Guide"><span class="frame-no">19</span><img src="../../assets/projects/project-19.webp" alt="Merge a Nuke! Guide" loading="lazy"><div class="cap"><b>Merge a Nuke! Guide</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Shift at Midnight Guide"><span class="frame-no">18</span><img src="../../assets/projects/project-18.webp" alt="Shift at Midnight Guide" loading="lazy"><div class="cap"><b>Shift at Midnight Guide</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="竹知了"><span class="frame-no">17</span><img src="../../assets/projects/project-17.webp" alt="竹知了" loading="lazy"><div class="cap"><b>竹知了</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Cash Flow Lifestyle"><span class="frame-no">16</span><img src="../../assets/projects/project-16.webp" alt="Cash Flow Lifestyle" loading="lazy"><div class="cap"><b>Cash Flow Lifestyle</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="HowManySleepsUntil"><span class="frame-no">15</span><img src="../../assets/projects/project-15.webp" alt="HowManySleepsUntil" loading="lazy"><div class="cap"><b>HowManySleepsUntil</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="IsItDown"><span class="frame-no">14</span><img src="../../assets/projects/project-14.webp" alt="IsItDown" loading="lazy"><div class="cap"><b>IsItDown</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="CopyPlaintext"><span class="frame-no">13</span><img src="../../assets/projects/project-13.webp" alt="CopyPlaintext" loading="lazy"><div class="cap"><b>CopyPlaintext</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="DragonSword Wiki"><span class="frame-no">12</span><img src="../../assets/projects/project-12.webp" alt="DragonSword Wiki" loading="lazy"><div class="cap"><b>DragonSword Wiki</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="SpiritVale Wiki"><span class="frame-no">11</span><img src="../../assets/projects/project-11.webp" alt="SpiritVale Wiki" loading="lazy"><div class="cap"><b>SpiritVale Wiki</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Rot Check"><span class="frame-no">10</span><img src="../../assets/projects/project-10.webp" alt="Rot Check" loading="lazy"><div class="cap"><b>Rot Check</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Chinese Coins Atlas"><span class="frame-no">09</span><img src="../../assets/projects/project-09.webp" alt="Chinese Coins Atlas" loading="lazy"><div class="cap"><b>Chinese Coins Atlas</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="TaskbarHeroWiki"><span class="frame-no">08</span><img src="../../assets/projects/project-08.webp" alt="TaskbarHeroWiki" loading="lazy"><div class="cap"><b>TaskbarHeroWiki</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="All Wishes Come True"><span class="frame-no">07</span><img src="../../assets/projects/project-07.webp" alt="All Wishes Come True" loading="lazy"><div class="cap"><b>All Wishes Come True</b><span>CREATIVE</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="llmstxt"><span class="frame-no">06</span><img src="../../assets/projects/project-06.webp" alt="llmstxt" loading="lazy"><div class="cap"><b>llmstxt</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="CodexSkin.space"><span class="frame-no">05</span><img src="../../assets/projects/project-05.webp" alt="CodexSkin.space" loading="lazy"><div class="cap"><b>CodexSkin.space</b><span>TOOL</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="PalworldMap"><span class="frame-no">04</span><img src="../../assets/projects/project-04.webp" alt="PalworldMap" loading="lazy"><div class="cap"><b>PalworldMap</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="FalloutDay"><span class="frame-no">03</span><img src="../../assets/projects/project-03.webp" alt="FalloutDay" loading="lazy"><div class="cap"><b>FalloutDay</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="Build a Hooper"><span class="frame-no">02</span><img src="../../assets/projects/project-02.webp" alt="Build a Hooper" loading="lazy"><div class="cap"><b>Build a Hooper</b><span>GAME</span></div></div>
+<div class="cell" role="button" tabindex="0" aria-label="AIStoryNest"><span class="frame-no">01</span><img src="../../assets/projects/project-01.webp" alt="AIStoryNest" loading="lazy"><div class="cap"><b>AIStoryNest</b><span>AI</span></div></div>
+</div>
+<footer><span>WANG ZIFAN — ONE-PERSON STUDIO</span><span>不设完美时机，只设上线日期</span><span>© 2026</span></footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+<button class="lb-close" id="lbClose">ESC / 关闭 ✕</button>
+<div class="lb-card">
+<img id="lbImg" alt="">
+<div class="lb-body">
+<div><h3 id="lbTitle"></h3><div class="lb-meta" id="lbMeta"></div></div>
+<div class="lb-actions"><a class="btn hot" id="lbVisit" target="_blank" rel="noopener">访问线上 ↗</a><button class="btn" id="lbNext">下一张 →</button></div>
+</div>
+</div>
+</div>
+<script>
+const DATA=[{"t": "OxAlpha", "c": "tool", "d": "2026-08-22", "n": "32", "u": "https://oxalpha.site/"}, {"t": "The Sinking City 2 Field Guide", "c": "game", "d": "2026-08-20", "n": "31", "u": "https://thesinkingcity2.top/"}, {"t": "Chinamaxxing Online", "c": "creative", "d": "2026-08-20", "n": "30", "u": "https://chinamaxxing.site/"}, {"t": "HLLV Field Manual", "c": "game", "d": "2026-08-18", "n": "29", "u": "https://hellletloosevietnam.blog/"}, {"t": "牛来", "c": "creative", "d": "2026-08-17", "n": "28", "u": "https://niulai.blog/"}, {"t": "CraveLoop", "c": "creative", "d": "2026-08-16", "n": "27", "u": "https://foodnevercomes.online/"}, {"t": "MatchaFilter", "c": "tool", "d": "2026-08-16", "n": "26", "u": "https://matchafilter.cc/"}, {"t": "burnt for you", "c": "creative", "d": "2026-08-16", "n": "25", "u": "https://burncd.xyz/"}, {"t": "Polski Piłkarz Simulator", "c": "game", "d": "2026-08-16", "n": "24", "u": "https://polskipilkarzsymulator.online/"}, {"t": "DSH Field Guide", "c": "tool", "d": "2026-08-15", "n": "23", "u": "https://deepseekharness.site/"}, {"t": "Remove Matcha Filter", "c": "tool", "d": "2026-08-12", "n": "22", "u": "https://remove-matcha-filter.com/"}, {"t": "RSP Editor", "c": "ai", "d": "2026-08-09", "n": "21", "u": "https://rspeditor.app/"}, {"t": "AI Scanner", "c": "ai", "d": "2026-08-09", "n": "20", "u": "https://aiscanner.run/"}, {"t": "Merge a Nuke! Guide", "c": "game", "d": "2026-08-08", "n": "19", "u": "https://mergeanuke.space/"}, {"t": "Shift at Midnight Guide", "c": "game", "d": "2026-08-05", "n": "18", "u": "https://shiftatmidnight.blog/"}, {"t": "竹知了", "c": "tool", "d": "2026-08-04", "n": "17", "u": "https://zhuzhiliao.buzz/"}, {"t": "Cash Flow Lifestyle", "c": "creative", "d": "2026-08-03", "n": "16", "u": "https://cashflow.lifestyle/"}, {"t": "HowManySleepsUntil", "c": "tool", "d": "2026-07-31", "n": "15", "u": "https://howmanysleepsuntil.rest/"}, {"t": "IsItDown", "c": "tool", "d": "2026-07-31", "n": "14", "u": "https://isitdown.click/"}, {"t": "CopyPlaintext", "c": "tool", "d": "2026-07-31", "n": "13", "u": "https://copyplaintext.com/"}, {"t": "DragonSword Wiki", "c": "game", "d": "2026-07-29", "n": "12", "u": "https://dragonswordawakening.fun/"}, {"t": "SpiritVale Wiki", "c": "game", "d": "2026-07-28", "n": "11", "u": "https://spiritvale.blog/"}, {"t": "Rot Check", "c": "creative", "d": "2026-07-26", "n": "10", "u": "https://rotcheck.cyou/"}, {"t": "Chinese Coins Atlas", "c": "creative", "d": "2026-07-26", "n": "09", "u": "https://chinesecashcoins.wiki/"}, {"t": "TaskbarHeroWiki", "c": "game", "d": "2026-07-26", "n": "08", "u": "https://taskbarherowiki.best/"}, {"t": "All Wishes Come True", "c": "creative", "d": "2026-07-25", "n": "07", "u": "https://allwishescometrue.site/"}, {"t": "llmstxt", "c": "tool", "d": "2026-07-18", "n": "06", "u": "https://llmstxt.best/"}, {"t": "CodexSkin.space", "c": "tool", "d": "2026-07-17", "n": "05", "u": "https://codexskin.space/"}, {"t": "PalworldMap", "c": "game", "d": "2026-07-14", "n": "04", "u": "https://palworldmap.best/"}, {"t": "FalloutDay", "c": "game", "d": "2026-07-12", "n": "03", "u": "https://falloutday.online/"}, {"t": "Build a Hooper", "c": "game", "d": "2026-07-12", "n": "02", "u": "https://buildahooper.best/"}, {"t": "AIStoryNest", "c": "ai", "d": "2026-07-12", "n": "01", "u": "https://aistorynest.mom/"}];
+const sheet=document.getElementById('sheet');
+const lb=document.getElementById('lb');
+const cells=[...document.querySelectorAll('.cell')];
+let cur=-1;
+cells.forEach((c,i)=>{
+ c.addEventListener('click',()=>open(i));
+ c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(i);}});
+});
+function render(i){
+ cur=i;
+ const d=DATA[i];
+ document.getElementById('lbImg').src='../../assets/projects/project-'+d.n+'.webp';
+ document.getElementById('lbTitle').textContent=d.t;
+ document.getElementById('lbMeta').textContent=d.c.toUpperCase()+' · '+d.d+' · FRAME '+d.n+'/32';
+ document.getElementById('lbVisit').href=d.u;
+}
+function open(i){render(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+function close(){lb.classList.remove('open');document.body.style.overflow='';cur=-1;}
+document.getElementById('lbClose').addEventListener('click',close);
+document.getElementById('lbNext').addEventListener('click',()=>{if(cur>=0)render((cur+1)%DATA.length);});
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')close();
+ if(e.key==='ArrowRight'&&cur>=0)render((cur+1)%DATA.length);
+ if(e.key==='ArrowLeft'&&cur>=0)render((cur-1+DATA.length)%DATA.length);
+});
+document.querySelectorAll('.f').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x===b));
+ const f=b.dataset.f;
+ cells.forEach((c,i)=>c.classList.toggle('off',f!=='all'&&DATA[i].c!==f));
+}));
+</script>
+</body></html>

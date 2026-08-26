@@ -628,6 +628,42 @@ def test_v9_design_token_unification():
     assert "--lime:var(--db-amber)" in style
 
 
+def test_v10_editorial_timeline_skin():
+    """v10 editorial contract: paper field, serif display, editorial red accent,
+    magazine masthead topline, and the v9 token contract intact underneath."""
+    html = SITE.read_text(encoding="utf-8")
+    style = html.split("<style>")[1].split("</style>")[0]
+
+    # editorial palette tokens exist
+    for tok in ("--ed-paper:#faf9f5", "--ed-ink:#1a1a1a", "--ed-red:#c41e3a",
+                "--ed-gold:#b8892a", "--ed-card:#fffefb"):
+        assert tok in style
+
+    # serif display font stack for headings
+    assert '--serif:"Playfair Display"' in style
+    assert "font-family:var(--serif)" in style
+
+    # v8 board tokens remapped to editorial hues
+    assert "--db-or:var(--ed-red)" in style
+    assert "--db-amber:var(--ed-gold)" in style
+    assert "--db-bg:var(--ed-paper)" in style
+
+    # topline is the magazine masthead
+    assert "WZF PRESS · 一人出版 · ONE-PERSON PRESS" in html
+    assert "33 ISSUES LIVE · EVERY RELEASE IS A CHAPTER" in html
+    assert 'content="#faf9f5"' in html
+
+    # v9 contract tokens still present underneath
+    for tok in ("--r-0:0", "--r-sm:3px", "--r-md:6px", "--r-lg:12px", "--r-pill:999px",
+                "--sec-breath:120px", "--sec-breath-sm:80px",
+                "h1{font-weight:900;font-stretch:105%}", "--lime:var(--db-amber)"):
+        assert tok in style
+
+    # no stale v5/v6 hues anywhere in the stylesheet
+    for stale in ("#c6ff3f", "#6b8f00", "#0e7f9d", "#e8401a", "rgba(92,107,18"):
+        assert stale not in style
+
+
 def test_release_artifact_is_allowlisted_and_mobile_safe():
     html = SITE.read_text(encoding="utf-8")
     workflow = WORKFLOW.read_text(encoding="utf-8")
