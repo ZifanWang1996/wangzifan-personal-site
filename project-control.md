@@ -12,6 +12,18 @@
 - 当前生产页面实现提交：`f5b967e`（v10 EDITORIAL TIMELINE 皮肤）；前一个：`0f95b60`（v9 设计 token 统一）；再前：`1c42a4f`（微信二维码 + 9 条 OPC 标语）
 - 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
 
+## V11 本地发布候选：一人产品档案（2026-08-27，未部署）
+
+- **状态**：独立候选分支本地审查中；尚未提交、推送、合并 `main` 或部署，正式站仍是上方记录的 v10。
+- **架构**：`data/projects.json` 是 33 条发布记录、32 live / 1 offline、最近发布、代表案例、完整档案、JSON-LD 和 OG 图计数的单一数据源；`scripts/build_v11.py` 生成首页、隐私页和共享资产。
+- **信息架构**：唯一身份为 `ZF WANG / ONE-PERSON PRODUCT STUDIO`，首页顺序为身份 → 最近发布 → 代表案例 → 合作入口 → 方法 → 完整档案 → 关于 → 联系；默认档案交互态展示 9 条，无 JS 时 33 条全部可读。
+- **渐进增强**：筛选/搜索/展开与复制控件默认原生 `hidden`，仅在各自 DOM 完整并完成事件绑定后显示；JS 失败时不出现假按钮。
+- **公开边界**：`scripts/prepare_public_artifact.py` 从全新目录生成 strict allowlist，拒绝 symlink；公开文件仅含两页 HTML、favicon、共享 CSS/JS/字体/OG/微信二维码和 33 张编号项目 WebP，不含源码、测试、数据、控制文档或 `.hermes/`。
+- **发布闸门**：PR 与 main 都运行确定性构建漂移检查、pytest、Node 交互、Python compile、八宽度 Chromium、no-JS/reduced-motion/键盘/隐私 skip-link 和 exact artifact 验收；只有 `push main` 全绿后才有 deploy 权限。
+- **授权状态**：只允许冻结本地候选与预览证据；在子凡明确说“可以上线”前不得推送、合并或部署。
+- **冻结证据**：exact public artifact 为 41 文件，SHA-256 `cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`；20 项 pytest、Node 交互、compile、diff check、八宽度 Chromium、no-JS/reduced-motion 和五张截图目检全绿。只读本地副本位于 `/root/local-previews/wangzifan-store/v11-cf62d271/`。
+- **历史版本**：下方 v9、v8、v6 等段落仅为生产演进记录；对应旧装配和旧验收脚本已在 V11 清理，不是当前运行入口。
+
 ## v9 改版：设计 token 统一 + 移动健康（2026-08-25）
 
 方案 A（子凡选定并确认）：不换 v8 骨架，纯做协调统一——圆角/色系/字重/间距 token 化，消除 v2→v8 叠加残留。

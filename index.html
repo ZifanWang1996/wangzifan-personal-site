@@ -2,1622 +2,412 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="王子凡的 OPC 创业主页：把机会做成真实产品，用持续上线与用户反馈推动下一轮增长。">
-  <meta name="theme-color" content="#faf9f5">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f0ea">
+  <title>王子凡（ZF Wang）— 一人产品工作室</title>
+  <meta name="description" content="王子凡（ZF Wang）的一人产品工作室：把具体问题做成真正能用、可公开验证的产品。">
+  <link rel="canonical" href="https://wangzifan.store/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="王子凡（ZF Wang）— 一人产品工作室">
+  <meta property="og:description" content="一个人，把具体问题做成真正能用的产品。">
+  <meta property="og:url" content="https://wangzifan.store/">
+  <meta property="og:image" content="https://wangzifan.store/assets/og-card.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ZF Wang 一人产品工作室发布档案分享图">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="王子凡（ZF Wang）— 一人产品工作室">
+  <meta name="twitter:description" content="一个人，把具体问题做成真正能用的产品。">
+  <meta name="twitter:image" content="https://wangzifan.store/assets/og-card.webp">
+  <meta name="twitter:image:alt" content="ZF Wang 一人产品工作室发布档案分享图">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
   <script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>
-  <title>王子凡 ZF Wang — OPC 创业与全球产品</title>
-  <style>
-@font-face{font-family:Archivo;font-style:normal;font-weight:100 900;font-stretch:75% 125%;font-display:swap;src:url('assets/archivo.woff2')}
-:root{
-  --ink:#f7f3e8;--ink2:#f0ebdb;--ink3:#e9e3d0;
-  --paper:#fbf7ec;--paper2:#f3eede;
-  --text:#191510;--muted:#57534a;--dim:#7a766b;
-  --line:rgba(23,19,16,.16);--line2:rgba(23,19,16,.08);
-  --flame:var(--db-or);--flame2:var(--db-amber);--flame-tint:rgba(255,77,0,.08);
-  --lime:var(--db-amber);--lime-soft:rgba(224,68,0,.9);--lime-tint:rgba(245,184,0,.09);
-  --electric:var(--db-or);
-  --green:var(--db-green);--cyan:var(--db-or);
-  --mx:72%;--my:16%;
-  --sans:Archivo,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:var(--ink);color-scheme:dark}
-body{min-height:100vh;background:var(--ink);color:var(--text);font-family:var(--sans);font-feature-settings:normal;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(680px circle at var(--mx) var(--my),rgba(255,75,31,.11),transparent 62%),radial-gradient(760px circle at 4% 106%,rgba(245,184,0,.055),transparent 60%),radial-gradient(560px circle at 96% 88%,rgba(63,216,255,.05),transparent 62%)}
-
-::selection{background:var(--lime);color:#14140a}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit}
-.skip-link{position:fixed;left:14px;top:14px;z-index:100;padding:12px 16px;border-radius:10px;background:var(--lime);color:#14140a;font-weight:700;transform:translateY(-180%)}
-.skip-link:focus{transform:none}
-.shell{width:min(1240px,calc(100% - 48px));margin-inline:auto}
-
-.nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:10}
-.brand{display:flex;align-items:center;gap:13px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-stretch:110%;white-space:nowrap}
-.brand-mark{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:linear-gradient(135deg,var(--db-amber),var(--db-or));color:#0a0a0d;font:800 12px var(--sans);font-stretch:110%;box-shadow:0 0 26px rgba(245,184,0,.38)}
-.brand small{display:block;color:var(--dim);font:500 9px var(--mono);letter-spacing:.18em;margin-top:3px;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:30px;color:#b6b4ac;font-size:13px}
-.nav-links>a{position:relative;padding:6px 0}
-.nav-links>a:after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:linear-gradient(90deg,var(--lime),var(--electric));transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.nav-links>a:hover{color:#fff}
-.nav-links>a:hover:after{transform:scaleX(1)}
-.nav-command{min-height:44px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(244,242,236,.03);padding:9px 14px;border-radius:10px;cursor:pointer;font:500 11px var(--mono);color:#dedcd4;transition:border-color .25s,background .25s,color .25s}
-.nav-command:hover,.nav-command:focus-visible{border-color:rgba(245,184,0,.6);background:rgba(245,184,0,.08);color:#fff}
-
-.hero{min-height:calc(100vh - 78px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(380px,.85fr);align-items:center;gap:64px;padding:72px 0 80px;position:relative}
-.hero-copy,.shipping-engine{min-width:0}
-.hero-badge{position:absolute;right:-16px;top:34px;width:118px;height:118px;z-index:3;animation:spin 26s linear infinite;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
-.hero-badge svg{width:100%;height:100%;display:block}
-.hero-badge text{font:600 9.5px var(--mono);letter-spacing:2.2px;fill:#c9c7bf;text-transform:uppercase}
-.hero-badge .core{fill:var(--lime)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.eyebrow{display:flex;align-items:center;gap:10px;color:#c4c2ba;font:600 11px var(--mono);letter-spacing:.16em;text-transform:uppercase}
-.pulse{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(245,184,0,.12),0 0 18px rgba(245,184,0,.6);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(245,184,0,.05),0 0 26px rgba(245,184,0,.85)}}
-h1{font-size:clamp(58px,6.4vw,96px);font-weight:800;line-height:1.02;letter-spacing:-.045em;margin:30px 0 32px;max-width:820px}
-h1 span{display:block}
-.gradient-word{background:linear-gradient(92deg,var(--db-or) 6%,var(--db-amber) 48%,#ffd76a 78%,var(--db-or));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{font-size:18px;line-height:1.8;color:#a8a69e;max-width:640px}
-.lede strong{color:#f0eee7;font-weight:600}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
-.btn{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.01em;transition:transform .25s,border-color .25s,background .25s,box-shadow .25s,color .25s}
-.btn-primary{background:var(--lime);color:#14140a;border-color:var(--lime);box-shadow:0 10px 34px rgba(245,184,0,.25)}
-.btn-primary:hover{transform:translateY(-2px);background:#ffd76a;box-shadow:0 16px 44px rgba(245,184,0,.4)}
-.btn-ghost{background:transparent;color:#dedcd4}
-.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(244,242,236,.4);background:rgba(244,242,236,.05)}
-.hero-credo{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:36px;color:#8a887f;font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
-.hero-credo i{width:4px;height:4px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
-
-.shipping-engine{border:1px solid var(--line);border-radius:20px;background:linear-gradient(160deg,rgba(245,184,0,.05),rgba(244,242,236,.012) 52%,rgba(255,75,31,.06));box-shadow:0 40px 120px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.06);overflow:hidden;position:relative}
-.shipping-engine:before{content:"";position:absolute;width:330px;height:330px;right:-115px;top:-130px;background:radial-gradient(circle,rgba(255,75,31,.26),transparent 68%);filter:blur(8px)}
-.engine-head{height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);font:600 10px var(--mono);color:#8f8d85;text-transform:uppercase;letter-spacing:.14em}
-.engine-status{display:flex;align-items:center;gap:8px;color:var(--lime)}
-.engine-status i{width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}
-.engine-body{padding:20px}
-.engine-stage{min-height:252px;border:1px solid var(--line2);border-radius:14px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding:26px;background:radial-gradient(circle at 78% 16%,rgba(255,75,31,.12),transparent 40%),linear-gradient(160deg,rgba(244,242,236,.03),rgba(244,242,236,.005))}
-.engine-stage:before{content:"";position:absolute;width:270px;height:270px;right:-70px;top:-90px;border:1px solid rgba(255,75,31,.25);border-radius:50%;box-shadow:0 0 0 32px rgba(255,75,31,.04),0 0 0 66px rgba(255,75,31,.02)}
-.engine-stage:after{content:"";position:absolute;width:9px;height:9px;right:96px;top:56px;border-radius:50%;background:var(--flame);box-shadow:0 0 18px var(--flame);animation:float 4s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(10px) scale(.78)}}
-.engine-stage strong{position:relative;z-index:2;font-size:clamp(54px,5vw,72px);line-height:.8;letter-spacing:-.02em;font-weight:800;font-stretch:118%;text-transform:uppercase}
-.engine-stage strong em{display:block;font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--lime);margin-left:.4em}
-.engine-stage p{position:relative;z-index:2;margin-top:26px;color:#94928a;font-size:12px;line-height:1.75;max-width:300px}
-.engine-loop{display:grid;grid-template-columns:repeat(4,1fr);margin-top:12px;border:1px solid var(--line2);border-radius:12px;overflow:hidden}
-.engine-loop span{min-width:0;padding:14px 6px;text-align:center;border-right:1px solid var(--line2);font:600 9px var(--mono);color:#8f8d85;letter-spacing:.1em;text-transform:uppercase;position:relative}
-.engine-loop span:last-child{border:0}
-.engine-loop span:after{content:"→";position:absolute;right:-5px;color:var(--lime);z-index:2}
-.engine-loop span:last-child:after{display:none}
-.engine-log{margin-top:12px;padding:13px 15px;border-radius:10px;background:#0b0b0f;color:#84827a;font:500 10px/1.8 var(--mono)}
-.engine-log .ok{color:var(--lime)}
-.engine-log .run{color:var(--electric)}
-
-.band{background:linear-gradient(92deg,var(--flame) 4%,#ff9a2d 46%,var(--lime) 96%);color:#170c07;overflow:hidden}
-.band-track{display:flex;width:max-content;animation:bandmove 32s linear infinite}
-.band-set{display:flex;align-items:center;gap:40px;padding:14px 40px 14px 0;font-family:var(--sans);font-stretch:120%;font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
-.band-set i{font-style:normal;font-size:13px;opacity:.72}
-@keyframes bandmove{to{transform:translateX(-50%)}}
-.band:hover .band-track{animation-play-state:paused}
-.band.ghost{background:transparent;border-block:1px solid var(--line)}
-.band.ghost .band-set{color:transparent;-webkit-text-stroke:1px rgba(244,242,236,.5)}
-.band.ghost .band-set i{color:var(--lime);-webkit-text-stroke:0;opacity:1}
-.band.ghost .band-track{animation-direction:reverse}
-
-.section{padding:128px 0;border-bottom:1px solid var(--line2);position:relative}
-.section-top{display:flex;align-items:end;justify-content:space-between;gap:44px;margin-bottom:48px}
-.kicker{display:flex;align-items:center;gap:10px;font:600 10px var(--mono);color:#8f8d85;letter-spacing:.18em;text-transform:uppercase}
-.kicker:before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--db-or),var(--db-amber));flex:none}
-.section h2{font-size:clamp(42px,5vw,70px);line-height:1.04;letter-spacing:-.04em;font-weight:800;margin-top:16px}
-.mobile-break{display:none}
-.section-copy{color:#9d9b93;max-width:445px;line-height:1.85;font-size:14px}
-.section-copy strong{color:#e8e6df;font-weight:600}
-.release-rally{min-height:190px;border:1px solid rgba(245,184,0,.28);border-radius:20px;padding:34px 38px;margin:52px 0 64px;display:grid;grid-template-columns:1fr auto;align-content:space-between;gap:34px;position:relative;overflow:hidden;background:radial-gradient(460px circle at 90% 20%,rgba(255,75,31,.2),transparent 66%),linear-gradient(120deg,rgba(245,184,0,.06),rgba(244,242,236,.02))}
-.release-rally:before{content:"SHIP";position:absolute;right:-16px;bottom:-72px;font-family:var(--sans);font-stretch:120%;font-size:210px;font-weight:800;letter-spacing:-.06em;color:rgba(255,75,31,.07);text-transform:uppercase}
-.release-rally small{font:600 9px var(--mono);color:#a09e96;letter-spacing:.16em;text-transform:uppercase;position:relative;z-index:2}
-.release-rally strong{font-size:clamp(29px,3.5vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.12;max-width:850px;position:relative;z-index:2}
-.release-rally strong em{font-style:normal;background:linear-gradient(92deg,var(--flame),var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent}
-.release-rally span{align-self:end;color:#8f8d85;font:600 9px var(--mono);letter-spacing:.12em;white-space:nowrap;position:relative;z-index:2}
-.subhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin:0 0 22px}
-.subhead h3{font-size:28px;letter-spacing:-.03em;margin-top:12px;font-weight:800}
-.subhead p{font:600 10px var(--mono);color:#83817a;text-transform:uppercase;letter-spacing:.14em}
-
-.release-ledger{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(244,242,236,.015);box-shadow:0 30px 90px rgba(0,0,0,.22)}
-.filters-wrap{position:sticky;top:10px;z-index:8;background:rgba(10,10,13,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter{min-height:44px;border:1px solid var(--line2);background:rgba(244,242,236,.02);color:#8f8d85;border-radius:999px;padding:9px 16px;cursor:pointer;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;transition:color .22s,border-color .22s,background .22s,box-shadow .22s}
-.filter:hover{color:#fff;border-color:rgba(245,184,0,.5)}
-.filter.active,.filter[aria-pressed="true"]{color:#14140a;background:var(--lime);border-color:var(--lime);box-shadow:0 6px 22px rgba(245,184,0,.28)}
-.visible-count{white-space:nowrap;color:#77756d;font:600 9px var(--mono);padding-right:7px;letter-spacing:.12em}
-.sites{display:grid;grid-template-columns:minmax(0,1fr)}
-.site{min-width:0;min-height:168px;display:grid;grid-template-columns:minmax(0,1fr) 138px;align-items:center;gap:30px;padding:28px 30px;border-bottom:1px solid var(--line2);position:relative;transition:background .3s}
-.site:last-child{border-bottom:0}
-.site:before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;border-radius:0 2px 2px 0;background:linear-gradient(var(--lime),var(--electric));opacity:0;transform:scaleY(.4);transition:opacity .3s,transform .3s}
-.site:hover{background:linear-gradient(90deg,rgba(245,184,0,.05),rgba(244,242,236,.012))}
-.site:hover:before{opacity:1;transform:none}
-.site.hide{display:none}
-.site>div{min-width:0;display:grid;grid-template-columns:176px 150px minmax(0,.78fr) minmax(0,1.1fr);align-items:center;gap:30px}
-.site-category{grid-column:2;grid-row:1;color:#ff8b61;font:600 9px var(--mono);text-transform:uppercase;letter-spacing:.16em;margin-bottom:10px}
-.site-meta{grid-column:2;grid-row:2;display:flex;flex-direction:column;gap:5px;color:#75736c;font:500 9px/1.5 var(--mono)}
-.site-meta span:first-child{color:var(--lime)}
-.site h3{grid-column:3;grid-row:1/3;font-size:clamp(25px,8vw,28px);line-height:1.05;letter-spacing:-.03em;font-weight:800;overflow-wrap:anywhere;word-break:break-word}
-.site p{grid-column:4;grid-row:1/3;color:#94928a;font-size:13px;line-height:1.75}
-.site-link{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border:1px solid var(--line);border-radius:999px;color:#e6e4dc;font:700 10px var(--mono);letter-spacing:.04em;white-space:nowrap;transition:background .25s,color .25s,border-color .25s,transform .25s,box-shadow .25s}
-.site-link:hover,.site-link:focus-visible{background:var(--lime);color:#14140a;border-color:var(--lime);transform:translateX(3px);box-shadow:0 8px 26px rgba(245,184,0,.3)}
-
-.system-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(244,242,236,.015)}
-.system-step{min-height:330px;padding:28px;border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;transition:background .3s}
-.system-step:last-child{border:0}
-.system-step:hover{background:var(--lime-tint)}
-.step-num{font:600 10px var(--mono);color:#83817a;letter-spacing:.14em}
-.step-orb{margin:44px 0 26px;font-family:var(--sans);font-stretch:120%;font-size:64px;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--flame);transition:color .3s}
-.system-step:nth-child(2) .step-orb{-webkit-text-stroke-color:var(--lime)}
-.system-step:nth-child(3) .step-orb{-webkit-text-stroke-color:var(--electric)}
-.system-step:hover .step-orb{-webkit-text-stroke-width:0}
-.system-step:nth-child(1):hover .step-orb{color:var(--flame)}
-.system-step:nth-child(2):hover .step-orb{color:var(--lime)}
-.system-step:nth-child(3):hover .step-orb{color:var(--electric)}
-.system-step:nth-child(4):hover .step-orb{color:var(--flame)}
-.system-step h3{font-size:26px;letter-spacing:-.02em;font-weight:800}
-.system-step p{color:#94928a;font-size:13px;line-height:1.8;margin-top:14px}
-.system-step:after{content:"→";position:absolute;right:-10px;top:88px;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--flame);display:grid;place-items:center;font:700 11px var(--mono);z-index:2;box-shadow:0 0 0 1px var(--line)}
-.system-step:last-child:after{display:none}
-.system-log{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:#0c0c10;padding:24px;display:grid;grid-template-columns:1fr auto;gap:20px;font:500 11px/1.9 var(--mono);color:#84827a}
-.system-log .ok{color:var(--lime)}
-.system-log .run{color:var(--electric)}
-.system-status{align-self:center;color:var(--lime);border:1px solid rgba(245,184,0,.3);border-radius:999px;padding:8px 14px;font-size:9px;white-space:nowrap;letter-spacing:.14em}
-
-.paper-zone{background:var(--paper);color:#171310;overflow:hidden}
-.paper-zone .section{border-bottom:0;padding:120px 0 128px}
-.paper-zone .kicker{color:#7a766b}
-.manifesto{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:end;padding:26px 0 6px}
-.manifesto:before{content:"SHIP.";position:absolute;right:-42px;top:-96px;font-family:var(--sans);font-stretch:120%;font-size:300px;font-weight:800;letter-spacing:-.06em;text-transform:uppercase;color:rgba(23,19,16,.05)}
-.manifesto-copy{position:relative;z-index:2}
-.manifesto h2{font-size:clamp(52px,6.5vw,92px);line-height:1.02;letter-spacing:-.045em;font-weight:800;margin-top:22px;max-width:850px;color:#171310}
-.manifesto h2 em{font-style:normal;color:var(--flame)}
-.manifesto p{color:#57534a;line-height:1.9;margin-top:28px;max-width:700px}
-.manifesto-principles{position:relative;z-index:2;display:grid;counter-reset:pr}
-.manifesto-principles div{padding:20px 0;border-bottom:1px solid rgba(23,19,16,.14);display:flex;justify-content:space-between;gap:24px;font-size:14px;counter-increment:pr}
-.manifesto-principles div:first-child{border-top:1px solid rgba(23,19,16,.14)}
-.manifesto-principles b{color:#171310;font-weight:800;letter-spacing:-.01em}
-.manifesto-principles b:before{content:"0" counter(pr) " /";color:var(--flame);font:700 11px var(--mono);margin-right:9px}
-.manifesto-principles span{font:500 10px var(--mono);color:#5f5b52;text-align:right}
-
-.contact-card{border:1px solid var(--line);border-radius:22px;min-height:420px;display:grid;grid-template-columns:1.3fr .7fr;overflow:hidden;background:linear-gradient(150deg,rgba(255,75,31,.08),rgba(244,242,236,.015) 46%)}
-.contact-main{padding:60px}
-.contact-main h2{font-size:clamp(48px,5.8vw,82px);line-height:1.03;letter-spacing:-.04em;font-weight:800;max-width:790px}
-.contact-main h2 span{display:block}
-.contact-main p{color:#9d9b93;line-height:1.85;margin-top:26px;max-width:620px}
-.contact-fire{display:inline-flex;align-items:center;gap:9px;margin-top:30px;color:#e6e4dc;font:600 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
-.contact-fire i{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime)}
-.contact-side{border-left:1px solid var(--line);padding:40px;background:rgba(10,10,13,.55);display:flex;flex-direction:column;justify-content:space-between;gap:34px}
-.contact-side small{font:600 9px var(--mono);color:#83817a;text-transform:uppercase;letter-spacing:.18em}
-.wechat{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-top:12px;overflow-wrap:anywhere}
-.copy-status{min-height:24px;color:var(--lime);font:500 10px var(--mono);margin-top:10px}
-.contact-actions{display:grid;gap:12px}
-.copy-btn{width:100%}
-.contact-note{color:#8f8d85;font-size:12px;line-height:1.75}
-.qr-card{margin:14px 0 0;background:#f6fafa;padding:10px;border-radius:12px;max-width:min(212px,100%)}
-.qr-card img{width:100%;height:auto;display:block;border-radius:6px}
-.qr-card figcaption{color:#57534a;font:600 9px var(--mono);letter-spacing:.14em;text-align:center;margin-top:8px;text-transform:uppercase}
-
-.footer{padding:34px 0 54px;display:flex;justify-content:space-between;gap:20px;color:#71706a;font:500 9px var(--mono);text-transform:uppercase;letter-spacing:.12em}
-.footer nav{display:flex;gap:20px;flex-wrap:wrap}
-.footer a{transition:color .2s}
-.footer a:hover{color:var(--lime)}
-
-.modal{position:fixed;inset:0;background:rgba(6,6,9,.78);backdrop-filter:blur(14px);display:none;place-items:center;z-index:30;padding:20px}
-.modal.open{display:grid}
-.palette{width:min(620px,100%);border:1px solid rgba(244,242,236,.16);border-radius:18px;background:#121218;box-shadow:0 40px 120px rgba(0,0,0,.6);overflow:hidden}
-.palette-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:#8f8d85;font:500 10px var(--mono);letter-spacing:.08em}
-.palette-close{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;color:#e6e4dc;font-size:16px;transition:border-color .2s,color .2s}
-.palette-close:hover{border-color:var(--lime);color:var(--lime)}
-.palette-list{padding:8px}
-.palette-list a{min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-radius:10px;color:#cfcdc5;font-size:13px;transition:background .18s,color .18s}
-.palette-list a:hover,.palette-list a:focus-visible{background:rgba(245,184,0,.12);color:#fff}
-.palette-list kbd{font:600 9px var(--mono);color:#83817a;border:1px solid var(--line);padding:4px 8px;border-radius:5px}
-:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
-
-html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.19,.7,.22,1)}
-html.js .reveal.in{opacity:1;transform:none}
-
-@media(max-width:1040px){
-  .hero{grid-template-columns:minmax(0,1fr);padding-top:76px;min-height:auto;gap:52px}
-  .hero-copy{max-width:800px}
-  .shipping-engine{max-width:720px}
-  .hero-badge{display:none}
-  .section-top{align-items:start;flex-direction:column}
-  .section-copy{max-width:700px}
-  .site{grid-template-columns:minmax(0,1fr) 126px;gap:20px}
-  .site>div{grid-template-columns:128px minmax(190px,.78fr) minmax(220px,1fr);gap:24px}
-  .system-grid{grid-template-columns:1fr 1fr}
-  .system-step:nth-child(2){border-right:0}
-  .system-step:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .system-step:nth-child(2):after{display:none}
-  .manifesto{grid-template-columns:1fr;gap:38px}
-  .contact-card{grid-template-columns:1fr}
-  .contact-side{border-left:0;border-top:1px solid var(--line)}
-}
-@media(max-width:800px){
-  .site{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:26px 24px}
-  .site>div{grid-template-columns:110px minmax(170px,.8fr) minmax(0,1fr);gap:18px}
-  .site-link{align-self:flex-end}
-  .subhead{align-items:start;flex-direction:column}
-}
-@media(max-width:700px){
-  .shell{width:calc(100% - 28px)}
-  .nav{height:66px}
-  .brand small,.nav-links>a{display:none}
-  .nav-links{gap:0}
-  .nav-command{font-size:10px}
-  .hero{padding:58px 0 70px;gap:44px}
-  h1{font-size:46px;line-height:1.04;margin:24px 0}
-  .lede{font-size:16px;line-height:1.75}
-  .hero-actions{flex-direction:column;align-items:stretch}
-  .hero-credo{display:grid;grid-template-columns:auto 1fr;gap:9px 10px}
-  .hero-credo i{display:none}
-  .engine-body{padding:14px}
-  .engine-stage{min-height:225px;padding:22px}
-  .engine-stage strong{font-size:58px}
-  .engine-loop{grid-template-columns:1fr 1fr}
-  .engine-loop span:nth-child(2){border-right:0}
-  .engine-loop span:nth-child(-n+2){border-bottom:1px solid var(--line2)}
-  .engine-loop span:nth-child(2):after{display:none}
-  .section{padding:90px 0}
-  .section h2{font-size:40px}
-  .mobile-break{display:inline}
-  .release-rally{padding:28px 24px;margin:40px 0 52px;min-height:230px;grid-template-columns:1fr}
-  .release-rally strong{font-size:31px}
-  .release-rally span{justify-self:start}
-  .band-set{font-size:13px;gap:28px;padding-right:28px}
-  .paper-zone .section{padding:88px 0 94px}
-  .subhead{margin:44px 0 20px}
-  .release-ledger{border-radius:14px}
-  .filters-wrap{position:static;align-items:stretch;flex-direction:column}
-  .filters{display:grid;grid-template-columns:1fr 1fr}
-  .filter{text-align:left}
-  .visible-count{padding:0 4px 4px}
-  .site{min-height:0;padding:24px 20px}
-  .site>div{display:block}
-  .site-category{margin-bottom:9px}
-  .site-meta{display:flex;flex-direction:row;justify-content:space-between;gap:18px}
-  .site-category,.site-meta{font-size:11px}
-  .site h3{margin:20px 0 12px}
-  .site p{font-size:13px}
-  .site-link{align-self:stretch;font-size:12px}
-  .system-grid{grid-template-columns:minmax(0,1fr)}
-  .system-step{min-height:260px;border-right:0;border-bottom:1px solid var(--line)}
-  .system-step:nth-child(2){border-bottom:1px solid var(--line)}
-  .system-step:after{display:none}
-  .step-orb{margin:30px 0 20px;font-size:52px}
-  .system-log{grid-template-columns:1fr}
-  .system-status{justify-self:start}
-  .manifesto{padding:6px 0 0}
-  .manifesto h2{font-size:48px}
-  .manifesto:before{font-size:180px;right:-24px;top:-58px}
-  .contact-main,.contact-side{padding:32px}
-  .contact-main h2{font-size:44px}
-  .footer{align-items:flex-start;flex-direction:column}
-}
-@media(max-width:360px){
-  .brand{font-size:14px;gap:8px}
-  .brand-mark{width:28px;height:28px}
-  .nav-command{padding:8px 9px;font-size:9px}
-  .site-meta{display:grid;grid-template-columns:1fr auto;gap:5px 12px}
-  .site-meta span:first-child,.site-date{white-space:nowrap}
-  .site-meta span:nth-child(2){grid-column:1/-1;grid-row:2}
-  .site-date{grid-column:2;grid-row:1}
-  h1{font-size:38px}
-  .engine-stage strong{font-size:50px}
-  .section h2{font-size:37px}
-  .release-rally strong{font-size:28px}
-  .band-set{font-size:12px}
-  .manifesto h2{font-size:41px}
-  .contact-main,.contact-side{padding:26px}
-  .contact-main h2{font-size:36px}
-}
-@media(max-width:700px) and (max-height:380px){.filters-wrap{position:static}}
-@media(prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
-  html.js .reveal{opacity:1;transform:none}
-}
-
-  
-/* ---- v2: product card thumbnails / badges / dates ---- */
-.site>div{perspective:900px}
-.site-shot{grid-column:1;grid-row:1/3;position:relative;margin:0;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:8/5;background:#0b0b0f;transform-style:preserve-3d;transition:border-color .3s,transform .18s ease-out}
-.site:hover .site-shot{border-color:rgba(245,184,0,.45)}
-.site-shot img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92);transition:filter .4s}
-.site:hover .site-shot img{filter:saturate(1.08)}
-.site-shot:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(244,242,236,.16) 47%,transparent 62%);transform:translateX(-130%);pointer-events:none}
-.site:hover .site-shot:after{animation:sheen .9s ease forwards}
-@keyframes sheen{to{transform:translateX(130%)}}
-.site-badge{position:absolute;left:8px;top:8px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:rgba(8,8,10,.74);backdrop-filter:blur(6px);border:1px solid rgba(245,184,0,.42);color:var(--lime);font:700 8px var(--mono);letter-spacing:.16em}
-.site-badge i{width:4px;height:4px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pulse 2.4s ease-in-out infinite}
-.site-date{color:#605f59;letter-spacing:.06em}
-@media(max-width:1040px){
-  .site>div{grid-template-columns:158px 128px minmax(168px,.72fr) minmax(196px,1fr);gap:24px}
-}
-@media(max-width:700px){
-  .site-shot{width:100%;aspect-ratio:21/9;border-radius:10px;margin-bottom:2px}
-}
-
-/* ---- v2: shipping timeline ---- */
-.tl-rail-wrap{position:relative;margin-top:10px}
-.tl-rail-wrap:before,.tl-rail-wrap:after{content:"";position:absolute;top:0;bottom:0;width:56px;z-index:2;pointer-events:none}
-.tl-rail-wrap:before{left:-2px;background:linear-gradient(90deg,var(--ink),transparent)}
-.tl-rail-wrap:after{right:-2px;background:linear-gradient(-90deg,var(--ink),transparent)}
-.tl-rail{display:flex;gap:14px;overflow-x:auto;padding:34px 4px 26px;scroll-snap-type:x proximity;position:relative;scrollbar-width:thin;scrollbar-color:rgba(245,184,0,.35) transparent}
-.tl-rail:before{content:"";position:absolute;left:0;right:0;top:18px;height:2px;background:linear-gradient(90deg,var(--flame),var(--lime) 52%,var(--electric));opacity:.65}
-.tl-item{scroll-snap-align:start;flex:0 0 auto;width:198px;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;background:rgba(244,242,236,.022);position:relative;transition:border-color .3s,background .3s,transform .3s}
-.tl-item:hover{border-color:rgba(245,184,0,.5);background:rgba(245,184,0,.05);transform:translateY(-3px)}
-.tl-item:before{content:"";position:absolute;left:18px;top:-22px;width:9px;height:9px;border-radius:50%;background:var(--ink);border:2px solid var(--lime);box-shadow:0 0 10px rgba(245,184,0,.55)}
-.tl-item.latest{border-color:rgba(245,184,0,.55);box-shadow:0 0 36px rgba(245,184,0,.13)}
-.tl-item.latest:before{background:var(--lime)}
-.tl-date{font:700 11px var(--mono);color:var(--lime);letter-spacing:.1em}
-.tl-names{margin-top:10px;display:grid;gap:6px}
-.tl-names span{font-size:13px;font-weight:700;color:#e8e6df;line-height:1.35}
-.tl-count{font:600 9px var(--mono);color:#83817a;margin-top:11px;letter-spacing:.14em;text-transform:uppercase}
-
-/* ---- v2: terminal changelog ---- */
-.changelog{margin-top:18px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0b0b0f;box-shadow:0 26px 70px rgba(0,0,0,.3)}
-.chrome{height:40px;display:flex;align-items:center;gap:7px;padding:0 15px;border-bottom:1px solid var(--line);font:500 10px var(--mono);color:#83817a;letter-spacing:.06em}
-.chrome i{width:9px;height:9px;border-radius:50%;margin-right:1px}
-.chrome i:nth-child(1){background:#ff5f57}
-.chrome i:nth-child(2){background:#febc2e}
-.chrome i:nth-child(3){background:#28c840}
-.chrome span{margin-left:10px}
-.log-body{padding:16px 16px 18px;font:500 10.5px/2 var(--mono);max-height:430px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(245,184,0,.3) transparent}
-.log-line{display:flex;gap:12px;white-space:nowrap}
-.log-d{color:#5f5e58}
-.log-ok{color:var(--lime)}
-.log-u{color:var(--electric)}
-.log-n{color:#cfcdc5}
-.prompt-line{color:#83817a;margin-bottom:8px}
-.prompt-line b{color:var(--lime);font-weight:600}
-
-
-/* ---- v3: cream editorial light theme (dark terminal anchors kept) ---- */
-html{color-scheme:light}
-body:before{background:radial-gradient(680px circle at var(--mx) var(--my),rgba(232,64,26,.075),transparent 62%),radial-gradient(760px circle at 4% 106%,rgba(245,184,0,.06),transparent 60%),radial-gradient(560px circle at 96% 88%,rgba(245,184,0,.05),transparent 62%)}
-
-:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
-
-/* nav */
-.nav-links{color:#57534a}
-.nav-links>a:hover{color:var(--flame)}
-.nav-command{border-color:rgba(23,19,16,.2);background:rgba(23,19,16,.03);color:#3d3a33}
-.nav-command:hover,.nav-command:focus-visible{border-color:rgba(245,184,0,.6);background:rgba(245,184,0,.3);color:#191510}
-
-/* hero */
-.hero-badge text{fill:#7a766b}
-.eyebrow{color:#6b675e}
-.gradient-word{background:linear-gradient(92deg,var(--db-or) 8%,var(--db-amber) 48%,#ffd76a 82%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lede{color:#57534a}
-.lede strong{color:#191510}
-.btn-primary{box-shadow:0 10px 30px rgba(232,64,26,.2)}
-.btn-ghost{color:#3d3a33}
-.btn-ghost:hover{border-color:rgba(23,19,16,.4);background:rgba(23,19,16,.05)}
-.hero-credo{color:#7a766b}
-
-/* dark terminal anchors: re-scope border vars to light-on-dark */
-.shipping-engine,.system-log,.changelog,.palette{--line:rgba(244,242,236,.13);--line2:rgba(244,242,236,.08)}
-.shipping-engine{background:linear-gradient(160deg,#1a1a24,#12121a 52%,#1d1613);border-color:rgba(23,19,16,.4);color:#f4f2ec}
-.engine-stage strong{color:#f4f2ec}
-
-/* bands */
-.band.ghost .band-set{color:transparent;-webkit-text-stroke:1px rgba(23,19,16,.38)}
-.band.ghost .band-set i{color:var(--flame);-webkit-text-stroke:0}
-
-/* sections */
-.kicker{color:#6b675e}
-.section-copy{color:#57534a}
-.section-copy strong{color:#191510}
-
-/* release rally */
-.release-rally{border-color:rgba(245,184,0,.4);background:radial-gradient(460px circle at 90% 20%,rgba(232,64,26,.16),transparent 66%),linear-gradient(120deg,rgba(245,184,0,.22),rgba(255,253,244,.5))}
-.release-rally:before{color:rgba(232,64,26,.1)}
-.release-rally small{color:#7a766b}
-.release-rally strong em{background:linear-gradient(92deg,var(--db-or),var(--db-amber));-webkit-background-clip:text;background-clip:text;color:transparent}
-.release-rally span{color:#7a766b}
-
-/* ledger */
-.release-ledger{background:#fffdf4;box-shadow:0 24px 70px rgba(23,19,16,.09)}
-.filters-wrap{background:rgba(247,243,232,.92)}
-.filter{background:rgba(23,19,16,.03);color:#57534a}
-.filter:hover{color:#191510;border-color:rgba(245,184,0,.55)}
-.visible-count{color:#8a887f}
-.site:hover{background:linear-gradient(90deg,rgba(245,184,0,.06),rgba(23,19,16,.015))}
-.site-category{color:#d63d12}
-.site-meta{color:#7a766b}
-.site-meta span:first-child{color:var(--db-or)}
-.site p{color:#57534a}
-.site-link{color:#191510}
-.site-date{color:#8a887f}
-.site-shot{background:#e9e3d3;border-color:rgba(23,19,16,.14)}
-.site:hover .site-shot{border-color:rgba(245,184,0,.55)}
-
-/* timeline */
-.tl-item{background:#fffdf4}
-.tl-item:hover{background:rgba(245,184,0,.18);border-color:rgba(245,184,0,.5)}
-.tl-item:before{border-color:var(--db-amber)}
-.tl-item.latest{border-color:rgba(245,184,0,.6);box-shadow:0 0 30px rgba(245,184,0,.12)}
-.tl-item.latest:before{background:var(--db-or)}
-.tl-date{color:var(--db-or)}
-.tl-names span{color:#191510}
-.tl-count{color:#6b675e}
-.tl-rail{scrollbar-color:rgba(245,184,0,.4) transparent}
-
-/* system */
-.system-grid{background:#fffdf4}
-.system-step p{color:#57534a}
-.system-step:hover{background:rgba(245,184,0,.16)}
-.system-log{box-shadow:0 18px 50px rgba(23,19,16,.12)}
-.system-status{color:var(--db-or);border-color:rgba(245,184,0,.45)}
-
-/* contact */
-.contact-card{background:linear-gradient(150deg,rgba(232,64,26,.09),rgba(255,253,244,.4) 46%);box-shadow:0 24px 70px rgba(23,19,16,.08)}
-.contact-main p{color:#57534a}
-.contact-fire{color:#191510}
-.contact-side{background:rgba(23,19,16,.035)}
-.contact-note{color:#57534a}
-.copy-status{color:#4a6b00}
-
-/* footer */
-.footer{color:#7a766b}
-.footer a:hover{color:var(--flame)}
-
-/* changelog stays dark; soften outer shadow for light page */
-.changelog{box-shadow:0 22px 60px rgba(23,19,16,.16)}
-
-/* cursor glow reads as warm sunlight on cream */
-.glow-dot{background:radial-gradient(circle,rgba(232,64,26,.11),rgba(245,184,0,.07) 46%,transparent 70%);mix-blend-mode:multiply}
-
-/* v4: filter count chips via ::after (button text stays clean) + ledger chip */
-.filter:after{content:attr(data-count);display:inline-block;margin-left:7px;padding:2px 7px;border-radius:999px;border:1px solid rgba(23,19,16,.18);color:#8a887f;font:700 9px var(--mono);letter-spacing:.04em;transition:inherit}
-.filter:hover:after{border-color:rgba(245,184,0,.55);color:#57534a}
-.filter.active:after,.filter[aria-pressed="true"]:after{background:rgba(20,20,10,.14);border-color:transparent;color:#14140a}
-.ledger-count{display:inline-block;margin-left:12px;padding:5px 11px;border-radius:999px;background:#dff0a8;border:1px solid rgba(245,184,0,.5);color:#2a330c;font:700 11px var(--mono);letter-spacing:.08em;vertical-align:5px}
-
-/* Lightweight, cache-friendly assets keep first paint stable without changing document flow. */
-.brand small,.hero-credo,.footer{color:#6b675e}
-.subhead p,.visible-count,.site-meta,.site-date{color:#6b675e}
-.band.ghost .band-set{color:#6b675e;-webkit-text-stroke:0}
-
-.band.ghost .band-set i{color:#c86544;-webkit-text-stroke:0;opacity:.9}
-.filter:after{color:#625f57}
-@media(max-height:420px){
-  .modal{align-items:flex-start;overflow-y:auto;padding:8px}
-  .palette{margin:auto;max-height:calc(100dvh - 16px);overflow-y:auto;overscroll-behavior:contain}
-}
-
-/* ---- v5: newest-first card grid + spotlight + living motion ---- */
-.sites{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:22px}
-.site{display:flex;flex-direction:column;align-items:stretch;min-height:0;gap:0;padding:0;border:1px solid rgba(23,19,16,.12);border-radius:16px;background:#fffef8;overflow:hidden;transition:opacity .7s ease,transform .7s cubic-bezier(.19,.7,.22,1),translate .35s cubic-bezier(.19,.7,.22,1),box-shadow .35s,border-color .35s,background .3s}
-.site:before{display:none}
-.site:after{content:"";position:absolute;left:0;right:0;top:0;height:3px;z-index:2;background:linear-gradient(90deg,var(--flame),var(--lime) 55%,var(--electric));opacity:0;transition:opacity .35s}
-.site:hover{background:#fffef8;border-color:rgba(245,184,0,.55);translate:0 -5px;box-shadow:0 20px 44px rgba(23,19,16,.13)}
-.site:hover:after{opacity:1}
-.site>div{display:flex;flex-direction:column;flex:1;min-width:0}
-.site-category{order:1;margin:16px 18px 0}
-.site h3{order:2;margin:9px 18px 0;font-size:20px;line-height:1.22}
-.site p{order:3;margin:9px 18px 0;font-size:12.5px;line-height:1.7}
-.site-meta{order:4;display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:auto 18px 0;padding-top:12px;border-top:1px dashed rgba(23,19,16,.14)}
-.site-meta span:first-child,.site-date{white-space:nowrap}
-.site-meta span:nth-child(2){grid-column:1/-1;grid-row:2}
-.site-date{grid-column:2;grid-row:1}
-.site-link{margin:16px 18px 18px;justify-content:center}
-.site-shot{border-radius:0;border:0;border-bottom:1px solid rgba(23,19,16,.08);aspect-ratio:8/5}
-.site-shot img{transition:filter .4s,transform .7s cubic-bezier(.19,.7,.22,1)}
-.site:hover .site-shot img{transform:scale(1.05)}
-/* spotlight: the latest release */
-.site:first-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);background:linear-gradient(150deg,rgba(232,64,26,.06),rgba(255,253,244,.65) 42%),#fffef8}
-.site:first-child>div{display:contents}
-.site:first-child .site-shot{grid-column:1;grid-row:1/7;aspect-ratio:auto;height:100%;min-height:370px;border-bottom:0;border-right:1px solid rgba(23,19,16,.1)}
-.site:first-child .site-category{grid-column:2;grid-row:1;margin:32px 34px 0}
-.site:first-child h3{grid-column:2;grid-row:2;margin:12px 34px 0;font-size:clamp(27px,3vw,38px);line-height:1.08}
-.site:first-child p{grid-column:2;grid-row:3;margin:16px 34px 0;font-size:14px;line-height:1.85}
-.site:first-child .site-meta{grid-column:2;grid-row:4;display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 18px;margin:20px 34px 0;padding-top:14px}
-.site:first-child .site-link{grid-column:2;grid-row:5;margin:24px 34px 34px;justify-self:start}
-.site:first-child:hover{translate:0 -3px}
-/* badges */
-.site-new{position:absolute;right:10px;top:10px;z-index:2;padding:4px 9px;border-radius:999px;background:var(--lime);color:#14140a;font:700 8.5px var(--mono);letter-spacing:.14em;box-shadow:0 6px 16px rgba(245,184,0,.35)}
-.site-latest{position:absolute;right:10px;top:10px;z-index:2;padding:4px 10px;border-radius:999px;background:var(--flame);color:#fff7ee;font:700 8.5px var(--mono);letter-spacing:.14em;box-shadow:0 6px 18px rgba(232,64,26,.4)}
-/* scroll-in motion (cards join the .reveal observer) + cascade stagger */
-html.js .site{opacity:0;transform:translateY(30px)}
-html.js .site.in{opacity:1;transform:none}
-.sites>.site:nth-child(3n+2){transition-delay:.09s,.09s,0s,0s,0s,0s}
-.sites>.site:nth-child(3n){transition-delay:.18s,.18s,0s,0s,0s,0s}
-/* timeline rail reads newest -> oldest now; flip the gradient to match */
-.tl-rail:before{background:linear-gradient(270deg,var(--flame),var(--lime) 52%,var(--electric))}
-@media(max-width:1040px){
-  .sites{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:700px){
-  .sites{grid-template-columns:1fr;gap:16px;padding:16px}
-  .site{padding:0}
-  .site>div{display:flex;flex-direction:column}
-  .site-category{margin:16px 18px 0}
-  .site-meta{display:grid;grid-template-columns:1fr auto;gap:4px 12px}
-  .site h3{margin:9px 18px 0}
-  .site:first-child{display:flex;flex-direction:column}
-  .site:first-child>div{display:flex;flex-direction:column;flex:1}
-  .site:first-child .site-shot{aspect-ratio:16/9;min-height:0;height:auto;border-right:0;border-bottom:1px solid rgba(23,19,16,.08)}
-  .site:first-child .site-category{margin:20px 20px 0}
-  .site:first-child h3{margin:10px 20px 0;font-size:26px}
-  .site:first-child p{margin:10px 20px 0;font-size:13px}
-  .site:first-child .site-meta{margin:16px 20px 0}
-  .site:first-child .site-link{margin:18px 20px 20px;align-self:stretch}
-}
-@media(prefers-reduced-motion:reduce){
-  html.js .site{opacity:1;transform:none}
-  .site:hover{translate:none}
-  .site:hover .site-shot img{transform:none}
-}
-
-/* ---- v6: Launch Console hero (deep-instrument theme) ---- */
-[data-launch]{position:relative;min-height:calc(100vh - 78px);display:flex;flex-direction:column;justify-content:center;
-  box-sizing:border-box;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
-  padding:clamp(28px,4vh,56px) max(24px,calc(50vw - 620px)) clamp(24px,4vh,44px);
-  background:
-    radial-gradient(1200px 620px at 78% -8%,rgba(245,184,0,.16),transparent 62%),
-    radial-gradient(900px 520px at 12% 108%,rgba(232,64,26,.10),transparent 58%),
-    linear-gradient(180deg,#0b0d09 0%,#0e120c 55%,#101309 100%);
-  border-bottom:1px solid rgba(245,184,0,.14);overflow:hidden;isolation:isolate}
-[data-launch] .orbit-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
-[data-launch] .launch-head,[data-launch] .launch-grid,[data-launch] .launch-matrix{position:relative;z-index:1}
-[data-launch] .launch-head{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  margin-bottom:clamp(20px,3.5vh,44px)}
-[data-launch] .eyebrow{color:#9a9583}
-[data-launch] .eyebrow .pulse{background:var(--db-amber);box-shadow:0 0 10px var(--db-amber),0 0 22px rgba(245,184,0,.5)}
-[data-launch] .engine-status{display:inline-flex;align-items:center;gap:7px;font:700 9.5px var(--mono);
-  letter-spacing:.22em;color:var(--db-amber);border:1px solid rgba(245,184,0,.4);border-radius:999px;padding:5px 11px;
-  background:rgba(245,184,0,.06);backdrop-filter:blur(4px)}
-[data-launch] .engine-status i{width:6px;height:6px;border-radius:50%;background:var(--db-amber);
-  box-shadow:0 0 8px var(--db-amber);animation:blink 1.6s ease-in-out infinite}
-[data-launch] .launch-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:center}
-[data-launch] h1{color:#f5f1e6;text-shadow:0 0 40px rgba(245,184,0,.12)}
-[data-launch] h1 .gradient-word{background:linear-gradient(92deg,var(--db-amber) 0%,#ffd76a 40%,var(--db-or) 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent}
-[data-launch] .lede{color:#c9c6b4}
-[data-launch] .lede strong{color:#f0edda}
-[data-launch] .hero-credo{color:#9a9583}
-[data-launch] .hero-credo i{background:rgba(245,184,0,.35)}
-[data-launch] .btn-ghost{color:#d8d5c2;border-color:rgba(216,213,194,.3)}
-[data-launch] .btn-ghost:hover{border-color:var(--db-amber);color:var(--db-amber)}
-[data-launch] .launch-panel{display:flex;flex-direction:column;gap:14px}
-[data-launch] .tminus{border:1px solid rgba(245,184,0,.22);border-radius:14px;padding:16px 18px;
-  background:linear-gradient(160deg,rgba(245,184,0,.05),rgba(11,13,9,.4));backdrop-filter:blur(6px)}
-[data-launch] .tminus-label{display:block;font:700 8.5px var(--mono);letter-spacing:.3em;color:#9a9583;margin-bottom:6px}
-[data-launch] .tminus-val{display:block;font:800 clamp(34px,4.4vw,52px)/1 var(--mono);color:#ffd76a;
-  letter-spacing:.02em;text-shadow:0 0 24px rgba(245,184,0,.35);font-variant-numeric:tabular-nums}
-[data-launch] .tminus-sub{display:block;margin-top:6px;font:600 9px var(--mono);letter-spacing:.18em;color:#8b8778}
-[data-launch] .telemetry{border:1px solid rgba(245,184,0,.16);border-radius:14px;padding:14px 16px;
-  background:rgba(9,11,7,.5);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:9px}
-.tele-line{display:flex;align-items:baseline;gap:9px;font:600 10.5px var(--mono);color:#b9bd9f;
-  opacity:0;transform:translateX(-6px)}
-.tele-line.on{opacity:1;transform:none;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1)}
-.tele-dot{width:5px;height:5px;border-radius:50%;background:var(--db-or);box-shadow:0 0 7px rgba(255,77,0,.7);flex:none}
-.tele-date{color:#8b8778}
-.tele-verb{color:var(--db-amber);font-weight:800;letter-spacing:.08em}
-.tele-name{color:#e6e3d0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-[data-launch] .launch-matrix{display:grid;grid-template-columns:repeat(16,1fr);gap:7px;margin-top:clamp(20px,3.5vh,44px);
-  padding:14px;border:1px solid rgba(245,184,0,.14);border-radius:14px;background:rgba(9,11,7,.45);backdrop-filter:blur(6px)}
-.px{position:relative;aspect-ratio:1;border:1px solid rgba(245,184,0,.14);border-radius:4px;background:rgba(245,184,0,.05);
-  cursor:pointer;padding:0;transition:transform .18s,border-color .18s,background .18s}
-.px i{position:absolute;inset:2px;border-radius:2px;background:linear-gradient(180deg,rgba(245,184,0,.85),rgba(245,184,0,.3));
-  opacity:.5;transition:opacity .18s,box-shadow .18s}
-.px:hover,.px:focus-visible{transform:scale(1.18);border-color:var(--db-amber);z-index:2}
-.px:hover i,.px:focus-visible i{opacity:1;box-shadow:0 0 12px rgba(245,184,0,.7)}
-.px:after{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);
-  white-space:nowrap;font:600 9px var(--mono);letter-spacing:.04em;color:#e6e3d0;background:rgba(9,11,7,.95);
-  border:1px solid rgba(245,184,0,.3);border-radius:6px;padding:4px 8px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:3}
-.px:hover:after,.px:focus-visible:after{opacity:1;transform:translateX(-50%) translateY(0)}
-.launch-bridge{height:clamp(48px,9vh,120px);background:linear-gradient(180deg,#101309 0%,#fbf7ec 100%)}
-@media(max-width:900px){
-  [data-launch] .launch-grid{grid-template-columns:1fr;gap:22px}
-  [data-launch] .launch-matrix{grid-template-columns:repeat(8,1fr)}
-}
-@media(max-width:560px){
-  [data-launch]{padding-top:44px;padding-bottom:36px}
-  [data-launch] .launch-matrix{gap:5px;padding:10px}
-}
-@media(prefers-reduced-motion:reduce){
-  .tele-line{opacity:1;transform:none}
-  [data-launch] .engine-status i{animation:none}
-}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-
-/* ---- v10: EDITORIAL TIMELINE — one-person publishing house (layered over v9 tokens) ----
-   Approved direction C (Editorial / magazine annual review) by ZF Wang, 2026-08-26.
-   Pure CSS skin + unlocked copy. DOM anchors, 33 cards, inline scripts, workflow untouched.
-   Repaints the site as a magazine annual review: paper-white field, serif display headlines,
-   single-column ledger-as-chapters, editorial red accent, zero "board" chrome. */
-
-:root{
-  /* v10 editorial palette — supersedes v8 db tokens on the visible chrome */
-  --ed-paper:#faf9f5;
-  --ed-ink:#1a1a1a;
-  --ed-ink-soft:#4a4a48;
-  --ed-dim:#8a887f;
-  --ed-line:rgba(26,26,26,.14);
-  --ed-line-soft:rgba(26,26,26,.07);
-  --ed-card:#fffefb;
-  --ed-red:#c41e3a;
-  --ed-red-deep:#a01830;
-  --ed-red-tint:rgba(196,30,58,.06);
-  --ed-gold:#b8892a;
-
-  /* remap v8 tokens so layered components inherit the editorial palette */
-  --db-bg:var(--ed-paper);
-  --db-card:var(--ed-card);
-  --db-or:var(--ed-red);
-  --db-amber:var(--ed-gold);
-  --db-green:#1a6b3c;
-  --lime:var(--db-amber);
-  --accent:var(--ed-red);
-  --field:var(--ed-paper);
-  --card:var(--ed-card);
-  --flame:var(--ed-red);
-  --flame2:var(--ed-gold);
-  --electric:var(--ed-red);
-
-  /* v9 contract tokens preserved (tests lock these) */
-  --r-0:0; --r-sm:3px; --r-md:6px; --r-lg:12px; --r-pill:999px;
-  --beat:8px;
-  --sec-breath:120px; --sec-breath-sm:80px;
-
-  /* editorial type scale */
-  --serif:"Playfair Display","Noto Serif SC","Songti SC",Georgia,"Times New Roman",serif;
-  --sans-ed:"Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-  --mono-ed:"JetBrains Mono","IBM Plex Mono",ui-monospace,"SF Mono",monospace;
-}
-
-/* ===== 0. global repaint ===== */
-html{background:var(--ed-paper)}
-body{
-  background:var(--ed-paper);
-  color:var(--ed-ink);
-  font-family:var(--sans-ed);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-
-/* ===== 1. typography: serif display + sans body ===== */
-h1,h2,.section h2,.manifesto h2,.contact-main h2{
-  font-family:var(--serif);
-  font-weight:900;
-  font-stretch:104%;
-  letter-spacing:-.03em;
-  line-height:1.02;
-  color:var(--ed-ink);
-}
-/* override v6 launch-console dark-hero hues */
-[data-launch] h1,[data-launch] h2{
-  color:var(--ed-ink);
-  text-shadow:none;
-}
-[data-launch] .eyebrow{color:var(--ed-red)}
-[data-launch] .lede{color:var(--ed-ink-soft)}
-.section h2{
-  font-size:clamp(38px,4.6vw,62px);
-  margin-top:14px;
-}
-h3,.site h3{
-  font-family:var(--serif);
-  font-weight:700;
-  letter-spacing:-.015em;
-  color:var(--ed-ink);
-}
-.kicker{
-  font-family:var(--mono-ed);
-  font-weight:600;
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--ed-red);
-}
-.lede,.section-copy,.manifesto p,.contact-main p{
-  color:var(--ed-ink-soft);
-  line-height:1.85;
-}
-.lede strong,.section-copy strong{
-  color:var(--ed-ink);
-  font-weight:600;
-}
-
-/* ===== 2. topline: black masthead strip ===== */
-.topline{
-  background:var(--ed-ink);
-  color:var(--ed-paper);
-  font-family:var(--mono-ed);
-  font-weight:500;
-  font-size:9px;
-  letter-spacing:.14em;
-}
-
-/* ===== 3. nav ===== */
-.nav .brand-mark{
-  background:var(--ed-red);
-  color:var(--ed-paper);
-  border-radius:var(--r-sm);
-  box-shadow:none;
-}
-.nav-links>a{
-  color:var(--ed-ink-soft);
-  font-weight:500;
-}
-.nav-links>a:hover{color:var(--ed-ink)}
-.nav-command{
-  border-color:var(--ed-line);
-  color:var(--ed-ink-soft);
-  border-radius:var(--r-sm);
-  font-family:var(--mono-ed);
-}
-.nav-command:hover,.nav-command:focus-visible{
-  border-color:var(--ed-red);
-  background:var(--ed-red-tint);
-  color:var(--ed-ink);
-}
-
-/* ===== 4. hero: editorial cover ===== */
-.hero,[data-launch]{
-  background:var(--ed-paper)!important;
-  background-image:none!important;
-  color:var(--ed-ink);
-  border-bottom:1px solid var(--ed-line-soft);
-}
-.hero .eyebrow{
-  color:var(--ed-red);
-  font-family:var(--mono-ed);
-  font-weight:600;
-  letter-spacing:.16em;
-}
-.hero .engine-status{
-  color:var(--ed-gold);
-  font-family:var(--mono-ed);
-}
-.hero h1{
-  font-size:clamp(44px,6vw,88px);
-}
-.hero h1 .gradient-word{
-  background:none;
-  -webkit-background-clip:unset;
-  background-clip:unset;
-  color:var(--ed-red);
-}
-.hero .lede{
-  max-width:52ch;
-  font-size:16px;
-}
-.hero .hero-credo span{
-  color:var(--ed-dim);
-  font-family:var(--mono-ed);
-  font-size:10px;
-  letter-spacing:.1em;
-}
-.hero .hero-credo i{background:var(--ed-line)}
-
-/* CTA buttons */
-.btn{border-radius:var(--r-sm);font-weight:600;transition:transform .28s cubic-bezier(.19,.7,.22,1),box-shadow .28s,background .28s,border-color .28s}
-.btn-primary{
-  background:var(--ed-red);
-  color:var(--ed-paper);
-  box-shadow:0 8px 24px rgba(196,30,58,.22);
-}
-.btn-primary:hover{
-  transform:translateY(-2px);
-  background:var(--ed-red-deep);
-  box-shadow:0 14px 34px rgba(196,30,58,.3);
-}
-.btn-ghost{
-  border-color:var(--ed-line);
-  color:var(--ed-ink);
-}
-.btn-ghost:hover{
-  transform:translateY(-2px);
-  border-color:var(--ed-red);
-  background:var(--ed-red-tint);
-}
-
-/* launch panel → editor's desk card */
-.launch-panel{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-  box-shadow:0 18px 50px rgba(26,26,26,.07);
-}
-.tminus-label{
-  color:var(--ed-red);
-  font-family:var(--mono-ed);
-  letter-spacing:.14em;
-}
-.tminus-val{
-  font-family:var(--serif);
-  font-weight:900;
-  color:var(--ed-ink);
-}
-.tminus-sub{color:var(--ed-dim)}
-.tele-line{
-  border-color:var(--ed-line-soft);
-  font-family:var(--mono-ed);
-}
-.tele-date{color:var(--ed-dim)}
-.tele-verb{color:var(--ed-red);font-weight:700}
-.tele-name{color:var(--ed-ink)}
-.tele-dot{background:var(--ed-red)}
-
-/* 33-cell matrix → circulation dots */
-.launch-matrix .px{
-  border-radius:var(--r-0);
-  background:var(--ed-line-soft);
-}
-.launch-matrix .px i{background:var(--ed-red)}
-.launch-matrix .px:hover{outline-color:var(--ed-red)}
-
-/* bridge */
-.launch-bridge{
-  background:linear-gradient(180deg,var(--ed-paper),var(--ed-paper) 55%,var(--ed-line-soft));
-}
-
-/* ===== 5. marquee band → editorial ribbon ===== */
-.band{
-  background:var(--ed-ink);
-  color:var(--ed-paper);
-  border-top:1px solid var(--ed-ink);
-  border-bottom:1px solid var(--ed-ink);
-}
-.band-set span{color:var(--ed-paper)}
-.band-set i{color:var(--ed-gold);font-style:normal}
-
-/* ===== 6. paper zone: cream → paper white ===== */
-.paper-zone{
-  background:var(--ed-paper);
-  color:var(--ed-ink);
-}
-.paper-zone .section{border-top:3px solid var(--ed-ink)}
-.paper-zone .section-copy{color:var(--ed-ink-soft)}
-.paper-zone .section-copy strong{color:var(--ed-ink)}
-
-/* rally note → pull quote */
-.release-rally{
-  background:var(--ed-card);
-  border-left:3px solid var(--ed-red);
-  border-radius:var(--r-lg);
-  box-shadow:0 10px 34px rgba(26,26,26,.05);
-}
-.release-rally small{
-  color:var(--ed-dim);
-  font-family:var(--mono-ed);
-  letter-spacing:.12em;
-}
-.release-rally strong{
-  font-family:var(--serif);
-  color:var(--ed-ink);
-}
-.release-rally strong em{
-  background:linear-gradient(92deg,var(--ed-red),var(--ed-red-deep));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.release-rally span{
-  color:var(--ed-red);
-  font-family:var(--mono-ed);
-  letter-spacing:.14em;
-}
-
-/* ledger count badge */
-.ledger-count{
-  background:var(--ed-red);
-  color:var(--ed-paper);
-  border-radius:var(--r-pill);
-}
-
-/* ===== 7. filters → editorial index tabs ===== */
-.filters-wrap{
-  background:rgba(250,249,245,.92);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--ed-line);
-}
-.filter{
-  border-color:var(--ed-line);
-  background:transparent;
-  color:var(--ed-dim);
-  border-radius:var(--r-pill);
-  font-family:var(--mono-ed);
-}
-.filter:hover{
-  color:var(--ed-ink);
-  border-color:var(--ed-red);
-}
-.filter.active{
-  background:var(--ed-ink);
-  border-color:var(--ed-ink);
-  color:var(--ed-paper);
-}
-
-/* ===== 8. ledger: board table → magazine chapters ===== */
-.release-ledger{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-  box-shadow:0 20px 60px rgba(26,26,26,.06);
-}
-/* each project row becomes a chapter entry */
-.site{
-  background:transparent;
-  border-bottom:1px solid var(--ed-line-soft);
-  border-radius:0;
-  transition:background .3s;
-}
-.site:last-child{border-bottom:0}
-.site:hover{
-  background:linear-gradient(90deg,var(--ed-red-tint),transparent 70%);
-}
-.site:before{
-  background:linear-gradient(var(--ed-red),var(--ed-gold));
-  border-radius:0 2px 2px 0;
-}
-.site-category{color:var(--ed-red)}
-.site-meta{color:var(--ed-dim)}
-.site-meta span:first-child{color:var(--ed-gold)}
-.site h3{
-  font-size:clamp(20px,1.6vw,26px);
-  transition:color .25s;
-}
-.site:hover h3{color:var(--ed-red)}
-.site p{color:var(--ed-ink-soft)}
-.site-link{
-  color:var(--ed-ink);
-  font-weight:600;
-  border-bottom:1px solid var(--ed-line);
-  transition:color .25s,border-color .25s;
-}
-.site-link:hover{
-  color:var(--ed-red);
-  border-color:var(--ed-red);
-}
-.site-badge{
-  background:var(--ed-ink);
-  color:var(--ed-paper);
-  border-radius:var(--r-pill);
-}
-.site-badge i{background:var(--ed-gold)}
-.site-latest,.site-new{
-  background:var(--ed-red);
-  color:var(--ed-paper);
-  border-radius:var(--r-pill);
-}
-
-/* ===== 9. timeline: editorial chronology ===== */
-.timeline .tl-item:before{border-color:var(--ed-gold)}
-.timeline .tl-item strong{color:var(--ed-ink)}
-.timeline .tl-item span{color:var(--ed-ink-soft)}
-
-/* changelog */
-.changelog{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-}
-.changelog .cl-item{border-color:var(--ed-line-soft)}
-.changelog .cl-item:hover{background:var(--ed-red-tint)}
-
-/* ===== 10. system section: dark anchor → ink chapter ===== */
-#system{
-  background:var(--ed-ink);
-  color:var(--ed-paper);
-}
-#system .section h2,#system h2{color:var(--ed-paper)}
-#system .section-copy{color:#a8a69e}
-#system .section-copy strong{color:var(--ed-paper)}
-.system-status{color:var(--ed-gold)}
-
-/* ===== 11. manifesto: pull-quote chapter ===== */
-.manifesto h2{
-  font-size:clamp(34px,4vw,56px);
-}
-.manifesto .gradient-word{
-  background:linear-gradient(92deg,var(--ed-red) 8%,var(--ed-red-deep) 48%,var(--ed-gold) 82%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-
-/* ===== 12. contact: colophon ===== */
-.contact-main h2{font-size:clamp(32px,3.6vw,50px)}
-.contact-card{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-  box-shadow:0 16px 44px rgba(26,26,26,.06);
-}
-.contact-side{border-color:var(--ed-line)}
-.qr-card{
-  background:var(--ed-paper);
-  border-radius:var(--r-md);
-  max-width:min(212px,100%);
-}
-.qr-card img{border-radius:var(--r-sm)}
-
-/* ===== 13. footer ===== */
-footer{
-  background:var(--ed-ink);
-  color:#a8a69e;
-}
-footer a{color:var(--ed-paper)}
-footer a:hover{color:var(--ed-gold)}
-
-/* ===== 14. command palette / modal ===== */
-.palette{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-  box-shadow:0 30px 90px rgba(26,26,26,.2);
-}
-.palette-list a{border-radius:var(--r-sm)}
-.palette-list a:hover{background:var(--ed-red-tint)}
-
-/* ===== 15. radius token references (v9 contract) ===== */
-.btn,.brand-mark,.nav-command{border-radius:var(--r-sm)}
-.filter,.site-badge,.site-latest,.ledger-count,.filter:after{border-radius:var(--r-pill)}
-.site,.changelog,.palette,.contact-card,.release-ledger{border-radius:var(--r-lg)}
-.engine-loop,.qr-card{border-radius:var(--r-md)}
-.qr-card img{border-radius:var(--r-sm)}
-.palette-list a{border-radius:var(--r-sm)}
-.px{border-radius:var(--r-0)}
-
-/* ===== 16. section breath (v9 contract) ===== */
-.section{padding-top:var(--sec-breath);padding-bottom:var(--sec-breath)}
-.paper-zone .section{padding-top:var(--sec-breath);padding-bottom:var(--sec-breath)}
-@media(max-width:700px){
-  .section,.paper-zone .section{padding-top:var(--sec-breath-sm);padding-bottom:var(--sec-breath-sm)}
-}
-
-/* ===== 17. display weight gradient (v9 contract) ===== */
-h1{font-weight:900;font-stretch:105%}
-.section h2{font-weight:900;font-stretch:104%}
-.manifesto h2{font-weight:900;font-stretch:104%}
-.contact-main h2{font-weight:900;font-stretch:104%}
-
-/* ===== 18. responsive refinements ===== */
-@media(max-width:700px){
-  .topline{font-size:8px;letter-spacing:.12em;padding:9px 16px}
-  .topline span:nth-child(2){display:none}
-  .section h2{font-size:32px}
-  .hero h1{font-size:clamp(34px,9vw,44px)}
-  .site h3{font-size:19px}
-}
-@media(max-width:360px){
-  .hero h1{font-size:30px}
-  .section h2{font-size:28px}
-}
-
-/* ===== 19. editorial purity: hide board-era chrome ===== */
-/* The orbit canvas (amber starfield + orbital ships) is a launch-console artifact.
-   A magazine cover does not have a mission-control HUD. Hide it. */
-.orbit-canvas{display:none!important}
-
-/* Kill the glow-dot ambient lights (v6/v8 decorative chrome, not editorial) */
-.glow-dot{display:none!important}
-
-/* Launch panel: flat editorial card, no skeuomorphic gradient */
-.launch-panel{
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-lg);
-  box-shadow:0 12px 36px rgba(26,26,26,.06);
-}
-.tminus-val{
-  font-family:var(--serif);
-  font-weight:900;
-  font-size:clamp(28px,2.4vw,36px);
-  color:var(--ed-ink);
-  letter-spacing:-.02em;
-}
-
-/* The "33 SHIPS LIVE" badge is board language; recast as editorial circulation note */
-.engine-status{
-  border-color:var(--ed-line);
-  color:var(--ed-gold);
-  font-family:var(--mono-ed);
-  font-weight:600;
-  letter-spacing:.1em;
-}
-
-/* hero lede: ensure full contrast (the v8 gradient was washing out the tail) */
-.hero .lede{
-  color:var(--ed-ink-soft);
-  opacity:1;
-}
-.hero .lede strong{
-  color:var(--ed-ink);
-}
-
-/* ghost button contrast */
-.btn-ghost{
-  border-color:var(--ed-line);
-  color:var(--ed-ink);
-}
-.btn-ghost:hover{
-  border-color:var(--ed-red);
-  background:var(--ed-red-tint);
-}
-
-/* launch-bridge: soft editorial rule instead of gradient */
-.launch-bridge{
-  background:none;
-  height:1px;
-  background:var(--ed-line-soft);
-  margin:0 auto;
-  max-width:1200px;
-}
-
-/* matrix highlight: amber → editorial red */
-.launch-matrix .px:hover{outline-color:var(--ed-red)}
-
-/* ===== 20. v6 console color purge: every [data-launch] hue → editorial ===== */
-[data-launch] .eyebrow .pulse{
-  background:var(--ed-red);
-  box-shadow:0 0 8px rgba(196,30,58,.35);
-}
-[data-launch] .engine-status{
-  color:var(--ed-gold);
-  border-color:var(--ed-line);
-  background:transparent;
-  backdrop-filter:none;
-}
-[data-launch] .engine-status i{background:var(--ed-gold)}
-[data-launch] .hero-credo{color:var(--ed-dim)}
-[data-launch] .hero-credo i{background:var(--ed-line)}
-[data-launch] .btn-ghost{
-  color:var(--ed-ink);
-  border-color:var(--ed-line);
-}
-[data-launch] .btn-ghost:hover{
-  border-color:var(--ed-red);
-  color:var(--ed-red);
-  background:var(--ed-red-tint);
-}
-[data-launch] .launch-panel{
-  background:var(--ed-card);
-  border-color:var(--ed-line);
-  backdrop-filter:none;
-}
-[data-launch] .tminus-label{color:var(--ed-dim)}
-[data-launch] .tminus-val{
-  color:var(--ed-ink);
-  font-family:var(--serif);
-  font-weight:900;
-  text-shadow:none;
-  letter-spacing:-.02em;
-}
-[data-launch] .tminus-sub{color:var(--ed-dim)}
-[data-launch] .telemetry{
-  background:transparent;
-  border-color:var(--ed-line);
-  backdrop-filter:none;
-}
-.tele-line{color:var(--ed-ink-soft)}
-.tele-dot{
-  background:var(--ed-red);
-  box-shadow:0 0 5px rgba(196,30,58,.3);
-}
-.tele-date{color:var(--ed-dim)}
-.tele-verb{color:var(--ed-red)}
-.tele-name{color:var(--ed-ink)}
-/* launch-matrix: board pixel grid → editorial index strip */
-[data-launch] .launch-matrix{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin-top:clamp(16px,2.5vh,32px);
-  padding:0;
-  background:transparent;
-  border:none;
-  backdrop-filter:none;
-  counter-reset:ship;
-}
-[data-launch] .launch-matrix .px{
-  position:relative;
-  width:36px;
-  height:36px;
-  aspect-ratio:auto;
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-sm);
-  background:var(--ed-card);
-  cursor:pointer;
-  transition:border-color .22s,background .22s,transform .22s;
-  counter-increment:ship;
-}
-[data-launch] .launch-matrix .px i{
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  font:600 11px var(--mono-ed);
-  color:var(--ed-dim);
-  background:none;
-  border-radius:0;
-  transition:color .22s;
-}
-/* replace the decorative dot with the ship index number */
-[data-launch] .launch-matrix .px i:before{
-  content:counter(ship,decimal-leading-zero);
-}
-[data-launch] .launch-matrix .px i i{display:none}
-[data-launch] .launch-matrix .px:hover,
-[data-launch] .launch-matrix .px:focus-visible{
-  border-color:var(--ed-red);
-  background:var(--ed-red-tint);
-  transform:translateY(-2px);
-}
-[data-launch] .launch-matrix .px:hover i,
-[data-launch] .launch-matrix .px:focus-visible i{
-  color:var(--ed-red);
-}
-[data-launch] .launch-matrix .px:after{
-  content:attr(title);
-  position:absolute;
-  bottom:calc(100% + 6px);
-  left:50%;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  font:500 9px var(--mono-ed);
-  letter-spacing:.04em;
-  color:var(--ed-ink);
-  background:var(--ed-card);
-  border:1px solid var(--ed-line);
-  border-radius:var(--r-sm);
-  padding:4px 8px;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .18s;
-  z-index:10;
-}
-[data-launch] .launch-matrix .px:hover:after{
-  opacity:1;
-}
-@media(max-width:700px){
-  [data-launch] .launch-matrix{gap:4px}
-  [data-launch] .launch-matrix .px{width:32px;height:32px}
-  [data-launch] .launch-matrix .px i{font-size:10px}
-  [data-launch] .launch-matrix .px:after{display:none}
-}
-.launch-bridge{
-  height:1px;
-  background:var(--ed-line-soft);
-}
-</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://wangzifan.store/#person","name":"王子凡","alternateName":"ZF Wang","url":"https://wangzifan.store/","description":"一人产品工作室创作者，关注 AI 产品、垂直工具与内容型网站。"},{"@type":"WebSite","@id":"https://wangzifan.store/#website","url":"https://wangzifan.store/","name":"ZF Wang — 一人产品工作室","inLanguage":"zh-CN","publisher":{"@id":"https://wangzifan.store/#person"}},{"@type":"ItemList","@id":"https://wangzifan.store/#release-ledger","name":"ZF Wang 公开产品发布档案","numberOfItems":33,"itemListOrder":"https://schema.org/ItemListOrderDescending","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"Mortal Shell II Wiki","datePublished":"2026-08-25","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://mortalshell2.quest/"}},{"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"OxAlpha","datePublished":"2026-08-22","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://oxalpha.site/"}},{"@type":"ListItem","position":3,"item":{"@type":"CreativeWork","name":"The Sinking City 2 Field Guide","datePublished":"2026-08-20","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://thesinkingcity2.top/"}},{"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"Chinamaxxing Online","datePublished":"2026-08-20","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://chinamaxxing.site/"}},{"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"HLLV Field Manual","datePublished":"2026-08-18","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://hellletloosevietnam.blog/"}},{"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"牛来","datePublished":"2026-08-17","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://niulai.blog/"}},{"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"CraveLoop","datePublished":"2026-08-16","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://foodnevercomes.online/"}},{"@type":"ListItem","position":8,"item":{"@type":"CreativeWork","name":"MatchaFilter","datePublished":"2026-08-16","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://matchafilter.cc/"}},{"@type":"ListItem","position":9,"item":{"@type":"CreativeWork","name":"burnt for you","datePublished":"2026-08-16","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://burncd.xyz/"}},{"@type":"ListItem","position":10,"item":{"@type":"CreativeWork","name":"Polski Piłkarz Simulator","datePublished":"2026-08-16","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"offline"}}},{"@type":"ListItem","position":11,"item":{"@type":"CreativeWork","name":"DSH Field Guide","datePublished":"2026-08-15","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://deepseekharness.site/"}},{"@type":"ListItem","position":12,"item":{"@type":"CreativeWork","name":"Remove Matcha Filter","datePublished":"2026-08-12","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://remove-matcha-filter.com/"}},{"@type":"ListItem","position":13,"item":{"@type":"CreativeWork","name":"RSP Editor","datePublished":"2026-08-09","genre":"AI 产品","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://rspeditor.app/"}},{"@type":"ListItem","position":14,"item":{"@type":"CreativeWork","name":"AI Scanner","datePublished":"2026-08-09","genre":"AI 产品","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://aiscanner.run/"}},{"@type":"ListItem","position":15,"item":{"@type":"CreativeWork","name":"Merge a Nuke! Guide","datePublished":"2026-08-08","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://mergeanuke.space/"}},{"@type":"ListItem","position":16,"item":{"@type":"CreativeWork","name":"Shift at Midnight Guide","datePublished":"2026-08-05","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://shiftatmidnight.blog/"}},{"@type":"ListItem","position":17,"item":{"@type":"CreativeWork","name":"竹知了","datePublished":"2026-08-04","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://zhuzhiliao.buzz/"}},{"@type":"ListItem","position":18,"item":{"@type":"CreativeWork","name":"Cash Flow Lifestyle","datePublished":"2026-08-03","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://cashflow.lifestyle/"}},{"@type":"ListItem","position":19,"item":{"@type":"CreativeWork","name":"HowManySleepsUntil","datePublished":"2026-07-31","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://howmanysleepsuntil.rest/"}},{"@type":"ListItem","position":20,"item":{"@type":"CreativeWork","name":"IsItDown","datePublished":"2026-07-31","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://isitdown.click/"}},{"@type":"ListItem","position":21,"item":{"@type":"CreativeWork","name":"CopyPlaintext","datePublished":"2026-07-31","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://copyplaintext.com/"}},{"@type":"ListItem","position":22,"item":{"@type":"CreativeWork","name":"DragonSword Wiki","datePublished":"2026-07-29","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://dragonswordawakening.fun/"}},{"@type":"ListItem","position":23,"item":{"@type":"CreativeWork","name":"SpiritVale Wiki","datePublished":"2026-07-28","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://spiritvale.blog/"}},{"@type":"ListItem","position":24,"item":{"@type":"CreativeWork","name":"Rot Check","datePublished":"2026-07-26","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://rotcheck.cyou/"}},{"@type":"ListItem","position":25,"item":{"@type":"CreativeWork","name":"Chinese Coins Atlas","datePublished":"2026-07-26","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://chinesecashcoins.wiki/"}},{"@type":"ListItem","position":26,"item":{"@type":"CreativeWork","name":"TaskbarHeroWiki","datePublished":"2026-07-26","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://taskbarherowiki.best/"}},{"@type":"ListItem","position":27,"item":{"@type":"CreativeWork","name":"All Wishes Come True","datePublished":"2026-07-25","genre":"创意实验","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://allwishescometrue.site/"}},{"@type":"ListItem","position":28,"item":{"@type":"CreativeWork","name":"llmstxt","datePublished":"2026-07-18","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://llmstxt.best/"}},{"@type":"ListItem","position":29,"item":{"@type":"CreativeWork","name":"CodexSkin.space","datePublished":"2026-07-17","genre":"实用工具","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://codexskin.space/"}},{"@type":"ListItem","position":30,"item":{"@type":"CreativeWork","name":"PalworldMap","datePublished":"2026-07-14","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://palworldmap.best/"}},{"@type":"ListItem","position":31,"item":{"@type":"CreativeWork","name":"FalloutDay","datePublished":"2026-07-12","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://falloutday.online/"}},{"@type":"ListItem","position":32,"item":{"@type":"CreativeWork","name":"Build a Hooper","datePublished":"2026-07-12","genre":"游戏与内容","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://buildahooper.best/"}},{"@type":"ListItem","position":33,"item":{"@type":"CreativeWork","name":"AIStoryNest","datePublished":"2026-07-12","genre":"AI 产品","additionalProperty":{"@type":"PropertyValue","name":"public status","value":"live"},"url":"https://aistorynest.mom/"}}]}]}</script>
+  <script defer src="assets/site.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#work">跳到上线记录</a>
-  <div class="topline shell" aria-hidden="true"><span>WZF PRESS · 一人出版 · ONE-PERSON PRESS</span><span>33 ISSUES LIVE · EVERY RELEASE IS A CHAPTER</span><span>北京 · BEIJING</span></div>
-  <header class="shell nav">
-    <a class="brand" href="#top"><span class="brand-mark">ZF</span><span>WZF / VENTURE OS<small>ONE PERSON · ALWAYS SHIPPING</small></span></a>
-    <nav class="nav-links" aria-label="页面导航"><a href="#work">上线记录</a><a href="#system">系统</a><a href="#manifesto">宣言</a><a href="#contact">合作</a><button class="nav-command" id="commandBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="commandDialog">导航 / ⌘K</button></nav>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ZF Wang 首页">
+      <span class="brand-mark" aria-hidden="true">WZ</span>
+      <span><strong>ZF WANG</strong><small>ONE-PERSON PRODUCT STUDIO</small></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="#selected">代表案例</a>
+      <a href="#method">工作方法</a>
+      <a href="#ledger">发布档案</a>
+      <a class="nav-cta" href="#contact">联系合作</a>
+    </nav>
   </header>
-  <main id="top">
-    <section class="shell hero" aria-labelledby="intro-title" data-launch>
-      <canvas class="orbit-canvas" aria-hidden="true"></canvas>
-      <div class="launch-head">
-        <div class="eyebrow"><span class="pulse"></span>LAUNCH CONSOLE · WZF-OS · ONLINE</div>
-        <div class="engine-status"><i></i>33 SHIPS LIVE</div>
-      </div>
-      <div class="launch-grid">
-        <div class="launch-copy reveal">
-          <h1 id="intro-title"><span>先把想法做出来，</span><span class="gradient-word">再让世界给答案。</span></h1>
-          <p class="lede">我是王子凡，一名持续构建、上线和迭代产品的 OPC 创业者。<strong>不等完美时机，用 AI 放大单人产能，把每一次真实发布变成下一次增长的起点。</strong></p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#work">进入发布现场 <span>↘</span></a><a class="btn btn-ghost" href="#system">查看我的创业系统</a></div>
-          <div class="hero-credo"><span>不等万事俱备</span><i></i><span>只做真实上线</span><i></i><span>让每次发布产生复利</span></div>
-        </div>
-        <div class="launch-panel reveal">
-          <div class="tminus"><span class="tminus-label">T-MINUS NEXT SHIP</span><span class="tminus-val" id="tminus">--:--:--</span><span class="tminus-sub">avg cadence 1.3d / ship</span></div>
-          <div class="telemetry" aria-label="最近发射遥测"><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-25]</span><span class="tele-verb">SHIP</span><span class="tele-name">Mortal Shell II Wiki</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-22]</span><span class="tele-verb">SHIP</span><span class="tele-name">OxAlpha</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-20]</span><span class="tele-verb">SHIP</span><span class="tele-name">The Sinking City 2 Field Guide</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-20]</span><span class="tele-verb">SHIP</span><span class="tele-name">Chinamaxxing Online</span></div><div class="tele-line"><span class="tele-dot"></span><span class="tele-date">[2026-08-18]</span><span class="tele-verb">SHIP</span><span class="tele-name">HLLV Field Manual</span></div></div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">WZF / ONE-PERSON PRODUCT STUDIO</p>
+        <h1 id="hero-title" aria-label="一个人，把具体问题做成真正能用的产品。"><span class="title-line">一个人，把具体问题</span><span class="title-line"><em>做成真正能用的产品。</em></span></h1>
+        <p class="hero-lead">从需求判断、内容与产品设计，到开发、上线和持续校正。这里不展示“会什么”，只展示已经做成并可公开验证的产品。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#selected">查看代表案例 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#contact">讨论一个具体问题</a>
         </div>
       </div>
-      <div class="launch-matrix" role="list" aria-label="33 次发布状态矩阵"><button class="px" data-i="0" title="AIStoryNest · 2026-07-12" aria-label="AIStoryNest, 2026-07-12"><i></i></button><button class="px" data-i="1" title="Build a Hooper · 2026-07-12" aria-label="Build a Hooper, 2026-07-12"><i></i></button><button class="px" data-i="2" title="FalloutDay · 2026-07-12" aria-label="FalloutDay, 2026-07-12"><i></i></button><button class="px" data-i="3" title="PalworldMap · 2026-07-14" aria-label="PalworldMap, 2026-07-14"><i></i></button><button class="px" data-i="4" title="CodexSkin.space · 2026-07-17" aria-label="CodexSkin.space, 2026-07-17"><i></i></button><button class="px" data-i="5" title="llmstxt · 2026-07-18" aria-label="llmstxt, 2026-07-18"><i></i></button><button class="px" data-i="6" title="All Wishes Come True · 2026-07-25" aria-label="All Wishes Come True, 2026-07-25"><i></i></button><button class="px" data-i="7" title="TaskbarHeroWiki · 2026-07-26" aria-label="TaskbarHeroWiki, 2026-07-26"><i></i></button><button class="px" data-i="8" title="Chinese Coins Atlas · 2026-07-26" aria-label="Chinese Coins Atlas, 2026-07-26"><i></i></button><button class="px" data-i="9" title="Rot Check · 2026-07-26" aria-label="Rot Check, 2026-07-26"><i></i></button><button class="px" data-i="10" title="SpiritVale Wiki · 2026-07-28" aria-label="SpiritVale Wiki, 2026-07-28"><i></i></button><button class="px" data-i="11" title="DragonSword Wiki · 2026-07-29" aria-label="DragonSword Wiki, 2026-07-29"><i></i></button><button class="px" data-i="12" title="CopyPlaintext · 2026-07-31" aria-label="CopyPlaintext, 2026-07-31"><i></i></button><button class="px" data-i="13" title="IsItDown · 2026-07-31" aria-label="IsItDown, 2026-07-31"><i></i></button><button class="px" data-i="14" title="HowManySleepsUntil · 2026-07-31" aria-label="HowManySleepsUntil, 2026-07-31"><i></i></button><button class="px" data-i="15" title="Cash Flow Lifestyle · 2026-08-03" aria-label="Cash Flow Lifestyle, 2026-08-03"><i></i></button><button class="px" data-i="16" title="竹知了 · 2026-08-04" aria-label="竹知了, 2026-08-04"><i></i></button><button class="px" data-i="17" title="Shift at Midnight Guide · 2026-08-05" aria-label="Shift at Midnight Guide, 2026-08-05"><i></i></button><button class="px" data-i="18" title="Merge a Nuke! Guide · 2026-08-08" aria-label="Merge a Nuke! Guide, 2026-08-08"><i></i></button><button class="px" data-i="19" title="AI Scanner · 2026-08-09" aria-label="AI Scanner, 2026-08-09"><i></i></button><button class="px" data-i="20" title="RSP Editor · 2026-08-09" aria-label="RSP Editor, 2026-08-09"><i></i></button><button class="px" data-i="21" title="Remove Matcha Filter · 2026-08-12" aria-label="Remove Matcha Filter, 2026-08-12"><i></i></button><button class="px" data-i="22" title="DSH Field Guide · 2026-08-15" aria-label="DSH Field Guide, 2026-08-15"><i></i></button><button class="px" data-i="23" title="Polski Piłkarz Simulator · 2026-08-16" aria-label="Polski Piłkarz Simulator, 2026-08-16"><i></i></button><button class="px" data-i="24" title="burnt for you · 2026-08-16" aria-label="burnt for you, 2026-08-16"><i></i></button><button class="px" data-i="25" title="MatchaFilter · 2026-08-16" aria-label="MatchaFilter, 2026-08-16"><i></i></button><button class="px" data-i="26" title="CraveLoop · 2026-08-16" aria-label="CraveLoop, 2026-08-16"><i></i></button><button class="px" data-i="27" title="牛来 · 2026-08-17" aria-label="牛来, 2026-08-17"><i></i></button><button class="px" data-i="28" title="HLLV Field Manual · 2026-08-18" aria-label="HLLV Field Manual, 2026-08-18"><i></i></button><button class="px" data-i="29" title="Chinamaxxing Online · 2026-08-20" aria-label="Chinamaxxing Online, 2026-08-20"><i></i></button><button class="px" data-i="30" title="The Sinking City 2 Field Guide · 2026-08-20" aria-label="The Sinking City 2 Field Guide, 2026-08-20"><i></i></button><button class="px" data-i="31" title="OxAlpha · 2026-08-22" aria-label="OxAlpha, 2026-08-22"><i></i></button><button class="px" data-i="32" title="Mortal Shell II Wiki · 2026-08-25" aria-label="Mortal Shell II Wiki, 2026-08-25"><i></i></button></div>
+      <aside class="hero-note" aria-label="工作室说明">
+        <span class="note-index">00 / STUDIO NOTE</span>
+        <p>不是传统简历，也不是项目数量墙。</p>
+        <strong>这是一个产品型个人主页：问题、解法、证据，三件事讲清楚。</strong>
+      </aside>
     </section>
 
-    <div class="launch-bridge" aria-hidden="true"></div>
+    <section class="proof-strip" aria-label="已验证事实">
+      <div><strong data-proof="releases">33</strong><span>历史发布记录</span></div>
+      <div><strong data-proof="live">32</strong><span>当前在线</span></div>
+      <div><strong data-proof="offline">1</strong><span>明确离线</span></div>
+      <div><strong>4</strong><span>产品方向</span></div>
+    </section>
 
-    <div class="band" aria-hidden="true"><div class="band-track"><div class="band-set"><span>先把想法做出来</span><i>✦</i><span>再让世界给答案</span><i>✦</i><span>SHIP REAL</span><i>✦</i><span>不等万事俱备 · 只做真实上线</span><i>✦</i><span>BUILD → SHIP → LEARN → REPEAT</span><i>✦</i><span>KEEP GOING</span><i>✦</i><span>一个人就是一支完整的船队</span><i>✦</i><span>ONE PERSON · FULL CREW · ZERO EXCUSES</span><i>✦</i><span>今天的上线胜过明天的计划</span><i>✦</i></div><div class="band-set"><span>先把想法做出来</span><i>✦</i><span>再让世界给答案</span><i>✦</i><span>SHIP REAL</span><i>✦</i><span>不等万事俱备 · 只做真实上线</span><i>✦</i><span>BUILD → SHIP → LEARN → REPEAT</span><i>✦</i><span>KEEP GOING</span><i>✦</i><span>一个人就是一支完整的船队</span><i>✦</i><span>ONE PERSON · FULL CREW · ZERO EXCUSES</span><i>✦</i><span>今天的上线胜过明天的计划</span><i>✦</i></div></div></div>
+    <section class="section recent" aria-labelledby="recent-title">
+      <div class="section-heading">
+        <p class="section-no">01 / RECENT RELEASES</p>
+        <div><h2 id="recent-title">最近发布</h2><p>先看最近做成的三件事。每个项目都有可访问网址，而不是概念图。</p></div>
+      </div>
+      <div class="latest-grid"><article class="latest-card" data-latest-card="33">
+          <a class="card-image" href="https://mortalshell2.quest/" target="_blank" rel="noopener noreferrer" aria-label="访问 Mortal Shell II Wiki">
+            <img src="assets/projects/project-33.webp" width="400" height="250" alt="Mortal Shell II Wiki 项目页面截图" loading="lazy" decoding="async">
+            <span class="live-pill"><i aria-hidden="true"></i> ONLINE</span>
+          </a>
+          <div class="card-body">
+            <div class="card-kicker"><span>2026-08-25</span><span>游戏与内容</span></div>
+            <h3>Mortal Shell II Wiki</h3>
+            <p>MS2 粉丝维基</p>
+            <a class="text-link" href="https://mortalshell2.quest/" target="_blank" rel="noopener noreferrer">访问 mortalshell2.quest <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="latest-card" data-latest-card="32">
+          <a class="card-image" href="https://oxalpha.site/" target="_blank" rel="noopener noreferrer" aria-label="访问 OxAlpha">
+            <img src="assets/projects/project-32.webp" width="400" height="250" alt="OxAlpha 项目页面截图" loading="lazy" decoding="async">
+            <span class="live-pill"><i aria-hidden="true"></i> ONLINE</span>
+          </a>
+          <div class="card-body">
+            <div class="card-kicker"><span>2026-08-22</span><span>实用工具</span></div>
+            <h3>OxAlpha</h3>
+            <p>AI 模型证据站</p>
+            <a class="text-link" href="https://oxalpha.site/" target="_blank" rel="noopener noreferrer">访问 oxalpha.site <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="latest-card" data-latest-card="31">
+          <a class="card-image" href="https://thesinkingcity2.top/" target="_blank" rel="noopener noreferrer" aria-label="访问 The Sinking City 2 Field Guide">
+            <img src="assets/projects/project-31.webp" width="400" height="250" alt="The Sinking City 2 Field Guide 项目页面截图" loading="lazy" decoding="async">
+            <span class="live-pill"><i aria-hidden="true"></i> ONLINE</span>
+          </a>
+          <div class="card-body">
+            <div class="card-kicker"><span>2026-08-20</span><span>游戏与内容</span></div>
+            <h3>The Sinking City 2 Field Guide</h3>
+            <p>克苏鲁侦探攻略站</p>
+            <a class="text-link" href="https://thesinkingcity2.top/" target="_blank" rel="noopener noreferrer">访问 thesinkingcity2.top <span aria-hidden="true">↗</span></a>
+          </div>
+        </article></div>
+    </section>
 
-    <section class="shell section" id="work" aria-labelledby="work-title">
-      <div class="section-top reveal"><div><div class="kicker">01 / Launch Ledger</div><h2 id="work-title">把想法做成网址，<br>把网址做成复利。</h2></div><p class="section-copy"><strong>不把灵感收藏起来，不用筹备冒充进展。</strong>每个产品都从一个具体问题出发，经由快速构建、真实上线和持续反馈，成为下一次判断的杠杆。</p></div>
-      <div class="release-rally reveal"><small>Founder note / Keep moving</small><strong>今天能上线的，<br><em>就别留到“准备好”。</em></strong><span>BUILD → SHIP → LEARN → REPEAT</span></div>
-      <div class="subhead reveal"><div><div class="kicker">Live / Public / Verifiable</div><h3>全部上线记录<span class="ledger-count">33</span></h3></div><p>Every release leaves a trail · 最新在前</p></div>
-      <div class="release-ledger">
-        <div class="filters-wrap"><div class="filters" role="group" aria-label="按产品类型筛选"><button class="filter active" data-filter="all" data-count="33" aria-pressed="true">全部</button><button class="filter" data-filter="ai" data-count="3" aria-pressed="false">AI 产品</button><button class="filter" data-filter="game" data-count="12" aria-pressed="false">游戏与内容</button><button class="filter" data-filter="tool" data-count="10" aria-pressed="false">实用工具</button><button class="filter" data-filter="creative" data-count="8" aria-pressed="false">创意实验</button></div><div class="visible-count" id="visibleCount" aria-live="polite">ALL RELEASES</div></div>
-        <div class="sites">
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><span class="site-latest">★ 最新上线</span><img src="assets/projects/project-33.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>33 · 已上线</span><span>MS2 粉丝维基</span><span class="site-date">2026-08-25</span></div><h3>Mortal Shell II Wiki</h3><p>面向《Mortal Shell II》玩家的非官方粉丝维基，收录全部 8 种 Shell、武器、Boss、配置要求、版本与已知问题，并提供每日更新的新手指南。</p></div><a class="site-link" aria-label="访问 Mortal Shell II Wiki 项目（新窗口）" href="https://mortalshell2.quest/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><span class="site-new">NEW</span><img src="assets/projects/project-32.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>32 · 已上线</span><span>AI 模型证据站</span><span class="site-date">2026-08-22</span></div><h3>OxAlpha</h3><p>独立的 Ox Alpha AI 模型证据站，按日期跟踪身份、状态、API、定价、代码能力、约 1M 上下文与基准测试，并明确区分平台记录、可复现证据、观察和推测。</p></div><a class="site-link" aria-label="访问 OxAlpha 项目（新窗口）" href="https://oxalpha.site/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><span class="site-new">NEW</span><img src="assets/projects/project-31.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>31 · 已上线</span><span>克苏鲁侦探攻略站</span><span class="site-date">2026-08-20</span></div><h3>The Sinking City 2 Field Guide</h3><p>面向《The Sinking City 2》玩家的非官方证据型攻略站，提供保险柜密码、章节路线、成就、调查与战斗参考，并区分实证、实测与暂缺资料。</p></div><a class="site-link" aria-label="访问 The Sinking City 2 Field Guide 项目（新窗口）" href="https://thesinkingcity2.top/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><span class="site-new">NEW</span><img src="assets/projects/project-30.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>30 · 已上线</span><span>多语文化指南</span><span class="site-date">2026-08-20</span></div><h3>Chinamaxxing Online</h3><p>面向想理解 Chinamaxxing 网络语境与探索中国文化的用户，提供英语、西班牙语和巴西葡萄牙语的附来源解释、生活与旅行指南、12 信号 Quiz 和浏览器本地路线生成器。</p></div><a class="site-link" aria-label="访问 Chinamaxxing Online 项目（新窗口）" href="https://chinamaxxing.site/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><span class="site-new">NEW</span><img src="assets/projects/project-29.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>29 · 已上线</span><span>HLLV 越南战场手册</span><span class="site-date">2026-08-18</span></div><h3>HLLV Field Manual</h3><p>面向《Hell Let Loose: Vietnam》玩家的非官方野战手册，提供经来源核验的已知问题、新手指南、地图、兵种与模式情报，每条结论均标注日期与依据。</p></div><a class="site-link" aria-label="访问 HLLV Field Manual 项目（新窗口）" href="https://hellletloosevietnam.blog/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-28.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>28 · 已上线</span><span>牛来电影资料站</span><span class="site-date">2026-08-17</span></div><h3>牛来</h3><p>面向《牛来》观众的多语言电影资料站，梳理首日 342 元到 150 万元的票房逆袭时间线，并收录剧情、差评墙、黑话词典与在线答题。</p></div><a class="site-link" aria-label="访问 牛来 项目（新窗口）" href="https://niulai.blog/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-27.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>27 · 已上线</span><span>全球美食点单模拟器</span><span class="site-date">2026-08-16</span></div><h3>CraveLoop</h3><p>面向全球美食爱好者的趣味点单模拟器，可浏览 8 个国家的 48 道菜、按口味筛选并加入虚拟购物车，以 $0 结账后追踪一份永远不会送达的虚构订单。</p></div><a class="site-link" aria-label="访问 CraveLoop 项目（新窗口）" href="https://foodnevercomes.online/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-26.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>26 · 已上线</span><span>照片抹茶滤镜校色</span><span class="site-date">2026-08-16</span></div><h3>MatchaFilter</h3><p>面向需要修正照片黄绿色偏色的用户，支持 PNG、JPG 和 WebP 浏览器本地处理，可调节校正强度、对比原图并导出 PNG；无需账户，免费处理时照片不会上传服务器。</p></div><a class="site-link" aria-label="访问 MatchaFilter 项目（新窗口）" href="https://matchafilter.cc/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-25.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>25 · 已上线</span><span>数字混音带制作器</span><span class="site-date">2026-08-16</span></div><h3>burnt for you</h3><p>面向想用音乐传递回忆与心意的用户，支持挑选歌曲、写下留言并生成数字混音带 CD，通过单个链接分享；无需注册，每首歌以 30 秒片段播放。</p></div><a class="site-link" aria-label="访问 burnt for you 项目（新窗口）" href="https://burncd.xyz/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-24.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>24 · 已上线</span><span>波兰足球生涯模拟器</span><span class="site-date">2026-08-16</span></div><h3>Polski Piłkarz Simulator</h3><p>面向《Polski Piłkarz Simulator》玩家的非官方粉丝数据库与攻略站，可免费在线游玩 v1.90，收录 8400+ 家俱乐部与 101 个生涯事件，并提供比赛胜率计算器和新手指南。</p></div><a class="site-link" aria-label="访问 Polski Piłkarz Simulator 项目（新窗口）" href="https://polskipilkarzsymulator.online/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-23.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>23 · 已上线</span><span>DeepSeek 工具指南</span><span class="site-date">2026-08-15</span></div><h3>DSH Field Guide</h3><p>独立的 DeepSeek Harness 实用指南，提供经来源核验且标注版本的安装、模型配置、Python SDK、插件与故障排查内容。</p></div><a class="site-link" aria-label="访问 DSH Field Guide 项目（新窗口）" href="https://deepseekharness.site/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-22.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>22 · 已上线</span><span>图片视频校色工具</span><span class="site-date">2026-08-12</span></div><h3>Remove Matcha Filter</h3><p>面向需要修正抹茶绿色偏色的图片与短视频用户，提供浏览器本地处理、效果对比与导出，媒体文件无需上传服务器。</p></div><a class="site-link" aria-label="访问 Remove Matcha Filter 项目（新窗口）" href="https://remove-matcha-filter.com/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="ai"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-21.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">AI 产品</div><div class="site-meta"><span>21 · 已上线</span><span>AI 同款照片生成器</span><span class="site-date">2026-08-09</span></div><h3>RSP Editor</h3><p>面向想快速复刻照片风格的用户，支持选择同款模板、上传照片并用 AI 在数秒内生成成片，另提供提示词库与交互式提示词构建器。</p></div><a class="site-link" aria-label="访问 RSP Editor 项目（新窗口）" href="https://rspeditor.app/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="ai"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-20.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">AI 产品</div><div class="site-meta"><span>20 · 已上线</span><span>AI 文本检测工具</span><span class="site-date">2026-08-09</span></div><h3>AI Scanner</h3><p>面向需要审阅 AI 写作痕迹的用户，提供浏览器端免费检测，以及多模型深度扫描、置信度和逐句原因说明，并明确提示误判与使用边界。</p></div><a class="site-link" aria-label="访问 AI Scanner 项目（新窗口）" href="https://aiscanner.run/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-19.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>19 · 已上线</span><span>核弹合成攻略站</span><span class="site-date">2026-08-08</span></div><h3>Merge a Nuke! Guide</h3><p>面向《Merge a Nuke!》Roblox 玩家的非官方攻略站，提供可兑换代码、指挥官与突变情报、进度强度排行和合成计算器，并追踪每周五更新。</p></div><a class="site-link" aria-label="访问 Merge a Nuke! Guide 项目（新窗口）" href="https://mergeanuke.space/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-18.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>18 · 已上线</span><span>午夜轮班攻略站</span><span class="site-date">2026-08-05</span></div><h3>Shift at Midnight Guide</h3><p>面向《Shift at Midnight》（Steam）玩家的独立粉丝攻略站，提供替身识别检查清单、追猎生存、赚钱路线、全 3 种结局、成就与版本更新追踪，支持中英双语。</p></div><a class="site-link" aria-label="访问 Shift at Midnight Guide 项目（新窗口）" href="https://shiftatmidnight.blog/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-17.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>17 · 已上线</span><span>竹蝉玩具模拟器</span><span class="site-date">2026-08-04</span></div><h3>竹知了</h3><p>传统玩具竹知了（竹蝉/哇哇筒）的在线模拟器与声学档案，按住屏幕画圈甩响，配有实时示波器、甩响成绩单、发声原理与手工制作教程，无需下载，手机即玩。</p></div><a class="site-link" aria-label="访问 竹知了 项目（新窗口）" href="https://zhuzhiliao.buzz/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-16.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>16 · 已上线</span><span>现金流理财桌游站</span><span class="site-date">2026-08-03</span></div><h3>Cash Flow Lifestyle</h3><p>面向理财入门用户的免费在线现金流桌游站，通过游戏学习财务知识、构建被动收入、逃离老鼠赛跑，无需注册即可游玩。</p></div><a class="site-link" aria-label="访问 Cash Flow Lifestyle 项目（新窗口）" href="https://cashflow.lifestyle/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-15.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>15 · 已上线</span><span>睡眠倒计时工具</span><span class="site-date">2026-07-31</span></div><h3>HowManySleeps<wbr>Until</h3><p>面向想倒数重要日子的用户，提供圣诞节、万圣节、复活节、生日等的「还要睡几觉」倒计时，支持多语言，免费使用。</p></div><a class="site-link" aria-label="访问 HowManySleepsUntil 项目（新窗口）" href="https://howmanysleepsuntil.rest/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-14.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>14 · 已上线</span><span>网站宕机检测工具</span><span class="site-date">2026-07-31</span></div><h3>IsItDown</h3><p>免费的网站宕机检测工具，输入任意网址即可查看该网站是全网宕机还是仅你无法访问，返回实时状态、HTTP 状态码与响应时间。</p></div><a class="site-link" aria-label="访问 IsItDown 项目（新窗口）" href="https://isitdown.click/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-13.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>13 · 已上线</span><span>纯文本粘贴工具</span><span class="site-date">2026-07-31</span></div><h3>CopyPlaintext</h3><p>去除格式的免费在线工具，粘贴富文本即可立即清除全部格式，并收录各应用与操作系统的纯文本粘贴指南；无需注册，直接在浏览器中运行。</p></div><a class="site-link" aria-label="访问 CopyPlaintext 项目（新窗口）" href="https://copyplaintext.com/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-12.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>12 · 已上线</span><span>龙剑觉醒社区 Wiki</span><span class="site-date">2026-07-29</span></div><h3>DragonSword Wiki</h3><p>面向《DragonSword: Awakening》玩家的非官方社区 Wiki，收录 19 位英雄资料、异常状态接力系统、互动 Orbis 地图、队伍构建器与版本更新记录。</p></div><a class="site-link" aria-label="访问 DragonSword Wiki 项目（新窗口）" href="https://dragonswordawakening.fun/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-11.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>11 · 已上线</span><span>SpiritVale 社区 Wiki</span><span class="site-date">2026-07-28</span></div><h3>SpiritVale Wiki</h3><p>面向《SpiritVale》玩家的非官方社区 Wiki，收录 16 个职业流派、230+ 怪物数据库、元素机制指南、强度排行与配装模拟器。</p></div><a class="site-link" aria-label="访问 SpiritVale Wiki 项目（新窗口）" href="https://spiritvale.blog/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-10.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>10 · 已上线</span><span>Gen Alpha 趣味测试站</span><span class="site-date">2026-07-26</span></div><h3>Rot Check</h3><p>面向 Gen Alpha 的趣味测试站，提供 Am I Unc、Brainrot Test、Am I Cooked 等病毒式传播的 vibe check，即时出分，无需注册。</p></div><a class="site-link" aria-label="访问 Rot Check 项目（新窗口）" href="https://rotcheck.cyou/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-09.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>09 · 已上线</span><span>中国古钱币图鉴</span><span class="site-date">2026-07-26</span></div><h3>Chinese Coins Atlas</h3><p>中英双语的中国古钱币教育图鉴，按朝代梳理布币、刀币、五铢、开元通宝等主要钱型，并提供满文局名查询工具。</p></div><a class="site-link" aria-label="访问 Chinese Coins Atlas 项目（新窗口）" href="https://chinesecashcoins.wiki/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-08.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>08 · 已上线</span><span>Task Bar Hero 数据库</span><span class="site-date">2026-07-26</span></div><h3>TaskbarHeroWiki</h3><p>面向《Task Bar Hero》玩家的非官方数据库，收录已验证的关卡、怪物、宝箱、材料与关系记录，支持搜索、筛选与详情浏览。</p></div><a class="site-link" aria-label="访问 TaskbarHeroWiki 项目（新窗口）" href="https://taskbarherowiki.best/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="creative"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-07.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">创意实验</div><div class="site-meta"><span>07 · 已上线</span><span>八仙电影与民俗文化站</span><span class="site-date">2026-07-25</span></div><h3>All Wishes Come True</h3><p>独立的八仙电影与民俗文化站，介绍电影背景、八位角色、民俗源流，并提供无需账户或远程 AI 的本地互动工具。</p></div><a class="site-link" aria-label="访问 All Wishes Come True 项目（新窗口）" href="https://allwishescometrue.site/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-06.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>06 · 已上线</span><span>llms.txt 实用指南</span><span class="site-date">2026-07-18</span></div><h3>llmstxt</h3><p>面向网站运营者的 llms.txt 实用指南，帮助理解 llms.txt 的阅读、发布与维护，并清晰区分它与 robots.txt、sitemap.xml 的用途。</p></div><a class="site-link" aria-label="访问 llmstxt 项目（新窗口）" href="https://llmstxt.best/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="tool"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-05.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">实用工具</div><div class="site-meta"><span>05 · 已上线</span><span>Codex CLI TUI 指南站</span><span class="site-date">2026-07-17</span></div><h3>CodexSkin.space</h3><p>独立的 Codex CLI TUI 配置指南站，围绕语法主题设置、来源核验、风险说明与回滚边界提供实用参考。</p></div><a class="site-link" aria-label="访问 CodexSkin.space 项目（新窗口）" href="https://codexskin.space/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-04.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>04 · 已上线</span><span>Palworld 坐标图谱</span><span class="site-date">2026-07-14</span></div><h3>PalworldMap</h3><p>面向《Palworld》玩家的非官方坐标导航图谱，收录 89 条来源锁定导航记录（82 个快速传送点、7 座高塔），支持搜索、筛选、最近点计算与本地清单。</p></div><a class="site-link" aria-label="访问 PalworldMap 项目（新窗口）" href="https://palworldmap.best/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-03.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>03 · 已上线</span><span>Fallout 76 攻略站</span><span class="site-date">2026-07-12</span></div><h3>FalloutDay</h3><p>面向《Fallout 76》玩家的实用攻略站，提供流派选择、前期升级和伤害排查等行动型指南。</p></div><a class="site-link" aria-label="访问 FalloutDay 项目（新窗口）" href="https://falloutday.online/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="game"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-02.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">游戏与内容</div><div class="site-meta"><span>02 · 已上线</span><span>篮球训练内容站</span><span class="site-date">2026-07-12</span></div><h3>Build a Hooper</h3><p>面向篮球爱好者的训练内容站，覆盖控球、投篮、移动、弹跳与在家训练等实用练习方向。</p></div><a class="site-link" aria-label="访问 Build a Hooper 项目（新窗口）" href="https://buildahooper.best/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
-<article class="site" data-status="live"><div data-category="ai"><figure class="site-shot" aria-hidden="true"><span class="site-badge"><i></i>LIVE</span><img src="assets/projects/project-01.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></figure><div class="site-category">AI 产品</div><div class="site-meta"><span>01· 已上线</span><span>睡前故事生成站</span><span class="site-date">2026-07-12</span></div><h3>AIStoryNest</h3><p>面向美国英语家庭的 AI 睡前故事产品，支持家长选择主题、年龄与语气，并在阅读前审核故事草稿。</p></div><a class="site-link" aria-label="访问 AIStoryNest 项目（新窗口）" href="https://aistorynest.mom/" target="_blank" rel="noopener noreferrer">访问项目 ↗</a></article>
+    <section class="section selected" id="selected" aria-labelledby="selected-title">
+      <div class="section-heading">
+        <p class="section-no">02 / SELECTED WORK</p>
+        <div><h2 id="selected-title">六个代表案例</h2><p>不按技术栈罗列能力。每个案例只回答三件事：问题是什么、如何解决、什么可以验证。</p></div>
+      </div>
+      <div class="case-grid"><article class="case-card" data-featured-card="20">
+          <div class="case-media">
+            <img src="assets/projects/project-20.webp" width="400" height="250" alt="AI Scanner 项目页面截图" loading="lazy" decoding="async">
+            <span>AI 产品</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>01</span><div><h3>AI Scanner</h3><p>AI 文本检测工具</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>AI 文本检测容易被误当成确定判决，用户需要更透明的信号和风险说明。</dd></div>
+              <div><dt><span>解法</span></dt><dd>提供浏览器端基础检测与多模型深度扫描，并展示置信度、逐句理由和误判提示。</dd></div>
+              <div><dt><span>证据</span></dt><dd>免费检测入口和深度扫描流程均已公开上线。</dd></div>
+            </dl>
+            <a class="text-link" href="https://aiscanner.run/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="case-card" data-featured-card="21">
+          <div class="case-media">
+            <img src="assets/projects/project-21.webp" width="400" height="250" alt="RSP Editor 项目页面截图" loading="lazy" decoding="async">
+            <span>AI 产品</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>02</span><div><h3>RSP Editor</h3><p>AI 同款照片生成器</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>用户想复刻参考照片风格，但从模板、提示词到生成流程往往割裂。</dd></div>
+              <div><dt><span>解法</span></dt><dd>把模板选择、照片上传、AI 生成和交互式提示词构建器整合成一条产品流程。</dd></div>
+              <div><dt><span>证据</span></dt><dd>Google 登录、模板选择和生成器均在公开产品中可验证。</dd></div>
+            </dl>
+            <a class="text-link" href="https://rspeditor.app/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="case-card" data-featured-card="22">
+          <div class="case-media">
+            <img src="assets/projects/project-22.webp" width="400" height="250" alt="Remove Matcha Filter 项目页面截图" loading="lazy" decoding="async">
+            <span>实用工具</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>03</span><div><h3>Remove Matcha Filter</h3><p>图片视频校色工具</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>图片和短视频出现抹茶绿色偏色时，用户不希望为了校色上传私人媒体。</dd></div>
+              <div><dt><span>解法</span></dt><dd>在浏览器本地完成图片与视频校色，支持效果对比和导出。</dd></div>
+              <div><dt><span>证据</span></dt><dd>媒体处理全程本地完成；公开工具可直接验证导入、预览与导出。</dd></div>
+            </dl>
+            <a class="text-link" href="https://remove-matcha-filter.com/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="case-card" data-featured-card="9">
+          <div class="case-media">
+            <img src="assets/projects/project-09.webp" width="400" height="250" alt="Chinese Coins Atlas 项目页面截图" loading="lazy" decoding="async">
+            <span>创意实验</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>04</span><div><h3>Chinese Coins Atlas</h3><p>中国古钱币图鉴</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>如何让不了解中国古钱币的中英文读者，按时代和钱型建立可靠的入门路径？</dd></div>
+              <div><dt><span>解法</span></dt><dd>用双语图鉴组织朝代、钱型与铸造背景，并把来源说明和互动工具放进同一条学习路径。</dd></div>
+              <div><dt><span>证据</span></dt><dd>公开双语图鉴、朝代导航与浏览器本地识别工具均可直接访问。</dd></div>
+            </dl>
+            <a class="text-link" href="https://chinesecashcoins.wiki/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="case-card" data-featured-card="11">
+          <div class="case-media">
+            <img src="assets/projects/project-11.webp" width="400" height="250" alt="SpiritVale Wiki 项目页面截图" loading="lazy" decoding="async">
+            <span>游戏与内容</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>05</span><div><h3>SpiritVale Wiki</h3><p>SpiritVale 社区 Wiki</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>新玩家需要快速理解《SpiritVale》的职业、怪物与系统，但资料分散且难以检索。</dd></div>
+              <div><dt><span>解法</span></dt><dd>把职业流派、怪物数据和玩法知识整理为结构化社区 Wiki。</dd></div>
+              <div><dt><span>证据</span></dt><dd>公开站点提供 16 个职业流派与 230+ 怪物数据库。</dd></div>
+            </dl>
+            <a class="text-link" href="https://spiritvale.blog/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="case-card" data-featured-card="25">
+          <div class="case-media">
+            <img src="assets/projects/project-25.webp" width="400" height="250" alt="burnt for you 项目页面截图" loading="lazy" decoding="async">
+            <span>创意实验</span>
+          </div>
+          <div class="case-content">
+            <div class="case-title"><span>06</span><div><h3>burnt for you</h3><p>数字混音带制作器</p></div></div>
+            <dl class="case-proof">
+              <div><dt><span>问题</span></dt><dd>想用一组歌曲和留言表达心意的人，需要比普通歌单更有仪式感、又无需注册的分享方式。</dd></div>
+              <div><dt><span>解法</span></dt><dd>生成带封面、曲目和留言的数字混音带 CD，并通过单个链接分享。</dd></div>
+              <div><dt><span>证据</span></dt><dd>公开产品支持歌曲片段、留言和分享链接生成。</dd></div>
+            </dl>
+            <a class="text-link" href="https://burncd.xyz/" target="_blank" rel="noopener noreferrer">查看公开产品 <span aria-hidden="true">↗</span></a>
+          </div>
+        </article></div>
+    </section>
+
+    <section class="collaboration" id="collaboration" aria-labelledby="collaboration-title">
+      <div>
+        <p class="section-no">03 / COLLABORATION</p>
+        <h2 id="collaboration-title">有一个具体问题，<br>想把它做成产品？</h2>
+      </div>
+      <div class="collaboration-copy">
+        <p>适合讨论：一人产品、AI 工具、内容型网站、垂直数据库与小而完整的联合实验。先讲清问题、用户和验证方式，再谈怎么做。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact">联系合作 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#contact">查看联系方式</a>
         </div>
       </div>
     </section>
 
-    
-    <section class="shell section" id="timeline" aria-labelledby="timeline-title">
-      <div class="section-top reveal"><div><div class="kicker">02 / Shipping Timeline</div><h2 id="timeline-title" aria-label="45 天，33 次真实上线。"><span aria-hidden="true" data-scramble-visual>45 天，33 次真实上线。</span></h2></div><p class="section-copy"><strong>日期不会说谎。</strong>从第一个产品到第 33 个，每一次上线都在同一条时间轴上留下坐标。横向滚动，查看完整的发布节奏。</p></div>
-      <div class="tl-rail-wrap reveal"><div class="tl-rail" tabindex="0" role="region" aria-label="上线时间线，可横向滚动"><div class="tl-item latest"><div class="tl-date">2026-08-25</div><div class="tl-names"><span>Mortal Shell II Wiki</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-22</div><div class="tl-names"><span>OxAlpha</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-20</div><div class="tl-names"><span>The Sinking City 2 Field Guide</span><span>Chinamaxxing Online</span></div><div class="tl-count">2 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-18</div><div class="tl-names"><span>HLLV Field Manual</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-17</div><div class="tl-names"><span>牛来</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-16</div><div class="tl-names"><span>CraveLoop</span><span>MatchaFilter</span><span>burnt for you</span><span>Polski Piłkarz Simulator</span></div><div class="tl-count">4 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-15</div><div class="tl-names"><span>DSH Field Guide</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-12</div><div class="tl-names"><span>Remove Matcha Filter</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-09</div><div class="tl-names"><span>RSP Editor</span><span>AI Scanner</span></div><div class="tl-count">2 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-08</div><div class="tl-names"><span>Merge a Nuke! Guide</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-05</div><div class="tl-names"><span>Shift at Midnight Guide</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-04</div><div class="tl-names"><span>竹知了</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-08-03</div><div class="tl-names"><span>Cash Flow Lifestyle</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-31</div><div class="tl-names"><span>HowManySleepsUntil</span><span>IsItDown</span><span>CopyPlaintext</span></div><div class="tl-count">3 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-29</div><div class="tl-names"><span>DragonSword Wiki</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-28</div><div class="tl-names"><span>SpiritVale Wiki</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-26</div><div class="tl-names"><span>Rot Check</span><span>Chinese Coins Atlas</span><span>TaskbarHeroWiki</span></div><div class="tl-count">3 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-25</div><div class="tl-names"><span>All Wishes Come True</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-18</div><div class="tl-names"><span>llmstxt</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-17</div><div class="tl-names"><span>CodexSkin.space</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-14</div><div class="tl-names"><span>PalworldMap</span></div><div class="tl-count">1 SHIPPED</div></div><div class="tl-item"><div class="tl-date">2026-07-12</div><div class="tl-names"><span>FalloutDay</span><span>Build a Hooper</span><span>AIStoryNest</span></div><div class="tl-count">3 SHIPPED</div></div></div></div>
-    </section>
-
-    <div class="band ghost" aria-hidden="true"><div class="band-track"><div class="band-set"><span>判断 → 构建 → 上线 → 反馈</span><i>✦</i><span>SIGNAL · BUILD · SHIP · COMPOUND</span><i>✦</i><span>上线就是时机</span><i>✦</i><span>EVERY RELEASE LEAVES A TRAIL</span><i>✦</i><span>速度即诚意 · 交付即答案</span><i>✦</i><span>NO COMMITTEE · NO CONSENSUS · JUST SHIP</span><i>✦</i><span>每一次上线都在留下航迹</span><i>✦</i></div><div class="band-set"><span>判断 → 构建 → 上线 → 反馈</span><i>✦</i><span>SIGNAL · BUILD · SHIP · COMPOUND</span><i>✦</i><span>上线就是时机</span><i>✦</i><span>EVERY RELEASE LEAVES A TRAIL</span><i>✦</i><span>速度即诚意 · 交付即答案</span><i>✦</i><span>NO COMMITTEE · NO CONSENSUS · JUST SHIP</span><i>✦</i><span>每一次上线都在留下航迹</span><i>✦</i></div></div></div>
-
-    <section class="shell section" id="system" aria-labelledby="system-title">
-      <div class="section-top reveal"><div><div class="kicker">03 / OPC Operating System</div><h2 id="system-title">少一点等待，<br>多一次真实发布。</h2></div><p class="section-copy">一个人不靠同时做更多事取胜，而是靠更短的决策链、更快的验证循环，以及把每次经验沉淀成下一次出发的速度。</p></div>
-      <div class="system-grid reveal">
-        <article class="system-step" data-step="判断"><span class="step-num">STEP / 01</span><div class="step-orb">01</div><h3>判断</h3><p>别追逐所有机会。找到真实需求，选中那个值得立刻动手的问题。</p></article>
-        <article class="system-step" data-step="构建"><span class="step-num">STEP / 02</span><div class="step-orb">02</div><h3>构建</h3><p>别用宏大蓝图拖慢第一步。压缩范围，用 AI 把想法尽快变成可用产品。</p></article>
-        <article class="system-step" data-step="上线"><span class="step-num">STEP / 03</span><div class="step-orb">03</div><h3>上线</h3><p>别等掌声才上场。把真实版本交给用户，让产品接受世界的检验。</p></article>
-        <article class="system-step" data-step="反馈"><span class="step-num">STEP / 04</span><div class="step-orb">04</div><h3>反馈</h3><p>别靠想象决定未来。让行为、搜索和运营结果推动下一轮更快出发。</p></article>
+    <section class="section method" id="method" aria-labelledby="method-title">
+      <div class="section-heading">
+        <p class="section-no">04 / WORKING METHOD</p>
+        <div><h2 id="method-title">工作方法</h2><p>技术是手段，闭环才是交付。四步反复执行，但每次都以具体问题为起点。</p></div>
       </div>
-      <div class="changelog reveal"><div class="chrome"><i></i><i></i><i></i><span>~/venture-os — release.log — 33 entries</span></div><div class="log-body" tabindex="0" role="region" aria-label="发布日志，可横向和纵向滚动"><div class="prompt-line">$ git log --oneline --ships | <b>33 releases</b></div><div class="log-line"><span class="log-d">[2026-08-25]</span><span class="log-ok">SHIP</span><span class="log-n">Mortal Shell II Wiki</span><span class="log-u">→ https://mortalshell2.quest/</span></div><div class="log-line"><span class="log-d">[2026-08-22]</span><span class="log-ok">SHIP</span><span class="log-n">OxAlpha</span><span class="log-u">→ https://oxalpha.site/</span></div><div class="log-line"><span class="log-d">[2026-08-20]</span><span class="log-ok">SHIP</span><span class="log-n">The Sinking City 2 Field Guide</span><span class="log-u">→ https://thesinkingcity2.top/</span></div><div class="log-line"><span class="log-d">[2026-08-20]</span><span class="log-ok">SHIP</span><span class="log-n">Chinamaxxing Online</span><span class="log-u">→ https://chinamaxxing.site/</span></div><div class="log-line"><span class="log-d">[2026-08-18]</span><span class="log-ok">SHIP</span><span class="log-n">HLLV Field Manual</span><span class="log-u">→ https://hellletloosevietnam.blog/</span></div><div class="log-line"><span class="log-d">[2026-08-17]</span><span class="log-ok">SHIP</span><span class="log-n">牛来</span><span class="log-u">→ https://niulai.blog/</span></div><div class="log-line"><span class="log-d">[2026-08-16]</span><span class="log-ok">SHIP</span><span class="log-n">CraveLoop</span><span class="log-u">→ https://foodnevercomes.online/</span></div><div class="log-line"><span class="log-d">[2026-08-16]</span><span class="log-ok">SHIP</span><span class="log-n">MatchaFilter</span><span class="log-u">→ https://matchafilter.cc/</span></div><div class="log-line"><span class="log-d">[2026-08-16]</span><span class="log-ok">SHIP</span><span class="log-n">burnt for you</span><span class="log-u">→ https://burncd.xyz/</span></div><div class="log-line"><span class="log-d">[2026-08-16]</span><span class="log-ok">SHIP</span><span class="log-n">Polski Piłkarz Simulator</span><span class="log-u">→ https://polskipilkarzsymulator.online/</span></div><div class="log-line"><span class="log-d">[2026-08-15]</span><span class="log-ok">SHIP</span><span class="log-n">DSH Field Guide</span><span class="log-u">→ https://deepseekharness.site/</span></div><div class="log-line"><span class="log-d">[2026-08-12]</span><span class="log-ok">SHIP</span><span class="log-n">Remove Matcha Filter</span><span class="log-u">→ https://remove-matcha-filter.com/</span></div><div class="log-line"><span class="log-d">[2026-08-09]</span><span class="log-ok">SHIP</span><span class="log-n">RSP Editor</span><span class="log-u">→ https://rspeditor.app/</span></div><div class="log-line"><span class="log-d">[2026-08-09]</span><span class="log-ok">SHIP</span><span class="log-n">AI Scanner</span><span class="log-u">→ https://aiscanner.run/</span></div><div class="log-line"><span class="log-d">[2026-08-08]</span><span class="log-ok">SHIP</span><span class="log-n">Merge a Nuke! Guide</span><span class="log-u">→ https://mergeanuke.space/</span></div><div class="log-line"><span class="log-d">[2026-08-05]</span><span class="log-ok">SHIP</span><span class="log-n">Shift at Midnight Guide</span><span class="log-u">→ https://shiftatmidnight.blog/</span></div><div class="log-line"><span class="log-d">[2026-08-04]</span><span class="log-ok">SHIP</span><span class="log-n">竹知了</span><span class="log-u">→ https://zhuzhiliao.buzz/</span></div><div class="log-line"><span class="log-d">[2026-08-03]</span><span class="log-ok">SHIP</span><span class="log-n">Cash Flow Lifestyle</span><span class="log-u">→ https://cashflow.lifestyle/</span></div><div class="log-line"><span class="log-d">[2026-07-31]</span><span class="log-ok">SHIP</span><span class="log-n">HowManySleepsUntil</span><span class="log-u">→ https://howmanysleepsuntil.rest/</span></div><div class="log-line"><span class="log-d">[2026-07-31]</span><span class="log-ok">SHIP</span><span class="log-n">IsItDown</span><span class="log-u">→ https://isitdown.click/</span></div><div class="log-line"><span class="log-d">[2026-07-31]</span><span class="log-ok">SHIP</span><span class="log-n">CopyPlaintext</span><span class="log-u">→ https://copyplaintext.com/</span></div><div class="log-line"><span class="log-d">[2026-07-29]</span><span class="log-ok">SHIP</span><span class="log-n">DragonSword Wiki</span><span class="log-u">→ https://dragonswordawakening.fun/</span></div><div class="log-line"><span class="log-d">[2026-07-28]</span><span class="log-ok">SHIP</span><span class="log-n">SpiritVale Wiki</span><span class="log-u">→ https://spiritvale.blog/</span></div><div class="log-line"><span class="log-d">[2026-07-26]</span><span class="log-ok">SHIP</span><span class="log-n">Rot Check</span><span class="log-u">→ https://rotcheck.cyou/</span></div><div class="log-line"><span class="log-d">[2026-07-26]</span><span class="log-ok">SHIP</span><span class="log-n">Chinese Coins Atlas</span><span class="log-u">→ https://chinesecashcoins.wiki/</span></div><div class="log-line"><span class="log-d">[2026-07-26]</span><span class="log-ok">SHIP</span><span class="log-n">TaskbarHeroWiki</span><span class="log-u">→ https://taskbarherowiki.best/</span></div><div class="log-line"><span class="log-d">[2026-07-25]</span><span class="log-ok">SHIP</span><span class="log-n">All Wishes Come True</span><span class="log-u">→ https://allwishescometrue.site/</span></div><div class="log-line"><span class="log-d">[2026-07-18]</span><span class="log-ok">SHIP</span><span class="log-n">llmstxt</span><span class="log-u">→ https://llmstxt.best/</span></div><div class="log-line"><span class="log-d">[2026-07-17]</span><span class="log-ok">SHIP</span><span class="log-n">CodexSkin.space</span><span class="log-u">→ https://codexskin.space/</span></div><div class="log-line"><span class="log-d">[2026-07-14]</span><span class="log-ok">SHIP</span><span class="log-n">PalworldMap</span><span class="log-u">→ https://palworldmap.best/</span></div><div class="log-line"><span class="log-d">[2026-07-12]</span><span class="log-ok">SHIP</span><span class="log-n">FalloutDay</span><span class="log-u">→ https://falloutday.online/</span></div><div class="log-line"><span class="log-d">[2026-07-12]</span><span class="log-ok">SHIP</span><span class="log-n">Build a Hooper</span><span class="log-u">→ https://buildahooper.best/</span></div><div class="log-line"><span class="log-d">[2026-07-12]</span><span class="log-ok">SHIP</span><span class="log-n">AIStoryNest</span><span class="log-u">→ https://aistorynest.mom/</span></div></div></div>
-      <div class="system-log reveal"><div><div><span class="ok">●</span> loop.status = operational</div><div><span class="run">→</span> courage creates the first release</div><div><span class="run">→</span> every release makes the next one stronger</div></div><span class="system-status">KEEP SHIPPING</span></div>
+      <ol class="method-grid"><li data-method-step="01"><span>01</span><h3>找问题</h3><p>从真实搜索、重复操作或信息缺口里，挑一个值得解决的具体问题。</p></li><li data-method-step="02"><span>02</span><h3>做最小闭环</h3><p>先交付一条从进入、理解、使用到得到结果的完整路径。</p></li><li data-method-step="03"><span>03</span><h3>公开发布</h3><p>让产品拥有真实网址、可访问页面和可复现的上线证据。</p></li><li data-method-step="04"><span>04</span><h3>持续校正</h3><p>根据使用反馈、证据变化和运行状态，修正内容与产品边界。</p></li></ol>
     </section>
 
-    <div class="paper-zone">
-      <section class="shell section" id="manifesto" aria-labelledby="manifesto-title">
-        <div class="manifesto"><div class="manifesto-copy reveal"><div class="kicker">04 / Founder Manifesto</div><h2 id="manifesto-title">没有完美时机。<br><em>上线就是时机。</em></h2><p>一个人不是缩小梦想，而是缩短从判断到行动的距离。拒绝用筹备安慰自己，拒绝让“再等等”偷走窗口。先上场，再变强；先交付，再复利。今天推出去的真实产品，就是明天继续前进的基础设施。</p></div><div class="manifesto-principles reveal"><div><b>See the signal.</b><span>看见机会，就认真判断</span></div><div><b>Make the move.</b><span>决定要做，就立刻动手</span></div><div><b>Ship the truth.</b><span>产品上线，才算回答</span></div><div><b>Earn momentum.</b><span>持续行动，才有复利</span></div></div></div>
-      </section>
-    </div>
+    <section class="section ledger" id="ledger" aria-labelledby="ledger-title">
+      <div class="section-heading">
+        <p class="section-no">05 / RELEASE LEDGER</p>
+        <div><h2 id="ledger-title">完整发布档案</h2><p>33 条历史发布记录，32 个当前在线，1 个明确标记为离线。可以按类型、状态和关键词查找。</p></div>
+      </div>
+      <div class="ledger-tools" hidden aria-label="筛选发布档案">
+        <div class="ledger-filters" role="group" aria-label="按产品类型筛选"><button type="button" class="ledger-filter is-active" data-ledger-filter="all" aria-pressed="true">全部</button><button type="button" class="ledger-filter" data-ledger-filter="ai" aria-pressed="false">AI 产品</button><button type="button" class="ledger-filter" data-ledger-filter="game" aria-pressed="false">游戏与内容</button><button type="button" class="ledger-filter" data-ledger-filter="tool" aria-pressed="false">实用工具</button><button type="button" class="ledger-filter" data-ledger-filter="creative" aria-pressed="false">创意实验</button></div>
+        <label class="search-field" for="ledger-search"><span>搜索</span><input id="ledger-search" type="search" placeholder="名称、用途或域名" autocomplete="off"></label>
+        <label class="status-field" for="ledger-status"><span>状态</span><select id="ledger-status"><option value="all">全部状态</option><option value="live">当前在线</option><option value="offline">当前离线</option></select></label>
+      </div>
+      <div class="ledger-summary"><strong id="ledger-count" aria-live="polite">33 / 33</strong><span>匹配记录</span></div>
+      <div class="ledger-head" aria-hidden="true"><span>日期</span><span>产品</span><span>域名</span><span>类型</span><span>状态</span></div>
+      <div class="ledger-list" id="ledger-list"><article class="ledger-row" data-ledger-id="33" data-ledger-category="game" data-ledger-status="live" data-ledger-search="mortal shell ii wiki ms2 粉丝维基 mortalshell2.quest"><a class="ledger-main" href="https://mortalshell2.quest/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-25</span>
+            <span class="ledger-name"><strong>Mortal Shell II Wiki</strong><small>MS2 粉丝维基</small></span>
+            <span class="ledger-domain">mortalshell2.quest</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="32" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="oxalpha ai 模型证据站 oxalpha.site"><a class="ledger-main" href="https://oxalpha.site/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-22</span>
+            <span class="ledger-name"><strong>OxAlpha</strong><small>AI 模型证据站</small></span>
+            <span class="ledger-domain">oxalpha.site</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="31" data-ledger-category="game" data-ledger-status="live" data-ledger-search="the sinking city 2 field guide 克苏鲁侦探攻略站 thesinkingcity2.top"><a class="ledger-main" href="https://thesinkingcity2.top/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-20</span>
+            <span class="ledger-name"><strong>The Sinking City 2 Field Guide</strong><small>克苏鲁侦探攻略站</small></span>
+            <span class="ledger-domain">thesinkingcity2.top</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="30" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="chinamaxxing online 多语文化指南 chinamaxxing.site"><a class="ledger-main" href="https://chinamaxxing.site/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-20</span>
+            <span class="ledger-name"><strong>Chinamaxxing Online</strong><small>多语文化指南</small></span>
+            <span class="ledger-domain">chinamaxxing.site</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="29" data-ledger-category="game" data-ledger-status="live" data-ledger-search="hllv field manual hllv 越南战场手册 hellletloosevietnam.blog"><a class="ledger-main" href="https://hellletloosevietnam.blog/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-18</span>
+            <span class="ledger-name"><strong>HLLV Field Manual</strong><small>HLLV 越南战场手册</small></span>
+            <span class="ledger-domain">hellletloosevietnam.blog</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="28" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="牛来 牛来电影资料站 niulai.blog"><a class="ledger-main" href="https://niulai.blog/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-17</span>
+            <span class="ledger-name"><strong>牛来</strong><small>牛来电影资料站</small></span>
+            <span class="ledger-domain">niulai.blog</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="27" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="craveloop 全球美食点单模拟器 foodnevercomes.online"><a class="ledger-main" href="https://foodnevercomes.online/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-16</span>
+            <span class="ledger-name"><strong>CraveLoop</strong><small>全球美食点单模拟器</small></span>
+            <span class="ledger-domain">foodnevercomes.online</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="26" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="matchafilter 照片抹茶滤镜校色 matchafilter.cc"><a class="ledger-main" href="https://matchafilter.cc/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-16</span>
+            <span class="ledger-name"><strong>MatchaFilter</strong><small>照片抹茶滤镜校色</small></span>
+            <span class="ledger-domain">matchafilter.cc</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="25" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="burnt for you 数字混音带制作器 burncd.xyz"><a class="ledger-main" href="https://burncd.xyz/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-16</span>
+            <span class="ledger-name"><strong>burnt for you</strong><small>数字混音带制作器</small></span>
+            <span class="ledger-domain">burncd.xyz</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="24" data-ledger-category="game" data-ledger-status="offline" data-ledger-search="polski piłkarz simulator 波兰足球生涯模拟器 polskipilkarzsymulator.online"><div class="ledger-main" aria-label="Polski Piłkarz Simulator，当前离线"><span class="ledger-date">2026-08-16</span>
+            <span class="ledger-name"><strong>Polski Piłkarz Simulator</strong><small>波兰足球生涯模拟器</small></span>
+            <span class="ledger-domain">polskipilkarzsymulator.online</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-offline"><i aria-hidden="true"></i>当前离线</span></div></article><article class="ledger-row" data-ledger-id="23" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="dsh field guide deepseek 工具指南 deepseekharness.site"><a class="ledger-main" href="https://deepseekharness.site/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-15</span>
+            <span class="ledger-name"><strong>DSH Field Guide</strong><small>DeepSeek 工具指南</small></span>
+            <span class="ledger-domain">deepseekharness.site</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="22" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="remove matcha filter 图片视频校色工具 remove-matcha-filter.com"><a class="ledger-main" href="https://remove-matcha-filter.com/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-12</span>
+            <span class="ledger-name"><strong>Remove Matcha Filter</strong><small>图片视频校色工具</small></span>
+            <span class="ledger-domain">remove-matcha-filter.com</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="21" data-ledger-category="ai" data-ledger-status="live" data-ledger-search="rsp editor ai 同款照片生成器 rspeditor.app"><a class="ledger-main" href="https://rspeditor.app/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-09</span>
+            <span class="ledger-name"><strong>RSP Editor</strong><small>AI 同款照片生成器</small></span>
+            <span class="ledger-domain">rspeditor.app</span>
+            <span class="ledger-category">AI 产品</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="20" data-ledger-category="ai" data-ledger-status="live" data-ledger-search="ai scanner ai 文本检测工具 aiscanner.run"><a class="ledger-main" href="https://aiscanner.run/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-09</span>
+            <span class="ledger-name"><strong>AI Scanner</strong><small>AI 文本检测工具</small></span>
+            <span class="ledger-domain">aiscanner.run</span>
+            <span class="ledger-category">AI 产品</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="19" data-ledger-category="game" data-ledger-status="live" data-ledger-search="merge a nuke! guide 核弹合成攻略站 mergeanuke.space"><a class="ledger-main" href="https://mergeanuke.space/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-08</span>
+            <span class="ledger-name"><strong>Merge a Nuke! Guide</strong><small>核弹合成攻略站</small></span>
+            <span class="ledger-domain">mergeanuke.space</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="18" data-ledger-category="game" data-ledger-status="live" data-ledger-search="shift at midnight guide 午夜轮班攻略站 shiftatmidnight.blog"><a class="ledger-main" href="https://shiftatmidnight.blog/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-05</span>
+            <span class="ledger-name"><strong>Shift at Midnight Guide</strong><small>午夜轮班攻略站</small></span>
+            <span class="ledger-domain">shiftatmidnight.blog</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="17" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="竹知了 竹蝉玩具模拟器 zhuzhiliao.buzz"><a class="ledger-main" href="https://zhuzhiliao.buzz/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-04</span>
+            <span class="ledger-name"><strong>竹知了</strong><small>竹蝉玩具模拟器</small></span>
+            <span class="ledger-domain">zhuzhiliao.buzz</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="16" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="cash flow lifestyle 现金流理财桌游站 cashflow.lifestyle"><a class="ledger-main" href="https://cashflow.lifestyle/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-08-03</span>
+            <span class="ledger-name"><strong>Cash Flow Lifestyle</strong><small>现金流理财桌游站</small></span>
+            <span class="ledger-domain">cashflow.lifestyle</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="15" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="howmanysleepsuntil 睡眠倒计时工具 howmanysleepsuntil.rest"><a class="ledger-main" href="https://howmanysleepsuntil.rest/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-31</span>
+            <span class="ledger-name"><strong>HowManySleepsUntil</strong><small>睡眠倒计时工具</small></span>
+            <span class="ledger-domain">howmanysleepsuntil.rest</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="14" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="isitdown 网站宕机检测工具 isitdown.click"><a class="ledger-main" href="https://isitdown.click/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-31</span>
+            <span class="ledger-name"><strong>IsItDown</strong><small>网站宕机检测工具</small></span>
+            <span class="ledger-domain">isitdown.click</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="13" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="copyplaintext 纯文本粘贴工具 copyplaintext.com"><a class="ledger-main" href="https://copyplaintext.com/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-31</span>
+            <span class="ledger-name"><strong>CopyPlaintext</strong><small>纯文本粘贴工具</small></span>
+            <span class="ledger-domain">copyplaintext.com</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="12" data-ledger-category="game" data-ledger-status="live" data-ledger-search="dragonsword wiki 龙剑觉醒社区 wiki dragonswordawakening.fun"><a class="ledger-main" href="https://dragonswordawakening.fun/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-29</span>
+            <span class="ledger-name"><strong>DragonSword Wiki</strong><small>龙剑觉醒社区 Wiki</small></span>
+            <span class="ledger-domain">dragonswordawakening.fun</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="11" data-ledger-category="game" data-ledger-status="live" data-ledger-search="spiritvale wiki spiritvale 社区 wiki spiritvale.blog"><a class="ledger-main" href="https://spiritvale.blog/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-28</span>
+            <span class="ledger-name"><strong>SpiritVale Wiki</strong><small>SpiritVale 社区 Wiki</small></span>
+            <span class="ledger-domain">spiritvale.blog</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="10" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="rot check gen alpha 趣味测试站 rotcheck.cyou"><a class="ledger-main" href="https://rotcheck.cyou/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-26</span>
+            <span class="ledger-name"><strong>Rot Check</strong><small>Gen Alpha 趣味测试站</small></span>
+            <span class="ledger-domain">rotcheck.cyou</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="9" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="chinese coins atlas 中国古钱币图鉴 chinesecashcoins.wiki"><a class="ledger-main" href="https://chinesecashcoins.wiki/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-26</span>
+            <span class="ledger-name"><strong>Chinese Coins Atlas</strong><small>中国古钱币图鉴</small></span>
+            <span class="ledger-domain">chinesecashcoins.wiki</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="8" data-ledger-category="game" data-ledger-status="live" data-ledger-search="taskbarherowiki task bar hero 数据库 taskbarherowiki.best"><a class="ledger-main" href="https://taskbarherowiki.best/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-26</span>
+            <span class="ledger-name"><strong>TaskbarHeroWiki</strong><small>Task Bar Hero 数据库</small></span>
+            <span class="ledger-domain">taskbarherowiki.best</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="7" data-ledger-category="creative" data-ledger-status="live" data-ledger-search="all wishes come true 八仙电影与民俗文化站 allwishescometrue.site"><a class="ledger-main" href="https://allwishescometrue.site/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-25</span>
+            <span class="ledger-name"><strong>All Wishes Come True</strong><small>八仙电影与民俗文化站</small></span>
+            <span class="ledger-domain">allwishescometrue.site</span>
+            <span class="ledger-category">创意实验</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="6" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="llmstxt llms.txt 实用指南 llmstxt.best"><a class="ledger-main" href="https://llmstxt.best/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-18</span>
+            <span class="ledger-name"><strong>llmstxt</strong><small>llms.txt 实用指南</small></span>
+            <span class="ledger-domain">llmstxt.best</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="5" data-ledger-category="tool" data-ledger-status="live" data-ledger-search="codexskin.space codex cli tui 指南站 codexskin.space"><a class="ledger-main" href="https://codexskin.space/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-17</span>
+            <span class="ledger-name"><strong>CodexSkin.space</strong><small>Codex CLI TUI 指南站</small></span>
+            <span class="ledger-domain">codexskin.space</span>
+            <span class="ledger-category">实用工具</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="4" data-ledger-category="game" data-ledger-status="live" data-ledger-search="palworldmap palworld 坐标图谱 palworldmap.best"><a class="ledger-main" href="https://palworldmap.best/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-14</span>
+            <span class="ledger-name"><strong>PalworldMap</strong><small>Palworld 坐标图谱</small></span>
+            <span class="ledger-domain">palworldmap.best</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="3" data-ledger-category="game" data-ledger-status="live" data-ledger-search="falloutday fallout 76 攻略站 falloutday.online"><a class="ledger-main" href="https://falloutday.online/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-12</span>
+            <span class="ledger-name"><strong>FalloutDay</strong><small>Fallout 76 攻略站</small></span>
+            <span class="ledger-domain">falloutday.online</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="2" data-ledger-category="game" data-ledger-status="live" data-ledger-search="build a hooper 篮球训练内容站 buildahooper.best"><a class="ledger-main" href="https://buildahooper.best/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-12</span>
+            <span class="ledger-name"><strong>Build a Hooper</strong><small>篮球训练内容站</small></span>
+            <span class="ledger-domain">buildahooper.best</span>
+            <span class="ledger-category">游戏与内容</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article><article class="ledger-row" data-ledger-id="1" data-ledger-category="ai" data-ledger-status="live" data-ledger-search="aistorynest 睡前故事生成站 aistorynest.mom"><a class="ledger-main" href="https://aistorynest.mom/" target="_blank" rel="noopener noreferrer"><span class="ledger-date">2026-07-12</span>
+            <span class="ledger-name"><strong>AIStoryNest</strong><small>睡前故事生成站</small></span>
+            <span class="ledger-domain">aistorynest.mom</span>
+            <span class="ledger-category">AI 产品</span>
+            <span class="ledger-state is-live"><i aria-hidden="true"></i>在线</span></a></article></div>
+      <button class="button ledger-more" type="button" id="ledger-more" hidden aria-expanded="false" aria-controls="ledger-list">查看全部 33 条记录</button>
+    </section>
 
-    <div class="band" aria-hidden="true"><div class="band-track"><div class="band-set"><span>下一件值得上线的事</span><i>✦</i><span>现在就开始</span><i>✦</i><span>THE BEST TIME TO SHIP IS BEFORE YOU FEEL READY</span><i>✦</i><span>OPC · AI · GLOBAL</span><i>✦</i><span>不等万事俱备 · 上线造东风</span><i>✦</i><span>SPEED IS THE STRATEGY</span><i>✦</i><span>单人不成军 · 但全世界都是甲板</span><i>✦</i></div><div class="band-set"><span>下一件值得上线的事</span><i>✦</i><span>现在就开始</span><i>✦</i><span>THE BEST TIME TO SHIP IS BEFORE YOU FEEL READY</span><i>✦</i><span>OPC · AI · GLOBAL</span><i>✦</i><span>不等万事俱备 · 上线造东风</span><i>✦</i><span>SPEED IS THE STRATEGY</span><i>✦</i><span>单人不成军 · 但全世界都是甲板</span><i>✦</i></div></div></div>
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="section-no">06 / FOUNDER NOTE</p>
+        <div><h2 id="about-title">关于王子凡</h2><p>ZF Wang，一人产品工作室创作者。关注 AI 产品、垂直工具、内容型网站和能被真实使用的小型互联网产品。</p></div>
+      </div>
+      <div class="about-grid">
+        <blockquote>“我更愿意用一个能打开、能使用、能继续修正的网址，来说明自己能做什么。”</blockquote>
+        <div><h3>合作边界</h3><p>适合从一个明确问题出发，讨论产品定义、原型、内容系统、开发与公开发布。不承诺虚构增长、不包装未经验证的结果，也不把功能堆叠当成交付。</p></div>
+      </div>
+    </section>
 
-    <section class="shell section" id="contact" aria-labelledby="contact-title">
-      <div class="contact-card reveal"><div class="contact-main"><div class="kicker">05 / Collaboration</div><h2 id="contact-title"><span>下一件值得上线的事，</span><span>现在就开始。</span></h2><p>欢迎交流 OPC 创业、AI 产品、出海增长、网站工具与联合实验。不必先写一份宏大计划——从一个具体问题、一条机会信号或一个最小版本开始。</p><div class="contact-fire"><i aria-hidden="true"></i>THE BEST TIME TO SHIP IS BEFORE YOU FEEL READY.</div></div><aside class="contact-side"><div><small>WeChat / Direct contact</small><figure class="qr-card"><img src="assets/wechat-qr.webp" alt="微信二维码：扫码添加 wang1227928718" width="560" height="560" loading="lazy" decoding="async"><figcaption>扫码添加 · Founder Direct Line</figcaption></figure><div class="wechat">wang1227928718</div><div class="copy-status" id="copyStatus" aria-live="polite"></div></div><div class="contact-actions"><button class="btn btn-primary copy-btn" id="copyWechat" data-copy="wang1227928718">复制微信号</button><p class="contact-note">添加时可备注「OPC 合作」与想交流的方向。先聊一个真实问题，再把它推向世界。</p></div></aside></div>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p class="section-no">07 / CONTACT</p>
+        <h2 id="contact-title">把问题说清楚，<br>我们从第一步开始。</h2>
+        <p>添加微信时，请备注“合作”并附上一句话：你想解决什么问题、主要给谁用。</p>
+      </div>
+      <div class="contact-card">
+        <figure>
+          <img src="assets/wechat-qr.webp" width="560" height="560" alt="王子凡微信二维码，微信号 wang1227928718" loading="lazy" decoding="async">
+          <figcaption>微信扫码联系</figcaption>
+        </figure>
+        <div class="contact-details">
+          <span>WECHAT / DIRECT CONTACT</span>
+          <strong id="wechat-value">wang1227928718</strong>
+          <button class="button copy-button" type="button" hidden data-copy-value="wang1227928718" aria-describedby="copy-status">复制微信号</button>
+          <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+          <label class="manual-copy" hidden>手动复制<input value="wang1227928718" readonly></label>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="shell footer"><span>© <span id="year"></span> ZF WANG · BUILD SMALL · SHIP REAL · KEEP GOING</span><nav aria-label="页脚链接"><a href="privacy.html">PRIVACY / 隐私</a><a href="#top">BACK TO TOP ↑</a></nav></footer>
-<div class="modal" id="commandDialog" role="dialog" aria-modal="true" aria-labelledby="commandTitle" hidden><div class="palette"><div class="palette-head"><span id="commandTitle">Navigate / 选择下一步</span><button class="palette-close" id="commandClose" aria-label="关闭导航">×</button></div><div class="palette-list"><a href="#work"><span>浏览全部上线记录</span><kbd>01</kbd></a><a href="#system"><span>进入 OPC Operating System</span><kbd>02</kbd></a><a href="#manifesto"><span>阅读 Founder Manifesto</span><kbd>03</kbd></a><a href="#contact"><span>复制微信号并开始合作对话</span><kbd>04</kbd></a></div></div></div>
-  <script>
-    const filters=[...document.querySelectorAll('.filter')];
-    const projects=[...document.querySelectorAll('.site')];
-    const visibleCount=document.querySelector('#visibleCount');
-    filters.forEach(button=>button.addEventListener('click',()=>{
-      const value=button.dataset.filter;
-      filters.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active))});
-      projects.forEach(card=>{const show=value==='all'||card.querySelector('[data-category]').dataset.category===value;card.classList.toggle('hide',!show)});
-      visibleCount.textContent=value==='all'?'ALL RELEASES':button.textContent.toUpperCase();
-    }));
-    const modal=document.querySelector('#commandDialog');
-    const openButton=document.querySelector('#commandBtn');
-    const closeButton=document.querySelector('#commandClose');
-    let lastFocus=null;
-    function modalFocusables(){return [...modal.querySelectorAll('a,button:not([disabled])')]}
-    function canRestoreFocus(element){return Boolean(element&&element!==document.body&&element!==document.documentElement&&element.isConnected&&!element.closest('[hidden]')&&typeof element.focus==='function')}
-    function openCommand(){const active=document.activeElement;lastFocus=canRestoreFocus(active)&&!modal.contains(active)?active:openButton;modal.hidden=false;modal.classList.add('open');openButton.setAttribute('aria-expanded','true');requestAnimationFrame(()=>modal.querySelector('a').focus())}
-    function closeCommand(){modal.classList.remove('open');modal.hidden=true;openButton.setAttribute('aria-expanded','false');(canRestoreFocus(lastFocus)?lastFocus:openButton).focus()}
-    openButton.addEventListener('click',openCommand);
-    closeButton.addEventListener('click',closeCommand);
-    modal.addEventListener('click',event=>{if(event.target===modal)closeCommand()});
-    modal.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeCommand));
-    addEventListener('keydown',event=>{
-      if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();modal.hidden?openCommand():closeCommand()}
-      if(event.key==='Escape'&&!modal.hidden)closeCommand();
-      if(event.key==='Tab'&&!modal.hidden){const items=modalFocusables();const first=items[0];const last=items[items.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
-    });
-    const copyButton=document.querySelector('#copyWechat');
-    const copyStatus=document.querySelector('#copyStatus');
-    copyButton.addEventListener('click',async()=>{
-      const value=copyButton.dataset.copy;let copied=false;
-      try{await navigator.clipboard.writeText(value);copied=true}catch(error){
-        let input=null;
-        try{
-          input=document.createElement('textarea');input.value=value;input.setAttribute('readonly','');input.style.position='fixed';input.style.opacity='0';document.body.appendChild(input);input.select();copied=Boolean(document.execCommand('copy'));
-        }catch(fallbackError){copied=false}finally{if(input)input.remove()}
-      }
-      copyStatus.textContent=copied?'微信号已复制，可以直接添加。':'微信号：'+value;
-      copyButton.textContent=copied?'已复制 ✓':'复制微信号';
-    });
-    if(matchMedia('(pointer:fine)').matches){addEventListener('pointermove',event=>{document.documentElement.style.setProperty('--mx',event.clientX+'px');document.documentElement.style.setProperty('--my',event.clientY+'px')})}
-    document.querySelector('#year').textContent=new Date().getFullYear();
-  </script>
-  <script data-ui="motion">
-    (function(){
-      var doc=document.documentElement;
-      doc.classList.add('js');
-      var nodes=document.querySelectorAll('.reveal,.site');
-      if(!('IntersectionObserver' in window)){for(var i=0;i<nodes.length;i++)nodes[i].classList.add('in');return}
-      var io=new IntersectionObserver(function(entries){
-        for(var i=0;i<entries.length;i++){if(entries[i].isIntersecting){entries[i].target.classList.add('in');io.unobserve(entries[i].target)}}
-      },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-      for(var j=0;j<nodes.length;j++)io.observe(nodes[j]);
-    })();
-  </script>
-  <script data-ui="fx">
-(function(){
-  'use strict';
-  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
-  if(reduced||!fine)return;
-
-  /* ---- scramble-decode titles ---- */
-  var GLYPHS='█▓▒░<>/\\|=+*#%&@01';
-  function scramble(el){
-    if(el.dataset.scrambled)return;
-    el.dataset.scrambled='1';
-    var original=el.textContent;
-    var frame=0,total=Math.max(18,original.length*3);
-    (function tick(){
-      frame++;
-      var resolved=Math.floor((frame/total)*original.length);
-      var out='';
-      for(var i=0;i<original.length;i++){
-        var ch=original[i];
-        if(ch===' '){out+=ch;continue}
-        out+=i<resolved?ch:GLYPHS[Math.floor(Math.random()*GLYPHS.length)];
-      }
-      el.textContent=out;
-      if(resolved<original.length)requestAnimationFrame(tick);
-      else el.textContent=original;
-    })();
-  }
-  var heroWord=document.querySelector('.gradient-word');
-  if(heroWord)setTimeout(function(){scramble(heroWord)},380);
-  if('IntersectionObserver' in window){
-    var sio=new IntersectionObserver(function(entries){
-      for(var i=0;i<entries.length;i++){
-        if(entries[i].isIntersecting){scramble(entries[i].target);sio.unobserve(entries[i].target)}
-      }
-    },{threshold:.5});
-    var st=document.querySelector('#timeline-title [data-scramble-visual]');
-    if(st)sio.observe(st);
-  }
-
-  /* ---- magnetic primary CTAs ---- */
-  var ctas=document.querySelectorAll('.btn-primary');
-  for(var c=0;c<ctas.length;c++){
-    (function(btn){
-      btn.addEventListener('pointermove',function(e){
-        var r=btn.getBoundingClientRect();
-        var dx=e.clientX-(r.left+r.width/2);
-        var dy=e.clientY-(r.top+r.height/2);
-        var mx=Math.max(-7,Math.min(7,dx*0.18));
-        var my=Math.max(-6,Math.min(6,dy*0.22));
-        btn.style.transform='translate('+mx+'px,'+my+'px)';
-      });
-      btn.addEventListener('pointerleave',function(){btn.style.transform=''});
-    })(ctas[c]);
-  }
-
-  /* ---- card thumbnail tilt ---- */
-  var sitesBox=document.querySelector('.sites');
-  if(sitesBox){
-    sitesBox.addEventListener('pointermove',function(e){
-      var shot=e.target&&e.target.closest?e.target.closest('.site-shot'):null;
-      if(!shot)return;
-      var r=shot.getBoundingClientRect();
-      var px=(e.clientX-r.left)/r.width-0.5;
-      var py=(e.clientY-r.top)/r.height-0.5;
-      shot.style.transform='rotateX('+(-py*7).toFixed(2)+'deg) rotateY('+(px*9).toFixed(2)+'deg)';
-    });
-    sitesBox.addEventListener('pointerout',function(e){
-      var shot=e.target&&e.target.closest?e.target.closest('.site-shot'):null;
-      if(shot&&(!e.relatedTarget||!shot.contains(e.relatedTarget)))shot.style.transform='';
-    });
-  }
-})();
-
-  </script>
-<script data-ui="launch">
-(function(){
-  'use strict';
-  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
-  var host=document.querySelector('[data-launch]');
-  if(!host)return;
-  var SHIPS=[{"n": 1, "name": "AIStoryNest", "d": "2026-07-12"}, {"n": 2, "name": "Build a Hooper", "d": "2026-07-12"}, {"n": 3, "name": "FalloutDay", "d": "2026-07-12"}, {"n": 4, "name": "PalworldMap", "d": "2026-07-14"}, {"n": 5, "name": "CodexSkin.space", "d": "2026-07-17"}, {"n": 6, "name": "llmstxt", "d": "2026-07-18"}, {"n": 7, "name": "All Wishes Come True", "d": "2026-07-25"}, {"n": 8, "name": "TaskbarHeroWiki", "d": "2026-07-26"}, {"n": 9, "name": "Chinese Coins Atlas", "d": "2026-07-26"}, {"n": 10, "name": "Rot Check", "d": "2026-07-26"}, {"n": 11, "name": "SpiritVale Wiki", "d": "2026-07-28"}, {"n": 12, "name": "DragonSword Wiki", "d": "2026-07-29"}, {"n": 13, "name": "CopyPlaintext", "d": "2026-07-31"}, {"n": 14, "name": "IsItDown", "d": "2026-07-31"}, {"n": 15, "name": "HowManySleepsUntil", "d": "2026-07-31"}, {"n": 16, "name": "Cash Flow Lifestyle", "d": "2026-08-03"}, {"n": 17, "name": "竹知了", "d": "2026-08-04"}, {"n": 18, "name": "Shift at Midnight Guide", "d": "2026-08-05"}, {"n": 19, "name": "Merge a Nuke! Guide", "d": "2026-08-08"}, {"n": 20, "name": "AI Scanner", "d": "2026-08-09"}, {"n": 21, "name": "RSP Editor", "d": "2026-08-09"}, {"n": 22, "name": "Remove Matcha Filter", "d": "2026-08-12"}, {"n": 23, "name": "DSH Field Guide", "d": "2026-08-15"}, {"n": 24, "name": "Polski Piłkarz Simulator", "d": "2026-08-16"}, {"n": 25, "name": "burnt for you", "d": "2026-08-16"}, {"n": 26, "name": "MatchaFilter", "d": "2026-08-16"}, {"n": 27, "name": "CraveLoop", "d": "2026-08-16"}, {"n": 28, "name": "牛来", "d": "2026-08-17"}, {"n": 29, "name": "HLLV Field Manual", "d": "2026-08-18"}, {"n": 30, "name": "Chinamaxxing Online", "d": "2026-08-20"}, {"n": 31, "name": "The Sinking City 2 Field Guide", "d": "2026-08-20"}, {"n": 32, "name": "OxAlpha", "d": "2026-08-22"}, {"n": 33, "name": "Mortal Shell II Wiki", "d": "2026-08-25"}];
-
-  /* ---- canvas: starfield + orbital ships, mouse parallax + attraction ---- */
-  var cv=host.querySelector('.orbit-canvas'),ctx=cv.getContext('2d');
-  var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
-  var mx=.5,my=.4,tmx=.5,tmy=.4,stars=[],ships=[];
-  function size(){
-    W=host.clientWidth;H=host.clientHeight;
-    cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
-    stars=[];var n=Math.round(W*H/6500);
-    for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+.2,a:Math.random()*.5+.12,p:Math.random()*6.28});
-    ships=[];for(var j=0;j<SHIPS.length;j++){var t=j/(SHIPS.length-1||1);
-      ships.push({a:t*6.283-1.57,rx:W*.20+t*W*.16,ry:H*.13+t*H*.10,sp:.00006+t*.00009,s:1.1+t*1.3,t:t});}
-  }
-  function frame(ts){
-    ctx.clearRect(0,0,W,H);
-    var cx=W/2,cy=H*.52;
-    mx+=(tmx-mx)*.06;my+=(tmy-my)*.06;
-    var ox=(mx-.5)*18,oy=(my-.5)*14;
-    for(var i=0;i<stars.length;i++){var s=stars[i];
-      var tw=s.a*(reduced?1:(.6+.4*Math.sin(ts*.001+s.p)));
-      ctx.fillStyle='rgba(245,184,0,'+tw+')';
-      ctx.fillRect(s.x+ox*(s.r*.4),s.y+oy*(s.r*.4),s.r,s.r);}
-    if(!reduced){
-      var mxx=mx*W,myy=my*H;
-      for(var j=0;j<ships.length;j++){var p=ships[j];
-        p.a+=p.sp*16.6;
-        var x=cx+Math.cos(p.a)*p.rx+ox*(.5+p.t);
-        var y=cy+Math.sin(p.a)*p.ry+oy*(.5+p.t);
-        var dx=mxx-x,dy=myy-y,d2=dx*dx+dy*dy;
-        if(d2<90000){var f=(1-d2/90000)*26;x+=dx/Math.sqrt(d2+1)*f;y+=dy/Math.sqrt(d2+1)*f;}
-        var g=ctx.createRadialGradient(x,y,0,x,y,p.s*7);
-        g.addColorStop(0,'rgba(245,184,0,.85)');g.addColorStop(.4,'rgba(245,184,0,.28)');g.addColorStop(1,'rgba(245,184,0,0)');
-        ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,p.s*7,0,6.283);ctx.fill();
-        ctx.fillStyle='rgba(255,215,106,.95)';ctx.beginPath();ctx.arc(x,y,p.s*.8,0,6.283);ctx.fill();
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-  size();requestAnimationFrame(frame);
-  window.addEventListener('resize',size,{passive:true});
-  if(fine&&!reduced){host.addEventListener('pointermove',function(e){
-    var r=host.getBoundingClientRect();tmx=(e.clientX-r.left)/r.width;tmy=(e.clientY-r.top)/r.height;
-  },{passive:true});}
-
-  /* ---- telemetry cascade ---- */
-  var lines=host.querySelectorAll('.tele-line');
-  for(var l=0;l<lines.length;l++){(function(el,i){setTimeout(function(){el.classList.add('on')},500+i*260);})(lines[l],l);}
-
-  /* ---- T-minus countdown (cadence-derived) ---- */
-  var tm=document.getElementById('tminus');
-  if(tm){
-    var newest=new Date(SHIPS[SHIPS.length-1].d+'T00:00:00');
-    var eta=new Date(newest.getTime()+1.3*86400000);
-    var pad=function(n){return String(n).padStart(2,'0')};
-    var tick=function(){
-      var d=eta-Date.now();
-      if(d<=0){tm.textContent='SHIP TODAY';return}
-      var hh=Math.floor(d/3600000),mm=Math.floor(d%3600000/60000),ss=Math.floor(d%60000/1000);
-      tm.textContent=pad(hh)+':'+pad(mm)+':'+pad(ss);
-    };
-    tick();if(!reduced)setInterval(tick,1000);
-  }
-
-  /* ---- matrix: click scrolls to card ---- */
-  var px=host.querySelectorAll('.px');
-  var cards=document.querySelectorAll('article.site');
-  for(var p=0;p<px.length;p++){(function(btn){
-    btn.addEventListener('click',function(){
-      var idx=parseInt(btn.dataset.i,10);
-      var card=cards[cards.length-1-idx];
-      if(card){card.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
-        card.style.transition='box-shadow .4s';card.style.boxShadow='0 0 0 3px rgba(245,184,0,.8)';
-        setTimeout(function(){card.style.boxShadow=''},1400);}
-    });
-  })(px[p]);}
-})();
-
-</script>
+  <footer class="site-footer">
+    <span>© 2026 ZF Wang</span>
+    <span>一人产品工作室 · 公开发布档案</span>
+    <a href="privacy.html">隐私说明</a>
+  </footer>
 </body>
 </html>
