@@ -9,19 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`f5b967e`（v10 EDITORIAL TIMELINE 皮肤）；前一个：`0f95b60`（v9 设计 token 统一）；再前：`1c42a4f`（微信二维码 + 9 条 OPC 标语）
-- 当前生产页面 tree：`cd22a287693713bb5315fea7e71bb1aaddc24a39`；`index.html` blob：`393ba6ca5378f3ecc37b5d155041550fde00eded`（v5 基线）
+- 当前生产提交：`c02376783fc072888f16062f49ca21ba0967f469`（PR #1 squash merge）
+- 当前生产 tree：`9bd9aed752fba86aefe4809d5b91baa6e1ad2de6`；公开 artifact SHA-256：`cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`
 
-## V11 本地发布候选：一人产品档案（2026-08-27，未部署）
+## V11 生产版：一人产品档案（2026-08-27）
 
-- **状态**：独立候选分支本地审查中；尚未提交、推送、合并 `main` 或部署，正式站仍是上方记录的 v10。
+- **状态**：已通过 PR #1 合并 `main` 并由 GitHub Pages workflow run `33094322395` 部署；quality 与 deploy 均成功，annotation 为 0。
 - **架构**：`data/projects.json` 是 33 条发布记录、32 live / 1 offline、最近发布、代表案例、完整档案、JSON-LD 和 OG 图计数的单一数据源；`scripts/build_v11.py` 生成首页、隐私页和共享资产。
 - **信息架构**：唯一身份为 `ZF WANG / ONE-PERSON PRODUCT STUDIO`，首页顺序为身份 → 最近发布 → 代表案例 → 合作入口 → 方法 → 完整档案 → 关于 → 联系；默认档案交互态展示 9 条，无 JS 时 33 条全部可读。
 - **渐进增强**：筛选/搜索/展开与复制控件默认原生 `hidden`，仅在各自 DOM 完整并完成事件绑定后显示；JS 失败时不出现假按钮。
 - **公开边界**：`scripts/prepare_public_artifact.py` 从全新目录生成 strict allowlist，拒绝 symlink；公开文件仅含两页 HTML、favicon、共享 CSS/JS/字体/OG/微信二维码和 33 张编号项目 WebP，不含源码、测试、数据、控制文档或 `.hermes/`。
 - **发布闸门**：PR 与 main 都运行确定性构建漂移检查、pytest、Node 交互、Python compile、八宽度 Chromium、no-JS/reduced-motion/键盘/隐私 skip-link 和 exact artifact 验收；只有 `push main` 全绿后才有 deploy 权限。
-- **授权状态**：只允许冻结本地候选与预览证据；在子凡明确说“可以上线”前不得推送、合并或部署。
-- **冻结证据**：exact public artifact 为 41 文件，SHA-256 `cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`；20 项 pytest、Node 交互、compile、diff check、八宽度 Chromium、no-JS/reduced-motion 和五张截图目检全绿。只读本地副本位于 `/root/local-previews/wangzifan-store/v11-cf62d271/`。
+- **发布授权**：子凡于 2026-08-27 明确回复“可以上线”；本次授权已用于 PR #1 合并与生产部署，后续新改动需重新验收和授权。
+- **生产证据**：exact public artifact 为 41 文件；线上首页、隐私页、CSS、JS 和 OG 图逐字节 SHA 与冻结 artifact 一致；桌面/手机/no-JS 真实域浏览器验收全绿，10/10 懒加载图片在正常滚动下完成。只读本地副本位于 `/root/local-previews/wangzifan-store/v11-cf62d271/`。
+- **域名状态**：`http://wangzifan.store/` 301 到 HTTPS apex；`www.wangzifan.store` 当前无 DNS 记录，作为非阻断后续配置项，不表述为已完成。
 - **历史版本**：下方 v9、v8、v6 等段落仅为生产演进记录；对应旧装配和旧验收脚本已在 V11 清理，不是当前运行入口。
 
 ## v9 改版：设计 token 统一 + 移动健康（2026-08-25）
