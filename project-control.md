@@ -10,7 +10,7 @@
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
 - 当前生产页面实现提交：`c02376783fc072888f16062f49ca21ba0967f469`（PR #1 squash merge）
-- 当前生产 tree：`9bd9aed752fba86aefe4809d5b91baa6e1ad2de6`；公开 artifact SHA-256：`cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`
+- V11 页面实现基线 tree：`9bd9aed752fba86aefe4809d5b91baa6e1ad2de6`；公开 artifact SHA-256：`cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`
 
 ## V11 生产版：一人产品档案（2026-08-27）
 
