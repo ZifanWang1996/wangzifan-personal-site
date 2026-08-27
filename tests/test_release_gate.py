@@ -73,8 +73,16 @@ def test_pages_workflow_separates_quality_from_main_only_deploy():
     action_refs = re.findall(r"uses:\s+[^@\s]+@([^\s]+)", workflow)
     assert len(action_refs) == 6
     assert all(re.fullmatch(r"[0-9a-f]{40}", reference) for reference in action_refs)
-    assert "actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b" in workflow
-    assert "actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e" in workflow
+    expected_actions = {
+        "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-python": "5fda3b95a4ea91299a34e894583c3862153e4b97",
+        "actions/setup-node": "820762786026740c76f36085b0efc47a31fe5020",
+        "actions/upload-artifact": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "actions/upload-pages-artifact": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+        "actions/deploy-pages": "cd2ce8fcbc39b97be8ca5fce6e763baed58fa128",
+    }
+    for action, reference in expected_actions.items():
+        assert f"{action}@{reference}" in workflow
 
     accept = (ROOT / "scripts" / "accept_v11.py").read_text(encoding="utf-8")
     assert "target height below 44px" in accept

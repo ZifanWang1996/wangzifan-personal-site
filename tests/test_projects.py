@@ -173,7 +173,7 @@ def test_privacy_and_analytics_are_consistent():
 def test_workflow_builds_and_tests_before_exact_allowlist_upload():
     workflow = WORKFLOW.read_text(encoding="utf-8")
     for gate in (
-        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
         "pip install -r requirements-ci.txt",
         "python -m playwright install --with-deps chromium",
         "python scripts/build_v11.py",
