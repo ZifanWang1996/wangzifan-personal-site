@@ -1,15 +1,30 @@
 import hashlib
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
 
-from scripts.prepare_public_artifact import STATIC_PUBLIC_PATHS, public_files
+from scripts.accept_v11 import assert_artifact_closure
+from scripts.prepare_public_artifact import (
+    PROJECT_PUBLIC_PATHS,
+    STATIC_PUBLIC_PATHS,
+    public_files,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_local_candidate_and_qa_evidence_are_gitignored():
+    patterns = {
+        line.strip()
+        for line in (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    }
+    assert {"_site/", "_qa/"}.issubset(patterns)
 
 
 def test_public_artifact_is_exact_allowlist(tmp_path):
@@ -22,17 +37,9 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
         text=True,
     )
     files = sorted(path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file())
+    expected = set(STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS)
     assert len(files) == 41
-    assert set(files[:0]) == set()
-    assert {"index.html", "privacy.html", "favicon.svg"}.issubset(files)
-    assert {
-        "assets/site.css",
-        "assets/site.js",
-        "assets/og-card.webp",
-        "assets/archivo.woff2",
-        "assets/wechat-qr.webp",
-    }.issubset(files)
-    assert len([path for path in files if path.startswith("assets/projects/")]) == 33
+    assert set(files) == expected
     assert not any(
         part in {"src", "data", "tests", "scripts", ".hermes", ".git", ".github"}
         for path in files
@@ -40,6 +47,13 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     )
     assert "public artifact: 41 files" in completed.stdout
     assert "candidate sha256=" in completed.stdout
+    assert len(assert_artifact_closure(output)) == 41
+
+    injected = output / "debug.txt"
+    injected.write_text("must fail closed", encoding="utf-8")
+    with pytest.raises(ValueError, match=r"extra=\['debug.txt'\]"):
+        assert_artifact_closure(output)
+    injected.unlink()
 
     reused = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "prepare_public_artifact.py"), "--output", str(output)],
@@ -49,6 +63,21 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     )
     assert reused.returncode != 0
     assert "refusing to reuse existing artifact directory" in reused.stderr
+
+
+def test_public_allowlist_rejects_renamed_project_image_even_when_count_stays_33(tmp_path):
+    source = tmp_path / "source"
+    for original in public_files(ROOT):
+        relative = original.relative_to(ROOT)
+        target = source / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(original, target)
+
+    expected_image = source / "assets/projects/project-33.webp"
+    expected_image.rename(source / "assets/projects/private-review-evidence.webp")
+
+    with pytest.raises(FileNotFoundError, match="project-33.webp"):
+        public_files(source)
 
 
 def test_pages_workflow_separates_quality_from_main_only_deploy():
@@ -86,6 +115,7 @@ def test_pages_workflow_separates_quality_from_main_only_deploy():
 
     accept = (ROOT / "scripts" / "accept_v11.py").read_text(encoding="utf-8")
     assert "target height below 44px" in accept
+    assert 'task["copyFailure"]["manualHeight"] >= 44' in accept
     assert "320px primary CTA is not fully visible" in accept
 
 

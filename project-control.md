@@ -12,6 +12,17 @@
 - 当前生产页面实现提交：`c02376783fc072888f16062f49ca21ba0967f469`（PR #1 squash merge）
 - V11 页面实现基线 tree：`9bd9aed752fba86aefe4809d5b91baa6e1ad2de6`；公开 artifact SHA-256：`cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`
 
+## V11.1 本地候选：个人产品工作台（2026-08-28）
+
+- **状态**：本地候选已生成并进入冻结前复审；分支 `upgrade/v11.1-human-studio`，基线为 `origin/main@5d8ba70b937ac0d95cc5283c58a5bbdbbeeaaecd`。本轮未提交、未推送、未部署、未修改 DNS。
+- **授权边界**：用户仅授权本地实施、临时目录清理与验收；V11.1 部署必须在候选交接后重新取得明确授权，不能沿用 V11 的历史上线授权。
+- **身份与首屏**：改为第一人称“你好，我是王子凡 / 我做小而完整的互联网产品”；右侧展示按上线时间排序的真实工作台状态，不再使用抽象工作室说明或重复项目截图。
+- **内容结构**：保留最近三次上线与 33 条完整档案；代表案例由 6 个同构卡缩为 AI Scanner、Remove Matcha Filter、Chinese Coins Atlas 三个差异叙事；四步标准方法改为三条具体工作习惯；“在线/离线”明确为档案记录而非实时探测承诺。
+- **视觉系统**：保留米白、墨黑、暗红、藏蓝；移除无信息量的英文章节编号、四等分数字墙、六宫格案例与整屏红色 CTA；最近卡按内容自然收口，案例桌面交替布局，工作习惯采用收敛的轻错层。三个重点案例重新从真实站点采集截图，先使用各站公开的拒绝/无 Cookie 统计选项，避免 Consent 弹层遮住核心界面；320px 首屏标题与 390/320px 重点案例标题均按语义行收口，不留中文孤字。
+- **候选证据**：exact public artifact 为 41 文件，SHA-256 `787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`；`pytest` 23/23、Node 筛选/零结果/展开/复制降级通过，构建漂移为 0。
+- **浏览器证据**：Chromium 1440、1024、768、390、320、759/760/761 共 8 个视口均为 0 overflow、0 owner crossing、0 console/network failure；7 张页面图片均解码。无 JavaScript 时 3 个重点案例与 33 条档案仍完整可读；正常/减弱动画均无持续帧变化。
+- **证据位置**：本地候选 `_site/`；报告与桌面/平板/手机全页截图 `_qa/v11.1/`。两者均为临时证据目录，已由 `.gitignore` 排除，不进入提交或 Pages artifact。
+
 ## V11 生产版：一人产品档案（2026-08-27）
 
 - **状态**：已通过 PR #1 合并 `main` 并由 GitHub Pages workflow run `33094322395` 部署；quality 与 deploy 均成功，annotation 为 0。
@@ -261,22 +272,21 @@
 
 ## 发布产物边界
 
-- workflow 先创建全新的 `_site` 目录。
-- allowlist 仅复制 `index.html`、`favicon.svg`、`privacy.html`、`assets/archivo.woff2` 与 `assets/projects/project-01.webp` 至 `project-33.webp`。
-- `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录。
-- 测试、控制文档、Git 元数据及本地资料不得进入 Pages artifact。
-- 页面仅加载已批准的 Plausible 统计脚本，隐私页已披露；33 个项目外链均使用新窗口及 `noopener noreferrer`。
+- `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
+- 当前 allowlist 精确为 41 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 33 张编号项目 WebP。
+- `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
+- `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
+- 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
 
 ## 候选浏览器验收
 
-- 真实 CSS 视口 `1440×900`、`390×844`、`320×568` 均无页面级横向溢出。
-- 320px 首屏主、次 CTA 完整可见；`HowManySleepsUntil` 在极窄宽度完整显示。
-- 全部记录、AI 产品、游戏与内容、实用工具、创意实验筛选分别显示 33 / 3 / 12 / 10 / 8 条，类别标签和 `aria-pressed` 同步；Mortal Shell II Wiki 卡片在“游戏与内容”下唯一且可见，页面不展示数字成绩板。
-- 320px 筛选器保持双列三行并保有 44px 最小触控高度；OxAlpha 卡片正文、元数据和 CTA 完整位于容器内，CTA 高度不低于 44px。
-- 命令面板支持点击与 `Ctrl+K`；打开后聚焦第一目的地，正反向 Tab 循环与 Escape 焦点恢复均通过；初始焦点为 `BODY` 或原焦点节点已断开/隐藏时，关闭后回退到可见的命令按钮。
-- 微信复制具有 Clipboard API、`execCommand` 和明文提示三层路径；`execCommand` 返回 `false` 或抛异常时均保证清理临时 textarea 并显示明文。
-- 仓库内 `tests/browser_interactions.mjs` 从 `index.html` 提取全部 33 张 live 卡片后动态执行页面真实脚本，覆盖五种筛选、`HLLV Field Manual=game`、`Chinamaxxing Online=creative`、`The Sinking City 2 Field Guide=game`、`OxAlpha=tool` 与 `Mortal Shell II Wiki=game` 分类绑定、命令面板状态、焦点恢复、正反向 Tab 与四种复制结果，避免测试数据与页面脱节。
-- favicon 返回 200；候选验收中的控制台错误、页面异常及同源失败请求均为 0；390px 触摸 Mortal Shell II Wiki CTA 打开 `https://mortalshell2.quest/`。
+- 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
+- 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 33 条展开状态均通过；离线筛选唯一命中 Polski Piłkarz Simulator。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 33 条档案全部可读。
+- 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-33.webp`，不再接受任意 33 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- 证据绑定候选 SHA-256 `787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`，位于 `_qa/v11.1/report.json` 与同目录全页截图。
 
 ## 隐私与内容边界
 

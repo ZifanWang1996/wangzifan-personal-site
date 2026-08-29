@@ -2,10 +2,13 @@ import json
 import re
 import subprocess
 import sys
+from copy import deepcopy
 from html.parser import HTMLParser
 from pathlib import Path
 
 from PIL import Image
+
+from scripts.build_v11 import render_featured, render_latest, render_ledger, render_structured_data
 
 
 ROOT = Path(__file__).parents[1]
@@ -37,6 +40,8 @@ class AuditParser(HTMLParser):
         self.images = []
         self.local_refs = []
         self.inline_handlers = []
+        self.blank_links = []
+        self.unsafe_blank_links = []
 
     def handle_starttag(self, tag, attrs):
         attributes = dict(attrs)
@@ -44,6 +49,12 @@ class AuditParser(HTMLParser):
             self.ids.append(attributes["id"])
         if tag == "img":
             self.images.append(attributes)
+        if tag == "a" and attributes.get("target") == "_blank":
+            href = attributes.get("href", "")
+            self.blank_links.append(href)
+            rel_tokens = set((attributes.get("rel") or "").split())
+            if not {"noopener", "noreferrer"}.issubset(rel_tokens):
+                self.unsafe_blank_links.append(href)
         for name, value in attrs:
             if name.startswith("on"):
                 self.inline_handlers.append(name)
@@ -110,6 +121,7 @@ def test_generated_pages_have_valid_local_refs_and_basic_accessibility():
         parser.feed(page.read_text(encoding="utf-8"))
         assert len(parser.ids) == len(set(parser.ids)), f"duplicate id in {page.name}"
         assert not parser.inline_handlers
+        assert not parser.unsafe_blank_links
         for image in parser.images:
             assert image.get("alt", "").strip()
             assert image.get("width") and image.get("height")
@@ -119,14 +131,43 @@ def test_generated_pages_have_valid_local_refs_and_basic_accessibility():
             assert (ROOT / reference).exists(), f"{page.name}: missing {reference}"
 
 
+def test_builder_escapes_adversarial_registry_values_and_json_ld():
+    projects = deepcopy(json.loads(REGISTRY.read_text(encoding="utf-8")))
+    payload = '\"><script>alert(1)</script><img src=x onerror="alert(2)'
+    for project in projects:
+        if project["id"] in {20, 33}:
+            project["name"] = payload
+            project["subtitle"] = payload
+            project["url"] = f'https://example.com/?q={payload}'
+            project["image"] = f'assets/projects/{payload}.webp'
+
+    fragment = "\n".join(
+        (render_latest(projects), render_featured(projects), render_ledger(projects))
+    )
+    parser = AuditParser()
+    parser.feed(fragment)
+    assert not parser.inline_handlers
+    assert not parser.unsafe_blank_links
+    assert "<script>" not in fragment
+    assert "onerror=\"alert(2)\"" not in fragment
+
+    structured = render_structured_data(projects)
+    assert "<" not in structured
+    assert "\\u003cscript>" in structured
+
+
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
     assert html.count('data-ledger-id="') == 33
     assert html.count('data-ledger-status="live"') == 32
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    expected_safe_external_links = (3 * 2) + 6 + 32
-    assert html.count('target="_blank" rel="noopener noreferrer"') == expected_safe_external_links
+    # Hero status (1 link) + three latest cards (2 each) + three case links + 32 live ledger links.
+    expected_safe_external_links = 1 + (3 * 2) + 3 + 32
+    parser = AuditParser()
+    parser.feed(html)
+    assert len(parser.blank_links) == expected_safe_external_links
+    assert not parser.unsafe_blank_links
     for stale in ("WZF PRESS", "LAUNCH CONSOLE", "T-MINUS", "SHIPS LIVE"):
         assert stale not in html
     assert "<canvas" not in html and "requestAnimationFrame" not in html
@@ -210,8 +251,10 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         '"assets/wechat-qr.webp"',
     ):
         assert public_path in manifest
-    assert 'glob("*.webp")' in manifest
-    assert "len(project_images) != 33" in manifest
+    assert 'glob("*.webp")' not in manifest
+    assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
+    assert "for project_id in range(1, 34)" in manifest
+    assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest
 

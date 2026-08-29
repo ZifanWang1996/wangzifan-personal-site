@@ -64,6 +64,7 @@ const filters = ['all', 'ai', 'game', 'tool', 'creative'].map((value, index) => 
 const search = new Element();
 const status = new Element({ value: 'all' });
 const count = new Element({ textContent: '33 / 33' });
+const empty = new Element({ hidden: true });
 const tools = new Element({ hidden: true });
 const more = new Element({ textContent: '查看全部 33 条记录', hidden: true });
 more.setAttribute('aria-expanded', 'false');
@@ -79,6 +80,7 @@ const one = new Map([
   ['.ledger-tools', tools],
   ['#ledger-status', status],
   ['#ledger-count', count],
+  ['#ledger-empty', empty],
   ['#ledger-more', more],
   ['[data-copy-value]', copyButton],
   ['#copy-status', copyStatus],
@@ -125,9 +127,17 @@ search.value = 'oxalpha';
 await search.emit('input');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '32');
+assert.equal(empty.hidden, true);
+
+search.value = 'definitely-not-a-project';
+await search.emit('input');
+assert.equal(visibleRows().length, 0);
+assert.equal(count.textContent, '0 / 33');
+assert.equal(empty.hidden, false);
 
 search.value = '';
 await search.emit('input');
+assert.equal(empty.hidden, true);
 await more.emit('click');
 assert.equal(visibleRows().length, 33);
 assert.equal(more.getAttribute('aria-expanded'), 'true');
@@ -150,4 +160,4 @@ assert.equal(manualInput.selected, true);
 assert.equal(document.activeElement, manualInput);
 
 assert.equal(source.includes('requestAnimationFrame'), false);
-console.log('v11 interactions: OK (ledger combination, expansion, copy success/fallback)');
+console.log('v11 interactions: OK (ledger combination, empty state, expansion, copy success/fallback)');
