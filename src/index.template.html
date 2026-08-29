@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f2f0ea">
-  <title>王子凡（ZF Wang）— 一人产品工作室</title>
-  <meta name="description" content="王子凡（ZF Wang）的一人产品工作室：把具体问题做成真正能用、可公开验证的产品。">
+  <title>王子凡（ZF Wang）— 独立产品作者</title>
+  <meta name="description" content="王子凡（ZF Wang）的个人产品工作台：游戏资料站、浏览器工具、AI 产品和一些不好分类的实验。">
   <link rel="canonical" href="https://wangzifan.store/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="王子凡（ZF Wang）— 一人产品工作室">
-  <meta property="og:description" content="一个人，把具体问题做成真正能用的产品。">
+  <meta property="og:title" content="王子凡（ZF Wang）— 独立产品作者">
+  <meta property="og:description" content="我做小而完整的互联网产品。能打开的都留在这里，坏掉的也会标出来。">
   <meta property="og:url" content="https://wangzifan.store/">
   <meta property="og:image" content="https://wangzifan.store/assets/og-card.webp">
   <meta property="og:image:type" content="image/webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="ZF Wang 一人产品工作室发布档案分享图">
+  <meta property="og:image:alt" content="王子凡的个人产品工作台分享图">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="王子凡（ZF Wang）— 一人产品工作室">
-  <meta name="twitter:description" content="一个人，把具体问题做成真正能用的产品。">
+  <meta name="twitter:title" content="王子凡（ZF Wang）— 独立产品作者">
+  <meta name="twitter:description" content="我做小而完整的互联网产品。能打开的都留在这里，坏掉的也会标出来。">
   <meta name="twitter:image" content="https://wangzifan.store/assets/og-card.webp">
-  <meta name="twitter:image:alt" content="ZF Wang 一人产品工作室发布档案分享图">
+  <meta name="twitter:image:alt" content="王子凡的个人产品工作台分享图">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
   <script defer data-domain="wangzifan.store" src="https://plausible.shipsolo.io/js/script.js"></script>
@@ -31,13 +31,13 @@
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="ZF Wang 首页">
-      <span class="brand-mark" aria-hidden="true">WZ</span>
-      <span><strong>ZF WANG</strong><small>ONE-PERSON PRODUCT STUDIO</small></span>
+    <a class="brand" href="#top" aria-label="王子凡首页">
+      <span class="brand-mark" aria-hidden="true">ZF</span>
+      <span><strong>王子凡 / ZF WANG</strong><small>独立产品作者</small></span>
     </a>
     <nav aria-label="主导航">
       <a href="#selected">代表案例</a>
-      <a href="#method">工作方法</a>
+      <a href="#method">做事习惯</a>
       <a href="#ledger">发布档案</a>
       <a class="nav-cta" href="#contact">联系合作</a>
     </nav>
@@ -46,26 +46,22 @@
   <main id="main-content" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">WZF / ONE-PERSON PRODUCT STUDIO</p>
-        <h1 id="hero-title" aria-label="一个人，把具体问题做成真正能用的产品。"><span class="title-line">一个人，把具体问题</span><span class="title-line"><em>做成真正能用的产品。</em></span></h1>
-        <p class="hero-lead">从需求判断、内容与产品设计，到开发、上线和持续校正。这里不展示“会什么”，只展示已经做成并可公开验证的产品。</p>
+        <p class="eyebrow">你好，我是王子凡。</p>
+        <h1 id="hero-title" aria-label="我做小而完整的互联网产品。"><span class="title-line">我做小而完整的</span><span class="title-line"><em>互联网产品。</em></span></h1>
+        <p class="hero-lead">游戏资料站、浏览器工具、AI 产品，也做一些不好分类的实验。能打开的都留在这里，已经下线的也会标出来。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#selected">查看代表案例 <span aria-hidden="true">↓</span></a>
-          <a class="button button-quiet" href="#contact">讨论一个具体问题</a>
+          <a class="button button-primary" href="#recent">看最近做的 <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#selected">看三个重点</a>
         </div>
       </div>
-      <aside class="hero-note" aria-label="工作室说明">
-        <span class="note-index">00 / STUDIO NOTE</span>
-        <p>不是传统简历，也不是项目数量墙。</p>
-        <strong>这是一个产品型个人主页：问题、解法、证据，三件事讲清楚。</strong>
-      </aside>
+      {{HERO_LATEST}}
     </section>
 
-    <section class="proof-strip" aria-label="已验证事实">
-      <div><strong data-proof="releases">{{TOTAL}}</strong><span>历史发布记录</span></div>
-      <div><strong data-proof="live">{{LIVE}}</strong><span>当前在线</span></div>
-      <div><strong data-proof="offline">{{OFFLINE}}</strong><span>明确离线</span></div>
-      <div><strong>{{CATEGORY_COUNT}}</strong><span>产品方向</span></div>
+    <section class="studio-status" aria-label="公开发布状态">
+      <span data-status="releases">{{TOTAL}} 条公开记录</span>
+      <span data-status="live">{{LIVE}} 条在线记录</span>
+      <span data-status="offline">{{OFFLINE}} 条离线记录</span>
+      <span>最近上线 {{LATEST_DATE}}</span>
     </section>
 
     {{CONTENT}}
@@ -73,7 +69,7 @@
 
   <footer class="site-footer">
     <span>© 2026 ZF Wang</span>
-    <span>一人产品工作室 · 公开发布档案</span>
+    <span>个人产品工作台 · 如实记录在线与离线</span>
     <a href="privacy.html">隐私说明</a>
   </footer>
 </body>

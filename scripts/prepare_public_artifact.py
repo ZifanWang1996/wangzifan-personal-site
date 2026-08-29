@@ -18,13 +18,14 @@ STATIC_PUBLIC_PATHS = (
     "assets/archivo.woff2",
     "assets/wechat-qr.webp",
 )
+PROJECT_PUBLIC_PATHS = tuple(
+    f"assets/projects/project-{project_id:02d}.webp" for project_id in range(1, 34)
+)
+PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS
 
 
 def public_files(root: Path = ROOT) -> list[Path]:
-    project_images = sorted((root / "assets" / "projects").glob("*.webp"))
-    if len(project_images) != 33:
-        raise ValueError(f"expected 33 project images, found {len(project_images)}")
-    paths = [root / relative for relative in STATIC_PUBLIC_PATHS] + project_images
+    paths = [root / relative for relative in PUBLIC_PATHS]
     symlinks = []
     for path in paths:
         current = root

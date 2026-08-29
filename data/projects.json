@@ -141,7 +141,7 @@
     "status": "live",
     "image": "assets/projects/project-09.webp",
     "featured": true,
-    "featured_order": 4
+    "featured_order": 3
   },
   {
     "id": 10,
@@ -172,8 +172,8 @@
     "launched_at": "2026-07-28",
     "status": "live",
     "image": "assets/projects/project-11.webp",
-    "featured": true,
-    "featured_order": 5
+    "featured": false,
+    "featured_order": null
   },
   {
     "id": 12,
@@ -332,8 +332,8 @@
     "launched_at": "2026-08-09",
     "status": "live",
     "image": "assets/projects/project-21.webp",
-    "featured": true,
-    "featured_order": 2
+    "featured": false,
+    "featured_order": null
   },
   {
     "id": 22,
@@ -349,7 +349,7 @@
     "status": "live",
     "image": "assets/projects/project-22.webp",
     "featured": true,
-    "featured_order": 3
+    "featured_order": 2
   },
   {
     "id": 23,
@@ -396,8 +396,8 @@
     "launched_at": "2026-08-16",
     "status": "live",
     "image": "assets/projects/project-25.webp",
-    "featured": true,
-    "featured_order": 6
+    "featured": false,
+    "featured_order": null
   },
   {
     "id": 26,

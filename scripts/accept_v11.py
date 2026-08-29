@@ -14,7 +14,10 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
-from prepare_public_artifact import candidate_digest, public_files
+try:
+    from .prepare_public_artifact import candidate_digest, public_files
+except ImportError:  # Direct CLI execution: python scripts/accept_v11.py
+    from prepare_public_artifact import candidate_digest, public_files
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -175,6 +178,13 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
             "els=>els.map(el=>el.dataset.ledgerId)"
         ),
     }
+    page.locator("#ledger-search").fill("definitely-not-a-project")
+    result["empty"] = {
+        "visible": page.locator("[data-ledger-id]:visible").count(),
+        "count": page.locator("#ledger-count").inner_text(),
+        "messageVisible": page.locator("#ledger-empty").is_visible(),
+        "message": page.locator("#ledger-empty").inner_text(),
+    }
     page.locator("#ledger-search").fill("")
     page.locator("#ledger-status").select_option("offline")
     result["offline"] = {
@@ -219,7 +229,8 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
           selected:document.querySelector('.manual-copy input').selectionStart === 0 &&
                    document.querySelector('.manual-copy input').selectionEnd ===
                    document.querySelector('.manual-copy input').value.length,
-          focused:document.activeElement === document.querySelector('.manual-copy input')
+          focused:document.activeElement === document.querySelector('.manual-copy input'),
+          manualHeight:document.querySelector('.manual-copy input').getBoundingClientRect().height
         })"""
     )
 
@@ -269,6 +280,12 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "defaultVisible": task["defaultVisible"] == 9,
             "ai": task["ai"] == {"visible": 3, "count": "3 / 33"},
             "search": task["search"] == {"visible": 1, "ids": ["32"]},
+            "empty": task["empty"] == {
+                "visible": 0,
+                "count": "0 / 33",
+                "messageVisible": True,
+                "message": "没有匹配记录，试试别的关键词或筛选。",
+            },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
             "expanded": task["expanded"] == {"visible": 33, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
@@ -276,7 +293,8 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
             and not task["copyFailure"]["manualHidden"]
             and task["copyFailure"]["selected"]
-            and task["copyFailure"]["focused"],
+            and task["copyFailure"]["focused"]
+            and task["copyFailure"]["manualHeight"] >= 44,
             "skip": task["skipBefore"] == "skip-link"
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
@@ -296,8 +314,28 @@ def launch_browser(playwright):
     return playwright.chromium.launch(**kwargs)
 
 
-def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
+def assert_artifact_closure(site_root: Path) -> list[Path]:
     files = public_files(site_root)
+    expected = {path.relative_to(site_root).as_posix() for path in files}
+    entries = list(site_root.rglob("*"))
+    symlinks = sorted(path.relative_to(site_root).as_posix() for path in entries if path.is_symlink())
+    actual = {
+        path.relative_to(site_root).as_posix()
+        for path in entries
+        if path.is_file() and not path.is_symlink()
+    }
+    missing = sorted(expected - actual)
+    extra = sorted(actual - expected)
+    if symlinks or missing or extra:
+        raise ValueError(
+            "artifact closure mismatch: "
+            f"symlinks={symlinks}, missing={missing}, extra={extra}"
+        )
+    return files
+
+
+def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
+    files = assert_artifact_closure(site_root)
     report = {
         "candidateSha256": candidate_digest(site_root),
         "publicFileCount": len(files),
@@ -363,7 +401,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
             failures = []
             if not response or response.status != 200:
                 failures.append(f"homepage status {response.status if response else None}")
-            if title != "王子凡（ZF Wang）— 一人产品工作室" or marker != "ZF WANG":
+            if title != "王子凡（ZF Wang）— 独立产品作者" or marker != "王子凡 / ZF WANG":
                 failures.append(f"identity mismatch {title} / {marker}")
             failures.extend(assert_view(name, width, height, geom, images, task))
 
@@ -485,7 +523,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
     expected_no_js = {
         "status": 200,
         "hero": 1,
-        "featured": 6,
+        "featured": 3,
         "ledger": 33,
         "visibleLedger": 33,
         "visibleLedgerTools": 0,

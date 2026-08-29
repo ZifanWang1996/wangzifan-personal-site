@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 _thumbs_raw/
 .wrangler/
+_site/
+_qa/

@@ -7,9 +7,10 @@
   const search = document.querySelector("#ledger-search");
   const status = document.querySelector("#ledger-status");
   const count = document.querySelector("#ledger-count");
+  const empty = document.querySelector("#ledger-empty");
   const more = document.querySelector("#ledger-more");
 
-  if (rows.length && filters.length && tools && search && status && count && more) {
+  if (rows.length && filters.length && tools && search && status && count && empty && more) {
     let category = "all";
     let expanded = false;
 
@@ -31,6 +32,7 @@
       });
 
       count.textContent = `${matches.length} / ${rows.length}`;
+      empty.hidden = matches.length !== 0;
       more.hidden = matches.length <= 9 || category !== "all" || selectedStatus !== "all" || Boolean(query);
       more.setAttribute("aria-expanded", String(expanded));
       more.textContent = expanded ? "收起发布档案" : `查看全部 ${rows.length} 条记录`;
