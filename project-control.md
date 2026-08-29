@@ -9,19 +9,21 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`c02376783fc072888f16062f49ca21ba0967f469`（PR #1 squash merge）
-- V11 页面实现基线 tree：`9bd9aed752fba86aefe4809d5b91baa6e1ad2de6`；公开 artifact SHA-256：`cf62d2715f4e5b2bc78a522e5fdc597eb8a4035223586e8cd64e7b455ccbfd2f`
+- 当前生产页面实现提交：`0b8411ab5e1f1b8fdab44d437141a545aff5d388`（PR #5 squash merge）
+- V11.1 页面实现基线 tree：`1dc85c8c56411d426cfcdd739d6c752a667a466c`；公开 artifact SHA-256：`787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`
 
-## V11.1 本地候选：个人产品工作台（2026-08-28）
+## V11.1 生产版：个人产品工作台（2026-08-29）
 
-- **状态**：本地候选已生成并进入冻结前复审；分支 `upgrade/v11.1-human-studio`，基线为 `origin/main@5d8ba70b937ac0d95cc5283c58a5bbdbbeeaaecd`。本轮未提交、未推送、未部署、未修改 DNS。
-- **授权边界**：用户仅授权本地实施、临时目录清理与验收；V11.1 部署必须在候选交接后重新取得明确授权，不能沿用 V11 的历史上线授权。
+- **状态**：冻结候选 commit `4f511a45428ef0da56083994be098b73bd3416cf` 通过 PR #5 squash merge 为页面实现 commit `0b8411ab5e1f1b8fdab44d437141a545aff5d388`；两者 tree 均为 `1dc85c8c56411d426cfcdd739d6c752a667a466c`。GitHub Pages production run `33257007906` 已成功部署，deployment ID 为 `6156571565`。
+- **授权边界**：用户于 2026-08-29 明确回复“全流程上线”；本次授权已用于 V11.1 的提交、推送、PR #5 合并与生产部署，后续新改动仍需重新验收和授权。未修改 DNS。
 - **身份与首屏**：改为第一人称“你好，我是王子凡 / 我做小而完整的互联网产品”；右侧展示按上线时间排序的真实工作台状态，不再使用抽象工作室说明或重复项目截图。
 - **内容结构**：保留最近三次上线与 33 条完整档案；代表案例由 6 个同构卡缩为 AI Scanner、Remove Matcha Filter、Chinese Coins Atlas 三个差异叙事；四步标准方法改为三条具体工作习惯；“在线/离线”明确为档案记录而非实时探测承诺。
 - **视觉系统**：保留米白、墨黑、暗红、藏蓝；移除无信息量的英文章节编号、四等分数字墙、六宫格案例与整屏红色 CTA；最近卡按内容自然收口，案例桌面交替布局，工作习惯采用收敛的轻错层。三个重点案例重新从真实站点采集截图，先使用各站公开的拒绝/无 Cookie 统计选项，避免 Consent 弹层遮住核心界面；320px 首屏标题与 390/320px 重点案例标题均按语义行收口，不留中文孤字。
 - **候选证据**：exact public artifact 为 41 文件，SHA-256 `787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`；`pytest` 23/23、Node 筛选/零结果/展开/复制降级通过，构建漂移为 0。
-- **浏览器证据**：Chromium 1440、1024、768、390、320、759/760/761 共 8 个视口均为 0 overflow、0 owner crossing、0 console/network failure；7 张页面图片均解码。无 JavaScript 时 3 个重点案例与 33 条档案仍完整可读；正常/减弱动画均无持续帧变化。
-- **证据位置**：本地候选 `_site/`；报告与桌面/平板/手机全页截图 `_qa/v11.1/`。两者均为临时证据目录，已由 `.gitignore` 排除，不进入提交或 Pages artifact。
+- **PR 与生产证据**：PR run `33256850827` 的 quality 成功、deploy 跳过；production run `33257007906` 的 quality 与 deploy 均成功，两次 run 的 annotation 均为 0。两次 CI evidence 都绑定 41 文件、同一 artifact SHA-256、8 个视口和 0 failures。
+- **正式域验收**：`https://wangzifan.store/`、隐私页、CSS、JS、OG 图及三张重点案例图与冻结 artifact 逐字节一致。正式域 Chromium 在 1440、1024、768、390、320、759/760/761 共 8 个视口均为 0 overflow、0 owner crossing、0 console/network failure；7 张页面图片均解码。无 JavaScript 时 3 个重点案例与 33 条档案仍完整可读；正常/减弱动画均无持续帧变化。
+- **域名状态**：HTTP apex 单次 301 到 HTTPS；canonical 与 `og:url` 均为 `https://wangzifan.store/`。`www.wangzifan.store` 仍无 DNS 记录，属于非阻断后续项，不表述为已完成。
+- **证据位置**：GitHub Actions artifacts `v11-browser-evidence-33256850827` 与 `v11-browser-evidence-33257007906`（按 workflow 保留期保存）；候选与 QA 临时目录由 `.gitignore` 排除，不进入提交或 Pages artifact。
 
 ## V11 生产版：一人产品档案（2026-08-27）
 
