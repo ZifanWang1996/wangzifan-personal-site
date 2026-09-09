@@ -9,18 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`0b8411ab5e1f1b8fdab44d437141a545aff5d388`（PR #5 squash merge）
-- V11.1 页面实现基线 tree：`1dc85c8c56411d426cfcdd739d6c752a667a466c`；公开 artifact SHA-256：`787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`
+- 当前生产页面实现提交：`1bea55ade8817300e7865f0c6fe58f86dfd66459`（PR #7 squash merge）
+- V11.2 页面实现基线 tree：`9e47f89de14c146d1f388525e41cb7f536b51d2d`；公开 artifact SHA-256：`3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`
 
-## V11.2 候选：GenVid Atlas 卡片 #34（2026-09-09）
+## V11.2 生产版：GenVid Atlas 卡片 #34（2026-09-09）
 
-- **状态**：候选分支 `feat/add-genvid-atlas`；尚未合并或部署，`wangzifan.store` 当前生产版仍为 V11.1。
+- **状态**：冻结候选 commit `e5b19693ee823c012512ab6804187f40527ea5c2` 通过 PR #7 squash merge 为页面实现 commit `1bea55ade8817300e7865f0c6fe58f86dfd66459`；两者 tree 均为 `9e47f89de14c146d1f388525e41cb7f536b51d2d`。GitHub Pages production run `34332654938` 已成功部署，deployment ID 为 `6346300951`。
 - **事实记录**：新增 GenVid Atlas（`https://genvidatlas.wiki/`），分类「AI 产品」，标签「AI 视频模型与价格情报站」，首次公开上线日期为 2026-09-06；文案依据正式站 title、首屏与公开功能现场核验。
 - **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 34 条公开记录、33 条在线、1 条离线，AI 分类 4 条。
 - **截图证据**：`project-34.webp` 来自 1440×900 正式站拒绝可选分析态真实首屏，经 Lanczos 缩为 400×250 WebP；13,656 bytes，SHA-256 `f88b06fbe4b422af37bc4386bce74c22894fb1fbef067d96cc536eeb7ba4a508`，未使用合成图或弹窗遮挡截图。
 - **发布边界**：exact public artifact 为 42 文件，SHA-256 `3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`；项目图白名单固定扩展到 `project-34.webp`，源码、测试、registry 与控制文档继续不得公开。
-- **候选验收**：pytest 24/24、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 均通过；8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 34 条档案，正常与 reduced-motion 均无持续动画；1440px 与 390px 整页目检通过。
-- **授权边界**：用户于 2026-09-09 要求将 GenVid Atlas 添加到个人网站；提交、PR、合并与生产部署须绑定上述 exact artifact，不修改 DNS。
+- **候选验收**：pytest 24/24、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 均通过；8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 34 条档案，正常与 reduced-motion 均无持续动画；1440px 与 390px 整页目检通过。独立审查发现并阻断了一处旧 V11.1 证据引用，修正为 V11.2 后复核 PASS。
+- **PR 与生产证据**：PR run `34332285242` 的 quality 成功、deploy 按分支条件跳过；production run `34332654938` 的 quality 与 deploy 均成功。GitHub deployment `6346300951` 状态为 `success`，environment URL 为 `https://wangzifan.store/`。
+- **正式域验收**：首页、隐私页、CSS、JS、OG 图和 `project-34.webp` 与 42 文件冻结 artifact 逐字节一致；Hero 为 #34、最近上线顺序为 34/33/32、档案为 34 条（33 live / 1 offline）、4 个 GenVid 外链及 JSON-LD 首项均正确。`data/`、`tests/`、`scripts/`、workflow 与控制文档均返回 404。正式域 Chrome 在 1280×800 与 390×844 均通过 AI `4 / 34`、展开 34 条、7/7 图片解码、0 overflow、0 console/page error。
+- **授权边界**：用户于 2026-09-09 要求将 GenVid Atlas 添加到个人网站；本次授权已用于提交、PR #7 合并与生产部署，未修改 DNS。后续新改动仍需重新验收和授权。
 
 ## V11.1 生产版：个人产品工作台（2026-08-29）
 
