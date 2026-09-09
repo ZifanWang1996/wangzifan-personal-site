@@ -278,16 +278,16 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 3, "count": "3 / 33"},
+            "ai": task["ai"] == {"visible": 4, "count": "4 / 34"},
             "search": task["search"] == {"visible": 1, "ids": ["32"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 33",
+                "count": "0 / 34",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 33, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 34, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -524,8 +524,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 33,
-        "visibleLedger": 33,
+        "ledger": 34,
+        "visibleLedger": 34,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,

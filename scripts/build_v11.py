@@ -213,11 +213,11 @@ def render_ledger(projects: list[dict]) -> str:
     </section>'''
 
 
-def render_about() -> str:
-    return '''<section class="section about" id="about" aria-labelledby="about-title">
+def render_about(projects: list[dict]) -> str:
+    return f'''<section class="section about" id="about" aria-labelledby="about-title">
       <div class="section-heading">
         <p class="section-no">关于我</p>
-        <div><h2 id="about-title">我把上线过的，也把后来下线的留在这里</h2><p>我叫王子凡，习惯把一个具体问题做成能打开的网址。这个页面收着 33 次公开上线，不只挑最好看的。</p></div>
+        <div><h2 id="about-title">我把上线过的，也把后来下线的留在这里</h2><p>我叫王子凡，习惯把一个具体问题做成能打开的网址。这个页面收着 {len(projects)} 次公开上线，不只挑最好看的。</p></div>
       </div>
       <div class="about-grid">
         <blockquote>上线不是收尾。域名、登录、隐私、故障和后来下线的记录，都算产品的一部分。</blockquote>
@@ -314,7 +314,7 @@ def render_homepage() -> str:
             render_collaboration(),
             render_method(),
             render_ledger(projects),
-            render_about(),
+            render_about(projects),
             render_contact(),
         )
     )
