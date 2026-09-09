@@ -542,5 +542,21 @@
     "image": "assets/projects/project-34.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 35,
+    "name": "Dawnwalker Field Guide",
+    "url": "https://thebloodofdawnwalker.info/",
+    "category": "game",
+    "subtitle": "Dawnwalker 攻略与旅程规划",
+    "summary": "面向《The Blood of Dawnwalker》玩家的独立非官方攻略与旅程规划站，提供序章任务、30 天时间系统、技能与装备参考，并支持浏览器本地清单与旅程记录。",
+    "problem": "游戏的任务路线、昼夜规则、限时推进、技能和装备资料分散，玩家难以把查到的信息整理成下一步计划。",
+    "solution": "把多语言攻略、任务、资料库和本地旅程规划工具组织为一套可搜索、可保存进度的 Field Guide。",
+    "evidence": "公开站点可直接验证英语、中文、德语、法语入口，以及攻略、任务、资料库、搜索与旅程规划功能。",
+    "launched_at": "2026-09-09",
+    "status": "live",
+    "image": "assets/projects/project-35.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

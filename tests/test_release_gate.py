@@ -38,16 +38,16 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     )
     files = sorted(path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file())
     expected = set(STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS)
-    assert len(files) == 42
+    assert len(files) == 43
     assert set(files) == expected
     assert not any(
         part in {"src", "data", "tests", "scripts", ".hermes", ".git", ".github"}
         for path in files
         for part in Path(path).parts
     )
-    assert "public artifact: 42 files" in completed.stdout
+    assert "public artifact: 43 files" in completed.stdout
     assert "candidate sha256=" in completed.stdout
-    assert len(assert_artifact_closure(output)) == 42
+    assert len(assert_artifact_closure(output)) == 43
 
     injected = output / "debug.txt"
     injected.write_text("must fail closed", encoding="utf-8")
@@ -65,7 +65,7 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     assert "refusing to reuse existing artifact directory" in reused.stderr
 
 
-def test_public_allowlist_rejects_renamed_project_image_even_when_count_stays_34(tmp_path):
+def test_public_allowlist_rejects_renamed_project_image_even_when_count_stays_35(tmp_path):
     source = tmp_path / "source"
     for original in public_files(ROOT):
         relative = original.relative_to(ROOT)
@@ -73,10 +73,10 @@ def test_public_allowlist_rejects_renamed_project_image_even_when_count_stays_34
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(original, target)
 
-    expected_image = source / "assets/projects/project-34.webp"
+    expected_image = source / "assets/projects/project-35.webp"
     expected_image.rename(source / "assets/projects/private-review-evidence.webp")
 
-    with pytest.raises(FileNotFoundError, match="project-34.webp"):
+    with pytest.raises(FileNotFoundError, match="project-35.webp"):
         public_files(source)
 
 
@@ -127,7 +127,7 @@ def test_public_allowlist_rejects_symlink_sources(tmp_path):
         path.write_bytes(b"public")
     projects = source_root / "assets" / "projects"
     projects.mkdir(parents=True, exist_ok=True)
-    for project_id in range(1, 35):
+    for project_id in range(1, 36):
         (projects / f"project-{project_id:02d}.webp").write_bytes(b"image")
 
     outside = tmp_path / "outside.txt"
