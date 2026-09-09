@@ -9,8 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`1bea55ade8817300e7865f0c6fe58f86dfd66459`（PR #7 squash merge）
-- V11.2 页面实现基线 tree：`9e47f89de14c146d1f388525e41cb7f536b51d2d`；公开 artifact SHA-256：`3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`
+- 当前生产页面实现提交：`a08c175eec28aadeffb20b63d36bd24caf92fafb`（PR #9 squash merge）
+- V11.3 页面实现基线 tree：`5c745cf940ab51ee8876492c89bd5f00531f9538`；公开 artifact SHA-256：`0c6030be0c461aa7586c7bc4ee80b2a6bdd342fb86b105a45e3659f76502c1c6`
+
+## V11.3 生产版：Dawnwalker Field Guide 卡片 #35（2026-09-09）
+
+- **状态**：冻结候选 commit `e143378bfbfc87aef22430c96de5661cbc7c1f29` 通过 PR #9 squash merge 为页面实现 commit `a08c175eec28aadeffb20b63d36bd24caf92fafb`；两者 tree 均为 `5c745cf940ab51ee8876492c89bd5f00531f9538`。GitHub Pages production run `34339950521` 已成功部署，deployment ID 为 `6347607768`。
+- **事实记录**：新增 Dawnwalker Field Guide（`https://thebloodofdawnwalker.info/`），分类「游戏与内容」，标签「Dawnwalker 攻略与旅程规划」，首次公开上线日期为 2026-09-09；文案依据正式站 title、H1、四语入口、攻略/任务/资料库与旅程规划功能现场核验。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 35 条公开记录、34 条在线、1 条离线，游戏分类 13 条。
+- **截图证据**：`project-35.webp` 来自 1440×900 正式站拒绝可选分析态真实首屏，经 Lanczos 缩为 400×250 WebP；8,594 bytes，SHA-256 `4db377ac37a18b4a4fb452298cb0336cb54701aff518c4a80daecc6aff4fb36f`，未使用合成图、浏览器边框或弹窗遮挡截图。
+- **发布边界**：exact public artifact 为 43 文件，SHA-256 `0c6030be0c461aa7586c7bc4ee80b2a6bdd342fb86b105a45e3659f76502c1c6`；项目图白名单固定扩展到 `project-35.webp`，源码、测试、registry 与控制文档继续不得公开。
+- **候选验收**：先取得缺 #35、旧图片/文件计数和旧 `34 / 34` 的 RED 证据；GREEN 后 pytest 25/25、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 35 条档案，正常与 reduced-motion 均无持续动画；1440/768/390/320 整页目检通过。390px 真触控打开 #35 CTA，URL、`_blank`、`noopener noreferrer` 全部正确。独立 OID 绑定审查对 commit/tree/artifact 复算一致，未发现 P0–P2，结论 PASS。
+- **PR 与生产证据**：PR run `34339366764` 的 quality 成功、deploy 按分支条件跳过；production run `34339950521` 的 quality 与 deploy 均成功。GitHub deployment `6347607768` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；两次 job annotations 均为 0。两次 CI evidence 均绑定 43 文件、同一 artifact SHA-256、8 个视口与 0 failures。
+- **正式域验收**：43 个公开文件与 GitHub Pages 上传 artifact 逐字节一致；Hero 为 #35、最近上线顺序为 35/34/33、档案为 35 条（34 live / 1 offline）、4 个 Dawnwalker 安全外链均正确。6 个源码/测试/registry/workflow/控制文档探针均返回 404，HTTP apex 单次 301 到 HTTPS。正式域 Chrome 在 1280×800 与 390×844 均通过 AI `4 / 35`、游戏 `13 / 35`、Dawnwalker 搜索 `1 / 35`、展开 `35 / 35`、7/7 图片解码、0 overflow、0 console/page/network failure；390px 真触控到达目标站，no-JS 可读全部 35 条档案，修正懒加载截图时序后两档整页目检通过。
+- **授权边界**：用户于 2026-09-09 要求将 `thebloodofdawnwalker.info` 添加到个人网站；本次授权已用于提交、PR #9 合并与生产部署，未修改 DNS。后续新改动仍需重新验收和授权。
 
 ## V11.2 生产版：GenVid Atlas 卡片 #34（2026-09-09）
 
@@ -284,11 +296,12 @@
 | 32 | OxAlpha | 实用工具 | https://oxalpha.site/ |
 | 33 | Mortal Shell II Wiki | 游戏与内容 | https://mortalshell2.quest/ |
 | 34 | GenVid Atlas | AI 产品 | https://genvidatlas.wiki/ |
+| 35 | Dawnwalker Field Guide | 游戏与内容 | https://thebloodofdawnwalker.info/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- V11.2 候选 allowlist 精确为 42 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 34 张编号项目 WebP。
+- V11.3 候选 allowlist 精确为 43 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 35 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -297,11 +310,11 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 34 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 34 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 35 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 35 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-34.webp`，不接受任意 34 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.2 证据绑定候选 SHA-256 `3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`，位于 `_qa/v11.2/report.json` 与同目录全页截图。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-35.webp`，不接受任意 35 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- V11.3 证据绑定候选 SHA-256 `0c6030be0c461aa7586c7bc4ee80b2a6bdd342fb86b105a45e3659f76502c1c6`；CI evidence artifacts 分别为 `v11-browser-evidence-34339366764` 与 `v11-browser-evidence-34339950521`，均含 8 视口报告与代表性整页截图。
 
 ## 隐私与内容边界
 
