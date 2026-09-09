@@ -12,6 +12,16 @@
 - 当前生产页面实现提交：`0b8411ab5e1f1b8fdab44d437141a545aff5d388`（PR #5 squash merge）
 - V11.1 页面实现基线 tree：`1dc85c8c56411d426cfcdd739d6c752a667a466c`；公开 artifact SHA-256：`787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`
 
+## V11.2 候选：GenVid Atlas 卡片 #34（2026-09-09）
+
+- **状态**：候选分支 `feat/add-genvid-atlas`；尚未合并或部署，`wangzifan.store` 当前生产版仍为 V11.1。
+- **事实记录**：新增 GenVid Atlas（`https://genvidatlas.wiki/`），分类「AI 产品」，标签「AI 视频模型与价格情报站」，首次公开上线日期为 2026-09-06；文案依据正式站 title、首屏与公开功能现场核验。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 34 条公开记录、33 条在线、1 条离线，AI 分类 4 条。
+- **截图证据**：`project-34.webp` 来自 1440×900 正式站拒绝可选分析态真实首屏，经 Lanczos 缩为 400×250 WebP；13,656 bytes，SHA-256 `f88b06fbe4b422af37bc4386bce74c22894fb1fbef067d96cc536eeb7ba4a508`，未使用合成图或弹窗遮挡截图。
+- **发布边界**：exact public artifact 为 42 文件，SHA-256 `3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`；项目图白名单固定扩展到 `project-34.webp`，源码、测试、registry 与控制文档继续不得公开。
+- **候选验收**：pytest 24/24、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 均通过；8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 34 条档案，正常与 reduced-motion 均无持续动画；1440px 与 390px 整页目检通过。
+- **授权边界**：用户于 2026-09-09 要求将 GenVid Atlas 添加到个人网站；提交、PR、合并与生产部署须绑定上述 exact artifact，不修改 DNS。
+
 ## V11.1 生产版：个人产品工作台（2026-08-29）
 
 - **状态**：冻结候选 commit `4f511a45428ef0da56083994be098b73bd3416cf` 通过 PR #5 squash merge 为页面实现 commit `0b8411ab5e1f1b8fdab44d437141a545aff5d388`；两者 tree 均为 `1dc85c8c56411d426cfcdd739d6c752a667a466c`。GitHub Pages production run `33257007906` 已成功部署，deployment ID 为 `6156571565`。
@@ -234,7 +244,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（33）
+## 产品索引（34）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -271,11 +281,12 @@
 | 31 | The Sinking City 2 Field Guide | 游戏与内容 | https://thesinkingcity2.top/ |
 | 32 | OxAlpha | 实用工具 | https://oxalpha.site/ |
 | 33 | Mortal Shell II Wiki | 游戏与内容 | https://mortalshell2.quest/ |
+| 34 | GenVid Atlas | AI 产品 | https://genvidatlas.wiki/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- 当前 allowlist 精确为 41 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 33 张编号项目 WebP。
+- V11.2 候选 allowlist 精确为 42 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 34 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -284,11 +295,11 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 33 条展开状态均通过；离线筛选唯一命中 Polski Piłkarz Simulator。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 33 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 34 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 34 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-33.webp`，不再接受任意 33 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- 证据绑定候选 SHA-256 `787edd3dff833bb810111808bd3184810cfed6ba554ff5e1497811f48c209b87`，位于 `_qa/v11.1/report.json` 与同目录全页截图。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-34.webp`，不接受任意 34 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- V11.2 证据绑定候选 SHA-256 `3161a8323117c8aca912535402077abeb1d4e93a3f494fa9c34caddf74cd2d0a`，位于 `_qa/v11.2/report.json` 与同目录全页截图。
 
 ## 隐私与内容边界
 

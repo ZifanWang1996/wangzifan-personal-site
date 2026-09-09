@@ -526,5 +526,21 @@
     "image": "assets/projects/project-33.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 34,
+    "name": "GenVid Atlas",
+    "url": "https://genvidatlas.wiki/",
+    "category": "ai",
+    "subtitle": "AI 视频模型与价格情报站",
+    "summary": "面向需要选择生成式视频模型的创作者与开发者，追踪 12 款模型的价格、速度与能力，整理实时生成视频项目，并提供成本计算与对比工具。",
+    "problem": "AI 视频模型价格、速度、API 能力和实际项目分散，选择模型前难以横向比较成本与可用性。",
+    "solution": "把模型档案、标准化价格、实时项目目录、决策指南和成本计算器组织到一个可核验的信号层。",
+    "evidence": "公开站点可直接验证 12 款模型追踪、标准化价格、项目目录、指南与成本计算器。",
+    "launched_at": "2026-09-06",
+    "status": "live",
+    "image": "assets/projects/project-34.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

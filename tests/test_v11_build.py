@@ -17,6 +17,22 @@ def load_projects():
     return json.loads(REGISTRY.read_text(encoding="utf-8"))
 
 
+def test_registry_includes_live_genvid_atlas_release():
+    projects = load_projects()
+    genvid = next((project for project in projects if project["id"] == 34), None)
+
+    assert genvid is not None
+    assert genvid["name"] == "GenVid Atlas"
+    assert genvid["url"] == "https://genvidatlas.wiki/"
+    assert genvid["category"] == "ai"
+    assert genvid["subtitle"] == "AI 视频模型与价格情报站"
+    assert genvid["launched_at"] == "2026-09-06"
+    assert genvid["status"] == "live"
+    assert genvid["image"] == "assets/projects/project-34.webp"
+    assert genvid["featured"] is False
+    assert genvid["featured_order"] is None
+
+
 def test_v11_registry_has_complete_truthful_project_contract():
     projects = load_projects()
 
@@ -36,10 +52,10 @@ def test_v11_registry_has_complete_truthful_project_contract():
         "featured",
         "featured_order",
     }
-    assert len(projects) == 33
-    assert [project["id"] for project in projects] == list(range(1, 34))
-    assert len({project["url"] for project in projects}) == 33
-    assert sum(project["status"] == "live" for project in projects) == 32
+    assert len(projects) == 34
+    assert [project["id"] for project in projects] == list(range(1, 35))
+    assert len({project["url"] for project in projects}) == 34
+    assert sum(project["status"] == "live" for project in projects) == 33
     assert sum(project["status"] == "offline" for project in projects) == 1
     assert sum(project["featured"] for project in projects) == 3
     assert sorted(
@@ -96,15 +112,15 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     assert "我做小而完整的互联网产品。" in html
     assert '<span class="title-line">我做小而完整的</span>' in html
     assert '<span class="title-line"><em>互联网产品。</em></span>' in html
-    assert 'data-hero-latest="33"' in html
+    assert 'data-hero-latest="34"' in html
     assert 'class="hero-latest-image"' not in html
     assert "工作台最近" in html
     assert "不叫“最佳作品”，这里只按上线时间排。" in html
-    assert "Mortal Shell II Wiki" in html
-    assert "2026-08-25" in html
+    assert "GenVid Atlas" in html
+    assert "2026-09-06" in html
     assert '<main id="main-content" tabindex="-1">' in html
-    assert 'data-status="releases">33 条公开记录' in html
-    assert 'data-status="live">32 条在线记录' in html
+    assert 'data-status="releases">34 条公开记录' in html
+    assert 'data-status="live">33 条在线记录' in html
     assert 'data-status="offline">1 条离线记录' in html
     for retired in (
         "WZF PRESS",
@@ -130,7 +146,7 @@ def test_build_v11_renders_latest_and_featured_case_studies(tmp_path):
     projects = load_projects()
 
     assert html.count('data-latest-card="') == 3
-    latest_positions = [html.index(f'data-latest-card="{project_id}"') for project_id in (33, 32, 31)]
+    latest_positions = [html.index(f'data-latest-card="{project_id}"') for project_id in (34, 33, 32)]
     assert latest_positions == sorted(latest_positions)
 
     featured = sorted(
@@ -172,10 +188,10 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert "我通常怎么开始" in html
     for habit in ("先找最短的一条路", "第一版要完整走通", "发出去再决定加什么"):
         assert habit in html
-    assert html.count('data-ledger-id="') == 33
-    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(33, 0, -1)]
+    assert html.count('data-ledger-id="') == 34
+    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(34, 0, -1)]
     assert ledger_positions == sorted(ledger_positions)
-    assert html.count('data-ledger-status="live"') == 32
+    assert html.count('data-ledger-status="live"') == 33
     assert html.count('data-ledger-status="offline"') == 1
 
     offline_row = re.search(
@@ -189,7 +205,8 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
         assert f'data-ledger-filter="{category}"' in html
     assert 'id="ledger-search"' in html
     assert 'id="ledger-status"' in html
-    assert 'id="ledger-count" aria-live="polite">33 / 33' in html
+    assert 'id="ledger-count" aria-live="polite">34 / 34' in html
+    assert "这个页面收着 34 次公开上线" in html
     assert 'class="ledger-tools" hidden' in html
     assert 'class="ledger-empty" id="ledger-empty" role="status" hidden' in html
     assert '<h2 id="selected-title">三个我愿意<span class="no-break">细讲的项目</span></h2>' in html
@@ -296,13 +313,13 @@ def test_build_v11_generates_shared_assets_seo_and_privacy_page(tmp_path):
     graph = json.loads(graph_match.group(1))["@graph"]
     assert {node["@type"] for node in graph} == {"Person", "WebSite", "ItemList"}
     release_list = next(node for node in graph if node["@type"] == "ItemList")
-    assert release_list["numberOfItems"] == 33
-    assert len(release_list["itemListElement"]) == 33
+    assert release_list["numberOfItems"] == 34
+    assert len(release_list["itemListElement"]) == 34
     structured_statuses = [
         item["item"]["additionalProperty"]["value"]
         for item in release_list["itemListElement"]
     ]
-    assert structured_statuses.count("live") == 32
+    assert structured_statuses.count("live") == 33
     assert structured_statuses.count("offline") == 1
 
     assert '<link rel="canonical" href="https://wangzifan.store/privacy.html">' in privacy_html

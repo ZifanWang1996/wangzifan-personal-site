@@ -63,10 +63,10 @@ const filters = ['all', 'ai', 'game', 'tool', 'creative'].map((value, index) => 
 });
 const search = new Element();
 const status = new Element({ value: 'all' });
-const count = new Element({ textContent: '33 / 33' });
+const count = new Element({ textContent: '34 / 34' });
 const empty = new Element({ hidden: true });
 const tools = new Element({ hidden: true });
-const more = new Element({ textContent: '查看全部 33 条记录', hidden: true });
+const more = new Element({ textContent: '查看全部 34 条记录', hidden: true });
 more.setAttribute('aria-expanded', 'false');
 const copyButton = new Element({ dataset: { copyValue: 'wang1227928718' }, textContent: '复制微信号', hidden: true });
 const copyStatus = new Element();
@@ -105,12 +105,12 @@ const visibleRows = () => rows.filter(row => !row.hidden);
 assert.equal(tools.hidden, false);
 assert.equal(copyButton.hidden, false);
 assert.equal(visibleRows().length, 9, 'default ledger matches the V11 compact specification');
-assert.equal(count.textContent, '33 / 33');
+assert.equal(count.textContent, '34 / 34');
 assert.equal(more.hidden, false);
 
 await filters.find(filter => filter.dataset.ledgerFilter === 'ai').emit('click');
-assert.equal(visibleRows().length, 3);
-assert.equal(count.textContent, '3 / 33');
+assert.equal(visibleRows().length, 4);
+assert.equal(count.textContent, '4 / 34');
 assert.equal(more.hidden, true);
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'ai'));
 
@@ -119,7 +119,7 @@ status.value = 'offline';
 await status.emit('change');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '24');
-assert.equal(count.textContent, '1 / 33');
+assert.equal(count.textContent, '1 / 34');
 
 status.value = 'all';
 await status.emit('change');
@@ -132,14 +132,14 @@ assert.equal(empty.hidden, true);
 search.value = 'definitely-not-a-project';
 await search.emit('input');
 assert.equal(visibleRows().length, 0);
-assert.equal(count.textContent, '0 / 33');
+assert.equal(count.textContent, '0 / 34');
 assert.equal(empty.hidden, false);
 
 search.value = '';
 await search.emit('input');
 assert.equal(empty.hidden, true);
 await more.emit('click');
-assert.equal(visibleRows().length, 33);
+assert.equal(visibleRows().length, 34);
 assert.equal(more.getAttribute('aria-expanded'), 'true');
 assert.equal(more.textContent, '收起发布档案');
 
