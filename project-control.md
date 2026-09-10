@@ -9,8 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`369fc3607d023d32926a16892209115fa3382216`（PR #10 squash merge）
-- V11.4 页面实现基线 tree：`20a8a94ec018e9efabbc25cf5a2a8207a2aa82af`；公开 artifact SHA-256：`f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`
+- 当前生产页面实现提交：`9692eb86f82b5ac4c5201510749282233de7975a`（PR #12 squash merge）
+- V11.5 页面实现基线 tree：`3c200da2ef4a67ad12deb8daffc52d3064fa1a4d`；公开 artifact SHA-256：`4eb5998f418dbe7e57ca9417962a9037e61ffc0b8258819bdef0b14ce5a1e4ec`
+
+## V11.5 生产版：Astra Atlas 卡片 #37（2026-09-10）
+
+- **状态**：冻结实现 commit `bb882f47fe2fb13405ae08d3875b3765be624ca7` 通过 PR #12 squash merge 为页面实现 commit `9692eb86f82b5ac4c5201510749282233de7975a`；两者 tree 均为 `3c200da2ef4a67ad12deb8daffc52d3064fa1a4d`。GitHub Pages production run `34501203763` 已成功部署，deployment ID 为 `6376175732`。
+- **事实记录**：新增 Astra Atlas（`https://gpt6astra.best/`），分类「AI 产品」，标签「GPT-6 Astra 价格与选型指南」，首次可验证 Worker 部署日期为 2026-09-09；文案依据正式站 title、H1、导航、四语入口、134 条 sitemap URL、模型对比与成本计算器现场核验。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 37 条公开记录、36 条在线、1 条离线，AI 分类 5 条，最近上线顺序为 37/36/35。
+- **截图证据**：`project-37.webp` 来自 1440×900 正式站真实首屏；先在临时浏览器明确拒绝可选分析，再经 Lanczos 无裁切缩为 400×250 WebP；9,294 bytes，SHA-256 `6bc3544316dad5f705bfcd3c1aa41176a7df984ac318195d05ed2b312b7bb1dd`，没有同意弹窗、浏览器边框、裁切、变形或合成内容。
+- **发布边界**：exact public artifact 为 45 文件，SHA-256 `4eb5998f418dbe7e57ca9417962a9037e61ffc0b8258819bdef0b14ce5a1e4ec`；项目图白名单固定扩展到 `project-37.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。相对 V11.4 仅新增 `project-37.webp` 并更新 `index.html`、`og-card.webp`，无删除项。
+- **候选验收**：先取得缺 #37、旧 36 条首页与旧 44 文件白名单的 RED 证据；GREEN 后 pytest 27/27、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 37 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控 CTA、URL、`_blank`、`noopener noreferrer` 全部正确。独立 pre-commit reviewer 对基线、完整 diff 与唯一未跟踪缩略图复核后未发现 security/logic findings，总体 PASS。
+- **PR 与生产证据**：PR run `34500922791` 的 quality 成功、deploy 按分支条件跳过；production run `34501203763` 的 quality 与 deploy 均成功。生产 deployment `6376175732` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；生产 CI evidence 绑定 45 文件、同一 artifact SHA-256 与 8 个视口 0 failures，下载的 `github-pages` 上传 artifact 与冻结候选 45 个文件逐字节一致。
+- **正式域验收**：GitHub Pages 返回 HTTP 200；Hero 为 #37，最近上线顺序为 37/36/35，档案为 37 条（36 live / 1 offline），AI 筛选为 `5 / 37`，Astra 搜索唯一命中 #37，4 个 Astra 外链均使用正式 URL。1280×800 与 390×844 Chrome 均为 0 overflow、0 console/page/same-origin network failure；390px 真触控到达 `https://gpt6astra.best/en`。无 JavaScript 时 37 条档案全部可读，5 个源码、测试、控制与 `_qa` 探针均返回 404，正式域可视化回读无旧内容残留。
+- **授权边界**：用户于 2026-09-10 明确要求在 `wangzifan.store` 新增 `gpt6astra.best` 展示项目；本轮将授权用于 #37、PR #12 合并与生产部署，不修改 DNS 或 Astra Atlas 站点本身。
 
 ## V11.4 生产版：Onimusha Atlas 卡片 #36（2026-09-10）
 
@@ -311,11 +323,12 @@
 | 34 | GenVid Atlas | AI 产品 | https://genvidatlas.wiki/ |
 | 35 | Dawnwalker Field Guide | 游戏与内容 | https://thebloodofdawnwalker.info/ |
 | 36 | Onimusha Atlas | 游戏与内容 | https://onimushawayofthesword.space/ |
+| 37 | Astra Atlas | AI 产品 | https://gpt6astra.best/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- V11.4 候选 allowlist 精确为 44 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 36 张编号项目 WebP。
+- V11.5 候选 allowlist 精确为 45 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 37 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -324,11 +337,11 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 36 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 36 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 37 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 37 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-36.webp`，不接受任意 36 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.4 证据绑定候选 SHA-256 `f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`；CI evidence artifacts 分别为 `v11-browser-evidence-34432841506` 与 `v11-browser-evidence-34433424311`，均含 8 视口报告与代表性整页截图。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-37.webp`，不接受任意 37 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- V11.5 证据绑定候选 SHA-256 `4eb5998f418dbe7e57ca9417962a9037e61ffc0b8258819bdef0b14ce5a1e4ec`；CI evidence artifacts 分别为 `v11-browser-evidence-34500922791` 与 `v11-browser-evidence-34501203763`，均含 8 视口报告与代表性整页截图。
 
 ## 隐私与内容边界
 
