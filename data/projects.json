@@ -558,5 +558,21 @@
     "image": "assets/projects/project-35.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 36,
+    "name": "Onimusha Atlas",
+    "url": "https://onimushawayofthesword.space/",
+    "category": "game",
+    "subtitle": "鬼武者攻略与玩家日志",
+    "summary": "面向《Onimusha: Way of the Sword》玩家的独立多语言攻略与玩家日志站，提供战斗与角色资料、京都世界图鉴、PC 准备指南，并支持浏览器本地旅程记录。",
+    "problem": "游戏的战斗信息、角色资料、世界背景、PC 准备事项与个人游玩记录分散，玩家难以把查阅和下一步行动串在一起。",
+    "solution": "把三语攻略、资料库、世界图鉴和浏览器本地玩家日志组织为一套可搜索、可续接的独立 Field Guide。",
+    "evidence": "公开站点可直接验证英语、简体中文、日语各 49 个 canonical URL，以及攻略、数据库、世界图鉴、工具、挑战与本地玩家日志入口。",
+    "launched_at": "2026-09-09",
+    "status": "live",
+    "image": "assets/projects/project-36.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

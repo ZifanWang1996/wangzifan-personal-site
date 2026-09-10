@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("dawnwalker")
+    page.locator("#ledger-search").fill("onimusha")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -258,27 +258,27 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    dawnwalker_link = page.locator('[data-latest-card="35"] .text-link')
-    result["dawnwalkerCTA"] = {
-        "href": dawnwalker_link.get_attribute("href"),
-        "target": dawnwalker_link.get_attribute("target"),
-        "rel": sorted((dawnwalker_link.get_attribute("rel") or "").split()),
+    onimusha_link = page.locator('[data-latest-card="36"] .text-link')
+    result["onimushaCTA"] = {
+        "href": onimusha_link.get_attribute("href"),
+        "target": onimusha_link.get_attribute("target"),
+        "rel": sorted((onimusha_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
     if width == 390:
         context.route(
-            "https://thebloodofdawnwalker.info/**",
+            "https://onimushawayofthesword.space/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Dawnwalker Field Guide</title>",
+                body="<!doctype html><title>Onimusha Atlas</title>",
             ),
         )
         with context.expect_page() as popup_info:
-            dawnwalker_link.tap()
+            onimusha_link.tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
-        result["dawnwalkerCTA"]["tapOpened"] = popup.url
+        result["onimushaCTA"]["tapOpened"] = popup.url
         popup.close()
     return result
 
@@ -306,17 +306,17 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 4, "count": "4 / 35"},
-            "game": task["game"] == {"visible": 13, "count": "13 / 35"},
-            "search": task["search"] == {"visible": 1, "ids": ["35"]},
+            "ai": task["ai"] == {"visible": 4, "count": "4 / 36"},
+            "game": task["game"] == {"visible": 14, "count": "14 / 36"},
+            "search": task["search"] == {"visible": 1, "ids": ["36"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 35",
+                "count": "0 / 36",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 35, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 36, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -328,11 +328,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
             and task["fragment"]["intersects"],
-            "dawnwalkerCTA": task["dawnwalkerCTA"] == {
-                "href": "https://thebloodofdawnwalker.info/",
+            "onimushaCTA": task["onimushaCTA"] == {
+                "href": "https://onimushawayofthesword.space/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://thebloodofdawnwalker.info/" if width == 390 else None,
+                "tapOpened": "https://onimushawayofthesword.space/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -559,8 +559,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 35,
-        "visibleLedger": 35,
+        "ledger": 36,
+        "visibleLedger": 36,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
