@@ -574,5 +574,21 @@
     "image": "assets/projects/project-36.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 37,
+    "name": "Astra Atlas",
+    "url": "https://gpt6astra.best/",
+    "category": "ai",
+    "subtitle": "GPT-6 Astra 价格与选型指南",
+    "summary": "围绕 GPT-6 Astra 的访问、API 定价与替代模型决策，提供来源可追溯的指南、模型对比、成本计算器和浏览器本地预算保存。",
+    "problem": "模型发布后，用户常常把单价、上下文、访问渠道和实际工作负载成本混在一起，难以判断是否该升级。",
+    "solution": "把来源记录、访问排障、Claude、Gemini 与中国模型对比和可复算预算工具组织成一条决策路径。",
+    "evidence": "公开站可直接验证英语、简体中文、巴西葡语和西班牙语入口、134 条 sitemap URL、模型对比与成本计算器；预算和阅读清单保存在浏览器本地。",
+    "launched_at": "2026-09-09",
+    "status": "live",
+    "image": "assets/projects/project-37.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

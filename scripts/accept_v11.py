@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("onimusha")
+    page.locator("#ledger-search").fill("astra")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -258,27 +258,27 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    onimusha_link = page.locator('[data-latest-card="36"] .text-link')
-    result["onimushaCTA"] = {
-        "href": onimusha_link.get_attribute("href"),
-        "target": onimusha_link.get_attribute("target"),
-        "rel": sorted((onimusha_link.get_attribute("rel") or "").split()),
+    astra_link = page.locator('[data-latest-card="37"] .text-link')
+    result["astraCTA"] = {
+        "href": astra_link.get_attribute("href"),
+        "target": astra_link.get_attribute("target"),
+        "rel": sorted((astra_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
     if width == 390:
         context.route(
-            "https://onimushawayofthesword.space/**",
+            "https://gpt6astra.best/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Onimusha Atlas</title>",
+                body="<!doctype html><title>Astra Atlas</title>",
             ),
         )
         with context.expect_page() as popup_info:
-            onimusha_link.tap()
+            astra_link.tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
-        result["onimushaCTA"]["tapOpened"] = popup.url
+        result["astraCTA"]["tapOpened"] = popup.url
         popup.close()
     return result
 
@@ -306,17 +306,17 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 4, "count": "4 / 36"},
-            "game": task["game"] == {"visible": 14, "count": "14 / 36"},
-            "search": task["search"] == {"visible": 1, "ids": ["36"]},
+            "ai": task["ai"] == {"visible": 5, "count": "5 / 37"},
+            "game": task["game"] == {"visible": 14, "count": "14 / 37"},
+            "search": task["search"] == {"visible": 1, "ids": ["37"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 36",
+                "count": "0 / 37",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 36, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 37, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -328,11 +328,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
             and task["fragment"]["intersects"],
-            "onimushaCTA": task["onimushaCTA"] == {
-                "href": "https://onimushawayofthesword.space/",
+            "astraCTA": task["astraCTA"] == {
+                "href": "https://gpt6astra.best/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://onimushawayofthesword.space/" if width == 390 else None,
+                "tapOpened": "https://gpt6astra.best/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -559,8 +559,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 36,
-        "visibleLedger": 36,
+        "ledger": 37,
+        "visibleLedger": 37,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
