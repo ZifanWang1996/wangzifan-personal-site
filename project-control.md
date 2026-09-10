@@ -9,18 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`a08c175eec28aadeffb20b63d36bd24caf92fafb`（PR #9 squash merge）
-- V11.3 页面实现基线 tree：`5c745cf940ab51ee8876492c89bd5f00531f9538`；公开 artifact SHA-256：`0c6030be0c461aa7586c7bc4ee80b2a6bdd342fb86b105a45e3659f76502c1c6`
+- 当前生产页面实现提交：`369fc3607d023d32926a16892209115fa3382216`（PR #10 squash merge）
+- V11.4 页面实现基线 tree：`20a8a94ec018e9efabbc25cf5a2a8207a2aa82af`；公开 artifact SHA-256：`f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`
 
-## V11.4 候选版：Onimusha Atlas 卡片 #36（2026-09-10）
+## V11.4 生产版：Onimusha Atlas 卡片 #36（2026-09-10）
 
-- **状态**：候选分支 `feat/add-onimusha-atlas` 已完成实现与本地发布闸门；等待独立审查、PR CI 与生产验收。
+- **状态**：冻结候选 commit `73023af5110882f0112bdc803eb6b970ecffce26` 通过 PR #10 squash merge 为页面实现 commit `369fc3607d023d32926a16892209115fa3382216`；两者 tree 均为 `20a8a94ec018e9efabbc25cf5a2a8207a2aa82af`。GitHub Pages production run `34433424311` 已成功部署，deployment ID 为 `6363950649`。
 - **范围纠正**：用户要求在 `wangzifan.store` 展示 `hebloodofdawnwalker.info` 与 `onimushawayofthesword.space`。现场核验确认前者是已存在的 #35 Dawnwalker Field Guide 的漏写首字母形式，正式链接继续保持 `https://thebloodofdawnwalker.info/`，不重复建卡；本轮实际新增 #36 Onimusha Atlas。
 - **事实记录**：新增 Onimusha Atlas（`https://onimushawayofthesword.space/`），分类「游戏与内容」，标签「鬼武者攻略与玩家日志」，首次可验证 Worker 部署日期为 2026-09-09；文案依据正式站 title、H1、导航及英语/简中/日语各 49 个 canonical URL 现场核验。
 - **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 36 条公开记录、35 条在线、1 条离线，游戏分类 14 条，最近上线顺序为 36/35/34。
 - **截图证据**：`project-36.webp` 来自 1440×900 正式站真实首屏，经 Lanczos 无裁切缩为 400×250 WebP；9,304 bytes，SHA-256 `b3fc1bc8399674c552e8d0b3705d7721a53f87a88b87ca8c8e1553a913bf6ade`，没有弹窗、浏览器边框、裁切、变形或合成内容。
 - **发布边界**：exact public artifact 为 44 文件，SHA-256 `f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`；项目图白名单固定扩展到 `project-36.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
-- **候选验收**：先取得缺 #36 与旧 35 条计数的 3 项 RED 证据；GREEN 后 pytest 26/26、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 36 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控打开 #36 CTA，URL、`_blank`、`noopener noreferrer` 全部正确。
+- **候选验收**：先取得缺 #36 与旧 35 条计数的 3 项 RED 证据；GREEN 后 pytest 26/26、Node 筛选/搜索/展开/复制降级、Python compile 与 whitespace 全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 36 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控打开 #36 CTA，URL、`_blank`、`noopener noreferrer` 全部正确。冻结 commit 的独立子 Agent 审查 P0–P3 均为 none，总体 PASS；总控又从全新 `git archive` 复算同一 tree、测试和 artifact 哈希一致。
+- **PR 与生产证据**：PR run `34432841506` 的 quality 成功、deploy 按分支条件跳过；production run `34433424311` 的 quality 与 deploy 均成功，两次 quality annotations 均为 0。生产 deployment `6363950649` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；两次 CI evidence 均绑定 44 文件、同一 artifact SHA-256 与 8 个视口 0 failures。下载的 `github-pages` 上传 artifact 与冻结候选 44 个文件逐字节一致。
+- **正式域验收**：GitHub Pages 返回 HTTP 200，`last-modified` 为 2026-09-10 03:29:33 GMT。Hero 为 #36，最近上线顺序为 36/35/34，档案为 36 条（35 live / 1 offline），Onimusha 4 个锚点与 Dawnwalker 3 个锚点均使用正式域名，漏写 `t` 的错误 URL 为 0。1280×800 与 390×844 Chrome 均通过游戏 `14 / 36`、Onimusha 搜索命中 #36、展开 `36 / 36`、7/7 图片解码、0 overflow、0 console/page/same-origin network failure；390px 真触控到达 `https://onimushawayofthesword.space/en/`。无 JS 时 36 条档案全部可读，6 个源码/测试/控制文件探针均返回 404，正式域可视化回读无重叠、裁切、破图或旧内容残留。
 - **授权边界**：用户于 2026-09-10 明确要求在 `wangzifan.store` 新增这两个展示项目；本轮将该授权用于修正范围、补齐唯一缺失的 #36、提交、PR 与生产部署，不修改 DNS 或两个被展示项目本身。
 
 ## V11.3 生产版：Dawnwalker Field Guide 卡片 #35（2026-09-09）
@@ -326,7 +328,7 @@
 - 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 36 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
 - 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-36.webp`，不接受任意 36 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.4 本地证据绑定候选 SHA-256 `f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`；PR 与生产 CI evidence 在发布完成后回填。
+- V11.4 证据绑定候选 SHA-256 `f87c1f444da6d5dc263ace677cc84dfbb677d272adead80447a66f60127ba032`；CI evidence artifacts 分别为 `v11-browser-evidence-34432841506` 与 `v11-browser-evidence-34433424311`，均含 8 视口报告与代表性整页截图。
 
 ## 隐私与内容边界
 
