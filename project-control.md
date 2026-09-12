@@ -9,19 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`41ba1a1aca776c4ca42ee1c6d65f7900f688dfc5`（PR #20 squash merge）
-- V11.9 页面实现基线 tree：`5cede08cd66bb5adabc0ccba7853498ed816f34d`；公开 artifact SHA-256：`773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`
-- 当前生产：V11.9 ParryGrid 卡片 #41；正式域与 CI artifact 已完成逐字节核验。
-- 当前冻结候选：V11.10 1666 Amsterdam Field Desk 卡片 #42；exact public artifact 为 50 文件，SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`；已完成本地 commit 冻结，尚未 push 或部署。
+- 当前生产页面实现提交：`52d084035748b07986b6453f1dacf0b36ac1db8b`（PR #22 squash merge）
+- V11.10 页面实现基线 tree：`2e31a7db5e7e6c7c456a1074dcd54b6b591b9957`；公开 artifact SHA-256：`aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`
+- 当前生产：V11.10 1666 Amsterdam Field Desk 卡片 #42；正式域与 CI artifact 已完成逐字节核验。
 
-## V11.10 候选：1666 Amsterdam Field Desk 卡片 #42（2026-09-12）
+## V11.10 生产版：1666 Amsterdam Field Desk 卡片 #42（2026-09-12）
 
-- **状态**：当前候选位于 `feat/add-1666-amsterdam`，基于生产 main `6d96169546b17bdece054bf673958ba996e73ba3`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `1666amsterdam.top` 的源码、Worker、域绑定、DNS、分析、邮件或收录配置。
+- **状态**：冻结实现 commit `8e7146d7c6f5253ff1629c9bb3e2480246362469` 通过 PR #22 squash merge 为页面实现 commit `52d084035748b07986b6453f1dacf0b36ac1db8b`；两者 tree 均为 `2e31a7db5e7e6c7c456a1074dcd54b6b591b9957`。GitHub Pages production run `34706815685` 已成功部署，deployment ID 为 `6412132521`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `1666amsterdam.top` 的源码、Worker、域绑定、DNS、分析、邮件或收录配置。
 - **事实记录**：新增 1666 Amsterdam Field Desk（`https://1666amsterdam.top/`），分类「游戏与内容」，标签「《1666: Amsterdam》三语攻略与排障工作台」。正式 apex 当前 HTTPS 实测 200、canonical 自指且 robots 为 `index, follow`；Cloudflare 只读部署列表确认 Worker `1666amsterdam-field-desk` 首次部署于 `2026-09-12T07:45:54Z`，因此上线日期记为 `2026-09-12`。正式站可直接验证 English、简体中文、Nederlands 三语入口、117 条 sitemap URL、每语 31 条可筛选指南、来源与最近核验说明、PC requirements checker、Fix My Game 分诊和 Roadmap Decoder。隔离 Chrome 拒绝 analytics 并拦截事件写入后，真实点击收藏与已读均写入浏览器本地 `fielddesk:v2:desk`，搜索 “Controller Not Working” 唯一命中 1/31。
-- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；候选计数为 42 条公开记录、41 条在线、1 条离线，游戏分类 19 条，最近上线顺序为 42/41/40，`1666amsterdam` 搜索唯一命中 #42。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；生产计数为 42 条公开记录、41 条在线、1 条离线，游戏分类 19 条，最近上线顺序为 42/41/40，`1666amsterdam` 搜索唯一命中 #42。
 - **截图证据**：`project-42.webp` 来自正式站 1440×900 真实英文首屏；隔离浏览器先拒绝 analytics、阻断事件写入并确认无 console/page/network/HTTP 错误，再经 Lanczos 无裁切等比缩为 400×250 单帧 WebP；9,152 bytes，SHA-256 `9539fb2ca4cbea657b58c70b19351dab9581f62ed2daeb9880111a6f811ef096`，无 EXIF/XMP、弹窗、浏览器边框、裁切、变形或合成内容，原图、390px 首屏与 400×250 卡片图目检均 PASS。
-- **发布边界**：候选 exact public artifact 为 50 文件，SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`；项目图白名单固定扩展到 `project-42.webp`，源码、测试、registry、控制文档、`.hermes/` 与 `_qa/` 继续不得公开。
-- **候选验收**：先新增 #42 完整契约并取得 `amsterdam is None`、registry `41 == 42`、artifact `49 == 50`、allowlist 上限仍为 41、Node 游戏计数 `18 !== 19` 的精确 RED；GREEN 后 pytest 33/33、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、JS syntax、Python compile、diff whitespace、exact-tree 11 路径、常见密钥模式扫描与两次哈希一致的确定性重建全部通过。8 个真实 Chromium 视口均为 0 overflow、0 owner crossing、0 console/page/request/bad-response failure，7 张页面图片全部解码，no-JS 可读 42 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控到达 `https://1666amsterdam.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。
+- **发布边界**：exact public artifact 为 50 文件，SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`；项目图白名单固定扩展到 `project-42.webp`，源码、测试、registry、控制文档、`.hermes/` 与 `_qa/` 继续不得公开。
+- **候选验收**：先新增 #42 完整契约并取得 `amsterdam is None`、registry `41 == 42`、artifact `49 == 50`、allowlist 上限仍为 41、Node 游戏计数 `18 !== 19` 的精确 RED。GREEN 后 pytest 34/34、双 Node 入口、JS syntax、Python compile、diff whitespace、exact-tree 11 路径、常见密钥模式扫描与两次哈希一致的确定性重建全部通过；8 个真实 Chromium 视口均为 0 failures，7 张页面图片全部解码，no-JS 可读 42 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS，390px 真触控到达目标正式域。独立 reviewer 在两个废弃 SHA 上发现“尚未提交”状态陈述和底部 #41 浏览器门禁两项 Medium；按最窄范围修复并新增动态文档回归测试后，最终 reviewer 对冻结 commit `8e7146d7c6f5253ff1629c9bb3e2480246362469` 给出 Blocker/High/Medium `0/0/0`、总体 PASS。最终 Git 对象的全新 `git archive` 复跑为 34/34、双 Node、50 文件与同一 artifact 哈希。
+- **PR 与生产证据**：PR run `34706699305` 的 quality 成功、deploy 按分支条件跳过；production run `34706815685` 的 quality 与 deploy 均成功。生产 deployment `6412132521` 状态为 `success`，environment URL 为 `https://wangzifan.store/`。CI Pages artifact ID `10302216049` 与 browser evidence artifact ID `10301767145` 均通过 ZIP/TAR 路径、成员类型与 symlink 安全检查；浏览器证据绑定 50 文件、同一 candidate SHA-256、8 个视口 0 failures 和 no-JS 42 条，Pages artifact 与冻结候选 50 个文件逐字节一致。PR browser evidence artifact ID 为 `10302505177`。
+- **正式域验收**：正式 apex 50 个公开文件全部返回 HTTP 200 且逐字节匹配冻结候选；`data/`、`scripts/`、`tests/`、控制文档、`.hermes/` 与 `_qa/` 六类探针全部返回 404。Hero 为 #42，最近上线顺序为 42/41/40，档案为 42 条（41 live / 1 offline），游戏筛选为 `19 / 42`，`1666amsterdam` 搜索唯一命中 #42。1280×800 与 390×844 正式 Chrome 复用仓库标准验收函数均为 0 failures，7/7 图片解码；390px 真触控真实到达 `https://1666amsterdam.top/` 且 opener 隔离；无 JavaScript 时 42 条档案全部可读，桌面与手机整页目检 PASS。HTTP apex 正确 301 到 HTTPS；`www.wangzifan.store` 当前没有 DNS 记录，本轮未扩权修改。
 - **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `1666amsterdam.top` 展示项目；本轮授权用于 #42 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、托管、Cloudflare 绑定或 DNS。
 
 ## V11.9 生产版：ParryGrid 卡片 #41（2026-09-12）
@@ -406,7 +407,7 @@
 - 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 42 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
 - 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-42.webp`，不接受任意 42 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.9 生产证据绑定 PR run `34703129640`、production run `34703244236`、deployment `6411446649`、Pages artifact `10301660479`、browser evidence artifact `10301500848` 与公开 artifact SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`（49 文件）。
+- V11.10 生产证据绑定 PR run `34706699305`、production run `34706815685`、deployment `6412132521`、Pages artifact `10302216049`、browser evidence artifact `10301767145` 与公开 artifact SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`（50 文件）。
 
 ## 隐私与内容边界
 

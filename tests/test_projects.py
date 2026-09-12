@@ -177,7 +177,7 @@ def test_current_browser_acceptance_docs_match_registry():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     latest = projects[-1]
     control = PROJECT_CONTROL.read_text(encoding="utf-8")
-    current = control.split("## 浏览器验收", 1)[1].split("- V11.9 生产证据", 1)[0]
+    current = control.split("## 浏览器验收", 1)[1].split("## 隐私与内容边界", 1)[0]
 
     assert f"{len(projects)} 条展开" in current
     assert f"{len(projects)} 条档案全部可读" in current
