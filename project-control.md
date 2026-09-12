@@ -9,19 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`7335ef1ee9ec3cc545700fc0aa2cf9402f8fe320`（PR #18 squash merge）
-- V11.8 页面实现基线 tree：`7733c5ec7d70e488695157c323810ce81073ed05`；公开 artifact SHA-256：`54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`
-- 当前生产：V11.8 Mimic Party Soundcheck 卡片 #40；正式域与 CI artifact 已完成逐字节核验。
-- 当前候选：V11.9 ParryGrid 卡片 #41；本地门禁已通过，尚未提交、推送或部署，当前生产继续保持 V11.8 / #40。
+- 当前生产页面实现提交：`41ba1a1aca776c4ca42ee1c6d65f7900f688dfc5`（PR #20 squash merge）
+- V11.9 页面实现基线 tree：`5cede08cd66bb5adabc0ccba7853498ed816f34d`；公开 artifact SHA-256：`773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`
+- 当前生产：V11.9 ParryGrid 卡片 #41；正式域与 CI artifact 已完成逐字节核验。
 
-## V11.9 候选：ParryGrid 卡片 #41（2026-09-12）
+## V11.9 生产版：ParryGrid 卡片 #41（2026-09-12）
 
-- **状态**：`feat/add-parrygrid` 本地候选完成实现与完整验收，尚未提交、推送、创建 PR 或部署；本轮只更新 `wangzifan.store` 公开项目索引，未修改 `parrygrid.wiki` 的代码、OpenAI Sites 托管项目、Cloudflare 边缘配置、D1、域绑定或 DNS。
+- **状态**：冻结实现 commit `2154bf085d9f9b6e20376bd9d5bad4c064698b27` 通过 PR #20 squash merge 为页面实现 commit `41ba1a1aca776c4ca42ee1c6d65f7900f688dfc5`；两者 tree 均为 `5cede08cd66bb5adabc0ccba7853498ed816f34d`。GitHub Pages production run `34703244236` 已成功部署，deployment ID 为 `6411446649`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `parrygrid.wiki` 的代码、OpenAI Sites 托管项目、Cloudflare 边缘配置、D1、域绑定或 DNS。
 - **事实记录**：新增 ParryGrid（`https://parrygrid.wiki/`），分类「游戏与内容」，标签「ARPG 与 Soulslike 情报网格」。`2026-09-10` 正式域仍返回 Cloudflare 522；当前正式证书 `notBefore=Sep 12 00:25:52 2026 GMT`，且 `2026-09-12` apex HTTPS 实测 200，因此上线日期记为首个可验证 live 日期 `2026-09-12`。文案依据正式站 title/Hero、5 个游戏、英语根加 8 个非英语根共 9 个语言入口、46 个子 sitemap、202 个唯一 URL，以及 `/builds`、`/tier-lists`、`/compare`、`/fixes`、`/tools` 与浏览器本地保存与规划工具现场核验。
-- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；候选计数为 41 条公开记录、40 条在线、1 条离线，游戏分类 18 条，最近上线顺序为 41/40/39，ParryGrid 搜索唯一命中 #41。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；生产计数为 41 条公开记录、40 条在线、1 条离线，游戏分类 18 条，最近上线顺序为 41/40/39，ParryGrid 搜索唯一命中 #41。
 - **截图证据**：`project-41.webp` 来自 1440×900 正式站真实英文首屏，经 Lanczos 无裁切缩为 400×250 单帧 WebP；7,762 bytes，SHA-256 `ee08c435f6a807e181e30e0d44dc95c6243556b1bd21670111f0377b9c0a8aa6`，无 EXIF/XMP、弹窗、浏览器边框、裁切、变形或合成内容。
-- **发布边界**：当前 exact public artifact 为 49 文件，SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`；项目图白名单固定扩展到 `project-41.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
-- **候选验收**：先新增 #41 完整契约并取得 `parrygrid is None` 的精确 RED；GREEN 后 pytest 32/32、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、JS syntax、Python compile、diff whitespace、exact-tree、常见密钥模式扫描与两次哈希一致的确定性重建全部通过。8 个真实 Chromium 视口均为 0 overflow、0 owner crossing、0 console/page/request/bad-response failure，7 张页面图片全部解码，no-JS 可读 41 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控到达 `https://parrygrid.wiki/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查为 0 Blocker/High、1 Medium：缺失本 V11.9 候选控制面记录；本节与通用边界完成返修，第二轮完整 tree 复核作为提交前硬门禁。
+- **发布边界**：exact public artifact 为 49 文件，SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`；项目图白名单固定扩展到 `project-41.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
+- **候选验收**：先新增 #41 完整契约并取得 `parrygrid is None` 的精确 RED；GREEN 后 pytest 32/32、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、JS syntax、Python compile、diff whitespace、exact-tree、常见密钥模式扫描与两次哈希一致的确定性重建全部通过。8 个真实 Chromium 视口均为 0 overflow、0 owner crossing、0 console/page/request/bad-response failure，7 张页面图片全部解码，no-JS 可读 41 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控到达 `https://parrygrid.wiki/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查发现缺失 V11.9 候选控制面记录（Medium），返修后第二轮审查又发现未经证实的“导出工具”表述（Medium）；删除夸大并改为已验证的“本地保存与规划工具”后，替补独立 reviewer 对完整 tree 给出 Blocker/High/Medium 全 0、总体 PASS。冻结 commit 的全新 `git archive` 复跑同样为 32/32、双 Node 入口通过、八视口 0 failures、no-JS 41 条，并生成相同 artifact 哈希。
+- **PR 与生产证据**：PR run `34703129640` 的 quality 成功、deploy 按分支条件跳过；production run `34703244236` 的 quality 与 deploy 均成功。生产 deployment `6411446649` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；CI Pages artifact ID `10301660479` 与 browser evidence artifact ID `10301500848` 均通过 ZIP/TAR 路径、成员类型与 symlink 安全检查，浏览器证据绑定 49 文件、同一 artifact SHA-256、8 个视口 0 failures 和 no-JS 41 条，Pages artifact 与冻结候选 49 个文件逐字节一致。
+- **正式域验收**：正式 apex 49 个公开文件全部返回 HTTP 200 且逐字节匹配冻结候选；`data/`、`scripts/`、`tests/`、控制文档、`.hermes/` 与 `_qa/` 六类探针全部返回 404。Hero 为 #41，最近上线顺序为 41/40/39，档案为 41 条（40 live / 1 offline），游戏筛选为 `18 / 41`，ParryGrid 搜索唯一命中 #41。1280×800 与 390×844 Chrome 均为 0 overflow、0 console/page/same-origin network failure，7/7 图片解码；390px 真触控到达 `https://parrygrid.wiki/`，URL、`_blank`、`noopener noreferrer` 正确且 opener 隔离；无 JavaScript 时 41 条档案全部可读。桌面与手机整页目检 PASS。HTTP apex 正确 301 到 HTTPS；`www.wangzifan.store` 当前没有 DNS 记录，本轮未扩权修改。
 - **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `parrygrid.wiki` 展示项目；本轮授权用于 #41 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、托管、Cloudflare 绑定或 DNS。
 
 ## V11.8 生产版：Mimic Party Soundcheck 卡片 #40（2026-09-12）
@@ -385,7 +386,7 @@
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
 
-## 候选浏览器验收
+## 浏览器验收
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
@@ -393,7 +394,7 @@
 - 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 41 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
 - 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-41.webp`，不接受任意 41 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.9 当前本地候选证据绑定 49 文件与公开 artifact SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`；V11.8 最近生产证据绑定 PR run `34674312003`、production run `34674402371`、deployment `6406126659`、Pages artifact `10291239660` 与公开 artifact SHA-256 `54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`（48 文件）。
+- V11.9 生产证据绑定 PR run `34703129640`、production run `34703244236`、deployment `6411446649`、Pages artifact `10301660479`、browser evidence artifact `10301500848` 与公开 artifact SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`（49 文件）。
 
 ## 隐私与内容边界
 
