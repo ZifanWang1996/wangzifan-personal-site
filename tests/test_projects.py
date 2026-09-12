@@ -16,6 +16,7 @@ SITE = ROOT / "index.html"
 PRIVACY = ROOT / "privacy.html"
 WORKFLOW = ROOT / ".github" / "workflows" / "deploy-pages.yml"
 REGISTRY = ROOT / "data" / "projects.json"
+PROJECT_CONTROL = ROOT / "project-control.md"
 
 
 def contrast_ratio(first: str, second: str) -> float:
@@ -90,7 +91,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 39
+    assert len(sources) == len(set(sources)) == 40
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -99,6 +100,20 @@ def test_registry_assets_are_complete_lightweight_and_fixed_size():
         with Image.open(image_path) as image:
             assert image.size == (400, 250), source
             assert image.format == "WEBP"
+
+
+def test_project_control_product_index_matches_registry():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    control = PROJECT_CONTROL.read_text(encoding="utf-8")
+    headings = list(re.finditer(r"^## 产品索引（(\d+)）$", control, re.MULTILINE))
+    assert len(headings) == 1
+
+    heading = headings[0]
+    assert int(heading.group(1)) == len(projects)
+    table = control[heading.end():].split("\n## ", 1)[0]
+    table_ids = re.findall(r"^\|\s*(\d+)\s*\|", table, re.MULTILINE)
+    expected_ids = [f"{project['id']:02d}" for project in projects]
+    assert table_ids == expected_ids
 
 
 def test_qr_font_favicon_and_social_card_are_publishable():
@@ -158,12 +173,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 39
-    assert html.count('data-ledger-status="live"') == 38
+    assert html.count('data-ledger-id="') == 40
+    assert html.count('data-ledger-status="live"') == 39
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    # Hero status (1 link) + three latest cards (2 each) + three case links + 38 live ledger links.
-    expected_safe_external_links = 1 + (3 * 2) + 3 + 38
+    # Hero status (1 link) + three latest cards (2 each) + three case links + 39 live ledger links.
+    expected_safe_external_links = 1 + (3 * 2) + 3 + 39
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -253,7 +268,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 40)" in manifest
+    assert "for project_id in range(1, 41)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest

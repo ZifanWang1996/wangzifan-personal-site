@@ -11,6 +11,17 @@
 - 正式域名：`https://wangzifan.store/`
 - 当前生产页面实现提交：`38d07f650aaefa7c957e41ca532980c3c51c226c`（PR #16 squash merge）
 - V11.7 页面实现基线 tree：`f134092cf5eb0b66a63a73d7bbe5e261c65aaae6`；公开 artifact SHA-256：`1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`
+- 当前候选：V11.8 Mimic Party Soundcheck 卡片 #40；本地候选已通过质量门禁，尚未提交、PR、合并或部署，当前生产仍为 V11.7 / #39。
+
+## V11.8 候选：Mimic Party Soundcheck 卡片 #40（2026-09-12）
+
+- **状态**：本地候选，尚未提交、PR、合并或部署；本轮只更新 `wangzifan.store` 公开项目索引，不修改 `mimicparty.space` 的代码、Cloudflare Worker、域绑定或 DNS。
+- **事实记录**：新增 Mimic Party Soundcheck（`https://mimicparty.space/`），分类「游戏与内容」，标签「《Mimic Party》四语玩家指南与派对工具站」。Cloudflare 只读 API 将正式域绑定到 Worker `mimicparty-space`，服务首次创建于 `2026-09-12T00:55:21Z`，因此上线日期记为 2026-09-12；文案依据正式站 title、Hero、英语/简体中文/法语/西班牙语入口、168 条 sitemap URL（每语 42）、每语 30 篇指南、4 个需求入口、麦克风与连接排障、Soundcheck 和派对规划工具现场核验。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；候选计数为 40 条公开记录、39 条在线、1 条离线，游戏分类 17 条，最近上线顺序为 40/39/38。
+- **截图证据**：`project-40.webp` 来自 1440×900 正式站真实英文首屏；临时浏览器阻断分析请求、等待并真实点击 Decline，断言弹窗消失后，经 Lanczos 无裁切缩为 400×250 WebP；13,642 bytes，SHA-256 `7352205a320abac89b144fabcce0df9fdd970c2645173b6bbe8c91ae6dd3d728`，没有同意弹窗、浏览器边框、裁切、变形或合成内容。
+- **发布边界**：候选 exact public artifact 为 48 文件，SHA-256 `54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`；项目图白名单固定扩展到 `project-40.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
+- **候选验收**：先新增 #40 契约并取得 `mimic is None` 的精确 RED；GREEN 后 pytest 31/31、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、Python compile、diff whitespace 与确定性重建全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/same-origin network failure，7 张页面图片全部解码，no-JS 可读 40 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控打开 `https://mimicparty.space/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查发现产品索引标题仍为 39（P2）；独立修复 Agent 已改为 40，并增加标题计数、registry 数量与表格 ID/顺序一致性回归测试；发布仍以当前完整 tree 的第二轮独立审查通过为前置门禁。
+- **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `mimicparty.space` 展示项目；本轮授权用于 #40 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、Cloudflare 绑定或 DNS。
 
 ## V11.7 生产版：Nightfall Halloween Guides 卡片 #39（2026-09-12）
 
@@ -307,7 +318,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（39）
+## 产品索引（40）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -350,11 +361,12 @@
 | 37 | Astra Atlas | AI 产品 | https://gpt6astra.best/ |
 | 38 | Narinig Mo Ba? Guide | 游戏与内容 | https://narinigmoba.top/ |
 | 39 | Nightfall Halloween Guides | 游戏与内容 | https://halloweenthegame.top/ |
+| 40 | Mimic Party Soundcheck | 游戏与内容 | https://mimicparty.space/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- V11.7 候选 allowlist 精确为 47 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 39 张编号项目 WebP。
+- V11.8 候选 allowlist 精确为 48 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 40 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -363,11 +375,11 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 39 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，Halloween 搜索唯一命中 #39。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 39 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 40 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，Mimic Party 搜索唯一命中 #40。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 40 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-39.webp`，不接受任意 39 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.7 生产证据绑定 run `34671421030`、deployment `6405627783` 与公开 artifact SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-40.webp`，不接受任意 40 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- V11.8 当前仅有本地候选证据，尚无 PR 或生产 run；最近生产证据仍为 V11.7 run `34671421030`、deployment `6405627783` 与 artifact SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`。
 
 ## 隐私与内容边界
 

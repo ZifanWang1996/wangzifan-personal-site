@@ -113,6 +113,22 @@ def test_registry_includes_live_nightfall_halloween_guides_release():
     assert halloween["featured_order"] is None
 
 
+def test_registry_includes_live_mimic_party_soundcheck_release():
+    projects = load_projects()
+    mimic = next((project for project in projects if project["id"] == 40), None)
+
+    assert mimic is not None
+    assert mimic["name"] == "Mimic Party Soundcheck"
+    assert mimic["url"] == "https://mimicparty.space/"
+    assert mimic["category"] == "game"
+    assert mimic["subtitle"] == "《Mimic Party》四语玩家指南与派对工具站"
+    assert mimic["launched_at"] == "2026-09-12"
+    assert mimic["status"] == "live"
+    assert mimic["image"] == "assets/projects/project-40.webp"
+    assert mimic["featured"] is False
+    assert mimic["featured_order"] is None
+
+
 def test_v11_registry_has_complete_truthful_project_contract():
     projects = load_projects()
 
@@ -132,10 +148,10 @@ def test_v11_registry_has_complete_truthful_project_contract():
         "featured",
         "featured_order",
     }
-    assert len(projects) == 39
-    assert [project["id"] for project in projects] == list(range(1, 40))
-    assert len({project["url"] for project in projects}) == 39
-    assert sum(project["status"] == "live" for project in projects) == 38
+    assert len(projects) == 40
+    assert [project["id"] for project in projects] == list(range(1, 41))
+    assert len({project["url"] for project in projects}) == 40
+    assert sum(project["status"] == "live" for project in projects) == 39
     assert sum(project["status"] == "offline" for project in projects) == 1
     assert sum(project["featured"] for project in projects) == 3
     assert sorted(
@@ -192,15 +208,15 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     assert "我做小而完整的互联网产品。" in html
     assert '<span class="title-line">我做小而完整的</span>' in html
     assert '<span class="title-line"><em>互联网产品。</em></span>' in html
-    assert 'data-hero-latest="39"' in html
+    assert 'data-hero-latest="40"' in html
     assert 'class="hero-latest-image"' not in html
     assert "工作台最近" in html
     assert "不叫“最佳作品”，这里只按上线时间排。" in html
-    assert "Nightfall Halloween Guides" in html
+    assert "Mimic Party Soundcheck" in html
     assert "2026-09-12" in html
     assert '<main id="main-content" tabindex="-1">' in html
-    assert 'data-status="releases">39 条公开记录' in html
-    assert 'data-status="live">38 条在线记录' in html
+    assert 'data-status="releases">40 条公开记录' in html
+    assert 'data-status="live">39 条在线记录' in html
     assert 'data-status="offline">1 条离线记录' in html
     for retired in (
         "WZF PRESS",
@@ -226,7 +242,7 @@ def test_build_v11_renders_latest_and_featured_case_studies(tmp_path):
     projects = load_projects()
 
     assert html.count('data-latest-card="') == 3
-    latest_positions = [html.index(f'data-latest-card="{project_id}"') for project_id in (39, 38, 37)]
+    latest_positions = [html.index(f'data-latest-card="{project_id}"') for project_id in (40, 39, 38)]
     assert latest_positions == sorted(latest_positions)
 
     featured = sorted(
@@ -268,10 +284,10 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert "我通常怎么开始" in html
     for habit in ("先找最短的一条路", "第一版要完整走通", "发出去再决定加什么"):
         assert habit in html
-    assert html.count('data-ledger-id="') == 39
-    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(39, 0, -1)]
+    assert html.count('data-ledger-id="') == 40
+    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(40, 0, -1)]
     assert ledger_positions == sorted(ledger_positions)
-    assert html.count('data-ledger-status="live"') == 38
+    assert html.count('data-ledger-status="live"') == 39
     assert html.count('data-ledger-status="offline"') == 1
 
     offline_row = re.search(
@@ -285,8 +301,8 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
         assert f'data-ledger-filter="{category}"' in html
     assert 'id="ledger-search"' in html
     assert 'id="ledger-status"' in html
-    assert 'id="ledger-count" aria-live="polite">39 / 39' in html
-    assert "这个页面收着 39 次公开上线" in html
+    assert 'id="ledger-count" aria-live="polite">40 / 40' in html
+    assert "这个页面收着 40 次公开上线" in html
     assert 'class="ledger-tools" hidden' in html
     assert 'class="ledger-empty" id="ledger-empty" role="status" hidden' in html
     assert '<h2 id="selected-title">三个我愿意<span class="no-break">细讲的项目</span></h2>' in html
@@ -393,13 +409,13 @@ def test_build_v11_generates_shared_assets_seo_and_privacy_page(tmp_path):
     graph = json.loads(graph_match.group(1))["@graph"]
     assert {node["@type"] for node in graph} == {"Person", "WebSite", "ItemList"}
     release_list = next(node for node in graph if node["@type"] == "ItemList")
-    assert release_list["numberOfItems"] == 39
-    assert len(release_list["itemListElement"]) == 39
+    assert release_list["numberOfItems"] == 40
+    assert len(release_list["itemListElement"]) == 40
     structured_statuses = [
         item["item"]["additionalProperty"]["value"]
         for item in release_list["itemListElement"]
     ]
-    assert structured_statuses.count("live") == 38
+    assert structured_statuses.count("live") == 39
     assert structured_statuses.count("offline") == 1
 
     assert '<link rel="canonical" href="https://wangzifan.store/privacy.html">' in privacy_html
