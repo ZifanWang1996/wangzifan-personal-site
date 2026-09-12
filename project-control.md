@@ -9,18 +9,19 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`9692eb86f82b5ac4c5201510749282233de7975a`（PR #12 squash merge）
-- V11.5 页面实现基线 tree：`3c200da2ef4a67ad12deb8daffc52d3064fa1a4d`；公开 artifact SHA-256：`4eb5998f418dbe7e57ca9417962a9037e61ffc0b8258819bdef0b14ce5a1e4ec`
-- V11.6 本地候选公开 artifact SHA-256：`8c69bfffdad583f317c264e2133ad2b27dafaa3dc64a7ed127769f6aad7d678b`（46 文件）
+- 当前生产页面实现提交：`cb9e2b09194d7d031e5ddf94bd0030528dc799de`（PR #14 squash merge）
+- V11.6 页面实现基线 tree：`6c1478643ac9e50c4f35ef27c92d999a5cbf303f`；公开 artifact SHA-256：`8c69bfffdad583f317c264e2133ad2b27dafaa3dc64a7ed127769f6aad7d678b`
 
-## V11.6 候选版：Narinig Mo Ba? Guide 卡片 #38（2026-09-12）
+## V11.6 生产版：Narinig Mo Ba? Guide 卡片 #38（2026-09-12）
 
-- **状态**：已完成本地实现与候选验收，PR、合并与生产部署证据待发布阶段回填；本轮只更新 `wangzifan.store` 公开项目索引，不修改 `narinigmoba.top` 的代码、绑定或 DNS。
+- **状态**：冻结实现 commit `6b0c2da3a2e74b77078477acf9e7e92cef0338d7` 通过 PR #14 squash merge 为页面实现 commit `cb9e2b09194d7d031e5ddf94bd0030528dc799de`；两者 tree 均为 `6c1478643ac9e50c4f35ef27c92d999a5cbf303f`。GitHub Pages production run `34667884556` 已成功部署，deployment ID 为 `6405037183`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `narinigmoba.top` 的代码、绑定或 DNS。
 - **事实记录**：新增 Narinig Mo Ba? Guide（`https://narinigmoba.top/`），分类「游戏与内容」，标签「菲律宾恐怖游戏轻剧透攻略站」，首次可验证 Worker 部署日期为 2026-09-11；文案依据正式站 title、H1、英语/菲律宾语/简体中文入口、117 条 sitemap URL、31 篇轻剧透指南、12 个问题入口、设备与加载排障、比索找零练习及每日挑战现场核验。
 - **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 38 条公开记录、37 条在线、1 条离线，游戏分类 15 条，最近上线顺序为 38/37/36。
 - **截图证据**：`project-38.webp` 来自 1440×900 正式站真实英文首屏，经 Lanczos 无裁切缩为 400×250 WebP；12,230 bytes，SHA-256 `74291c973b53ca3b3a1efc5cbccd1b39eb138c745dcb68e39d93c2ae7b339c94`，无同意弹窗、浏览器边框、裁切、变形或合成内容。
 - **发布边界**：exact public artifact 为 46 文件，SHA-256 `8c69bfffdad583f317c264e2133ad2b27dafaa3dc64a7ed127769f6aad7d678b`；项目图白名单固定扩展到 `project-38.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
-- **候选验收**：先新增 #38 契约并取得“缺少第 38 项”的精确 RED；GREEN 后 pytest 28/28、Node 筛选/搜索/展开/复制降级通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 38 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控到达 `https://narinigmoba.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。
+- **候选验收**：先新增 #38 契约并取得“缺少第 38 项”的精确 RED；GREEN 后 pytest 28/28、Node 筛选/搜索/展开/复制降级通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 38 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控到达 `https://narinigmoba.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。独立 pre-commit reviewer 对完整 tracked diff 与唯一未跟踪缩略图复核后返回 security/logic findings 均为 0，总体 PASS。
+- **PR 与生产证据**：PR run `34667764422` 的 quality 成功、deploy 按分支条件跳过；production run `34667884556` 的 quality 与 deploy 均成功。生产 deployment `6405037183` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；生产 CI evidence 绑定 46 文件、同一 artifact SHA-256 与 8 个视口 0 failures。下载的 `github-pages` artifact 通过路径与链接安全检查，并与冻结候选 46 个文件逐字节一致。
+- **正式域验收**：正式域 46 个公开文件全部返回 HTTP 200 且逐字节匹配候选；`data/`、`scripts/`、`tests/`、控制文档、`.hermes/` 与 `_qa/` 六类探针全部返回 404。Hero 为 #38，最近上线顺序为 38/37/36，档案为 38 条（37 live / 1 offline），游戏筛选为 `15 / 38`，Narinig 搜索唯一命中 #38。1280×800 与 390×844 Chrome 均为 0 overflow、0 console/page/same-origin network failure，7/7 图片解码；390px 真触控经正式站重定向到达 `https://narinigmoba.top/en/`，无 JavaScript 时 38 条档案全部可读。桌面与手机整页目检无焦点浮层、裁切、重叠或破图。
 - **授权边界**：用户明确要求在 `wangzifan.store` 增加 `narinigmoba.top` 展示项目；该授权用于 #38 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站 DNS。
 
 ## V11.5 生产版：Astra Atlas 卡片 #37（2026-09-10）
