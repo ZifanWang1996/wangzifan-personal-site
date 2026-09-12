@@ -622,5 +622,21 @@
     "image": "assets/projects/project-39.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 40,
+    "name": "Mimic Party Soundcheck",
+    "url": "https://mimicparty.space/",
+    "category": "game",
+    "subtitle": "《Mimic Party》四语玩家指南与派对工具站",
+    "summary": "面向《Mimic Party》玩家的独立四语指南与派对准备站，提供规则、麦克风与连接排障、Steam Workshop 声音包、每日热身和跨时区派对规划。",
+    "problem": "新玩家常要分散查找游戏规则、麦克风权限、组队连接、平台版本和声音包信息，派对开始前容易卡在设备或协调问题。",
+    "solution": "把英中法西 30 篇指南、按症状快速帮助、声音包路径、每日声音热身和派对规划工具组织成可搜索的玩家入口。",
+    "evidence": "公开站点可直接验证英语、简体中文、法语、西班牙语入口、168 条 sitemap URL（每语 42）、每语 30 篇指南、4 个需求入口、麦克风与连接排障、Soundcheck 和派对规划工具。",
+    "launched_at": "2026-09-12",
+    "status": "live",
+    "image": "assets/projects/project-40.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
