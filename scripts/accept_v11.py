@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("astra")
+    page.locator("#ledger-search").fill("narinig")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -258,27 +258,27 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    astra_link = page.locator('[data-latest-card="37"] .text-link')
-    result["astraCTA"] = {
-        "href": astra_link.get_attribute("href"),
-        "target": astra_link.get_attribute("target"),
-        "rel": sorted((astra_link.get_attribute("rel") or "").split()),
+    narinig_link = page.locator('[data-latest-card="38"] .text-link')
+    result["narinigCTA"] = {
+        "href": narinig_link.get_attribute("href"),
+        "target": narinig_link.get_attribute("target"),
+        "rel": sorted((narinig_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
     if width == 390:
         context.route(
-            "https://gpt6astra.best/**",
+            "https://narinigmoba.top/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Astra Atlas</title>",
+                body="<!doctype html><title>Narinig Mo Ba? Guide</title>",
             ),
         )
         with context.expect_page() as popup_info:
-            astra_link.tap()
+            narinig_link.tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
-        result["astraCTA"]["tapOpened"] = popup.url
+        result["narinigCTA"]["tapOpened"] = popup.url
         popup.close()
     return result
 
@@ -306,17 +306,17 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 5, "count": "5 / 37"},
-            "game": task["game"] == {"visible": 14, "count": "14 / 37"},
-            "search": task["search"] == {"visible": 1, "ids": ["37"]},
+            "ai": task["ai"] == {"visible": 5, "count": "5 / 38"},
+            "game": task["game"] == {"visible": 15, "count": "15 / 38"},
+            "search": task["search"] == {"visible": 1, "ids": ["38"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 37",
+                "count": "0 / 38",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 37, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 38, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -328,11 +328,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
             and task["fragment"]["intersects"],
-            "astraCTA": task["astraCTA"] == {
-                "href": "https://gpt6astra.best/",
+            "narinigCTA": task["narinigCTA"] == {
+                "href": "https://narinigmoba.top/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://gpt6astra.best/" if width == 390 else None,
+                "tapOpened": "https://narinigmoba.top/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -559,8 +559,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 37,
-        "visibleLedger": 37,
+        "ledger": 38,
+        "visibleLedger": 38,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
