@@ -638,5 +638,21 @@
     "image": "assets/projects/project-40.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 41,
+    "name": "ParryGrid",
+    "url": "https://parrygrid.wiki/",
+    "category": "game",
+    "subtitle": "ARPG 与 Soulslike 情报网格",
+    "summary": "面向动作角色扮演与 Soulslike 玩家的一站式多语言情报站，提供版本信号、构筑、强度排行、游戏对比、故障排查和浏览器本地规划工具。",
+    "problem": "补丁变化、构筑选择、强度排行、跨游戏比较和技术排障信息分散，玩家难以快速判断当前版本下一步该做什么。",
+    "solution": "把五款游戏的可核验版本信号、指南、比较与本地决策工具组织成按问题推进的多语言情报网格。",
+    "evidence": "公开站点可直接验证 5 个游戏、9 个语言根、46 个子 sitemap 与 202 个唯一 URL，以及版本信号、构筑、强度排行、对比、故障排查和浏览器本地工具。",
+    "launched_at": "2026-09-12",
+    "status": "live",
+    "image": "assets/projects/project-41.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
