@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("mimicparty")
+    page.locator("#ledger-search").fill("parrygrid")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -258,27 +258,27 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    mimic_link = page.locator('[data-latest-card="40"] .text-link')
-    result["mimicCTA"] = {
-        "href": mimic_link.get_attribute("href"),
-        "target": mimic_link.get_attribute("target"),
-        "rel": sorted((mimic_link.get_attribute("rel") or "").split()),
+    parrygrid_link = page.locator('[data-latest-card="41"] .text-link')
+    result["parrygridCTA"] = {
+        "href": parrygrid_link.get_attribute("href"),
+        "target": parrygrid_link.get_attribute("target"),
+        "rel": sorted((parrygrid_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
     if width == 390:
         context.route(
-            "https://mimicparty.space/**",
+            "https://parrygrid.wiki/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Mimic Party Soundcheck</title>",
+                body="<!doctype html><title>ParryGrid</title>",
             ),
         )
         with context.expect_page() as popup_info:
-            mimic_link.tap()
+            parrygrid_link.tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
-        result["mimicCTA"]["tapOpened"] = popup.url
+        result["parrygridCTA"]["tapOpened"] = popup.url
         popup.close()
     return result
 
@@ -306,17 +306,17 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 5, "count": "5 / 40"},
-            "game": task["game"] == {"visible": 17, "count": "17 / 40"},
-            "search": task["search"] == {"visible": 1, "ids": ["40"]},
+            "ai": task["ai"] == {"visible": 5, "count": "5 / 41"},
+            "game": task["game"] == {"visible": 18, "count": "18 / 41"},
+            "search": task["search"] == {"visible": 1, "ids": ["41"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 40",
+                "count": "0 / 41",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 40, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 41, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -328,11 +328,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
             and task["fragment"]["intersects"],
-            "mimicCTA": task["mimicCTA"] == {
-                "href": "https://mimicparty.space/",
+            "parrygridCTA": task["parrygridCTA"] == {
+                "href": "https://parrygrid.wiki/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://mimicparty.space/" if width == 390 else None,
+                "tapOpened": "https://parrygrid.wiki/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -559,8 +559,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 40,
-        "visibleLedger": 40,
+        "ledger": 41,
+        "visibleLedger": 41,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,

@@ -1,3 +1,4 @@
+import hashlib
 import json
 import re
 import subprocess
@@ -91,7 +92,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 40
+    assert len(sources) == len(set(sources)) == 41
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -100,6 +101,34 @@ def test_registry_assets_are_complete_lightweight_and_fixed_size():
         with Image.open(image_path) as image:
             assert image.size == (400, 250), source
             assert image.format == "WEBP"
+
+
+def test_parrygrid_project_41_contract():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    parrygrid = next((project for project in projects if project["id"] == 41), None)
+    assert parrygrid is not None
+    assert parrygrid == {
+        "id": 41,
+        "name": "ParryGrid",
+        "url": "https://parrygrid.wiki/",
+        "category": "game",
+        "subtitle": "ARPG 与 Soulslike 情报网格",
+        "summary": "面向动作角色扮演与 Soulslike 玩家的一站式多语言情报站，提供版本信号、构筑、强度排行、游戏对比、故障排查和浏览器本地规划工具。",
+        "problem": "补丁变化、构筑选择、强度排行、跨游戏比较和技术排障信息分散，玩家难以快速判断当前版本下一步该做什么。",
+        "solution": "把五款游戏的可核验版本信号、指南、比较与本地决策工具组织成按问题推进的多语言情报网格。",
+        "evidence": "公开站点可直接验证 5 个游戏、9 个语言根、46 个子 sitemap 与 202 个唯一 URL，以及版本信号、构筑、强度排行、对比、故障排查和浏览器本地工具。",
+        "launched_at": "2026-09-12",
+        "status": "live",
+        "image": "assets/projects/project-41.webp",
+        "featured": False,
+        "featured_order": None,
+    }
+
+    image_path = ROOT / parrygrid["image"]
+    assert image_path.is_file()
+    assert hashlib.sha256(image_path.read_bytes()).hexdigest() == (
+        "ee08c435f6a807e181e30e0d44dc95c6243556b1bd21670111f0377b9c0a8aa6"
+    )
 
 
 def test_project_control_product_index_matches_registry():
@@ -173,12 +202,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 40
-    assert html.count('data-ledger-status="live"') == 39
+    assert html.count('data-ledger-id="') == 41
+    assert html.count('data-ledger-status="live"') == 40
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    # Hero status (1 link) + three latest cards (2 each) + three case links + 39 live ledger links.
-    expected_safe_external_links = 1 + (3 * 2) + 3 + 39
+    # Hero status (1 link) + three latest cards (2 each) + three case links + 40 live ledger links.
+    expected_safe_external_links = 1 + (3 * 2) + 3 + 40
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -268,7 +297,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 41)" in manifest
+    assert "for project_id in range(1, 42)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest
