@@ -9,18 +9,20 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`38d07f650aaefa7c957e41ca532980c3c51c226c`（PR #16 squash merge）
-- V11.7 页面实现基线 tree：`f134092cf5eb0b66a63a73d7bbe5e261c65aaae6`；公开 artifact SHA-256：`1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`
-- 当前候选：V11.8 Mimic Party Soundcheck 卡片 #40；本地候选已通过质量门禁，尚未提交、PR、合并或部署，当前生产仍为 V11.7 / #39。
+- 当前生产页面实现提交：`7335ef1ee9ec3cc545700fc0aa2cf9402f8fe320`（PR #18 squash merge）
+- V11.8 页面实现基线 tree：`7733c5ec7d70e488695157c323810ce81073ed05`；公开 artifact SHA-256：`54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`
+- 当前生产：V11.8 Mimic Party Soundcheck 卡片 #40；正式域与 CI artifact 已完成逐字节核验。
 
-## V11.8 候选：Mimic Party Soundcheck 卡片 #40（2026-09-12）
+## V11.8 生产版：Mimic Party Soundcheck 卡片 #40（2026-09-12）
 
-- **状态**：本地候选，尚未提交、PR、合并或部署；本轮只更新 `wangzifan.store` 公开项目索引，不修改 `mimicparty.space` 的代码、Cloudflare Worker、域绑定或 DNS。
-- **事实记录**：新增 Mimic Party Soundcheck（`https://mimicparty.space/`），分类「游戏与内容」，标签「《Mimic Party》四语玩家指南与派对工具站」。Cloudflare 只读 API 将正式域绑定到 Worker `mimicparty-space`，服务首次创建于 `2026-09-12T00:55:21Z`，因此上线日期记为 2026-09-12；文案依据正式站 title、Hero、英语/简体中文/法语/西班牙语入口、168 条 sitemap URL（每语 42）、每语 30 篇指南、4 个需求入口、麦克风与连接排障、Soundcheck 和派对规划工具现场核验。
+- **状态**：冻结实现 commit `be1cc5d6662cf6b3620153df793864db110ea051` 通过 PR #18 squash merge 为页面实现 commit `7335ef1ee9ec3cc545700fc0aa2cf9402f8fe320`；两者 tree 均为 `7733c5ec7d70e488695157c323810ce81073ed05`。GitHub Pages production run `34674402371` 已成功部署，deployment ID 为 `6406126659`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `mimicparty.space` 的代码、Cloudflare Worker、域绑定或 DNS。
+- **事实记录**：新增 Mimic Party Soundcheck（`https://mimicparty.space/`），分类「游戏与内容」，标签「《Mimic Party》四语玩家指南与派对工具站」。Cloudflare 只读 API 将正式域绑定到 Worker `mimicparty-space`，服务首次创建于 `2026-09-12T00:55:21Z`，因此上线日期记为 2026-09-12；文案依据正式站 title、Hero、英语/简体中文/法语/西班牙语入口、168 条 sitemap URL（每语 42）、每语 30 篇指南、4 个需求入口、麦克风与连接排障、Soundcheck 和派对规划工具现场核验。目标站自身 `/favicon.png` 返回 404，但正文、Hero、截图与其他核验请求正常；本轮不修改目标站。
 - **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；候选计数为 40 条公开记录、39 条在线、1 条离线，游戏分类 17 条，最近上线顺序为 40/39/38。
 - **截图证据**：`project-40.webp` 来自 1440×900 正式站真实英文首屏；临时浏览器阻断分析请求、等待并真实点击 Decline，断言弹窗消失后，经 Lanczos 无裁切缩为 400×250 WebP；13,642 bytes，SHA-256 `7352205a320abac89b144fabcce0df9fdd970c2645173b6bbe8c91ae6dd3d728`，没有同意弹窗、浏览器边框、裁切、变形或合成内容。
 - **发布边界**：候选 exact public artifact 为 48 文件，SHA-256 `54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`；项目图白名单固定扩展到 `project-40.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
-- **候选验收**：先新增 #40 契约并取得 `mimic is None` 的精确 RED；GREEN 后 pytest 31/31、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、Python compile、diff whitespace 与确定性重建全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/same-origin network failure，7 张页面图片全部解码，no-JS 可读 40 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控打开 `https://mimicparty.space/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查发现产品索引标题仍为 39（P2）；独立修复 Agent 已改为 40，并增加标题计数、registry 数量与表格 ID/顺序一致性回归测试；发布仍以当前完整 tree 的第二轮独立审查通过为前置门禁。
+- **候选验收**：先新增 #40 契约并取得 `mimic is None` 的精确 RED；GREEN 后 pytest 31/31、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、Python compile、diff whitespace 与确定性重建全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/same-origin network failure，7 张页面图片全部解码，no-JS 可读 40 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控打开 `https://mimicparty.space/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查发现产品索引标题仍为 39（P2）；独立修复 Agent 改为 40 并增加标题计数、registry 数量与表格 ID/顺序一致性回归测试；第二轮对完整 tree 复核为 P0–P3 全 0、总体 PASS。冻结 commit 的全新 `git archive` 复跑同样为 31/31、双 Node 入口通过、八视口 0 failures、no-JS 40 条，并生成相同 artifact 哈希。
+- **PR 与生产证据**：PR run `34674312003` 的 quality 成功、deploy 按分支条件跳过；production run `34674402371` 的 quality 与 deploy 均成功。生产 deployment `6406126659` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；CI evidence 绑定 48 文件、同一 artifact SHA-256 与八视口 0 failures。下载的 `github-pages` artifact ID `10291239660` 通过路径与成员类型安全检查，并与冻结候选 48 个文件逐字节一致。
+- **正式域验收**：正式 apex 48 个公开文件全部返回 HTTP 200 且逐字节匹配候选；`data/`、`scripts/`、`tests/`、控制文档、`.hermes/` 与 `_qa/` 六类探针全部返回 404。Hero 为 #40，最近上线顺序为 40/39/38，档案为 40 条（39 live / 1 offline），游戏筛选为 `17 / 40`，Mimic Party 搜索唯一命中 #40。1280×800 与 390×844 Chrome 均为 0 overflow、0 console/page/same-origin network failure，7/7 图片解码；390px 真触控到达 `https://mimicparty.space/`，无 JavaScript 时 40 条档案全部可读。桌面与手机整页目检 PASS。HTTP apex 正确 301 到 HTTPS；`www.wangzifan.store` 当前没有 DNS 记录，本轮未扩权修改。
 - **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `mimicparty.space` 展示项目；本轮授权用于 #40 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、Cloudflare 绑定或 DNS。
 
 ## V11.7 生产版：Nightfall Halloween Guides 卡片 #39（2026-09-12）
@@ -379,7 +381,7 @@
 - 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 40 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
 - 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-40.webp`，不接受任意 40 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.8 当前仅有本地候选证据，尚无 PR 或生产 run；最近生产证据仍为 V11.7 run `34671421030`、deployment `6405627783` 与 artifact SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`。
+- V11.8 生产证据绑定 PR run `34674312003`、production run `34674402371`、deployment `6406126659`、Pages artifact `10291239660` 与公开 artifact SHA-256 `54c11fa07e267a7f320c28afd854086c00b6c01941264036fb970099244e1ffb`。
 
 ## 隐私与内容边界
 
