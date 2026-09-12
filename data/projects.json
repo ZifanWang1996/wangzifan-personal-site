@@ -606,5 +606,21 @@
     "image": "assets/projects/project-38.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 39,
+    "name": "Nightfall Halloween Guides",
+    "url": "https://halloweenthegame.top/",
+    "category": "game",
+    "subtitle": "《Halloween: The Game》三语生存攻略站",
+    "summary": "面向《Halloween: The Game》玩家的独立三语攻略与组队规划站，提供生存、迈克尔、地图、成长、技术排障与版本购买指南，并支持搜索、阅读续接和每日问题。",
+    "problem": "角色目标、地图地标、Perk 成长、跨平台联机与版本差异信息分散，队伍难以在进入 Haddonfield 前形成一致计划。",
+    "solution": "把英西中 41 篇主题指南、按症状排障、可分享 Squad Planner、本地保存阅读与每日问题整合成按任务推进的玩家路径。",
+    "evidence": "公开站点可直接验证英语、西班牙语、简体中文入口、156 条 sitemap URL（每语 52）、41 篇指南、6 个主题入口、队伍规划器、排障助手与每日问题。",
+    "launched_at": "2026-09-12",
+    "status": "live",
+    "image": "assets/projects/project-39.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
