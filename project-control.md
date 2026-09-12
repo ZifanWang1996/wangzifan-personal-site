@@ -12,6 +12,17 @@
 - 当前生产页面实现提交：`41ba1a1aca776c4ca42ee1c6d65f7900f688dfc5`（PR #20 squash merge）
 - V11.9 页面实现基线 tree：`5cede08cd66bb5adabc0ccba7853498ed816f34d`；公开 artifact SHA-256：`773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`
 - 当前生产：V11.9 ParryGrid 卡片 #41；正式域与 CI artifact 已完成逐字节核验。
+- 当前冻结候选：V11.10 1666 Amsterdam Field Desk 卡片 #42；exact public artifact 为 50 文件，SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`；已完成本地 commit 冻结，尚未 push 或部署。
+
+## V11.10 候选：1666 Amsterdam Field Desk 卡片 #42（2026-09-12）
+
+- **状态**：当前候选位于 `feat/add-1666-amsterdam`，基于生产 main `6d96169546b17bdece054bf673958ba996e73ba3`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `1666amsterdam.top` 的源码、Worker、域绑定、DNS、分析、邮件或收录配置。
+- **事实记录**：新增 1666 Amsterdam Field Desk（`https://1666amsterdam.top/`），分类「游戏与内容」，标签「《1666: Amsterdam》三语攻略与排障工作台」。正式 apex 当前 HTTPS 实测 200、canonical 自指且 robots 为 `index, follow`；Cloudflare 只读部署列表确认 Worker `1666amsterdam-field-desk` 首次部署于 `2026-09-12T07:45:54Z`，因此上线日期记为 `2026-09-12`。正式站可直接验证 English、简体中文、Nederlands 三语入口、117 条 sitemap URL、每语 31 条可筛选指南、来源与最近核验说明、PC requirements checker、Fix My Game 分诊和 Roadmap Decoder。隔离 Chrome 拒绝 analytics 并拦截事件写入后，真实点击收藏与已读均写入浏览器本地 `fielddesk:v2:desk`，搜索 “Controller Not Working” 唯一命中 1/31。
+- **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；候选计数为 42 条公开记录、41 条在线、1 条离线，游戏分类 19 条，最近上线顺序为 42/41/40，`1666amsterdam` 搜索唯一命中 #42。
+- **截图证据**：`project-42.webp` 来自正式站 1440×900 真实英文首屏；隔离浏览器先拒绝 analytics、阻断事件写入并确认无 console/page/network/HTTP 错误，再经 Lanczos 无裁切等比缩为 400×250 单帧 WebP；9,152 bytes，SHA-256 `9539fb2ca4cbea657b58c70b19351dab9581f62ed2daeb9880111a6f811ef096`，无 EXIF/XMP、弹窗、浏览器边框、裁切、变形或合成内容，原图、390px 首屏与 400×250 卡片图目检均 PASS。
+- **发布边界**：候选 exact public artifact 为 50 文件，SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`；项目图白名单固定扩展到 `project-42.webp`，源码、测试、registry、控制文档、`.hermes/` 与 `_qa/` 继续不得公开。
+- **候选验收**：先新增 #42 完整契约并取得 `amsterdam is None`、registry `41 == 42`、artifact `49 == 50`、allowlist 上限仍为 41、Node 游戏计数 `18 !== 19` 的精确 RED；GREEN 后 pytest 33/33、`v11_interactions.mjs` 与兼容入口 `browser_interactions.mjs`、JS syntax、Python compile、diff whitespace、exact-tree 11 路径、常见密钥模式扫描与两次哈希一致的确定性重建全部通过。8 个真实 Chromium 视口均为 0 overflow、0 owner crossing、0 console/page/request/bad-response failure，7 张页面图片全部解码，no-JS 可读 42 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检 PASS。390px 真触控到达 `https://1666amsterdam.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。
+- **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `1666amsterdam.top` 展示项目；本轮授权用于 #42 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、托管、Cloudflare 绑定或 DNS。
 
 ## V11.9 生产版：ParryGrid 卡片 #41（2026-09-12）
 
@@ -332,7 +343,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（41）
+## 产品索引（42）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -377,11 +388,12 @@
 | 39 | Nightfall Halloween Guides | 游戏与内容 | https://halloweenthegame.top/ |
 | 40 | Mimic Party Soundcheck | 游戏与内容 | https://mimicparty.space/ |
 | 41 | ParryGrid | 游戏与内容 | https://parrygrid.wiki/ |
+| 42 | 1666 Amsterdam Field Desk | 游戏与内容 | https://1666amsterdam.top/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- V11.9 候选 allowlist 精确为 49 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 41 张编号项目 WebP。
+- 当前 V11.10 候选 allowlist 精确为 50 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 42 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -390,10 +402,10 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 41 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，ParryGrid 搜索唯一命中 #41。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 41 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 42 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，1666 Amsterdam Field Desk 搜索唯一命中 #42。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 42 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-41.webp`，不接受任意 41 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-42.webp`，不接受任意 42 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
 - V11.9 生产证据绑定 PR run `34703129640`、production run `34703244236`、deployment `6411446649`、Pages artifact `10301660479`、browser evidence artifact `10301500848` 与公开 artifact SHA-256 `773258d69a10e9211796e773c75f2f840ddb98d3700ef29958b1e6096ad02261`（49 文件）。
 
 ## 隐私与内容边界

@@ -92,7 +92,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 41
+    assert len(sources) == len(set(sources)) == 42
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -131,6 +131,34 @@ def test_parrygrid_project_41_contract():
     )
 
 
+def test_1666_amsterdam_field_desk_project_42_contract():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    amsterdam = next((project for project in projects if project["id"] == 42), None)
+    assert amsterdam is not None
+    assert amsterdam == {
+        "id": 42,
+        "name": "1666 Amsterdam Field Desk",
+        "url": "https://1666amsterdam.top/",
+        "category": "game",
+        "subtitle": "《1666: Amsterdam》三语攻略与排障工作台",
+        "summary": "面向《1666: Amsterdam》抢先体验玩家的英中荷三语资料站，把任务、谜题、性能与报错排障整理成可搜索的 31 条指南。",
+        "problem": "抢先体验期的官方信息、玩家报告与任务线索分散，玩家很难确认下一步，并区分事实、传闻和安全排障建议。",
+        "solution": "用来源分级和最近核验日期组织 31 条指南，再加入本地收藏与已读、搜索筛选、PC 需求比较和故障分诊工具。",
+        "evidence": "公开站点可直接验证英语、简体中文、荷兰语入口、117 条 sitemap URL、每语 31 条指南，以及浏览器本地收藏与已读、PC 需求比较、Fix My Game 分诊和 Roadmap Decoder。",
+        "launched_at": "2026-09-12",
+        "status": "live",
+        "image": "assets/projects/project-42.webp",
+        "featured": False,
+        "featured_order": None,
+    }
+
+    image_path = ROOT / amsterdam["image"]
+    assert image_path.is_file()
+    assert hashlib.sha256(image_path.read_bytes()).hexdigest() == (
+        "9539fb2ca4cbea657b58c70b19351dab9581f62ed2daeb9880111a6f811ef096"
+    )
+
+
 def test_project_control_product_index_matches_registry():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     control = PROJECT_CONTROL.read_text(encoding="utf-8")
@@ -143,6 +171,21 @@ def test_project_control_product_index_matches_registry():
     table_ids = re.findall(r"^\|\s*(\d+)\s*\|", table, re.MULTILINE)
     expected_ids = [f"{project['id']:02d}" for project in projects]
     assert table_ids == expected_ids
+
+
+def test_current_browser_acceptance_docs_match_registry():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    latest = projects[-1]
+    control = PROJECT_CONTROL.read_text(encoding="utf-8")
+    current = control.split("## 浏览器验收", 1)[1].split("- V11.9 生产证据", 1)[0]
+
+    assert f"{len(projects)} 条展开" in current
+    assert f"{len(projects)} 条档案全部可读" in current
+    assert f"{latest['name']} 搜索唯一命中 #{latest['id']}" in current
+    assert (
+        f"`project-01.webp` 至 `project-{latest['id']:02d}.webp`，"
+        f"不接受任意 {len(projects)} 个 WebP"
+    ) in current
 
 
 def test_qr_font_favicon_and_social_card_are_publishable():
@@ -202,12 +245,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 41
-    assert html.count('data-ledger-status="live"') == 40
+    assert html.count('data-ledger-id="') == 42
+    assert html.count('data-ledger-status="live"') == 41
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    # Hero status (1 link) + three latest cards (2 each) + three case links + 40 live ledger links.
-    expected_safe_external_links = 1 + (3 * 2) + 3 + 40
+    # Hero status (1 link) + three latest cards (2 each) + three case links + 41 live ledger links.
+    expected_safe_external_links = 1 + (3 * 2) + 3 + 41
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -297,7 +340,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 42)" in manifest
+    assert "for project_id in range(1, 43)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest
