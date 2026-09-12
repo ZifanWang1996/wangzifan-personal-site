@@ -654,5 +654,21 @@
     "image": "assets/projects/project-41.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 42,
+    "name": "1666 Amsterdam Field Desk",
+    "url": "https://1666amsterdam.top/",
+    "category": "game",
+    "subtitle": "《1666: Amsterdam》三语攻略与排障工作台",
+    "summary": "面向《1666: Amsterdam》抢先体验玩家的英中荷三语资料站，把任务、谜题、性能与报错排障整理成可搜索的 31 条指南。",
+    "problem": "抢先体验期的官方信息、玩家报告与任务线索分散，玩家很难确认下一步，并区分事实、传闻和安全排障建议。",
+    "solution": "用来源分级和最近核验日期组织 31 条指南，再加入本地收藏与已读、搜索筛选、PC 需求比较和故障分诊工具。",
+    "evidence": "公开站点可直接验证英语、简体中文、荷兰语入口、117 条 sitemap URL、每语 31 条指南，以及浏览器本地收藏与已读、PC 需求比较、Fix My Game 分诊和 Roadmap Decoder。",
+    "launched_at": "2026-09-12",
+    "status": "live",
+    "image": "assets/projects/project-42.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
