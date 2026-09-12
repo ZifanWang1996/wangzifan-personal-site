@@ -590,5 +590,21 @@
     "image": "assets/projects/project-37.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 38,
+    "name": "Narinig Mo Ba? Guide",
+    "url": "https://narinigmoba.top/",
+    "category": "game",
+    "subtitle": "菲律宾恐怖游戏轻剧透攻略站",
+    "summary": "面向《Narinig Mo Ba?》玩家的独立三语轻剧透攻略站，提供官方游玩入口、首班攻略、控制与设备排障、找零练习和每日比索挑战。",
+    "problem": "游戏的浏览器与下载路线、操作、移动端支持、加载故障和找零玩法信息分散，玩家容易在开始第一班前卡住或误触剧透。",
+    "solution": "把英语、菲律宾语、简体中文的轻剧透指南、12 个问题入口、技术排障和本地每日挑战组织成一条可搜索的玩家帮助路径。",
+    "evidence": "公开站点可直接验证英语、菲律宾语、简体中文入口、117 条 sitemap URL、31 篇轻剧透指南、12 个具体问题入口与每日比索挑战。",
+    "launched_at": "2026-09-11",
+    "status": "live",
+    "image": "assets/projects/project-38.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
