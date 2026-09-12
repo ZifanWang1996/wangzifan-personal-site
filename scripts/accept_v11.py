@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("narinig")
+    page.locator("#ledger-search").fill("halloween")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -258,27 +258,27 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    narinig_link = page.locator('[data-latest-card="38"] .text-link')
-    result["narinigCTA"] = {
-        "href": narinig_link.get_attribute("href"),
-        "target": narinig_link.get_attribute("target"),
-        "rel": sorted((narinig_link.get_attribute("rel") or "").split()),
+    halloween_link = page.locator('[data-latest-card="39"] .text-link')
+    result["halloweenCTA"] = {
+        "href": halloween_link.get_attribute("href"),
+        "target": halloween_link.get_attribute("target"),
+        "rel": sorted((halloween_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
     if width == 390:
         context.route(
-            "https://narinigmoba.top/**",
+            "https://halloweenthegame.top/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Narinig Mo Ba? Guide</title>",
+                body="<!doctype html><title>Nightfall Halloween Guides</title>",
             ),
         )
         with context.expect_page() as popup_info:
-            narinig_link.tap()
+            halloween_link.tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
-        result["narinigCTA"]["tapOpened"] = popup.url
+        result["halloweenCTA"]["tapOpened"] = popup.url
         popup.close()
     return result
 
@@ -306,17 +306,17 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
-            "ai": task["ai"] == {"visible": 5, "count": "5 / 38"},
-            "game": task["game"] == {"visible": 15, "count": "15 / 38"},
-            "search": task["search"] == {"visible": 1, "ids": ["38"]},
+            "ai": task["ai"] == {"visible": 5, "count": "5 / 39"},
+            "game": task["game"] == {"visible": 16, "count": "16 / 39"},
+            "search": task["search"] == {"visible": 1, "ids": ["39"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 38",
+                "count": "0 / 39",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 38, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 39, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -328,11 +328,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
             "fragment": task["fragment"]["hash"] == "#selected"
             and task["fragment"]["intersects"],
-            "narinigCTA": task["narinigCTA"] == {
-                "href": "https://narinigmoba.top/",
+            "halloweenCTA": task["halloweenCTA"] == {
+                "href": "https://halloweenthegame.top/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://narinigmoba.top/" if width == 390 else None,
+                "tapOpened": "https://halloweenthegame.top/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -559,8 +559,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 3,
-        "ledger": 38,
-        "visibleLedger": 38,
+        "ledger": 39,
+        "visibleLedger": 39,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
