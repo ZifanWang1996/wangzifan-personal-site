@@ -9,18 +9,19 @@
 - 默认分支：`main`
 - 部署：GitHub Pages workflow
 - 正式域名：`https://wangzifan.store/`
-- 当前生产页面实现提交：`cb9e2b09194d7d031e5ddf94bd0030528dc799de`（PR #14 squash merge）
-- V11.6 页面实现基线 tree：`6c1478643ac9e50c4f35ef27c92d999a5cbf303f`；公开 artifact SHA-256：`8c69bfffdad583f317c264e2133ad2b27dafaa3dc64a7ed127769f6aad7d678b`
-- 当前候选：V11.7 Nightfall Halloween Guides #39；本地候选尚未提交、推送或部署；公开 artifact SHA-256：`1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`
+- 当前生产页面实现提交：`38d07f650aaefa7c957e41ca532980c3c51c226c`（PR #16 squash merge）
+- V11.7 页面实现基线 tree：`f134092cf5eb0b66a63a73d7bbe5e261c65aaae6`；公开 artifact SHA-256：`1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`
 
-## V11.7 候选版：Nightfall Halloween Guides 卡片 #39（2026-09-12）
+## V11.7 生产版：Nightfall Halloween Guides 卡片 #39（2026-09-12）
 
-- **状态**：本地候选已实现并通过自动化与人工目检，独立 pre-commit 审查待完成；尚未提交、推送、建立 PR 或部署，正式域仍为 V11.6 #38。
+- **状态**：冻结实现 commit `27fe7cc1d3c5bf069e9ea17f91fbb92710eaea86` 通过 PR #16 squash merge 为页面实现 commit `38d07f650aaefa7c957e41ca532980c3c51c226c`；两者 tree 均为 `f134092cf5eb0b66a63a73d7bbe5e261c65aaae6`。GitHub Pages production run `34671421030` 已成功部署，deployment ID 为 `6405627783`。本轮只更新 `wangzifan.store` 公开项目索引，未修改 `halloweenthegame.top` 的代码、Cloudflare 绑定或 DNS。
 - **事实记录**：新增 Nightfall Halloween Guides（`https://halloweenthegame.top/`），分类「游戏与内容」，标签「《Halloween: The Game》三语生存攻略站」，首次可验证 Cloudflare Pages 生产部署日期为 2026-09-12；文案依据正式站 title、Hero、英语/西班牙语/简体中文入口、156 条 sitemap URL（每语 52）、首页六个主题共 41 篇指南、搜索、Squad Planner、已保存指南、按症状排障与每日问题现场核验。目标站自身 `/favicon.ico` 返回 404，但正文、Hero、截图与其他核验请求正常；本轮不修改目标站。
 - **页面同步**：由 `data/projects.json` 单一事实源生成 Hero 最近状态、最近三次上线、完整发布档案、筛选计数与 JSON-LD；目标计数为 39 条公开记录、38 条在线、1 条离线，游戏分类 16 条，最近上线顺序为 39/38/37。
 - **截图证据**：`project-39.webp` 来自 1440×900 正式站真实英文首屏；先在临时浏览器明确拒绝可选分析，再经 Lanczos 无裁切缩为 400×250 WebP；8,350 bytes，SHA-256 `42552ddca9fa5a0647e1ea642e1126957439e43a20800f1b56bc47d60cefbad2`，没有同意弹窗、浏览器边框、裁切、变形或合成内容。
 - **发布边界**：exact public artifact 为 47 文件，SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`；项目图白名单固定扩展到 `project-39.webp`，源码、测试、registry、控制文档与 `_qa/` 继续不得公开。
-- **候选验收**：先新增 #39 契约并取得 `halloween is None` 的精确 RED；GREEN 后 pytest 29/29、`v11_interactions.mjs` 交互 harness 及其兼容入口 `browser_interactions.mjs`、Python compile、diff whitespace 与确定性重建全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 39 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控打开 `https://halloweenthegame.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。
+- **候选验收**：先新增 #39 契约并取得 `halloween is None` 的精确 RED；GREEN 后 pytest 29/29、`v11_interactions.mjs` 交互 harness 及其兼容入口 `browser_interactions.mjs`、Python compile、diff whitespace 与确定性重建全部通过。8 个真实视口均为 0 overflow、0 owner crossing、0 console/page/network failure，7 张页面图片全部解码，no-JS 可读 39 条档案，正常与 reduced-motion 均无持续动画；1440/390/320 整页目检无重叠、裁切、破图或视觉断裂。390px 真触控打开 `https://halloweenthegame.top/`，URL、`_blank`、`noopener noreferrer` 全部正确。首轮独立审查发现控制板现行索引/边界未同步（P2）及 Node 入口表述不准确（P3），返修后第二轮对完整 diff 复核为 P0–P3 全 0、总体 PASS；冻结 commit 的全新 `git archive` 复跑同样通过并生成相同 artifact 哈希。
+- **PR 与生产证据**：PR run `34671312083` 的 quality 成功、deploy 按分支条件跳过；production run `34671421030` 的 quality 与 deploy 均成功。生产 deployment `6405627783` 状态为 `success`，environment URL 为 `https://wangzifan.store/`；生产 CI evidence 绑定 47 文件、同一 artifact SHA-256 与 8 个视口 0 failures。下载的 `github-pages` artifact 通过路径与成员类型安全检查，并与冻结候选 47 个文件逐字节一致。
+- **正式域验收**：正式域 47 个公开文件全部返回 HTTP 200 且逐字节匹配候选；`data/`、`scripts/`、`tests/`、控制文档、`.hermes/` 与 `_qa/` 六类探针全部返回 404。Hero 为 #39，最近上线顺序为 39/38/37，档案为 39 条（38 live / 1 offline），游戏筛选为 `16 / 39`，Halloween 搜索唯一命中 #39。1280×800 与 390×844 Chrome 均为 0 overflow、0 console/page/same-origin network failure，7/7 图片解码；390px 真触控经正式站重定向到达 `https://halloweenthegame.top/en`，无 JavaScript 时 39 条档案全部可读。桌面与手机整页目检无焦点浮层、裁切、重叠或破图。
 - **授权边界**：用户明确要求在 `wangzifan.store` 继续新增 `halloweenthegame.top` 展示项目；本轮授权用于 #39 的实现、质量门禁、PR、合并与 GitHub Pages 生产核验，不修改目标站代码、Cloudflare 绑定或 DNS。
 
 ## V11.6 生产版：Narinig Mo Ba? Guide 卡片 #38（2026-09-12）
@@ -366,7 +367,7 @@
 - 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，3 个重点案例与 39 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；7 张当前页面图片全部完成解码。
 - 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-39.webp`，不接受任意 39 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
-- V11.7 本地证据绑定候选 SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`；CI 与生产证据在发布后回填。
+- V11.7 生产证据绑定 run `34671421030`、deployment `6405627783` 与公开 artifact SHA-256 `1e39c9dfedec27b508dc699710abcff0058d458070206137a1eac2b181626c94`。
 
 ## 隐私与内容边界
 
