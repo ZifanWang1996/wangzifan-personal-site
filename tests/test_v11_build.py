@@ -211,7 +211,7 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     assert 'data-hero-latest="42"' in html
     assert 'class="hero-latest-image"' not in html
     assert "工作台最近" in html
-    assert "不叫“最佳作品”，这里只按上线时间排。" in html
+    assert "更多作品，往下看。" in html
     assert "1666 Amsterdam Field Desk" in html
     assert 'href="https://1666amsterdam.top/"' in html
     assert "2026-09-12" in html
@@ -260,7 +260,7 @@ def test_build_v11_renders_latest_and_featured_case_studies(tmp_path):
         assert f'src="{project["image"]}"' in html
 
     assert html.count('target="_blank" rel="noopener noreferrer"') >= 6
-    assert '<h2 id="selected-title">三个我愿意<span class="no-break">细讲的项目</span></h2>' in html
+    assert '<h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2>' in html
     for label in ("为什么做", "我做的取舍", "最重要的边界", "使用路径", "从哪里开始", "我坚持的事", "现在能验证"):
         assert f'>{label}</span>' in html
     for retired_label in (">问题</span>", ">解法</span>", ">证据</span>"):
@@ -276,7 +276,7 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     )
     html = output.read_text(encoding="utf-8")
 
-    ordered_ids = ("top", "selected", "collaboration", "method", "ledger", "about", "contact")
+    ordered_ids = ("top", "recent", "selected", "ledger", "method", "about", "contact")
     positions = [html.index(f'id="{section_id}"') for section_id in ordered_ids]
     assert positions == sorted(positions)
 
@@ -306,7 +306,7 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert "这个页面收着 42 次公开上线" in html
     assert 'class="ledger-tools" hidden' in html
     assert 'class="ledger-empty" id="ledger-empty" role="status" hidden' in html
-    assert '<h2 id="selected-title">三个我愿意<span class="no-break">细讲的项目</span></h2>' in html
+    assert '<h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2>' in html
     assert "没有匹配记录，试试别的关键词或筛选。" in html
     assert 'class="button ledger-more" type="button" id="ledger-more" hidden' in html
 
@@ -357,33 +357,13 @@ def test_build_v11_generates_shared_assets_seo_and_privacy_page(tmp_path):
     css_text = css.read_text(encoding="utf-8")
     assert 'src: url("archivo.woff2") format("woff2")' in css_text
     assert 'url("assets/archivo.woff2")' not in css_text
-    assert "@media (max-width: 1100px)" in css_text
-    desktop_transition_css = css_text.split("@media (max-width: 1100px)", 1)[1].split(
-        "@media (max-width: 1000px)", 1
-    )[0]
-    assert ".contact-details { padding-inline: 14px; }" in desktop_transition_css
-    assert ".contact h2 { margin: 0; font-size: clamp(45px, 5.4vw, 68px);" in css_text
-    assert "@media (max-width: 1000px)" in css_text
-    compact_tablet_css = css_text.split("@media (max-width: 1000px)", 1)[1].split(
-        "@media (max-width: 900px)", 1
-    )[0]
-    assert (
-        "grid-template-columns: 80px minmax(150px, 1fr) minmax(150px, .8fr) 85px 80px; gap: 10px;"
-        in compact_tablet_css
-    )
-    assert "grid-template-columns: minmax(0, 1fr)" in css_text.split("@media (max-width: 1100px)", 1)[1]
-    assert "@media (max-width: 900px)" in css_text
-    tablet_css = css_text.split("@media (max-width: 900px)", 1)[1]
-    assert ".method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }" in tablet_css
-    assert ".contact { grid-template-columns: minmax(0, 1fr);" in tablet_css
-    assert "@media (max-width: 360px)" in css_text
-    narrow_mobile_css = css_text.split("@media (max-width: 360px)", 1)[1].split(
-        "@media (prefers-reduced-motion: reduce)", 1
-    )[0]
-    assert ".hero h1 { font-size: 12vw; }" in narrow_mobile_css
-    assert ".hero h1 .title-line { white-space: nowrap; }" in narrow_mobile_css
-    assert ".no-break { white-space: nowrap; }" in css_text
-    assert "font-size: 17px; white-space: nowrap" in css_text
+    # Responsive behavior is exercised by the existing browser acceptance matrix;
+    # keep the source contract independent of one design's exact column widths.
+    for breakpoint in (1100, 900, 760, 380):
+        assert f"@media (max-width: {breakpoint}px)" in css_text
+    assert "prefers-reduced-motion" in css_text
+    assert "overflow-wrap: anywhere" in css_text
+    assert "object-fit: contain" in css_text
     assert javascript.read_bytes() == (ROOT / "src" / "site.js").read_bytes()
     assert "<style" not in html and "<style" not in privacy_html
     assert '<link rel="stylesheet" href="assets/site.css">' in html

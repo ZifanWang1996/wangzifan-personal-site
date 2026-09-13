@@ -45,7 +45,7 @@ def render_hero_latest(projects: list[dict]) -> str:
           <h2>{text(project["name"])}</h2>
           <p>{text(project["subtitle"])} · {text(domain(project["url"]))}</p>
           <a href="{text(project["url"])}" target="_blank" rel="noopener noreferrer">打开这次上线 <span aria-hidden="true">↗</span></a>
-          <p class="hero-latest-note">不叫“最佳作品”，这里只按上线时间排。</p>
+          <p class="hero-latest-note">更多作品，往下看。</p>
         </div>
       </aside>'''
 
@@ -74,8 +74,8 @@ def render_latest(projects: list[dict]) -> str:
         )
     return f'''<section class="section recent" id="recent" aria-labelledby="recent-title">
       <div class="section-heading">
-        <p class="section-no">最近做的</p>
-        <div><h2 id="recent-title">最近三次上线</h2><p>先看成品。想知道我怎么想、删了什么，再往下。</p></div>
+        <p class="section-no">01 / 最近上线</p>
+        <div><h2 id="recent-title">最近三次上线</h2><p>新的尝试，持续更新。</p></div>
       </div>
       <div class="latest-grid">{"".join(cards)}</div>
     </section>'''
@@ -122,25 +122,10 @@ def render_featured(projects: list[dict]) -> str:
         )
     return f'''<section class="section selected" id="selected" aria-labelledby="selected-title">
       <div class="section-heading">
-        <p class="section-no">愿意细讲的</p>
-        <div><h2 id="selected-title">三个我愿意<span class="no-break">细讲的项目</span></h2><p>它们不是最大或最贵的，只是最能说明我怎么判断问题、删功能，再把东西发出去。</p></div>
+        <p class="section-no">02 / 代表作品</p>
+        <div><h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2><p>从 AI 工具到文化数据库，看看具体问题怎样变成产品。</p></div>
       </div>
       <div class="case-grid">{"".join(cards)}</div>
-    </section>'''
-
-
-def render_collaboration() -> str:
-    return '''<section class="collaboration" id="collaboration" aria-labelledby="collaboration-title">
-      <div>
-        <p class="section-no">可以一起做</p>
-        <h2 id="collaboration-title">手上有个小问题，<br>一直没人愿意认真做？</h2>
-      </div>
-      <div class="collaboration-copy">
-        <p>把谁遇到什么麻烦、你已经试过什么发给我。先判断值不值得做，不急着列功能表。</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#contact">微信聊聊 <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
     </section>'''
 
 
@@ -156,8 +141,8 @@ def render_method() -> str:
     )
     return f'''<section class="section method" id="method" aria-labelledby="method-title">
       <div class="section-heading">
-        <p class="section-no">做事习惯</p>
-        <div><h2 id="method-title">我通常怎么开始</h2><p>不是方法论，只是我连续做过这些项目后，留下来的三个习惯。</p></div>
+        <p class="section-no">04 / 做事方式</p>
+        <div><h2 id="method-title">我通常怎么开始</h2><p>从一个具体问题开始，把第一条使用路径做好。</p></div>
       </div>
       <ol class="method-grid">{items}</ol>
     </section>'''
@@ -197,8 +182,8 @@ def render_ledger(projects: list[dict]) -> str:
     )
     return f'''<section class="section ledger" id="ledger" aria-labelledby="ledger-title">
       <div class="section-heading">
-        <p class="section-no">全部记录</p>
-        <div><h2 id="ledger-title">完整发布档案</h2><p>这里不只留“代表作”。{total} 条历史记录里，{live} 条标记在线，{offline} 条标记离线；都按原样保留。</p></div>
+        <p class="section-no">03 / 作品索引</p>
+        <div><h2 id="ledger-title">完整发布档案</h2><p>{total} 次公开上线，{live} 条在线记录、{offline} 条离线记录。按类型或关键词找到你感兴趣的项目。</p></div>
       </div>
       <div class="ledger-tools" hidden aria-label="筛选发布档案">
         <div class="ledger-filters" role="group" aria-label="按产品类型筛选">{filter_buttons}</div>
@@ -216,8 +201,8 @@ def render_ledger(projects: list[dict]) -> str:
 def render_about(projects: list[dict]) -> str:
     return f'''<section class="section about" id="about" aria-labelledby="about-title">
       <div class="section-heading">
-        <p class="section-no">关于我</p>
-        <div><h2 id="about-title">我把上线过的，也把后来下线的留在这里</h2><p>我叫王子凡，习惯把一个具体问题做成能打开的网址。这个页面收着 {len(projects)} 次公开上线，不只挑最好看的。</p></div>
+        <p class="section-no">05 / 关于我</p>
+        <div><h2 id="about-title">一个人做产品，<br>也期待一起做点什么。</h2><p>我叫王子凡，习惯把一个具体问题做成能打开的网址。这个页面收着 {len(projects)} 次公开上线，不只挑最好看的。</p></div>
       </div>
       <div class="about-grid">
         <blockquote>上线不是收尾。域名、登录、隐私、故障和后来下线的记录，都算产品的一部分。</blockquote>
@@ -229,7 +214,7 @@ def render_about(projects: list[dict]) -> str:
 def render_contact() -> str:
     return '''<section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-copy">
-        <p class="section-no">直接联系</p>
+        <p class="section-no">聊聊下一件事</p>
         <h2 id="contact-title">有事直接说。</h2>
         <p>加微信时备注“合作”，再写一句：谁遇到了什么问题。背景不用整理得很完整，先把事情说清楚。</p>
       </div>
@@ -311,9 +296,8 @@ def render_homepage() -> str:
         (
             render_latest(projects),
             render_featured(projects),
-            render_collaboration(),
-            render_method(),
             render_ledger(projects),
+            render_method(),
             render_about(projects),
             render_contact(),
         )

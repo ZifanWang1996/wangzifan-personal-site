@@ -264,13 +264,13 @@ def test_css_has_responsive_focus_motion_and_overflow_contracts():
     css = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
     for token in ("--bg:", "--ink:", "--accent:", "--navy:", "--max:"):
         assert token in css
-    assert "@media (max-width: 1000px)" in css
+    assert "@media (max-width: 1100px)" in css
     assert "@media (max-width: 760px)" in css
     assert ":focus-visible" in css
     assert "overflow-wrap: anywhere" in css
     assert "overflow-x: hidden" not in css
     assert "prefers-reduced-motion" in css
-    assert "[hidden] { display: none !important; }" in css
+    assert re.search(r"\[hidden\]\s*\{\s*display:\s*none\s*!important", css)
 
 
 def test_accent_supports_wcag_aa_normal_text():
