@@ -454,7 +454,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
             failures = []
             if not response or response.status != 200:
                 failures.append(f"homepage status {response.status if response else None}")
-            if title != "王子凡（ZF Wang）— 独立产品作者" or marker != "王子凡 / ZF WANG":
+            if title != "王子凡（ZF Wang）— OPC 一人公司创业者" or marker != "王子凡 / ZF WANG":
                 failures.append(f"identity mismatch {title} / {marker}")
             failures.extend(assert_view(name, width, height, geom, images, task))
 
