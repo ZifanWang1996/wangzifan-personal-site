@@ -218,3 +218,88 @@ h1 em { font-style: normal; color: var(--signal) }
 @media (prefers-reduced-motion: reduce) {
  .ledger-row:has(a):hover, .ledger-row:focus-within { transform: none; }
 }
+
+/* Founder chapters: a focused operating rhythm followed by a personal editorial. */
+.method {
+  width: 100%;
+  padding: 96px max(var(--pad), calc((100% - var(--max)) / 2));
+  background: #151a28;
+  color: #f5f7fc;
+}
+.section.method { border-top: 0; }
+.method .section-no { color: var(--signal); }
+.method .section-heading { margin-bottom: 48px; }
+.method .section-heading h2 { font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.42; letter-spacing: -.04em; }
+.method .section-heading h2 em { font-style: normal; color: var(--signal); }
+.method .section-heading div > p { color: #b3bdcf; max-width: 630px; line-height: 1.85; }
+.method-grid { gap: 20px; }
+.method-grid li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 30px;
+  border: 1px solid #394252;
+  background: #1e2636;
+  min-height: 340px;
+}
+.method-grid li > span { font-size: 4rem; line-height: 1; color: #9aace8; font-weight: 550; letter-spacing: -.07em; margin-bottom: 38px; }
+.method-grid h3 { font-size: 1.4rem; line-height: 1.5; margin: 0 0 16px; letter-spacing: -.025em; }
+.method-grid p { font-size: 1rem; color: #c0cada; line-height: 1.9; margin: 0; }
+.method-grid li:nth-child(2) { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+.method-grid li:nth-child(2) > span { color: #66782a; }
+.method-grid li:nth-child(2) p { color: #3d471f; }
+.about {
+  width: 100%;
+  padding: 104px max(var(--pad), calc((100% - var(--max)) / 2));
+  background: white;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(40px, 7vw, 96px);
+  align-items: start;
+}
+.section.about { border-top: 0; }
+.about .section-heading { display: block; margin: 0; }
+.about .section-no { margin: 0 0 32px; }
+.about .section-heading h2 { font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.42; }
+.about .section-heading div > p { max-width: 470px; margin-top: 24px; line-height: 1.95; }
+.founder-signature { margin-top: 48px; padding-top: 26px; border-top: 1px solid var(--line); }
+.founder-signature > strong { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: clamp(2rem, 3.8vw, 3.4rem); letter-spacing: -.065em; line-height: 1.1; font-weight: 850; }
+.founder-signature > strong > span { color: var(--accent); font-size: 2.5rem; }
+.founder-signature > span { display: block; color: var(--muted); font-size: .875rem; margin-top: 14px; }
+.about-grid { display: flex; flex-direction: column; gap: 28px; }
+.about blockquote { padding: 30px 0 32px 28px; border-left: 4px solid var(--accent); color: #273657; font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.7; letter-spacing: -.025em; }
+.about-grid > div { padding: 30px; border: 1px solid #dce2ef; background: #f1f4fb; }
+.about-grid h3 { font-size: 1.25rem; margin: 0 0 16px; line-height: 1.5; }
+.about-grid p { font-size: 1rem; line-height: 1.9; }
+.about-grid .text-link { margin-top: 20px; padding: 10px 18px; background: var(--accent); color: white; text-decoration: none; min-height: 48px; }
+.about-grid .text-link:hover { background: var(--accent-dark); }
+@media (max-width: 1000px) {
+ .method-grid { gap: 16px; }
+ .method-grid li { padding: 24px; }
+ .method-grid h3 { font-size: 1.25rem; }
+ .about { gap: 40px; }
+}
+@media (max-width: 760px) {
+ .method, .about { padding-block: 60px; }
+ .method .section-heading { margin-bottom: 32px; }
+ .method .section-heading h2 { font-size: 1.85rem; line-height: 1.5; }
+ .method-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+ .method-grid li { min-height: 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px 18px; padding: 24px; }
+ .method-grid li > span { font-size: 2.25rem; margin: 0; grid-row: 1 / 3; }
+ .method-grid h3 { margin: 0; font-size: 1.25rem; }
+ .method-grid p { grid-column: 2; }
+ .about { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+ .about .section-no { margin-bottom: 24px; }
+ .about .section-heading h2 { font-size: 2rem; }
+ .founder-signature { margin-top: 30px; padding-top: 22px; }
+ .about blockquote { font-size: 1.4rem; padding: 8px 0 8px 22px; }
+ .about-grid { gap: 28px; }
+ .about-grid > div { padding: 26px; }
+}
+@media (max-width: 380px) {
+ .method-grid li { padding: 22px; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+ .method-grid li > span { grid-row: auto; }
+ .method-grid p { grid-column: auto; }
+ .method .section-heading h2 { font-size: 1.7rem; }
+}
