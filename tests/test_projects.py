@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.build_v11 import render_featured, render_latest, render_ledger, render_structured_data
+from scripts.build_v11 import render_ledger, render_structured_data
 
 
 ROOT = Path(__file__).parents[1]
@@ -228,9 +228,7 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
             project["url"] = f'https://example.com/?q={payload}'
             project["image"] = f'assets/projects/{payload}.webp'
 
-    fragment = "\n".join(
-        (render_latest(projects), render_featured(projects), render_ledger(projects))
-    )
+    fragment = render_ledger(projects)
     parser = AuditParser()
     parser.feed(fragment)
     assert not parser.inline_handlers
@@ -249,8 +247,8 @@ def test_homepage_truth_and_link_security_match_registry():
     assert html.count('data-ledger-status="live"') == 41
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    # Hero status (1 link) + three latest cards (2 each) + three case links + 41 live ledger links.
-    expected_safe_external_links = 1 + (3 * 2) + 3 + 41
+    # Each online product appears once; the offline project has no outbound link.
+    expected_safe_external_links = 41
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links

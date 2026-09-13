@@ -204,14 +204,13 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     html = first.decode("utf-8")
 
     assert first == second
-    assert "你好，我是王子凡。" in html
-    assert "我做小而完整的互联网产品。" in html
-    assert '<span class="title-line">我做小而完整的</span>' in html
-    assert '<span class="title-line"><em>互联网产品。</em></span>' in html
-    assert 'data-hero-latest="42"' in html
-    assert 'class="hero-latest-image"' not in html
-    assert "工作台最近" in html
-    assert "更多作品，往下看。" in html
+    assert "OPC 一人公司创业者" in html
+    assert "一个人开局，把想法做成生意。" in html
+    assert '<span class="title-line">一个人开局，</span>' in html
+    assert '<span class="title-line"><em>把想法做成生意。</em></span>' in html
+    assert 'data-hero-latest' not in html
+    assert 'id="recent"' not in html
+    assert 'id="selected"' not in html
     assert "1666 Amsterdam Field Desk" in html
     assert 'href="https://1666amsterdam.top/"' in html
     assert "2026-09-12" in html
@@ -232,39 +231,22 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
         assert retired not in html
 
 
-def test_build_v11_renders_latest_and_featured_case_studies(tmp_path):
+def test_build_renders_one_complete_visual_product_wall(tmp_path):
     output = tmp_path / "index.html"
-    subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "build_v11.py"), "--output", str(output)],
-        cwd=ROOT,
-        check=True,
-    )
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "build_v11.py"), "--output", str(output)], cwd=ROOT, check=True)
     html = output.read_text(encoding="utf-8")
-    projects = load_projects()
-
-    assert html.count('data-latest-card="') == 3
-    latest_positions = [html.index(f'data-latest-card="{project_id}"') for project_id in (42, 41, 40)]
-    assert latest_positions == sorted(latest_positions)
-
-    featured = sorted(
-        (project for project in projects if project["featured"]),
-        key=lambda project: project["featured_order"],
-    )
-    assert html.count('data-featured-card="') == 3
-    positions = [html.index(f'data-featured-card="{project["id"]}"') for project in featured]
-    assert positions == sorted(positions)
-    for project in featured:
-        assert project["name"] in html
-        assert project["evidence"] in html
-        assert f'href="{project["url"]}"' in html
-        assert f'src="{project["image"]}"' in html
-
-    assert html.count('target="_blank" rel="noopener noreferrer"') >= 6
-    assert '<h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2>' in html
-    for label in ("为什么做", "我做的取舍", "最重要的边界", "使用路径", "从哪里开始", "我坚持的事", "现在能验证"):
-        assert f'>{label}</span>' in html
-    for retired_label in (">问题</span>", ">解法</span>", ">证据</span>"):
-        assert retired_label not in html
+    assert 'data-latest-card' not in html
+    assert 'data-featured-card' not in html
+    assert html.count('class="project-window"') == 42
+    assert html.count('class="project-number"') == 42
+    for project in load_projects():
+        row = re.search(rf'<article[^>]+data-ledger-id="{project["id"]}".*?</article>', html, re.S).group()
+        assert project["name"] in row
+        assert project["subtitle"] in row
+        assert f'src="{project["image"]}"' in row
+        assert (f'href="{project["url"]}"' in row) == (project["status"] == "live")
+    assert 'data-view="wall" aria-pressed="true"' in html
+    assert 'data-view="list" aria-pressed="false"' in html
 
 
 def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path):
@@ -276,14 +258,14 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     )
     html = output.read_text(encoding="utf-8")
 
-    ordered_ids = ("top", "recent", "selected", "ledger", "method", "about", "contact")
+    ordered_ids = ("top", "ledger", "method", "about", "contact")
     positions = [html.index(f'id="{section_id}"') for section_id in ordered_ids]
     assert positions == sorted(positions)
 
     assert html.count('data-method-note="') == 3
     assert 'data-method-step="' not in html
-    assert "我通常怎么开始" in html
-    for habit in ("先找最短的一条路", "第一版要完整走通", "发出去再决定加什么"):
+    assert "公司的行动力" in html
+    for habit in ("从需求出发，不等万事俱备", "让 AI 放大一个人的行动力", "先上线，再用反馈走下一步"):
         assert habit in html
     assert html.count('data-ledger-id="') == 42
     ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(42, 0, -1)]
@@ -303,10 +285,9 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert 'id="ledger-search"' in html
     assert 'id="ledger-status"' in html
     assert 'id="ledger-count" aria-live="polite">42 / 42' in html
-    assert "这个页面收着 42 次公开上线" in html
+    assert "这个页面记录着 42 次公开上线" in html
     assert 'class="ledger-tools" hidden' in html
     assert 'class="ledger-empty" id="ledger-empty" role="status" hidden' in html
-    assert '<h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2>' in html
     assert "没有匹配记录，试试别的关键词或筛选。" in html
     assert 'class="button ledger-more" type="button" id="ledger-more" hidden' in html
 
@@ -315,7 +296,7 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert 'class="button copy-button" type="button" hidden' in html
     assert 'alt="王子凡微信二维码，微信号 wang1227928718"' in html
     assert 'data-copy-value="wang1227928718"' in html
-    assert "适合讨论" in html and "开始前会先把问题、边界和能验证的结果写清楚" in html
+    assert "一人公司、AI 产品或出海项目" in html and "真实用户" in html
     assert "不承诺虚构增长" not in html
     assert "<canvas" not in html
     assert "requestAnimationFrame" not in html

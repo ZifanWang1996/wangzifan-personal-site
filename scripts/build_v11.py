@@ -36,104 +36,11 @@ def latest_live_project(projects: list[dict]) -> dict:
     )
 
 
-def render_hero_latest(projects: list[dict]) -> str:
-    project = latest_live_project(projects)
-    return f'''<aside class="hero-latest" data-hero-latest="{project["id"]}" aria-label="工作台最近状态">
-        <div class="hero-latest-copy">
-          <p><span>工作台最近</span><time datetime="{text(project["launched_at"])}">{text(project["launched_at"])}</time></p>
-          <span class="hero-latest-state">刚上线</span>
-          <h2>{text(project["name"])}</h2>
-          <p>{text(project["subtitle"])} · {text(domain(project["url"]))}</p>
-          <a href="{text(project["url"])}" target="_blank" rel="noopener noreferrer">打开这次上线 <span aria-hidden="true">↗</span></a>
-          <p class="hero-latest-note">更多作品，往下看。</p>
-        </div>
-      </aside>'''
-
-
-def render_latest(projects: list[dict]) -> str:
-    latest = sorted(
-        (project for project in projects if project["status"] == "live"),
-        key=lambda project: (project["launched_at"], project["id"]),
-        reverse=True,
-    )[:3]
-    cards = []
-    for project in latest:
-        cards.append(
-            f'''<article class="latest-card" data-latest-card="{project["id"]}">
-          <a class="card-image" href="{text(project["url"])}" target="_blank" rel="noopener noreferrer" aria-label="访问 {text(project["name"])}">
-            <img src="{text(project["image"])}" width="400" height="250" alt="{text(project["name"])} 项目页面截图" loading="lazy" decoding="async">
-            <span class="live-pill"><i aria-hidden="true"></i> 在线</span>
-          </a>
-          <div class="card-body">
-            <div class="card-kicker"><span>{text(project["launched_at"])}</span><span>{text(CATEGORY_LABELS[project["category"]])}</span></div>
-            <h3>{text(project["name"])}</h3>
-            <p>{text(project["subtitle"])}</p>
-            <a class="text-link" href="{text(project["url"])}" target="_blank" rel="noopener noreferrer">访问 {text(domain(project["url"]))} <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>'''
-        )
-    return f'''<section class="section recent" id="recent" aria-labelledby="recent-title">
-      <div class="section-heading">
-        <p class="section-no">01 / 最近上线</p>
-        <div><h2 id="recent-title">最近三次上线</h2><p>新的尝试，持续更新。</p></div>
-      </div>
-      <div class="latest-grid">{"".join(cards)}</div>
-    </section>'''
-
-
-def render_featured(projects: list[dict]) -> str:
-    featured = sorted(
-        (project for project in projects if project["featured"]),
-        key=lambda project: project["featured_order"],
-    )
-    stories = {
-        20: (
-            ("为什么做", "AI 文本检测如果只给一个百分比，很容易被当成判决。"),
-            ("我做的取舍", "把置信度、逐句理由和误判提示一起交给用户，而不是只留一个结果。"),
-        ),
-        22: (
-            ("最重要的边界", "图片和视频不上传服务器，校色在浏览器本地完成。"),
-            ("使用路径", "导入、对比、调整、导出。除此之外的功能，第一版先不做。"),
-        ),
-        9: (
-            ("从哪里开始", "不先堆朝代百科，先把钱型、年代和铸造背景串成一条入门路径。"),
-            ("我坚持的事", "双语内容、来源说明和本地识别工具放在一起。"),
-        ),
-    }
-    cards = []
-    for project in featured:
-        notes = stories[project["id"]]
-        cards.append(
-            f'''<article class="case-card" data-featured-card="{project["id"]}">
-          <div class="case-media">
-            <img src="{text(project["image"])}" width="400" height="250" alt="{text(project["name"])} 项目页面截图" loading="lazy" decoding="async">
-            <span>{text(CATEGORY_LABELS[project["category"]])}</span>
-          </div>
-          <div class="case-content">
-            <div class="case-title"><span>我选这个项目</span><div><h3>{text(project["name"])}</h3><p>{text(project["subtitle"])}</p></div></div>
-            <dl class="case-proof">
-              <div><dt><span>{text(notes[0][0])}</span></dt><dd>{text(notes[0][1])}</dd></div>
-              <div><dt><span>{text(notes[1][0])}</span></dt><dd>{text(notes[1][1])}</dd></div>
-              <div><dt><span>现在能验证</span></dt><dd>{text(project["evidence"])}</dd></div>
-            </dl>
-            <a class="text-link" href="{text(project["url"])}" target="_blank" rel="noopener noreferrer">打开这个产品 <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>'''
-        )
-    return f'''<section class="section selected" id="selected" aria-labelledby="selected-title">
-      <div class="section-heading">
-        <p class="section-no">02 / 代表作品</p>
-        <div><h2 id="selected-title">三个项目，<span class="no-break">三种解法。</span></h2><p>从 AI 工具到文化数据库，看看具体问题怎样变成产品。</p></div>
-      </div>
-      <div class="case-grid">{"".join(cards)}</div>
-    </section>'''
-
-
 def render_method() -> str:
     notes = (
-        ("01", "先找最短的一条路", "我不会先把 PRD 写满。先找一个用户能从头走到尾、最后拿到结果的路径。"),
-        ("02", "第一版要完整走通", "页面少一点没关系；入口、核心动作、结果和失败提示不能断。"),
-        ("03", "发出去再决定加什么", "有真实网址之后，再看使用、搜索和反馈。没人需要的功能，不因为“完整”就补上。"),
+        ("01", "从需求出发，不等万事俱备", "先找到一个值得解决的问题。时间和资源有限，就把力气用在用户最需要的那一步。"),
+        ("02", "让 AI 放大一个人的行动力", "研究、设计、开发、运营，一个人也能跑通。让 AI 接住重复工作，把判断、取舍和责任留给自己。"),
+        ("03", "先上线，再用反馈走下一步", "每次发布都是一次真实试验。听反馈、看使用，把有效的继续做，把走不通的及时停下来。"),
     )
     items = "".join(
         f'''<li data-method-note="{number}"><span>{number}</span><h3>{title}</h3><p>{description}</p></li>'''
@@ -141,8 +48,8 @@ def render_method() -> str:
     )
     return f'''<section class="section method" id="method" aria-labelledby="method-title">
       <div class="section-heading">
-        <p class="section-no">04 / 做事方式</p>
-        <div><h2 id="method-title">我通常怎么开始</h2><p>从一个具体问题开始，把第一条使用路径做好。</p></div>
+        <p class="section-no">02 / 创业日常</p>
+        <div><h2 id="method-title">没有团队的规模，也要有公司的行动力。</h2><p>一人公司不是把所有事硬扛下来，而是建立一套能持续创造价值的做事方式。</p></div>
       </div>
       <ol class="method-grid">{items}</ol>
     </section>'''
@@ -156,11 +63,15 @@ def render_ledger(projects: list[dict]) -> str:
     ordered = sorted(projects, key=lambda project: project["id"], reverse=True)
     for project in ordered:
         status_label = "在线记录" if project["status"] == "live" else "离线记录"
-        content = f'''<span class="ledger-date">{text(project["launched_at"])}</span>
-            <span class="ledger-name"><strong>{text(project["name"])}</strong><small>{text(project["subtitle"])}</small></span>
-            <span class="ledger-domain">{text(domain(project["url"]))}</span>
-            <span class="ledger-category">{text(CATEGORY_LABELS[project["category"]])}</span>
-            <span class="ledger-state is-{text(project["status"])}"><i aria-hidden="true"></i>{status_label}</span>'''
+        content = f'''<span class="project-window">
+              <span class="window-bar"><span class="window-dots" aria-hidden="true">● ● ●</span><span class="ledger-domain">{text(domain(project["url"]))}</span><span aria-hidden="true">↗</span></span>
+              <img src="{text(project["image"])}" width="400" height="250" alt="{text(project["name"])} 项目截图" loading="lazy" decoding="async">
+            </span>
+            <span class="project-info">
+              <span class="project-kicker"><span class="project-number">/{project["id"]:02d}</span><span class="ledger-category">{text(CATEGORY_LABELS[project["category"]])}</span></span>
+              <span class="ledger-name"><strong>{text(project["name"])}</strong><small>{text(project["subtitle"])}</small></span>
+              <span class="project-footer"><span class="ledger-date">{text(project["launched_at"])}</span><span class="ledger-state is-{text(project["status"])}"><i aria-hidden="true"></i>{status_label}</span></span>
+            </span>'''
         if project["status"] == "live":
             main = f'''<a class="ledger-main" href="{text(project["url"])}" target="_blank" rel="noopener noreferrer">{content}</a>'''
         else:
@@ -182,16 +93,15 @@ def render_ledger(projects: list[dict]) -> str:
     )
     return f'''<section class="section ledger" id="ledger" aria-labelledby="ledger-title">
       <div class="section-heading">
-        <p class="section-no">03 / 作品索引</p>
-        <div><h2 id="ledger-title">完整发布档案</h2><p>{total} 次公开上线，{live} 条在线记录、{offline} 条离线记录。按类型或关键词找到你感兴趣的项目。</p></div>
+        <p class="section-no">01 / 项目展墙</p>
+        <div><h2 id="ledger-title">想法不止留在脑海里。</h2><p>{total} 次把想法变成网址。每一个都是一人公司的一次出发：有持续打磨的，也有尝试后停下的。</p></div>
       </div>
       <div class="ledger-tools" hidden aria-label="筛选发布档案">
         <div class="ledger-filters" role="group" aria-label="按产品类型筛选">{filter_buttons}</div>
         <label class="search-field" for="ledger-search"><span>搜索</span><input id="ledger-search" type="search" placeholder="名称、用途或域名" autocomplete="off"></label>
         <label class="status-field" for="ledger-status"><span>状态</span><select id="ledger-status"><option value="all">全部状态</option><option value="live">在线记录</option><option value="offline">离线记录</option></select></label>
       </div>
-      <div class="ledger-summary"><strong id="ledger-count" aria-live="polite">{total} / {total}</strong><span>匹配记录</span></div>
-      <div class="ledger-head" aria-hidden="true"><span>日期</span><span>产品</span><span>域名</span><span>类型</span><span>状态</span></div>
+      <div class="ledger-summary"><div><strong id="ledger-count" aria-live="polite">{total} / {total}</strong><span>个项目</span></div><div class="view-switch" role="group" aria-label="作品展示方式" hidden><button type="button" data-view="wall" aria-pressed="true">展墙</button><button type="button" data-view="list" aria-pressed="false">清单</button></div></div>
       <div class="ledger-list" id="ledger-list">{"".join(rows)}</div>
       <p class="ledger-empty" id="ledger-empty" role="status" hidden>没有匹配记录，试试别的关键词或筛选。</p>
       <button class="button ledger-more" type="button" id="ledger-more" hidden aria-expanded="false" aria-controls="ledger-list">查看全部 {total} 条记录</button>
@@ -201,12 +111,12 @@ def render_ledger(projects: list[dict]) -> str:
 def render_about(projects: list[dict]) -> str:
     return f'''<section class="section about" id="about" aria-labelledby="about-title">
       <div class="section-heading">
-        <p class="section-no">05 / 关于我</p>
-        <div><h2 id="about-title">一个人做产品，<br>也期待一起做点什么。</h2><p>我叫王子凡，习惯把一个具体问题做成能打开的网址。这个页面收着 {len(projects)} 次公开上线，不只挑最好看的。</p></div>
+        <p class="section-no">03 / 一人公司</p>
+        <div><h2 id="about-title">把选择权，<br>一点点做回自己手里。</h2><p>我是王子凡，正在实践 OPC 一人公司创业。这个页面记录着 {len(projects)} 次公开上线，也记录着我从想法走向真实市场的过程。</p></div>
       </div>
       <div class="about-grid">
-        <blockquote>上线不是收尾。域名、登录、隐私、故障和后来下线的记录，都算产品的一部分。</blockquote>
-        <div><h3>合作前先对齐</h3><p>适合讨论一人产品、AI 工具、内容型网站、垂直数据库和小而完整的联合实验。开始前会先把问题、边界和能验证的结果写清楚。</p><a class="text-link" href="#contact">直接联系我 →</a></div>
+        <blockquote>我想做的，是一家由自己掌舵、靠产品创造价值的小公司。保持好奇，认真解决问题，也为自己的选择负责。</blockquote>
+        <div><h3>同路人，比大团队更重要</h3><p>如果你也在做一人公司、AI 产品或出海项目，欢迎交换经验。也期待从一个明确的需求开始，一起做出能被真实用户用起来的东西。</p><a class="text-link" href="#contact">一起聊聊 →</a></div>
       </div>
     </section>'''
 
@@ -214,9 +124,9 @@ def render_about(projects: list[dict]) -> str:
 def render_contact() -> str:
     return '''<section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-copy">
-        <p class="section-no">聊聊下一件事</p>
-        <h2 id="contact-title">有事直接说。</h2>
-        <p>加微信时备注“合作”，再写一句：谁遇到了什么问题。背景不用整理得很完整，先把事情说清楚。</p>
+        <p class="section-no">下一次出发</p>
+        <h2 id="contact-title">有个想法？<br>一起把它做出来。</h2>
+        <p>聊产品，聊 AI，聊一人公司的机会和难题。加微信时备注“一人公司”，说说你正在做什么，或者想解决什么问题。</p>
       </div>
       <div class="contact-card">
         <figure>
@@ -264,7 +174,7 @@ def render_structured_data(projects: list[dict]) -> str:
                 "name": "王子凡",
                 "alternateName": "ZF Wang",
                 "url": "https://wangzifan.store/",
-                "description": "独立产品作者，持续制作 AI 产品、垂直工具、游戏资料站和内容型网站。",
+                "description": "OPC 一人公司创业者，以 AI、产品与持续发布探索独立创业。",
             },
             {
                 "@type": "WebSite",
@@ -294,8 +204,6 @@ def render_homepage() -> str:
     template = (ROOT / "src" / "index.template.html").read_text(encoding="utf-8")
     content = "\n\n    ".join(
         (
-            render_latest(projects),
-            render_featured(projects),
             render_ledger(projects),
             render_method(),
             render_about(projects),
@@ -307,7 +215,6 @@ def render_homepage() -> str:
         "LIVE": str(sum(project["status"] == "live" for project in projects)),
         "OFFLINE": str(sum(project["status"] == "offline" for project in projects)),
         "LATEST_DATE": latest_live_project(projects)["launched_at"],
-        "HERO_LATEST": render_hero_latest(projects),
         "STRUCTURED_DATA": render_structured_data(projects),
         "CONTENT": content,
     }

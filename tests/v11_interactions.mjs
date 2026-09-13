@@ -74,8 +74,13 @@ const manual = new Element({ hidden: true });
 const manualInput = new Element({ value: 'wang1227928718' });
 manual.childrenBySelector.set('input', manualInput);
 const html = new Element();
+const viewSwitch = new Element({ hidden: true });
+const wall = new Element();
+const viewButtons = ['wall', 'list'].map(view => new Element({ dataset: { view } }));
 
 const one = new Map([
+  ['.view-switch', viewSwitch],
+  ['#ledger-list', wall],
   ['#ledger-search', search],
   ['.ledger-tools', tools],
   ['#ledger-status', status],
@@ -91,6 +96,7 @@ document = {
   documentElement: html,
   querySelector: selector => one.get(selector) ?? null,
   querySelectorAll: selector => {
+    if (selector === '[data-view]') return viewButtons;
     if (selector === '[data-ledger-id]') return rows;
     if (selector === '[data-ledger-filter]') return filters;
     return [];
@@ -169,6 +175,19 @@ assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '42');
 assert.equal(visibleRows()[0].dataset.ledgerCategory, 'game');
 assert.equal(empty.hidden, true);
+
+// Switching presentation keeps the active search and result intact.
+assert.equal(viewSwitch.hidden, false);
+await viewButtons[1].emit('click');
+assert.equal(wall.classList.contains('is-list'), true);
+assert.equal(viewButtons[1].getAttribute('aria-pressed'), 'true');
+assert.equal(viewButtons[0].getAttribute('aria-pressed'), 'false');
+assert.equal(search.value, '1666amsterdam');
+assert.equal(visibleRows().length, 1);
+await viewButtons[0].emit('click');
+assert.equal(wall.classList.contains('is-list'), false);
+assert.equal(viewButtons[0].getAttribute('aria-pressed'), 'true');
+assert.equal(visibleRows()[0].dataset.ledgerId, '42');
 
 search.value = 'onimusha';
 await search.emit('input');

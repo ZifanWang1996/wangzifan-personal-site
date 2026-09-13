@@ -68,6 +68,21 @@
     tools.hidden = false;
   }
 
+  const viewSwitch = document.querySelector(".view-switch");
+  const wall = document.querySelector("#ledger-list");
+  const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
+  if (viewSwitch && wall && viewButtons.length) {
+    viewSwitch.hidden = false;
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        wall.classList.toggle("is-list", button.dataset.view === "list");
+        viewButtons.forEach((item) => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+      });
+    });
+  }
+
   const copyButton = document.querySelector("[data-copy-value]");
   const copyStatus = document.querySelector("#copy-status");
   const manualCopy = document.querySelector(".manual-copy");
