@@ -49,7 +49,7 @@ def render_method() -> str:
     return f'''<section class="section method" id="method" aria-labelledby="method-title">
       <div class="section-heading">
         <p class="section-no">02 / 创业日常</p>
-        <div><h2 id="method-title">没有团队的规模，也要有公司的行动力。</h2><p>一人公司不是把所有事硬扛下来，而是建立一套能持续创造价值的做事方式。</p></div>
+        <div><h2 id="method-title">没有团队的规模，<br><em>也要有公司的行动力。</em></h2><p>一人公司不是把所有事硬扛下来，而是建立一套能持续创造价值的做事方式。</p></div>
       </div>
       <ol class="method-grid">{items}</ol>
     </section>'''
@@ -112,7 +112,7 @@ def render_about(projects: list[dict]) -> str:
     return f'''<section class="section about" id="about" aria-labelledby="about-title">
       <div class="section-heading">
         <p class="section-no">03 / 一人公司</p>
-        <div><h2 id="about-title">把选择权，<br>一点点做回自己手里。</h2><p>我是王子凡，正在实践 OPC 一人公司创业。这个页面记录着 {len(projects)} 次公开上线，也记录着我从想法走向真实市场的过程。</p></div>
+        <div><h2 id="about-title">把选择权，<br>一点点做回自己手里。</h2><p>我是王子凡，正在实践 OPC 一人公司创业。这个页面记录着 {len(projects)} 次公开上线，也记录着我从想法走向真实市场的过程。</p><div class="founder-signature"><strong>ZF WANG<span aria-hidden="true">↗</span></strong><span>独立创业 / 持续构建</span></div></div>
       </div>
       <div class="about-grid">
         <blockquote>我想做的，是一家由自己掌舵、靠产品创造价值的小公司。保持好奇，认真解决问题，也为自己的选择负责。</blockquote>
