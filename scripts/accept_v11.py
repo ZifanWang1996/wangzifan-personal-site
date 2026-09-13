@@ -93,7 +93,7 @@ def geometry(page) -> dict:
             left: Math.round(r.left), right: Math.round(r.right), width: Math.round(r.width)
           })).slice(0,30);
           const rangeOwners = [...document.querySelectorAll(
-            '.title-line,.ledger-filter,.nav-cta,.latest-card h3,.case-card h3,#wechat-value,.method-grid h3'
+            '.title-line,.ledger-filter,.nav-cta,.ledger-name strong,#wechat-value,.method-grid h3'
           )].filter(visible).flatMap(el => {
             const owner = el.getBoundingClientRect();
             const range = document.createRange(); range.selectNodeContents(el);
@@ -140,7 +140,7 @@ def geometry(page) -> dict:
 
 
 def decode_images(page) -> list[dict]:
-    images = page.locator("img")
+    images = page.locator("img:visible")
     results = []
     for index in range(images.count()):
         image = images.nth(index)
@@ -205,6 +205,20 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "aria": page.locator("#ledger-more").get_attribute("aria-expanded"),
     }
 
+    expanded_images = decode_images(page)
+    result["expandedImages"] = len(expanded_images) == 43 and all(
+        image["complete"] and image["natural"][0] > 0 and not image["decodeError"]
+        for image in expanded_images
+    )
+    page.locator('[data-view="list"]').click()
+    result["listView"] = {
+        "enabled": page.locator("#ledger-list").evaluate("el => el.classList.contains('is-list')"),
+        "visible": page.locator("[data-ledger-id]:visible").count(),
+        "geometry": geometry(page),
+    }
+    page.locator('[data-view="wall"]').click()
+    result["wallView"] = not page.locator("#ledger-list").evaluate("el => el.classList.contains('is-list')")
+
     context.grant_permissions(["clipboard-read", "clipboard-write"], origin=origin)
     page.locator("[data-copy-value]").scroll_into_view_if_needed()
     page.locator("[data-copy-value]").click()
@@ -249,16 +263,16 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
 
     page.goto(f"{origin}/?fragment={width}", wait_until="domcontentloaded")
     settle(page)
-    trigger = '.site-header a[href="#selected"]' if width > 760 else '.hero a[href="#selected"]'
+    trigger = '.site-header a[href="#ledger"]' if width > 760 else '.hero a[href="#ledger"]'
     page.locator(trigger).click()
-    target = stable_fragment(page, "#selected")
+    target = stable_fragment(page, "#ledger")
     result["fragment"] = {
         **target,
         "hash": page.evaluate("location.hash"),
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    latest_link = page.locator('[data-latest-card="42"] .text-link')
+    latest_link = page.locator('[data-ledger-id="42"] a.ledger-main')
     result["latestCTA"] = {
         "href": latest_link.get_attribute("href"),
         "target": latest_link.get_attribute("target"),
@@ -306,6 +320,10 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
     if task:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
+            "expandedImages": task["expandedImages"],
+            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 42
+            and not task["listView"]["geometry"]["overflow"] and not task["listView"]["geometry"]["ownerCrossings"],
+            "wallView": task["wallView"],
             "ai": task["ai"] == {"visible": 5, "count": "5 / 42"},
             "game": task["game"] == {"visible": 19, "count": "19 / 42"},
             "search": task["search"] == {"visible": 1, "ids": ["42"]},
@@ -326,7 +344,7 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             and task["copyFailure"]["manualHeight"] >= 44,
             "skip": task["skipBefore"] == "skip-link"
             and task["skipAfter"] == {"id": "main-content", "hash": "#main-content"},
-            "fragment": task["fragment"]["hash"] == "#selected"
+            "fragment": task["fragment"]["hash"] == "#ledger"
             and task["fragment"]["intersects"],
             "latestCTA": task["latestCTA"] == {
                 "href": "https://1666amsterdam.top/",
@@ -436,7 +454,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
             failures = []
             if not response or response.status != 200:
                 failures.append(f"homepage status {response.status if response else None}")
-            if title != "王子凡（ZF Wang）— 独立产品作者" or marker != "王子凡 / ZF WANG":
+            if title != "王子凡（ZF Wang）— OPC 一人公司创业者" or marker != "王子凡 / ZF WANG":
                 failures.append(f"identity mismatch {title} / {marker}")
             failures.extend(assert_view(name, width, height, geom, images, task))
 
@@ -558,7 +576,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
     expected_no_js = {
         "status": 200,
         "hero": 1,
-        "featured": 3,
+        "featured": 0,
         "ledger": 42,
         "visibleLedger": 42,
         "visibleLedgerTools": 0,
