@@ -92,7 +92,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 42
+    assert len(sources) == len(set(sources)) == 43
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -243,12 +243,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 42
-    assert html.count('data-ledger-status="live"') == 41
+    assert html.count('data-ledger-id="') == 43
+    assert html.count('data-ledger-status="live"') == 42
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
     # Each online product appears once; the offline project has no outbound link.
-    expected_safe_external_links = 41
+    expected_safe_external_links = 42
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -338,7 +338,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 43)" in manifest
+    assert "for project_id in range(1, 44)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest
@@ -349,3 +349,16 @@ def test_build_sources_and_registry_are_not_referenced_as_public_assets():
     static_block = manifest.split("STATIC_PUBLIC_PATHS = (", 1)[1].split(")", 1)[0]
     for private_source in ("data/projects.json", "src/", "scripts/", "tests/", ".hermes/"):
         assert private_source not in static_block
+
+
+def test_command_an_army_project_43_contract():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    army = next(project for project in projects if project["id"] == 43)
+    assert army["name"] == "Command An Army Field Guide"
+    assert army["url"] == "https://commandanarmy.site/"
+    assert army["category"] == "game"
+    assert army["status"] == "live"
+    assert army["launched_at"] == "2026-09-15"
+    assert army["image"] == "assets/projects/project-43.webp"
+    html = SITE.read_text(encoding="utf-8")
+    assert html.index('data-ledger-id="43"') < html.index('data-ledger-id="42"')

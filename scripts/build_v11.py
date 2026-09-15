@@ -233,6 +233,7 @@ def load_social_font(size: int):
     return ImageFont.truetype(
         ROOT / "src" / "fonts" / "DejaVuSans-Bold.ttf",
         size=size,
+        layout_engine=ImageFont.Layout.BASIC,
     )
 
 
