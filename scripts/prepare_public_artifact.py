@@ -19,7 +19,7 @@ STATIC_PUBLIC_PATHS = (
     "assets/wechat-qr.webp",
 )
 PROJECT_PUBLIC_PATHS = tuple(
-    f"assets/projects/project-{project_id:02d}.webp" for project_id in range(1, 45)
+    f"assets/projects/project-{project_id:02d}.webp" for project_id in range(1, 46)
 )
 PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS
 

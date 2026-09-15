@@ -702,5 +702,21 @@
     "image": "assets/projects/project-44.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 45,
+    "name": "Forever Builds",
+    "url": "https://wowforever.space/",
+    "category": "game",
+    "subtitle": "WoW Forever 天赋模拟与构筑规划工具",
+    "summary": "面向 WoW Forever 玩家的独立天赋规划站，整合九职业天赋树、经典版差异对照、构筑示例与实用指南。",
+    "problem": "玩家需要在多个天赋树与资料来源之间反复对照，才能看清演示版改动并规划自己的加点方案。",
+    "solution": "将天赋模拟、逐级说明、经典版对照与构筑保存分享集中在一个工具中，并明确标注演示数据与待验证规则。",
+    "evidence": "2026-09-15 浏览器实测正式域正常展示 Forever Builds，可见九职业入口、三系天赋计算器、等级与点数控制、本地保存、分享构筑和 Classic 对照；页面标注使用演示快照，未经 beta 验证。",
+    "launched_at": "2026-09-15",
+    "status": "live",
+    "image": "assets/projects/project-45.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
