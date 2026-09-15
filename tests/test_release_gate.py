@@ -38,16 +38,16 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     )
     files = sorted(path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file())
     expected = set(STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS)
-    assert len(files) == 51
+    assert len(files) == 52
     assert set(files) == expected
     assert not any(
         part in {"src", "data", "tests", "scripts", ".hermes", ".git", ".github"}
         for path in files
         for part in Path(path).parts
     )
-    assert "public artifact: 51 files" in completed.stdout
+    assert "public artifact: 52 files" in completed.stdout
     assert "candidate sha256=" in completed.stdout
-    assert len(assert_artifact_closure(output)) == 51
+    assert len(assert_artifact_closure(output)) == 52
 
     injected = output / "debug.txt"
     injected.write_text("must fail closed", encoding="utf-8")
@@ -127,7 +127,7 @@ def test_public_allowlist_rejects_symlink_sources(tmp_path):
         path.write_bytes(b"public")
     projects = source_root / "assets" / "projects"
     projects.mkdir(parents=True, exist_ok=True)
-    for project_id in range(1, 43):
+    for project_id in range(1, 45):
         (projects / f"project-{project_id:02d}.webp").write_bytes(b"image")
 
     outside = tmp_path / "outside.txt"

@@ -148,10 +148,10 @@ def test_v11_registry_has_complete_truthful_project_contract():
         "featured",
         "featured_order",
     }
-    assert len(projects) == 43
-    assert [project["id"] for project in projects] == list(range(1, 44))
-    assert len({project["url"] for project in projects}) == 43
-    assert sum(project["status"] == "live" for project in projects) == 42
+    assert len(projects) == 44
+    assert [project["id"] for project in projects] == list(range(1, 45))
+    assert len({project["url"] for project in projects}) == 44
+    assert sum(project["status"] == "live" for project in projects) == 43
     assert sum(project["status"] == "offline" for project in projects) == 1
     assert sum(project["featured"] for project in projects) == 3
     assert sorted(
@@ -215,8 +215,8 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     assert 'href="https://1666amsterdam.top/"' in html
     assert "2026-09-12" in html
     assert '<main id="main-content" tabindex="-1">' in html
-    assert 'data-status="releases">43 条公开记录' in html
-    assert 'data-status="live">42 条在线记录' in html
+    assert 'data-status="releases">44 条公开记录' in html
+    assert 'data-status="live">43 条在线记录' in html
     assert 'data-status="offline">1 条离线记录' in html
     for retired in (
         "WZF PRESS",
@@ -237,8 +237,8 @@ def test_build_renders_one_complete_visual_product_wall(tmp_path):
     html = output.read_text(encoding="utf-8")
     assert 'data-latest-card' not in html
     assert 'data-featured-card' not in html
-    assert html.count('class="project-window"') == 43
-    assert html.count('class="project-number"') == 43
+    assert html.count('class="project-window"') == 44
+    assert html.count('class="project-number"') == 44
     for project in load_projects():
         row = re.search(rf'<article[^>]+data-ledger-id="{project["id"]}".*?</article>', html, re.S).group()
         assert project["name"] in row
@@ -267,10 +267,10 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
     assert "公司的行动力" in html
     for habit in ("从需求出发，不等万事俱备", "让 AI 放大一个人的行动力", "先上线，再用反馈走下一步"):
         assert habit in html
-    assert html.count('data-ledger-id="') == 43
-    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(43, 0, -1)]
+    assert html.count('data-ledger-id="') == 44
+    ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(44, 0, -1)]
     assert ledger_positions == sorted(ledger_positions)
-    assert html.count('data-ledger-status="live"') == 42
+    assert html.count('data-ledger-status="live"') == 43
     assert html.count('data-ledger-status="offline"') == 1
 
     offline_row = re.search(
@@ -284,8 +284,8 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
         assert f'data-ledger-filter="{category}"' in html
     assert 'id="ledger-search"' in html
     assert 'id="ledger-status"' in html
-    assert 'id="ledger-count" aria-live="polite">43 / 43' in html
-    assert "这个页面记录着 43 次公开上线" in html
+    assert 'id="ledger-count" aria-live="polite">44 / 44' in html
+    assert "这个页面记录着 44 次公开上线" in html
     assert 'class="ledger-tools" hidden' in html
     assert 'class="ledger-empty" id="ledger-empty" role="status" hidden' in html
     assert "没有匹配记录，试试别的关键词或筛选。" in html
@@ -371,13 +371,13 @@ def test_build_v11_generates_shared_assets_seo_and_privacy_page(tmp_path):
     graph = json.loads(graph_match.group(1))["@graph"]
     assert {node["@type"] for node in graph} == {"Person", "WebSite", "ItemList"}
     release_list = next(node for node in graph if node["@type"] == "ItemList")
-    assert release_list["numberOfItems"] == 43
-    assert len(release_list["itemListElement"]) == 43
+    assert release_list["numberOfItems"] == 44
+    assert len(release_list["itemListElement"]) == 44
     structured_statuses = [
         item["item"]["additionalProperty"]["value"]
         for item in release_list["itemListElement"]
     ]
-    assert structured_statuses.count("live") == 42
+    assert structured_statuses.count("live") == 43
     assert structured_statuses.count("offline") == 1
 
     assert '<link rel="canonical" href="https://wangzifan.store/privacy.html">' in privacy_html

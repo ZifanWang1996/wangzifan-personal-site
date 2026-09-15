@@ -92,7 +92,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 43
+    assert len(sources) == len(set(sources)) == 44
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -243,12 +243,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 43
-    assert html.count('data-ledger-status="live"') == 42
+    assert html.count('data-ledger-id="') == 44
+    assert html.count('data-ledger-status="live"') == 43
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
     # Each online product appears once; the offline project has no outbound link.
-    expected_safe_external_links = 42
+    expected_safe_external_links = 43
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -338,7 +338,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 44)" in manifest
+    assert "for project_id in range(1, 45)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest

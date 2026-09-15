@@ -686,5 +686,21 @@
     "image": "assets/projects/project-43.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 44,
+    "name": "The Defiant Wiki",
+    "url": "https://thedefiantwiki.site/",
+    "category": "game",
+    "subtitle": "《抵抗者》三语情报与攻略资料站",
+    "summary": "面向《抵抗者》玩家的中英西三语独立资料站，汇集发售情报、武器索引、玩法指南与可收藏的准备清单。",
+    "problem": "发售前的信息分散在商店、预告和公告中，玩家难以区分已确认事实与待验证内容，也缺少连贯的入门阅读路线。",
+    "solution": "用附来源的事实索引和专题攻略整理游戏信息，并通过浏览器本地收藏与阅读清单帮助玩家做好准备。",
+    "evidence": "2026-09-15 浏览器实测正式域进入 /zh/，可见中英西语言入口、事实与武器索引、官方视频、专题指南、工具中心及本地收藏说明。",
+    "launched_at": "2026-09-15",
+    "status": "live",
+    "image": "assets/projects/project-44.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
