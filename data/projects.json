@@ -670,5 +670,21 @@
     "image": "assets/projects/project-42.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 43,
+    "name": "Command An Army Field Guide",
+    "url": "https://commandanarmy.site/",
+    "category": "game",
+    "subtitle": "《Command An Army》三语攻略与配队工具",
+    "summary": "面向 Roblox《Command An Army》玩家的独立英西葡三语指南，整合兑换码、兵种资料、配队规划与阵容模板。",
+    "problem": "玩家需要在不同来源间查找兑换码、兵种星耗、操作方法和配队建议，难以快速形成适合已有兵种的计划。",
+    "solution": "把来源说明、兵种比较、配队工具和攻略入口集中到一个无需登录的玩家资料站。",
+    "evidence": "2026-09-15 浏览器实测正式域跳转至 /en/，可见英语、西班牙语和巴西葡语入口，以及兑换码、Army builder、Units、Guides、Templates 与来源说明。",
+    "launched_at": "2026-09-15",
+    "status": "live",
+    "image": "assets/projects/project-43.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

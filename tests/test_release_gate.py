@@ -38,16 +38,16 @@ def test_public_artifact_is_exact_allowlist(tmp_path):
     )
     files = sorted(path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file())
     expected = set(STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS)
-    assert len(files) == 50
+    assert len(files) == 51
     assert set(files) == expected
     assert not any(
         part in {"src", "data", "tests", "scripts", ".hermes", ".git", ".github"}
         for path in files
         for part in Path(path).parts
     )
-    assert "public artifact: 50 files" in completed.stdout
+    assert "public artifact: 51 files" in completed.stdout
     assert "candidate sha256=" in completed.stdout
-    assert len(assert_artifact_closure(output)) == 50
+    assert len(assert_artifact_closure(output)) == 51
 
     injected = output / "debug.txt"
     injected.write_text("must fail closed", encoding="utf-8")
