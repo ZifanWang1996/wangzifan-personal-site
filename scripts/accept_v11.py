@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("commandanarmy")
+    page.locator("#ledger-search").fill("thedefiantwiki")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -206,7 +206,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     }
 
     expanded_images = decode_images(page)
-    result["expandedImages"] = len(expanded_images) == 44 and all(
+    result["expandedImages"] = len(expanded_images) == 45 and all(
         image["complete"] and image["natural"][0] > 0 and not image["decodeError"]
         for image in expanded_images
     )
@@ -272,7 +272,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
-    latest_link = page.locator('[data-ledger-id="43"] a.ledger-main')
+    latest_link = page.locator('[data-ledger-id="44"] a.ledger-main')
     result["latestCTA"] = {
         "href": latest_link.get_attribute("href"),
         "target": latest_link.get_attribute("target"),
@@ -281,11 +281,11 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     }
     if width == 390:
         context.route(
-            "https://commandanarmy.site/**",
+            "https://thedefiantwiki.site/**",
             lambda route: route.fulfill(
                 status=200,
                 content_type="text/html",
-                body="<!doctype html><title>Command An Army Field Guide</title>",
+                body="<!doctype html><title>The Defiant Wiki</title>",
             ),
         )
         with context.expect_page() as popup_info:
@@ -321,20 +321,20 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
         expected = {
             "defaultVisible": task["defaultVisible"] == 9,
             "expandedImages": task["expandedImages"],
-            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 43
+            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 44
             and not task["listView"]["geometry"]["overflow"] and not task["listView"]["geometry"]["ownerCrossings"],
             "wallView": task["wallView"],
-            "ai": task["ai"] == {"visible": 5, "count": "5 / 43"},
-            "game": task["game"] == {"visible": 20, "count": "20 / 43"},
-            "search": task["search"] == {"visible": 1, "ids": ["43"]},
+            "ai": task["ai"] == {"visible": 5, "count": "5 / 44"},
+            "game": task["game"] == {"visible": 21, "count": "21 / 44"},
+            "search": task["search"] == {"visible": 1, "ids": ["44"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 43",
+                "count": "0 / 44",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 43, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 44, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -347,10 +347,10 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "fragment": task["fragment"]["hash"] == "#ledger"
             and task["fragment"]["intersects"],
             "latestCTA": task["latestCTA"] == {
-                "href": "https://commandanarmy.site/",
+                "href": "https://thedefiantwiki.site/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://commandanarmy.site/" if width == 390 else None,
+                "tapOpened": "https://thedefiantwiki.site/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -577,8 +577,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 0,
-        "ledger": 43,
-        "visibleLedger": 43,
+        "ledger": 44,
+        "visibleLedger": 44,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,

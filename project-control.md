@@ -1,5 +1,14 @@
 # Project Control Board
 
+## #44 The Defiant Wiki（2026-09-15）
+
+- 新增《抵抗者》中英西三语独立资料站，归入游戏与内容；日期采用本轮首次浏览器核验日期，并非游戏发售日期。
+- 正式站浏览器访问正常，进入 `/zh/`，可见事实索引、武器索引、专题攻略与本地阅读收藏入口。
+- 缩略图采用真实首页截图，关闭统计提示后等比缩放，补背景至 400×250。
+- 共 44 条作品（43 在线、1 离线），游戏分类 21 条，发布白名单 52 个文件。
+- 同步首页、分享图、搜索筛选及浏览器验收计数。
+
+
 ## #43 Command An Army（2026-09-15）
 
 - 收录 Command An Army Field Guide，游戏与内容分类；上线日期采用本轮浏览器首次可核验日期。
@@ -354,7 +363,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（43）
+## 产品索引（44）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -401,6 +410,7 @@
 | 41 | ParryGrid | 游戏与内容 | https://parrygrid.wiki/ |
 | 42 | 1666 Amsterdam Field Desk | 游戏与内容 | https://1666amsterdam.top/ |
 | 43 | Command An Army Field Guide | 游戏与内容 | https://commandanarmy.site/ |
+| 44 | The Defiant Wiki | 游戏与内容 | https://thedefiantwiki.site/ |
 
 ## 发布产物边界
 
@@ -414,10 +424,10 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 43 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，Command An Army Field Guide 搜索唯一命中 #43。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，43 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 44 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，The Defiant Wiki 搜索唯一命中 #44。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，44 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；10 张默认展墙图片全部完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-43.webp`，不接受任意 43 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-44.webp`，不接受任意 44 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
 - V11.10 生产证据绑定 PR run `34706699305`、production run `34706815685`、deployment `6412132521`、Pages artifact `10302216049`、browser evidence artifact `10301767145` 与公开 artifact SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`（50 文件）。
 
 ## 隐私与内容边界
