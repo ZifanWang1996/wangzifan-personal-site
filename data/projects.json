@@ -718,5 +718,37 @@
     "image": "assets/projects/project-45.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 46,
+    "name": "JEV 101 · JEV Field Guide",
+    "url": "https://jev101.site/",
+    "category": "ai",
+    "subtitle": "Jev 判断工作流中英日三语教程",
+    "summary": "围绕一个完整客服工单，循序讲解 Jev 的 state、Choice、Score、Noul 与 API 返回值，提供课程、实战案例和无需 API key 的本地决策实验室。",
+    "problem": "学习新型 typed decision 工具时，概念、真实工作流、边界和失败处理常常分散，容易把模型判断误当成可直接执行的客户回复或退款授权。",
+    "solution": "以“包裹显示送达但未收到”为贯穿案例，拆解状态、判断类型、人工回退和上线检查，并提供三语学习路径与本地实验。",
+    "evidence": "2026-09-25 浏览器实测正式站可访问，提供简体中文、英语和日语入口，完整案例、指南、use cases 及 no-key 本地 lab；页面注明示例为说明性合成案例，并非 API 调用结果。",
+    "launched_at": "2026-09-25",
+    "status": "live",
+    "image": "assets/projects/project-46.webp",
+    "featured": false,
+    "featured_order": null
+  },
+  {
+    "id": 47,
+    "name": "WARDOGS Atlas",
+    "url": "https://wardogs.sbs/",
+    "category": "game",
+    "subtitle": "WARDOGS 中文作战资料与配装规划站",
+    "summary": "为 WARDOGS 玩家整理武器、载具、装备与实战攻略，提供配装成本预算、武器比较、地图坐标和配装方案。",
+    "problem": "部署选择同时受装备价格、任务目标、解锁条件与队伍分工影响，单看武器数值很难评估整套配置的成本和风险。",
+    "solution": "以标注来源与适用版本的游戏资料为基础，串联配装器、预算工具、武器比较、坐标共享和按任务组织的攻略。",
+    "evidence": "2026-09-25 浏览器实测正式站进入简体中文首页，展示武器、载具、装备与深度攻略目录，以及配装、预算、比较和地图工具；页面注明非官方玩家站与 Early Access Season 1。",
+    "launched_at": "2026-09-25",
+    "status": "live",
+    "image": "assets/projects/project-47.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
