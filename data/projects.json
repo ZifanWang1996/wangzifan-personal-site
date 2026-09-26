@@ -750,5 +750,21 @@
     "image": "assets/projects/project-47.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 48,
+    "name": "Idle Mafia Fieldguide",
+    "url": "https://idle-mafia.wiki/",
+    "category": "game",
+    "subtitle": "Roblox《Idle Mafia》四语玩家指南与规划工具",
+    "summary": "面向 Roblox《Idle Mafia》玩家的独立指南，提供英语、西语、巴西葡语和简体中文入口，整理奖励码、工作收入、房产、帮派与任务攻略，并附房产比较和下一局规划工具。",
+    "problem": "玩家需要结合现金、被动收入、能量和帮派进度安排下一步，而游戏数值与奖励码也需要及时核验和可靠来源。",
+    "solution": "按新手入门、收入与房产、帮派和战斗组织指南，提供房产回本比较、奖励码状态与本地准备清单，并标注来源和数字假设。",
+    "evidence": "2026-09-26 浏览器实测正式站可访问，提供英语、西语、巴西葡语和简体中文入口；可见 codes、properties、planner、saved、收入攻略与房产比较工具。页面说明示例数字仅用于演示，奖励码在独立测试前标注为玩家报告。",
+    "launched_at": "2026-09-26",
+    "status": "live",
+    "image": "assets/projects/project-48.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
