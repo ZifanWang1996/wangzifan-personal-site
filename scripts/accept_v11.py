@@ -324,7 +324,7 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 48
             and not task["listView"]["geometry"]["overflow"] and not task["listView"]["geometry"]["ownerCrossings"],
             "wallView": task["wallView"],
-            "ai": task["ai"] == {"visible": 6, "count": "6 / 47"},
+            "ai": task["ai"] == {"visible": 6, "count": "6 / 48"},
             "game": task["game"] == {"visible": 24, "count": "24 / 48"},
             "search": task["search"] == {"visible": 1, "ids": ["48"]},
             "empty": task["empty"] == {
