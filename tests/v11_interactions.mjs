@@ -121,7 +121,7 @@ assert.equal(more.hidden, true);
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'ai'));
 
 await filters.find(filter => filter.dataset.ledgerFilter === 'game').emit('click');
-assert.equal(visibleRows().length, 23);
+assert.equal(visibleRows().length, 24);
 assert.equal(count.textContent, '24 / 48');
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'game'));
 
@@ -174,7 +174,7 @@ await search.emit('input');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '46');
 
-search.value = 'idlemafia';
+search.value = 'idle mafia';
 await search.emit('input');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '48');
