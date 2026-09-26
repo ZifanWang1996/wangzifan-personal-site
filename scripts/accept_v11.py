@@ -176,7 +176,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("idlemafia")
+    page.locator("#ledger-search").fill("idle mafia")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
