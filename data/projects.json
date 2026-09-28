@@ -766,5 +766,21 @@
     "image": "assets/projects/project-48.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 49,
+    "name": "Hurricane Tracker",
+    "url": "https://hurricanetracker.site/",
+    "category": "tool",
+    "subtitle": "活跃风暴追踪与 NHC 官方预报导读",
+    "summary": "汇集活跃热带气旋位置、风速与移动信息、NHC 官方公告和预报图，并用简明指南解释预报锥、预警及风暴潮等概念。",
+    "problem": "风暴动态、官方预报和术语说明分散，读者不易看清数据的发布时间，也容易把预报锥误解为全部受影响区域。",
+    "solution": "在同一页面呈现活跃风暴和公告时间，直接链接 NHC 原始预报，并配上易读的风暴知识指南与来源说明。",
+    "evidence": "2026-09-28 浏览器实测正式站可访问；首页可见活跃风暴、Polo 的 NHC 预报图和公告时间、官方公告入口、风暴搜索、风速单位切换及风暴知识指南。页面声明安全决策应遵循 NHC 与当地主管部门。",
+    "launched_at": "2026-09-28",
+    "status": "live",
+    "image": "assets/projects/project-49.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

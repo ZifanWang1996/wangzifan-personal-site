@@ -63,10 +63,10 @@ const filters = ['all', 'ai', 'game', 'tool', 'creative'].map((value, index) => 
 });
 const search = new Element();
 const status = new Element({ value: 'all' });
-const count = new Element({ textContent: '48 / 48' });
+const count = new Element({ textContent: '49 / 49' });
 const empty = new Element({ hidden: true });
 const tools = new Element({ hidden: true });
-const more = new Element({ textContent: '查看全部 48 条记录', hidden: true });
+const more = new Element({ textContent: '查看全部 49 条记录', hidden: true });
 more.setAttribute('aria-expanded', 'false');
 const copyButton = new Element({ dataset: { copyValue: 'wang1227928718' }, textContent: '复制微信号', hidden: true });
 const copyStatus = new Element();
@@ -111,18 +111,18 @@ const visibleRows = () => rows.filter(row => !row.hidden);
 assert.equal(tools.hidden, false);
 assert.equal(copyButton.hidden, false);
 assert.equal(visibleRows().length, 9, 'default ledger matches the V11 compact specification');
-assert.equal(count.textContent, '48 / 48');
+assert.equal(count.textContent, '49 / 49');
 assert.equal(more.hidden, false);
 
 await filters.find(filter => filter.dataset.ledgerFilter === 'ai').emit('click');
 assert.equal(visibleRows().length, 6);
-assert.equal(count.textContent, '6 / 48');
+assert.equal(count.textContent, '6 / 49');
 assert.equal(more.hidden, true);
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'ai'));
 
 await filters.find(filter => filter.dataset.ledgerFilter === 'game').emit('click');
 assert.equal(visibleRows().length, 24);
-assert.equal(count.textContent, '24 / 48');
+assert.equal(count.textContent, '24 / 49');
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'game'));
 
 await filters[0].emit('click');
@@ -130,7 +130,7 @@ status.value = 'offline';
 await status.emit('change');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '24');
-assert.equal(count.textContent, '1 / 48');
+assert.equal(count.textContent, '1 / 49');
 
 status.value = 'all';
 await status.emit('change');
@@ -178,6 +178,12 @@ search.value = 'idle mafia';
 await search.emit('input');
 assert.equal(visibleRows().length, 1);
 assert.equal(visibleRows()[0].dataset.ledgerId, '48');
+
+search.value = 'hurricane tracker';
+await search.emit('input');
+assert.equal(visibleRows().length, 1);
+assert.equal(visibleRows()[0].dataset.ledgerId, '49');
+assert.equal(visibleRows()[0].dataset.ledgerCategory, 'tool');
 
 search.value = 'wardogs';
 await search.emit('input');
@@ -237,14 +243,14 @@ assert.equal(empty.hidden, true);
 search.value = 'definitely-not-a-project';
 await search.emit('input');
 assert.equal(visibleRows().length, 0);
-assert.equal(count.textContent, '0 / 48');
+assert.equal(count.textContent, '0 / 49');
 assert.equal(empty.hidden, false);
 
 search.value = '';
 await search.emit('input');
 assert.equal(empty.hidden, true);
 await more.emit('click');
-assert.equal(visibleRows().length, 48);
+assert.equal(visibleRows().length, 49);
 assert.equal(more.getAttribute('aria-expanded'), 'true');
 assert.equal(more.textContent, '收起发布档案');
 
