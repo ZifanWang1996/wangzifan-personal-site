@@ -60,7 +60,7 @@ def render_ledger(projects: list[dict]) -> str:
         status_label = "在线记录" if project["status"] == "live" else "离线记录"
         content = f'''<span class="project-window">
               <span class="window-bar"><span class="ledger-domain">{text(domain(project["url"]))}</span><span class="card-read">访问网站 ↗</span></span>
-              <img src="{text(project["image"])}" width="400" height="250" alt="{text(project["name"])} 项目截图" loading="lazy" decoding="async">
+              <img src="{text(project["image"])}" width="800" height="500" alt="{text(project["name"])} 项目截图" loading="lazy" decoding="async">
             </span>
             <span class="project-info">
               <span class="project-kicker"><span class="project-number">/{project["id"]:02d}</span><span class="ledger-category">{text(CATEGORY_LABELS[project["category"]])}</span></span>
@@ -249,10 +249,10 @@ def write_social_card(path: Path, projects: list[dict]) -> None:
     total = len(projects)
     live = sum(project["status"] == "live" for project in projects)
     offline = sum(project["status"] == "offline" for project in projects)
-    image = Image.new("RGB", (1200, 630), "#f5f2e9")
+    image = Image.new("RGB", (1200, 630), "#f5f3ee")
     draw = ImageDraw.Draw(image)
-    draw.rectangle((0, 0, 78, 630), fill="#16283a")
-    draw.rectangle((78, 0, 98, 630), fill="#2447ed")
+    draw.rectangle((0, 0, 78, 630), fill="#252822")
+    draw.rectangle((78, 0, 98, 630), fill="#863d38")
     draw.rectangle((970, 0, 1200, 630), fill="#171816")
     draw.text((150, 115), "ZF WANG", font=load_social_font(98), fill="#171816")
     draw.text((155, 235), "THE INDEPENDENT PRODUCT JOURNAL", font=load_social_font(25), fill="#a82f1d")
