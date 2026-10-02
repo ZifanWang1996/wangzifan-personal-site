@@ -272,6 +272,16 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "intersects": target["bottom"] > 0 and target["top"] < height,
     }
 
+    # Time filters compose with category, keyword and status.
+    page.locator("#ledger-period").select_option("2026-10")
+    result["period"] = page.locator("[data-ledger-id]:visible").evaluate_all("els=>els.map(el=>el.dataset.ledgerId)")
+    page.locator("#ledger-status").select_option("offline")
+    result["periodEmpty"] = page.locator("#ledger-empty").is_visible()
+    page.locator("#ledger-status").select_option("all")
+    page.locator("#ledger-period").select_option("2026")
+    result["year"] = page.locator("[data-ledger-id]:visible").count()
+    page.locator("#ledger-period").select_option("all")
+
     latest_link = page.locator('[data-ledger-id="51"] a.ledger-main')
     result["latestCTA"] = {
         "href": latest_link.get_attribute("href"),
@@ -279,21 +289,39 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "rel": sorted((latest_link.get_attribute("rel") or "").split()),
         "tapOpened": None,
     }
+    latest_link.click()
+    dialog = page.locator("#project-dialog")
+    result["dialog"] = {
+        "open": dialog.is_visible(),
+        "title": page.locator("#detail-title").inner_text(),
+        "summary": bool(page.locator("#detail-summary").inner_text()),
+        "focused": page.locator("#detail-close").evaluate("el=>el===document.activeElement"),
+        "fits": dialog.evaluate("el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight+1&&el.scrollWidth<=el.clientWidth}"),
+    }
+    page.keyboard.press("Shift+Tab")
+    result["focusTrap"] = page.evaluate("document.querySelector('#project-dialog').contains(document.activeElement)")
     if width == 390:
-        context.route(
-            "https://rideapet.space/**",
-            lambda route: route.fulfill(
-                status=200,
-                content_type="text/html",
-                body="<!doctype html><title>Ride A Pet Field Guide</title>",
-            ),
-        )
+        context.route("https://rideapet.space/**", lambda route: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Ride A Pet Field Guide</title>"))
         with context.expect_page() as popup_info:
-            latest_link.tap()
+            page.locator("#detail-visit a").tap()
         popup = popup_info.value
         popup.wait_for_load_state("domcontentloaded")
         result["latestCTA"]["tapOpened"] = popup.url
         popup.close()
+    page.keyboard.press("Escape")
+    result["dialogDismiss"] = not dialog.is_visible() and latest_link.evaluate("el=>el===document.activeElement")
+    page.locator("#ledger-status").select_option("offline")
+    offline = page.locator('[data-ledger-id="24"] .ledger-main')
+    offline.focus()
+    page.keyboard.press("Enter")
+    result["offlineDialog"] = dialog.is_visible() and page.locator("#detail-visit a").count() == 0
+    page.locator("#detail-close").click()
+    page.locator("#ledger-status").select_option("all")
+    # Related journal links must reveal a record even after an incompatible filter.
+    page.locator('[data-ledger-filter="game"]').click()
+    page.locator('a[href="#project-46"]').click()
+    related = stable_fragment(page, '#project-46')
+    result["related"] = page.locator('[data-ledger-id="46"]').is_visible() and related["top"] < height and related["bottom"] > 0
     return result
 
 
@@ -319,6 +347,14 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
         failures.append(f"bad images {bad_images}")
     if task:
         expected = {
+            "period": task["period"] == ["51", "50"],
+            "periodEmpty": task["periodEmpty"],
+            "year": task["year"] == 51,
+            "dialog": task["dialog"] == {"open": True, "title": "Ride A Pet Field Guide", "summary": True, "focused": True, "fits": True},
+            "focusTrap": task["focusTrap"],
+            "dialogDismiss": task["dialogDismiss"],
+            "offlineDialog": task["offlineDialog"],
+            "related": task["related"],
             "defaultVisible": task["defaultVisible"] == 9,
             "expandedImages": task["expandedImages"],
             "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 51

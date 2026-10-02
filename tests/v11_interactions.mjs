@@ -53,6 +53,7 @@ const rows = [...projects].sort((a, b) => b.id - a.id).map(project => new Elemen
     ledgerId: String(project.id),
     ledgerCategory: project.category,
     ledgerStatus: project.status,
+    ledgerPeriod: project.launched_at.slice(0, 7),
     ledgerSearch: `${project.name} ${project.subtitle} ${new URL(project.url).hostname}`.toLowerCase(),
   },
 }));
@@ -63,6 +64,7 @@ const filters = ['all', 'ai', 'game', 'tool', 'creative'].map((value, index) => 
 });
 const search = new Element();
 const status = new Element({ value: 'all' });
+const period = new Element({ value: 'all' });
 const count = new Element({ textContent: '51 / 51' });
 const empty = new Element({ hidden: true });
 const tools = new Element({ hidden: true });
@@ -84,6 +86,7 @@ const one = new Map([
   ['#ledger-search', search],
   ['.ledger-tools', tools],
   ['#ledger-status', status],
+  ['#ledger-period', period],
   ['#ledger-count', count],
   ['#ledger-empty', empty],
   ['#ledger-more', more],
@@ -126,6 +129,16 @@ assert.equal(count.textContent, '26 / 51');
 assert.ok(visibleRows().every(row => row.dataset.ledgerCategory === 'game'));
 
 await filters[0].emit('click');
+period.value = '2026-10';
+await period.emit('change');
+assert.deepEqual(visibleRows().map(row => row.dataset.ledgerId), ['51', '50']);
+assert.equal(wall.classList.contains('is-filtered'), true);
+status.value = 'offline';
+await status.emit('change');
+assert.equal(visibleRows().length, 0);
+assert.equal(empty.hidden, false);
+period.value = 'all';
+await period.emit('change');
 status.value = 'offline';
 await status.emit('change');
 assert.equal(visibleRows().length, 1);

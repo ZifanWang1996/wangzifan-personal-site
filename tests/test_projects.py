@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.build_v11 import render_ledger, render_structured_data
+from scripts.build_v11 import render_ledger, render_structured_data, render_project_dialog
 
 
 ROOT = Path(__file__).parents[1]
@@ -239,6 +239,11 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
     structured = render_structured_data(projects)
     assert "<" not in structured
     assert "\\u003cscript>" in structured
+    dialog = render_project_dialog(projects)
+    data = dialog.split('<script type="application/json" id="project-data">', 1)[1].split('</script>', 1)[0]
+    assert "<" not in data
+    decoded = json.loads(data)
+    assert next(p for p in decoded if p["id"] == 20)["name"] == payload
 
 
 def test_homepage_truth_and_link_security_match_registry():
@@ -362,3 +367,12 @@ def test_command_an_army_project_43_contract():
     assert army["image"] == "assets/projects/project-43.webp"
     html = SITE.read_text(encoding="utf-8")
     assert html.index('data-ledger-id="43"') < html.index('data-ledger-id="42"')
+
+
+def test_journal_references_existing_projects_and_has_editable_content():
+    projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    notes = json.loads((ROOT / "data" / "journal.json").read_text(encoding="utf-8"))
+    ids = {p["id"] for p in projects}
+    assert notes and len({n["number"] for n in notes}) == len(notes)
+    assert all(n["project_id"] in ids for n in notes)
+    assert all(all(n[k].strip() for k in ("number", "title", "body", "tag")) for n in notes)
