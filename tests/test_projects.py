@@ -99,7 +99,7 @@ def test_registry_assets_are_complete_lightweight_and_fixed_size():
         assert image_path.suffix == ".webp"
         assert image_path.stat().st_size < 80_000
         with Image.open(image_path) as image:
-            assert image.size == (400, 250), source
+            assert image.size == ((400, 250) if source.endswith("project-24.webp") else (800, 500)), source
             assert image.format == "WEBP"
 
 
@@ -127,7 +127,7 @@ def test_parrygrid_project_41_contract():
     image_path = ROOT / parrygrid["image"]
     assert image_path.is_file()
     assert hashlib.sha256(image_path.read_bytes()).hexdigest() == (
-        "ee08c435f6a807e181e30e0d44dc95c6243556b1bd21670111f0377b9c0a8aa6"
+        "b8e76f48fc9ea41a9e41a3980ec3d917c1c761f385166aae7ccd7327412ba1a1"
     )
 
 
@@ -155,7 +155,7 @@ def test_1666_amsterdam_field_desk_project_42_contract():
     image_path = ROOT / amsterdam["image"]
     assert image_path.is_file()
     assert hashlib.sha256(image_path.read_bytes()).hexdigest() == (
-        "9539fb2ca4cbea657b58c70b19351dab9581f62ed2daeb9880111a6f811ef096"
+        "4ed6a28b7f5c3a8ee1673ba50eeddef521726a0f486ea704c1c43109f3c28c3b"
     )
 
 
@@ -376,3 +376,17 @@ def test_journal_references_existing_projects_and_has_editable_content():
     assert notes and len({n["number"] for n in notes}) == len(notes)
     assert all(n["project_id"] in ids for n in notes)
     assert all(all(n[k].strip() for k in ("number", "title", "body", "tag")) for n in notes)
+
+
+def test_current_screenshot_manifest_matches_published_images():
+    records = json.loads((ROOT / 'data' / 'screenshot-refresh.json').read_text())
+    projects = {p['id']: p for p in json.loads(REGISTRY.read_text())}
+    assert len({r['id'] for r in records}) == len(records) == 50
+    for record in records:
+        project = projects[record['id']]
+        assert record['image'] == project['image']
+        assert record['url'] == project['url']
+        assert record['resolved_url'].startswith('https://')
+        assert record['captured_at'] == '2026-10-03'
+        assert record['dimensions'] == [800, 500]
+        assert hashlib.sha256((ROOT / record['image']).read_bytes()).hexdigest() == record['sha256']

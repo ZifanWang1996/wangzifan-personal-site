@@ -1,0 +1,852 @@
+[
+  {
+    "id": 1,
+    "url": "https://aistorynest.mom/",
+    "image": "assets/projects/project-01.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "c260feb36bc8bb19960c8f0fc58d292fe990994c0828135a40f369a6b2c440b1",
+    "resolved_url": "https://aistorynest.mom/",
+    "source_sha256": "f51b197694ef23aebace671d9fc89841143d167eee3432606e0fc7812cb8aa6e"
+  },
+  {
+    "id": 2,
+    "url": "https://buildahooper.best/",
+    "image": "assets/projects/project-02.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "ebddb82e320b53656499c6fb80e186cd6b50a2018dff5c24d3eeace507232021",
+    "resolved_url": "https://buildahooper.best/",
+    "source_sha256": "1c986b0762471af41e7c35cf5b9aac561673ff1ec2dd01dc8cf9e4744dfa0542"
+  },
+  {
+    "id": 3,
+    "url": "https://falloutday.online/",
+    "image": "assets/projects/project-03.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "f1d6c979068fe3d8a66f8717fcd88ecb682e79328276b1cbe14b0b352c9c276e",
+    "resolved_url": "https://falloutday.online/",
+    "source_sha256": "7691c57ec79a97eba8d735f59a2e76231f11fa5aac79c7c165d4ff4ae4667c36"
+  },
+  {
+    "id": 4,
+    "url": "https://palworldmap.best/",
+    "image": "assets/projects/project-04.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "210adb049ada6d6a8df3304265af692c7daa1f7e249acf26f51fc86c820b00eb",
+    "resolved_url": "https://palworldmap.best/",
+    "source_sha256": "a6e3a77657a91a5927495b46c8088b0ba13eb4f28ed71bc0ebd0eac6164ef0bd"
+  },
+  {
+    "id": 5,
+    "url": "https://codexskin.space/",
+    "image": "assets/projects/project-05.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "9fca5c8f8e9b929f06264c6177e080556c8d9ef9f1d309e0bb339f6d0cdcc823",
+    "resolved_url": "https://codexskin.space/",
+    "source_sha256": "88e82914079802f7b0efcd4abef5b1a7ac968307b2b4f8f2086205d6fe8e2da4"
+  },
+  {
+    "id": 6,
+    "url": "https://llmstxt.best/",
+    "image": "assets/projects/project-06.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "e934088b9e254681c8543c9167b79e329e4a3b82b7583b784f40e33c6a4ac928",
+    "resolved_url": "https://llmstxt.best/",
+    "source_sha256": "3a7abd45aa8742345b198ec737a5aea065f0f4dc868184c332ab7cbbf0baa793"
+  },
+  {
+    "id": 7,
+    "url": "https://allwishescometrue.site/",
+    "image": "assets/projects/project-07.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "948cbbe52ca162023cf6f8df9627ff57097f48fdb14109c536e4097cfe3a60e4",
+    "resolved_url": "https://allwishescometrue.site/",
+    "source_sha256": "9972f0166d2bf52e37c9f1eb3d0eb6e22ad05c7612ef7342d67ee81bc6e161a6"
+  },
+  {
+    "id": 8,
+    "url": "https://taskbarherowiki.best/",
+    "image": "assets/projects/project-08.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "0c83c9db2c4a384294f1a70fcc1bc3823900aa66f84760e527bb3c0f57f78966",
+    "resolved_url": "https://taskbarherowiki.best/",
+    "source_sha256": "bb5dd1e50ff3253e824318c31b0af17905dd717c85371e19083d166e9e18330b"
+  },
+  {
+    "id": 9,
+    "url": "https://chinesecashcoins.wiki/",
+    "image": "assets/projects/project-09.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "0f054be502379bb7b37d946fdff5549f207395fa7cd1d6b7e75833925a05970c",
+    "resolved_url": "https://chinesecashcoins.wiki/en/",
+    "source_sha256": "f9d1ab98286e691d95628b1672d60165b172117446066c58fc5bf392fc18f47e"
+  },
+  {
+    "id": 10,
+    "url": "https://rotcheck.cyou/",
+    "image": "assets/projects/project-10.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "17c5321c6f06cb126d4f91e057d2ab85db13d2de49c75d52f869b4f8bdcb867f",
+    "resolved_url": "https://rotcheck.cyou/",
+    "source_sha256": "84cdfd478c473b96dc0b866c24ce0f3e206b073ebb2647de3ad96ce3a6e4f78e"
+  },
+  {
+    "id": 11,
+    "url": "https://spiritvale.blog/",
+    "image": "assets/projects/project-11.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "fbc3365520f1499207c7c146a3c36023afa3b3198dbe0d788db61903d1d163ef",
+    "resolved_url": "https://spiritvale.blog/",
+    "source_sha256": "c8138b0f766dd84deaba6d0922656d18d40f02aa7b1b69575dc6f10f74369be8"
+  },
+  {
+    "id": 12,
+    "url": "https://dragonswordawakening.fun/",
+    "image": "assets/projects/project-12.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "36cbba8c8935ca0c137aa57231d73a6b8a364088a0149384dfecc221f392c14a",
+    "resolved_url": "https://dragonswordawakening.fun/",
+    "source_sha256": "91e606cac1eef95c09e944b7a2713a2aed33319ef19c81001b62354f05cb2ead"
+  },
+  {
+    "id": 13,
+    "url": "https://copyplaintext.com/",
+    "image": "assets/projects/project-13.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "1534de13968727c05314394b30daef6c375c342fc1c29360764bb06a86a217ee",
+    "resolved_url": "https://copyplaintext.com/",
+    "source_sha256": "87f24c2520b32a5a27bc665cec15926d1198c7fc87b2b30a2ddb915c26168b64"
+  },
+  {
+    "id": 14,
+    "url": "https://isitdown.click/",
+    "image": "assets/projects/project-14.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "d46a2c6d299a2d4df9e19997ab547d8a4ec785a7863ce833532c5bd43cc75ad9",
+    "resolved_url": "https://isitdown.click/",
+    "source_sha256": "5d8bb843aca3ab37910b97f3680e662bca51d27e762f9e594998935a21eacc22"
+  },
+  {
+    "id": 15,
+    "url": "https://howmanysleepsuntil.rest/",
+    "image": "assets/projects/project-15.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "d6d2a0cdb3ba40222f60664efa999964d9d0146fe1a6e76f659526859605f04c",
+    "resolved_url": "https://howmanysleepsuntil.rest/",
+    "source_sha256": "064cac11a75e58c782ae92132a0ef07f09235e660a922554b0119502ea74b9f4"
+  },
+  {
+    "id": 16,
+    "url": "https://cashflow.lifestyle/",
+    "image": "assets/projects/project-16.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "d305765749cb5c9913c7c64df3dfa171559002f0a74b9214a1d5a0b978a60128",
+    "resolved_url": "https://cashflow.lifestyle/",
+    "source_sha256": "df5c264bc25a22d99edf0074759c548a6b54ee9438450138c8ed1772659c444e"
+  },
+  {
+    "id": 17,
+    "url": "https://zhuzhiliao.buzz/",
+    "image": "assets/projects/project-17.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "211d57944902960dd924aea95e32eb2ad115e3200960ded5a1f5e03ffa93444a",
+    "resolved_url": "https://zhuzhiliao.buzz/",
+    "source_sha256": "012b31a0a2b0cd20b720c42095cffa47ffa6027bd64150bd97c41b1466cb4e18"
+  },
+  {
+    "id": 18,
+    "url": "https://shiftatmidnight.blog/",
+    "image": "assets/projects/project-18.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "98eb67d2a9a7a4bf5b193f46e0a4a20329f7df6c2c39dc7e34d2a521411d25de",
+    "resolved_url": "https://shiftatmidnight.blog/",
+    "source_sha256": "3d5de941388027934722c3299c47624b47b49d000723ad64ba7eac081369a1b9"
+  },
+  {
+    "id": 19,
+    "url": "https://mergeanuke.space/",
+    "image": "assets/projects/project-19.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "4ebdf410e65208feb2f41cccdba6937d91a1ccde2822f69cadb80d2e3531d872",
+    "resolved_url": "https://mergeanuke.space/",
+    "source_sha256": "75e8927c8c8619249df55deb8a13a95c454e5a9202115271ae2101cd68bc0efd"
+  },
+  {
+    "id": 20,
+    "url": "https://aiscanner.run/",
+    "image": "assets/projects/project-20.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "70c1daeef859ffd9a59996bc1e3587ade7d307547834fc8492208adb45bbf75b",
+    "resolved_url": "https://aiscanner.run/",
+    "source_sha256": "720b219df62537e06107a384a04b64743b14fbd5868fe3653c5c45f96332ecbd"
+  },
+  {
+    "id": 21,
+    "url": "https://rspeditor.app/",
+    "image": "assets/projects/project-21.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "61d344f0f90491c19c19ee3141cbfb1547b9f5a08f252b740665b9ed0c4d5a8d",
+    "resolved_url": "https://rspeditor.app/",
+    "source_sha256": "1904022f28782cb9a70fadfb9ffd7b98c731616c922417f873a380bdcb7c8401"
+  },
+  {
+    "id": 22,
+    "url": "https://remove-matcha-filter.com/",
+    "image": "assets/projects/project-22.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "b06d2fdc6fd038b593985207d523d73e732ee5fa1cf753db93ea1ce09f151a58",
+    "resolved_url": "https://remove-matcha-filter.com/",
+    "source_sha256": "2d71df7816ba703baa00da9bad0a5cd2635f1bedfc26faf0592e4482105d0509"
+  },
+  {
+    "id": 23,
+    "url": "https://deepseekharness.site/",
+    "image": "assets/projects/project-23.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "1e1f7477874f5a9ada13341b06cb0befbbaab2bf8ec05835a1189a31a9944567",
+    "resolved_url": "https://deepseekharness.site/",
+    "source_sha256": "d2331d8129c234b06329286c2dd132fddab083c9c3e143cc6a7975fdffbd5283"
+  },
+  {
+    "id": 25,
+    "url": "https://burncd.xyz/",
+    "image": "assets/projects/project-25.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "e1b83b9fd0779477c6fc0d0c1381e4c32fa90705ecbf6fdbd17862ee889a9c8c",
+    "resolved_url": "https://burncd.xyz/",
+    "source_sha256": "949adac48b84e745df548b2601696cf4099f9f57b875a3d398caf62dfb81cbad"
+  },
+  {
+    "id": 26,
+    "url": "https://matchafilter.cc/",
+    "image": "assets/projects/project-26.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "abf4493892fb87934c5ba1fa8751059649cb2e4fa20f78176971f5293e8e4e79",
+    "resolved_url": "https://matchafilter.cc/",
+    "source_sha256": "049ff8b627214f1ee56eedaa80484a2966d7318cd46e98964ab0d472f8fd468a"
+  },
+  {
+    "id": 27,
+    "url": "https://foodnevercomes.online/",
+    "image": "assets/projects/project-27.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "6fc9f8845dd951ce87295e6603e034138b94f68c097635d0c4afeaadab5e62a5",
+    "resolved_url": "https://foodnevercomes.online/en/",
+    "source_sha256": "61f2c765cff4df2809af8c13df671c2a59833826ea1600f1bf5850ac16e639aa"
+  },
+  {
+    "id": 28,
+    "url": "https://niulai.blog/",
+    "image": "assets/projects/project-28.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "950bd5ca98c9de9f58822f54d9c79ddc9529e52584e727a32234d846fd877d37",
+    "resolved_url": "https://niulai.blog/",
+    "source_sha256": "d0447082e927c23a2c76d0c3e7b85ae39e5e2b300ac79f9f91a0014c9f176030"
+  },
+  {
+    "id": 29,
+    "url": "https://hellletloosevietnam.blog/",
+    "image": "assets/projects/project-29.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "b8c9445224959a7deff2d7bd73171667d2cd34c9622f022487313f9af0a53602",
+    "resolved_url": "https://hellletloosevietnam.blog/",
+    "source_sha256": "43d91afb0f9eb360123b5779a36658878476358a67be69d8bbbc14dfb5abd528"
+  },
+  {
+    "id": 30,
+    "url": "https://chinamaxxing.site/",
+    "image": "assets/projects/project-30.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "0c2ea8943c8e668643f56cf72e206b364ec9e139da10a5832bb348c3ba398f80",
+    "resolved_url": "https://chinamaxxing.site/",
+    "source_sha256": "3d0f955d146aad641ae8dc4c2380885d81ec88346cd769edc052246ec880bfe5"
+  },
+  {
+    "id": 31,
+    "url": "https://thesinkingcity2.top/",
+    "image": "assets/projects/project-31.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "99233f7dc1cbf2395898b22a744811c89008bfc8be933e93c450137e010fdeba",
+    "resolved_url": "https://thesinkingcity2.top/",
+    "source_sha256": "d9ac272e3d6775da42fc7db81f8d0256e7f5b7127a40f135d9596a1f080e0fc3"
+  },
+  {
+    "id": 32,
+    "url": "https://oxalpha.site/",
+    "image": "assets/projects/project-32.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "5ec555446cf29ef2478e9ed4c50a12165f6cf5ac39650084757de6a340eac069",
+    "resolved_url": "https://oxalpha.site/",
+    "source_sha256": "d58ccc92ab696fd1510b6cc17ac16b4ce12bcd8993ca234ada54eac26554dfa6"
+  },
+  {
+    "id": 33,
+    "url": "https://mortalshell2.quest/",
+    "image": "assets/projects/project-33.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "90d366afd4646f2153d950fb38085296998adb6227f70dc0703bf13fc3e87d46",
+    "resolved_url": "https://mortalshell2.quest/",
+    "source_sha256": "4a575c063209ad2cce7e670f3e37ce17d87e5b212de74ae67249d762b76ff1ea"
+  },
+  {
+    "id": 34,
+    "url": "https://genvidatlas.wiki/",
+    "image": "assets/projects/project-34.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "220d4d2d93bbd64aaccdc6ae578b34023db57d7a20de34b773b5f219d1dc35b5",
+    "resolved_url": "https://genvidatlas.wiki/",
+    "source_sha256": "ae50eb8d1a9951cc85786d3b92a77f94e405f1af8168388a66c6b896bb73eac7"
+  },
+  {
+    "id": 35,
+    "url": "https://thebloodofdawnwalker.info/",
+    "image": "assets/projects/project-35.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "7bb4f37068b7990c8021e6d5041e858c196d38df4a9bf78f88e8097902de1191",
+    "resolved_url": "https://thebloodofdawnwalker.info/en",
+    "source_sha256": "fae57e3db434b27c54c630c0afa6ab0ea1d31de8d397b89e4f12327d33e7445d"
+  },
+  {
+    "id": 36,
+    "url": "https://onimushawayofthesword.space/",
+    "image": "assets/projects/project-36.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "a121bbc3afc726f50069c64fad3290efc25d94620b27d37af41598190f058448",
+    "resolved_url": "https://onimushawayofthesword.space/en/",
+    "source_sha256": "943c22483be656530456f666c35d3a2edf02e00a32e19bd56faa8241acacc2f5"
+  },
+  {
+    "id": 37,
+    "url": "https://gpt6astra.best/",
+    "image": "assets/projects/project-37.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "453b3821588d30d02a227f2c30a1aabaa102057d8b886a71e916414fad22b872",
+    "resolved_url": "https://gpt6astra.best/en",
+    "source_sha256": "00d112abd3f52c8f8e69cad608423034cf992b2e7515ac83ddb20ef2e9e7b68a"
+  },
+  {
+    "id": 38,
+    "url": "https://narinigmoba.top/",
+    "image": "assets/projects/project-38.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "e555e9c38e16153a9cc57cb4d5f145612e39923f903ca94d6ea5e706c0a6ecb3",
+    "resolved_url": "https://narinigmoba.top/en/",
+    "source_sha256": "51ba1832bf91871c4a6e5ff7f9d49a094459dddea06348d6971adf29f1c07718"
+  },
+  {
+    "id": 39,
+    "url": "https://halloweenthegame.top/",
+    "image": "assets/projects/project-39.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "dd1742bb4ebbe5d1675d44904f4d8c4ce08f945315131a7a0715cf6c79a046ad",
+    "resolved_url": "https://halloweenthegame.top/en",
+    "source_sha256": "4dac8773fd260edac1dbbe42bf0eacdca9e3ff72741322cc4a8e34125a3570c4"
+  },
+  {
+    "id": 40,
+    "url": "https://mimicparty.space/",
+    "image": "assets/projects/project-40.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "b5bd2bd058f3cd17ea001ddbd2964d2395ccf852e0f03bd2576ffa6fd5e7b062",
+    "resolved_url": "https://mimicparty.space/en",
+    "source_sha256": "af53385a4b6bc7eaff65bf507bb10321eaf9103e21a182549a5292fd85ed518a"
+  },
+  {
+    "id": 41,
+    "url": "https://parrygrid.wiki/",
+    "image": "assets/projects/project-41.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "b8e76f48fc9ea41a9e41a3980ec3d917c1c761f385166aae7ccd7327412ba1a1",
+    "resolved_url": "https://parrygrid.wiki/",
+    "source_sha256": "4788fd7f61ce99479ea45bd3807ed8fc60f2904f74a70513b1cb0f2d134b2948"
+  },
+  {
+    "id": 42,
+    "url": "https://1666amsterdam.top/",
+    "image": "assets/projects/project-42.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "4ed6a28b7f5c3a8ee1673ba50eeddef521726a0f486ea704c1c43109f3c28c3b",
+    "resolved_url": "https://1666amsterdam.top/",
+    "source_sha256": "d50fa59361fe9a9076799e6dc08163ac6818c61038ba38cb43d5951b4c526c9f"
+  },
+  {
+    "id": 43,
+    "url": "https://commandanarmy.site/",
+    "image": "assets/projects/project-43.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "8be97340b6e3c371c1a1b0556b9077950b25d0ad012aece26138b7f0d7e38e91",
+    "resolved_url": "https://commandanarmy.site/en/",
+    "source_sha256": "0c853b233000c4ad0e9e02e15911985e3ebe5b666338b7bd405837476e76201a"
+  },
+  {
+    "id": 44,
+    "url": "https://thedefiantwiki.site/",
+    "image": "assets/projects/project-44.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "237e8443182b5d4b98a4ab9e2523279de3b882d7766f95d688a670ee992491c7",
+    "resolved_url": "https://thedefiantwiki.site/zh/",
+    "source_sha256": "9df2d4d980968cb2eb7e4acdef62c9c19a3fb5c93c8c01180bec29a9f038123d"
+  },
+  {
+    "id": 45,
+    "url": "https://wowforever.space/",
+    "image": "assets/projects/project-45.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "c843dbcdf52863a0aaf110ff5f1d8dca5dfd0103679e99ea244200d3ec83945a",
+    "resolved_url": "https://wowforever.space/",
+    "source_sha256": "220110ad4c2147a0bc16085ce357dfa6c33516965124e69cfc1b507570d0bcee"
+  },
+  {
+    "id": 46,
+    "url": "https://jev101.site/",
+    "image": "assets/projects/project-46.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "925c4367ec7927e66bb4f31b252ee721c36a6f7e3151d30b45ea8b13d17eed48",
+    "resolved_url": "https://jev101.site/",
+    "source_sha256": "9d1835006e7086c8fe9ebea1867d90f5ed9bd520875a313f83839b520ed66b5f"
+  },
+  {
+    "id": 47,
+    "url": "https://wardogs.sbs/",
+    "image": "assets/projects/project-47.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "fc6f37401381c20b8c4995500f15b617cfca81da9d89e68f98b6f6b14aa4745f",
+    "resolved_url": "https://wardogs.sbs/zh-cn",
+    "source_sha256": "08162a190330285bebdec2e7068288b704cd4c0393bc2ad1b3be747739cf56f0"
+  },
+  {
+    "id": 48,
+    "url": "https://idle-mafia.wiki/",
+    "image": "assets/projects/project-48.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "cf3354002f07be94d7f540d50146250b3f8daadfdb3114d0f1a8ae865df0af40",
+    "resolved_url": "https://idle-mafia.wiki/",
+    "source_sha256": "7ae3ebb1b6fd58e68cc90961c585aa02a600cbe6efaf3322be44be3704c5e410"
+  },
+  {
+    "id": 49,
+    "url": "https://hurricanetracker.site/",
+    "image": "assets/projects/project-49.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "9a30d7ee455babf9c8e054a64447bce8a48fae44cd1ebfe9c4165b38ab4ff15c",
+    "resolved_url": "https://hurricanetracker.site/",
+    "source_sha256": "983f487ccfa85e112d2a660b95abcb15aa823b86f88c0e3b75988814cd1b2b66"
+  },
+  {
+    "id": 50,
+    "url": "https://marvelrivalstracker.site/",
+    "image": "assets/projects/project-50.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "165b47f7b4d2b7d428d3e58b48d030bc696495a38a1e6c3b267c630d17989a2a",
+    "resolved_url": "https://marvelrivalstracker.site/",
+    "source_sha256": "e2d88143b4c505c1940a9ca6b8f6fd4e9ca9c96ede72dfb4020b20ae198dc67f"
+  },
+  {
+    "id": 51,
+    "url": "https://rideapet.space/",
+    "image": "assets/projects/project-51.webp",
+    "captured_at": "2026-10-03",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "16abc071fce2c80d4c6ae055c760095860601aa62d935c4a1c25288523c43157",
+    "resolved_url": "https://rideapet.space/",
+    "source_sha256": "c91531934d9b044dae1724c80d05c7b8d65947fe4ddd369d8a765bfc23ebfda0"
+  }
+]
