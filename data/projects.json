@@ -782,5 +782,21 @@
     "image": "assets/projects/project-49.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 50,
+    "name": "Rivals Insight",
+    "url": "https://marvelrivalstracker.site/",
+    "category": "game",
+    "subtitle": "《Marvel Rivals》玩家查询与赛季数据站",
+    "summary": "面向《Marvel Rivals》玩家的独立数据站，可按公开玩家名称或 UID 查询排名、英雄与近期比赛，并浏览英雄数据、榜单、阵容和赛季资料。",
+    "problem": "玩家资料、英雄表现和组队信息散落在不同页面，且官方统计与第三方追踪样本的口径容易混淆。",
+    "solution": "以玩家查询为入口，串联英雄、队伍、排行榜与赛季内容，并为官方英雄热榜和站内追踪样本分别标示来源与更新时间。",
+    "evidence": "2026-10-02 浏览器实测正式站可访问；首页可见公开玩家名称或 UID 搜索、英雄与队伍导航、玩家榜单，以及第 10 赛季追踪样本和官方英雄热榜的独立来源说明。页面注明为独立粉丝项目。",
+    "launched_at": "2026-10-02",
+    "status": "live",
+    "image": "assets/projects/project-50.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
