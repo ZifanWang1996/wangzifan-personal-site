@@ -1,0 +1,23 @@
+[
+  {
+    "number": "01",
+    "title": "从查资料，到做选择",
+    "body": "在 Ride A Pet 里，把宠物与蛋的资料接到雷达选择、速度估算和重生清单。让读者查完资料，能继续规划下一步。",
+    "tag": "游戏 × 玩家工具",
+    "project_id": 51
+  },
+  {
+    "number": "02",
+    "title": "让每个数字有出处",
+    "body": "Hurricane Tracker 把官方预报和公告时间放在一起；Rivals Insight 区分官方热榜与追踪样本。数据的来处，也是产品的一部分。",
+    "tag": "数据 × 可信度",
+    "project_id": 49
+  },
+  {
+    "number": "03",
+    "title": "用一个案例讲清 AI",
+    "body": "JEV Field Guide 围绕一张客服工单讲解判断工作流，再提供无需 API key 的本地实验。把抽象概念接到具体任务上。",
+    "tag": "AI × 学习体验",
+    "project_id": 46
+  }
+]

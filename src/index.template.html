@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="王子凡（ZF Wang）— OPC 一人公司创业者">
-  <meta property="og:description" content="一个人开局，把想法做成生意。王子凡的产品、实验与一人公司创业记录。">
+  <meta property="og:description" content="把好奇心，做成作品。王子凡的独立产品、构建手记与一人公司实践。">
   <meta property="og:url" content="https://wangzifan.store/">
   <meta property="og:image" content="https://wangzifan.store/assets/og-card.webp">
   <meta property="og:image:type" content="image/webp">
@@ -19,7 +19,7 @@
   <meta property="og:image:alt" content="王子凡的个人产品工作台分享图">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="王子凡（ZF Wang）— OPC 一人公司创业者">
-  <meta name="twitter:description" content="一个人开局，把想法做成生意。王子凡的产品、实验与一人公司创业记录。">
+  <meta name="twitter:description" content="把好奇心，做成作品。王子凡的独立产品、构建手记与一人公司实践。">
   <meta name="twitter:image" content="https://wangzifan.store/assets/og-card.webp">
   <meta name="twitter:image:alt" content="王子凡的个人产品工作台分享图">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -28,7 +28,7 @@
   <script type="application/ld+json">{{STRUCTURED_DATA}}</script>
   <script defer src="assets/site.js"></script>
 </head>
-<body>
+<body class="journal-home">
   <a class="skip-link" href="#main-content">跳到主要内容</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="王子凡首页">
@@ -36,8 +36,8 @@
       <span><strong>王子凡 / ZF WANG</strong><small>OPC 一人公司创业者</small></span>
     </a>
     <nav aria-label="主导航">
-      <a href="#ledger">全部作品</a>
-      <a href="#method">创业日常</a>
+      <a href="#ledger">作品索引</a>
+      <a href="#method">构建手记</a>
       <a href="#about">关于我</a>
       <a class="nav-cta" href="#contact">联系合作</a>
     </nav>
@@ -45,20 +45,25 @@
 
   <main id="main-content" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-edition"><span>独立产品杂志 / ZF WANG</span><span>持续构建 · VOL. 01</span></div>
       <div class="hero-copy">
-        <p class="eyebrow">王子凡 / OPC 一人公司创业者</p>
-        <h1 id="hero-title" aria-label="一个人开局，把想法做成生意。"><span class="title-line">一个人开局，</span><span class="title-line"><em>把想法做成生意。</em></span></h1>
-        <p class="hero-lead">把 AI 当作搭档，把真实需求当作起点。一个人做产品、做增长、做决策，在一次次上线里，把自由和可能性做出来。</p>
+        <p class="eyebrow">你好，我是王子凡。一个人，一间产品工作室。</p>
+        <h1 id="hero-title" aria-label="把好奇心，做成作品。"><span class="title-line">把好奇心，</span><span class="title-line"><em>做成作品。</em><span class="hero-star" aria-hidden="true">✳</span></span></h1>
+        <p class="hero-lead">从玩家的一个疑问，到能用的小工具。<br>我用 AI 扩展一个人的行动力，在真实问题里寻找下一件值得做的事。</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#ledger">看看我的作品 <span aria-hidden="true">↓</span></a>
-          <a class="button button-quiet" href="#contact">聊聊一人公司 ↗</a>
+          <a class="button button-primary" href="#ledger">翻开作品索引 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#contact">聊聊一人公司 →</a>
         </div>
       </div>
-      <aside class="founder-note" aria-label="我的创业态度">
-        <span class="founder-note-label">想法，要有下文。</span>
-        <p>动手做。<br>发出去。<br><em>再向前。</em></p>
-        <span class="founder-note-footer">一个人，也能不断出发。 <span aria-hidden="true">↗</span></span>
+      <aside class="founder-note" aria-label="现在的工作方向">
+        <span class="note-index">工作台 / NOW</span>
+        <p>把信息，<br>变成下一步。</p>
+        <div class="note-rule"></div>
+        <span class="note-description">这阶段围绕游戏指南、玩家工具和 AI 教程，继续探索更有用的产品形式。</span>
+        <a href="#method" class="text-link">读构建手记 <span aria-hidden="true">↗</span></a>
+        <span class="note-signature">小规模。认真做。<span aria-hidden="true">ZF.</span></span>
       </aside>
+      <div class="hero-bottom"><span>IDEAS → PRODUCTS → NEXT QUESTIONS</span><span>以作品记录独立创业</span></div>
     </section>
 
     <section class="studio-status" aria-label="公开发布状态">
@@ -69,6 +74,7 @@
     </section>
 
     {{CONTENT}}
+    {{PROJECT_DIALOG}}
   </main>
 
   <footer class="site-footer">

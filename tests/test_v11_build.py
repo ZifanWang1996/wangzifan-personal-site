@@ -205,9 +205,9 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
 
     assert first == second
     assert "OPC 一人公司创业者" in html
-    assert "一个人开局，把想法做成生意。" in html
-    assert '<span class="title-line">一个人开局，</span>' in html
-    assert '<span class="title-line"><em>把想法做成生意。</em></span>' in html
+    assert "把好奇心，做成作品。" in html
+    assert '<span class="title-line">把好奇心，</span>' in html
+    assert '<span class="title-line"><em>做成作品。</em>' in html
     assert 'data-hero-latest' not in html
     assert 'id="recent"' not in html
     assert 'id="selected"' not in html
@@ -264,8 +264,8 @@ def test_build_v11_closes_collaboration_method_ledger_and_contact_flow(tmp_path)
 
     assert html.count('data-method-note="') == 3
     assert 'data-method-step="' not in html
-    assert "公司的行动力" in html
-    for habit in ("从需求出发，不等万事俱备", "让 AI 放大一个人的行动力", "先上线，再用反馈走下一步"):
+    assert "做过，才有话可说。" in html
+    for habit in ("从查资料，到做选择", "让每个数字有出处", "用一个案例讲清 AI"):
         assert habit in html
     assert html.count('data-ledger-id="') == 51
     ledger_positions = [html.index(f'data-ledger-id="{project_id}"') for project_id in range(51, 0, -1)]
