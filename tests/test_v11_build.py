@@ -206,8 +206,8 @@ def test_build_v11_generates_truthful_identity_and_counts(tmp_path):
     assert first == second
     assert "OPC 一人公司创业者" in html
     assert "把好奇心，做成作品。" in html
-    assert '<span class="title-line">把好奇心，</span>' in html
-    assert '<span class="title-line"><em>做成作品。</em>' in html
+    assert '<span class="title-line">一个人。</span>' in html
+    assert '<span class="title-line">不止一种<em>可能。</em>' in html
     assert 'data-hero-latest' not in html
     assert 'id="recent"' not in html
     assert 'id="selected"' not in html
@@ -349,7 +349,7 @@ def test_build_v11_generates_shared_assets_seo_and_privacy_page(tmp_path):
     assert "<style" not in html and "<style" not in privacy_html
     assert '<link rel="stylesheet" href="assets/site.css">' in html
     assert '<script defer src="assets/site.js"></script>' in html
-    assert "requestAnimationFrame" not in javascript.read_text(encoding="utf-8")
+    # Browser acceptance verifies idle frame counts and reduced-motion behavior.
     assert Image.open(social_image).size == (1200, 630)
     builder_source = (ROOT / "scripts" / "build_v11.py").read_text(encoding="utf-8")
     assert '"33 RELEASE RECORDS"' not in builder_source

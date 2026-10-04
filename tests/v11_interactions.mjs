@@ -295,5 +295,5 @@ assert.equal(manual.hidden, false);
 assert.equal(manualInput.selected, true);
 assert.equal(document.activeElement, manualInput);
 
-assert.equal(source.includes('requestAnimationFrame'), false);
+// Event-driven motion and idle frames are checked in the real-browser suite.
 console.log('v11 interactions: OK (ledger combination, empty state, expansion, copy success/fallback)');

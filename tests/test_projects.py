@@ -252,8 +252,8 @@ def test_homepage_truth_and_link_security_match_registry():
     assert html.count('data-ledger-status="live"') == 50
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
-    # Each online product appears once; the offline project has no outbound link.
-    expected_safe_external_links = 50
+    # The archive and six real hero slices have safe outbound links.
+    expected_safe_external_links = 56
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
