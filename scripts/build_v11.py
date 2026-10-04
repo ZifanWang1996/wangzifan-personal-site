@@ -36,6 +36,19 @@ def latest_live_project(projects: list[dict]) -> dict:
     )
 
 
+def render_hero_projects(projects: list[dict]) -> str:
+    # Real project slices spanning games, AI, tools and creative experiments.
+    ids = [51, 34, 49, 25, 20, 17]
+    by_id = {p["id"]: p for p in projects}
+    positions = [(46, 2, -9, 23), (74, 22, 8, 25), (52, 49, -6, 25), (77, 73, 6, 20), (29, 77, 4, 20), (5, 81, -5, 18)]
+    cards = []
+    for index, (pid, position) in enumerate(zip(ids, positions)):
+        p = by_id[pid]
+        x, y, angle, width = position
+        cards.append(f'''<a class="orbit-project orbit-{index}" data-project-open="{pid}" href="{text(p['url'])}" target="_blank" rel="noopener noreferrer" style="--start-x:{x}%;--start-y:{y}%;--start-angle:{angle}deg;--start-width:{width}%;--end-x:{index * 16.9}%;" aria-label="查看 {text(p['name'])} 项目"><span class="orbit-surface"><img src="{text(p['image'])}" width="800" height="500" alt="{text(p['name'])} 真实页面" decoding="async"><span class="orbit-project-label"><span>{text(p['name'])}</span><span aria-hidden="true">↗</span></span></span></a>''')
+    return "".join(cards)
+
+
 def render_method() -> str:
     notes = json.loads((ROOT / "data" / "journal.json").read_text(encoding="utf-8"))
     items = "".join(
@@ -101,8 +114,8 @@ def render_ledger(projects: list[dict]) -> str:
         <label class="period-field" for="ledger-period"><span>时间</span><select id="ledger-period"><option value="all">全部时间</option>{period_options}</select></label>
         <label class="status-field" for="ledger-status"><span>状态</span><select id="ledger-status"><option value="all">全部状态</option><option value="live">在线记录</option><option value="offline">离线记录</option></select></label>
       </div>
-      <div class="ledger-summary"><div><strong id="ledger-count" aria-live="polite">{total} / {total}</strong><span>个项目</span></div><div class="view-switch" role="group" aria-label="作品展示方式" hidden><button type="button" data-view="wall" aria-pressed="true">杂志</button><button type="button" data-view="list" aria-pressed="false">清单</button></div></div>
-      <div class="ledger-list" id="ledger-list">{"".join(rows)}</div>
+      <div class="ledger-summary"><div><strong id="ledger-count" aria-live="polite">{total} / {total}</strong><span>个项目</span></div><div class="view-switch" role="group" aria-label="作品展示方式" hidden><button type="button" data-view="wall" aria-pressed="true">画廊</button><button type="button" data-view="exhibit" aria-pressed="false">索引预览</button><button type="button" data-view="list" aria-pressed="false">清单</button></div></div>
+      <div class="ledger-exhibit"><div class="ledger-list" id="ledger-list">{"".join(rows)}</div><aside class="ledger-preview" id="ledger-preview" hidden aria-label="当前项目预览"><button type="button" class="preview-open" data-project-open="{ordered[0]['id']}" aria-label="打开当前项目详情"><img id="preview-image" src="{text(ordered[0]['image'])}" width="800" height="500" alt="{text(ordered[0]['name'])} 项目预览"><span class="preview-caption"><strong id="preview-title">{text(ordered[0]['name'])}</strong><span aria-hidden="true">↗</span></span></button><p id="preview-summary">{text(ordered[0]['summary'])}</p><span class="preview-hint">移到项目名称，或用 Tab 键探索</span></aside></div>
       <p class="ledger-empty" id="ledger-empty" role="status" hidden>没有匹配记录，试试别的关键词或筛选。</p>
       <button class="button ledger-more" type="button" id="ledger-more" hidden aria-expanded="false" aria-controls="ledger-list">查看全部 {total} 条记录</button>
     </section>'''
@@ -121,10 +134,10 @@ def render_project_dialog(projects: list[dict]) -> str:
     payload = json.dumps(public, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return '''<dialog id="project-dialog" aria-labelledby="detail-title">
       <div class="dialog-top"><span>作品档案 / <span id="detail-number"></span></span><button type="button" id="detail-close" aria-label="关闭项目详情">关闭 <span aria-hidden="true">×</span></button></div>
-      <div class="detail-body"><p class="eyebrow" id="detail-category"></p><h2 id="detail-title"></h2><p id="detail-subtitle"></p><p class="detail-summary" id="detail-summary"></p>
+      <div class="detail-layout"><figure class="detail-media" hidden><img id="detail-image" width="800" height="500" alt="当前项目真实页面截图"><figcaption>真实页面快照 · <span id="detail-domain"></span></figcaption></figure><div class="detail-body"><p class="eyebrow" id="detail-category"></p><h2 id="detail-title"></h2><p id="detail-subtitle"></p><p class="detail-summary" id="detail-summary"></p>
       <dl class="detail-facts"><div><dt>收录日期</dt><dd id="detail-date"></dd></div><div><dt>档案状态</dt><dd id="detail-status"></dd></div></dl>
       <div class="detail-section" id="detail-problem-wrap"><h3>从什么问题出发</h3><p id="detail-problem"></p></div><div class="detail-section" id="detail-solution-wrap"><h3>怎么解决</h3><p id="detail-solution"></p></div><div class="detail-section"><h3>这份作品的记录</h3><p id="detail-evidence"></p></div>
-      <div id="detail-visit"></div></div>
+      </div></div><div id="detail-visit"></div>
     </dialog><script type="application/json" id="project-data">''' + payload + '</script>'
 
 
@@ -225,6 +238,7 @@ def render_homepage() -> str:
         "STRUCTURED_DATA": render_structured_data(projects),
         "CONTENT": content,
         "PROJECT_DIALOG": render_project_dialog(projects),
+        "HERO_PROJECTS": render_hero_projects(projects),
     }
     for key, value in values.items():
         template = template.replace("{{" + key + "}}", value)
@@ -252,10 +266,10 @@ def write_social_card(path: Path, projects: list[dict]) -> None:
     image = Image.new("RGB", (1200, 630), "#f5f3ee")
     draw = ImageDraw.Draw(image)
     draw.rectangle((0, 0, 78, 630), fill="#252822")
-    draw.rectangle((78, 0, 98, 630), fill="#863d38")
+    draw.rectangle((78, 0, 98, 630), fill="#e64e21")
     draw.rectangle((970, 0, 1200, 630), fill="#171816")
     draw.text((150, 115), "ZF WANG", font=load_social_font(98), fill="#171816")
-    draw.text((155, 235), "THE INDEPENDENT PRODUCT JOURNAL", font=load_social_font(25), fill="#a82f1d")
+    draw.text((155, 235), "ONE PERSON. MANY POSSIBILITIES.", font=load_social_font(25), fill="#a82f1d")
     draw.line((155, 315, 900, 315), fill="#171816", width=3)
     draw.text((155, 355), f"{total} PUBLIC RELEASES", font=load_social_font(42), fill="#171816")
     draw.text((155, 425), f"{live} LIVE  /  {offline} OFFLINE", font=load_social_font(25), fill="#66675f")

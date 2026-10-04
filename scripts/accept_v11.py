@@ -165,6 +165,32 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     page.goto(f"{origin}/?flow={width}", wait_until="domcontentloaded")
     settle(page)
     result["defaultVisible"] = page.locator("[data-ledger-id]:visible").count()
+    # All hero slices are real accessible projects; opening keeps focus reversible.
+    hero_link = page.locator('.orbit-project[data-project-open="51"]')
+    hero_link.click()
+    page.locator('#detail-image').evaluate('img => img.decode()')
+    result['heroOpen'] = page.locator('#project-dialog').is_visible() and page.locator('#detail-image').get_attribute('src') == 'assets/projects/project-51.webp'
+    page.keyboard.press('Escape')
+    result['heroRestore'] = hero_link.evaluate('el=>el===document.activeElement')
+    result['preview'] = True
+    result['scene'] = True
+    if width >= 1000:
+        page.evaluate("scrollTo({top:470,behavior:'instant'})")
+        page.wait_for_function("Number(document.querySelector('.hero-scene').style.getPropertyValue('--g')) > .99")
+        result['scene'] = page.locator('.orbit-project').evaluate_all("els=>els.every(el=>Math.abs(new DOMMatrix(getComputedStyle(el).transform).b)<.001)&&Math.max(...els.map(el=>el.getBoundingClientRect().top))-Math.min(...els.map(el=>el.getBoundingClientRect().top))<1") and abs(page.locator('.hero-scene').bounding_box()['y']) < 1
+        page.locator('[data-ledger-id="50"] .ledger-main').focus()
+        page.wait_for_function("document.querySelector('#preview-title').textContent === 'Rivals Insight'")
+        result['preview'] = page.locator('#ledger-preview').is_visible() and page.locator('.preview-open').get_attribute('data-project-open') == '50'
+        page.locator('.preview-open').click()
+        result['preview'] = result['preview'] and page.locator('#detail-title').inner_text() == 'Rivals Insight'
+        page.keyboard.press('Escape')
+        page.locator('#ledger-search').fill('not-a-real-project')
+        result['preview'] = result['preview'] and not page.locator('#ledger-preview').is_visible()
+        page.locator('#ledger-search').fill('ride a pet')
+        result['preview'] = result['preview'] and page.locator('#preview-title').inner_text() == 'Ride A Pet Field Guide'
+        page.locator('#ledger-search').fill('')
+    page.locator('[data-view="wall"]').click()
+
     page.locator('[data-ledger-filter="ai"]').click()
     result["ai"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
@@ -206,7 +232,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     }
 
     expanded_images = decode_images(page)
-    result["expandedImages"] = len(expanded_images) == 52 and all(
+    result["expandedImages"] = len(expanded_images) == 58 and all(
         image["complete"] and image["natural"][0] > 0 and not image["decodeError"]
         for image in expanded_images
     )
@@ -298,6 +324,9 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "focused": page.locator("#detail-close").evaluate("el=>el===document.activeElement"),
         "fits": dialog.evaluate("el=>{const r=el.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.top>=0&&r.bottom<=innerHeight+1&&el.scrollWidth<=el.clientWidth}"),
     }
+    visit_box = page.locator('#detail-visit a').bounding_box()
+    dialog_box = dialog.bounding_box()
+    result['detailActionFits'] = visit_box['y'] >= dialog_box['y'] and visit_box['y'] + visit_box['height'] <= dialog_box['y'] + dialog_box['height'] + 1
     page.keyboard.press("Shift+Tab")
     result["focusTrap"] = page.evaluate("document.querySelector('#project-dialog').contains(document.activeElement)")
     if width == 390:
@@ -347,6 +376,11 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
         failures.append(f"bad images {bad_images}")
     if task:
         expected = {
+            "detailActionFits": task["detailActionFits"],
+            "heroOpen": task["heroOpen"],
+            "heroRestore": task["heroRestore"],
+            "preview": task["preview"],
+            "scene": task["scene"],
             "period": task["period"] == ["51", "50"],
             "periodEmpty": task["periodEmpty"],
             "year": task["year"] == 51,
@@ -556,7 +590,7 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
 
         for reduced in (False, True):
             context = browser.new_context(
-                viewport={"width": 390, "height": 844},
+                viewport={"width": 1440, "height": 900},
                 reduced_motion="reduce" if reduced else "no-preference",
             )
             context.add_init_script(
@@ -568,6 +602,13 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
             page = context.new_page()
             page.goto(f"{origin}/?motion={reduced}", wait_until="domcontentloaded")
             settle(page)
+            page.evaluate("scrollTo({top:470,behavior:'instant'})")
+            settle(page)
+            progress = page.locator('.hero-scene').evaluate("el=>Number(el.style.getPropertyValue('--g'))")
+            if reduced and progress != 0:
+                raise AssertionError('reduced motion must keep the spatial scene static')
+            if not reduced and progress < .99:
+                raise AssertionError('scroll must arrange the project scene')
             baseline = page.evaluate("window.__qaRaf")
             page.wait_for_timeout(1200)
             after = page.evaluate("window.__qaRaf")
