@@ -848,5 +848,22 @@
     "sha256": "16abc071fce2c80d4c6ae055c760095860601aa62d935c4a1c25288523c43157",
     "resolved_url": "https://rideapet.space/",
     "source_sha256": "c91531934d9b044dae1724c80d05c7b8d65947fe4ddd369d8a765bfc23ebfda0"
+  },
+  {
+    "id": 52,
+    "url": "https://lagoslife.space/",
+    "image": "assets/projects/project-52.webp",
+    "captured_at": "2026-10-06",
+    "viewport": [
+      1280,
+      720
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "d9933addffea2e80aa17abea93b35d492258ed4d4a999f5d095e095e09ba9423",
+    "resolved_url": "https://lagoslife.space/",
+    "source_sha256": "e803b5a816d32c7d380d4a9a6a6ada78c9925a1e51d169ae29fb41ca5a0af392"
   }
 ]
