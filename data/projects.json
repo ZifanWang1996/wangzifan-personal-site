@@ -814,5 +814,21 @@
     "image": "assets/projects/project-51.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 52,
+    "name": "Lagos Life Guide & Planner",
+    "url": "https://lagoslife.space/",
+    "category": "game",
+    "subtitle": "《Lagos Life》多语言玩家指南与预算规划工具",
+    "summary": "面向《Lagos Life》浏览器生活模拟游戏玩家的独立指南，整合新手路线、职业晋升、住房与地点资料，并提供每周虚拟收支估算和方案对比工具。",
+    "problem": "新玩家需要同时理解工作、技能、租金与生活开支，分散的规则和参考数据让每周行动与预算难以安排。",
+    "solution": "以新手第一周为入口串联职业、住房与地图攻略，提供 14 种语言入口，并让玩家使用自己的游戏内数值估算周末余额、固定账单缺口和不同班次收入方案。",
+    "evidence": "2026-10-06 浏览器实测正式站可访问；首页可见 14 种语言入口、职业与住房攻略、地点与开放时间资料。每周预算页提供现金、班次、租金、税额及额外收入等输入和方案对比，明确金额为游戏内虚拟货币、空白税额仍属未知；页脚注明为独立非官方指南。",
+    "launched_at": "2026-10-06",
+    "status": "live",
+    "image": "assets/projects/project-52.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
