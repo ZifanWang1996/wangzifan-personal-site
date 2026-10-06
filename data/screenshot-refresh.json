@@ -865,5 +865,22 @@
     "sha256": "d9933addffea2e80aa17abea93b35d492258ed4d4a999f5d095e095e09ba9423",
     "resolved_url": "https://lagoslife.space/",
     "source_sha256": "e803b5a816d32c7d380d4a9a6a6ada78c9925a1e51d169ae29fb41ca5a0af392"
+  },
+  {
+    "id": 53,
+    "url": "https://prizeeye.site/",
+    "image": "assets/projects/project-53.webp",
+    "captured_at": "2026-10-06",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "97f8024cb22b031d9ee935c31fcd0d400fc84771dba468a7016b6f8f2386b8c4",
+    "resolved_url": "https://prizeeye.site/zh-hans/",
+    "source_sha256": "b481cd267902ab1cffa0ebfa8f00b814518d482d3ff1baaf018c05fe990997c3"
   }
 ]

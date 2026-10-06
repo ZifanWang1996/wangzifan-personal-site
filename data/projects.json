@@ -830,5 +830,21 @@
     "image": "assets/projects/project-52.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 53,
+    "name": "Prize Observer",
+    "url": "https://prizeeye.site/",
+    "category": "tool",
+    "subtitle": "诺贝尔奖来源对照、公布日程与结果解读",
+    "summary": "独立的多语言诺贝尔奖观察站，围绕六大奖项整理公布日程、公开预测来源、结果解读与人物背景，帮助读者区分官方信息、专家推荐和社区判断。",
+    "problem": "诺贝尔奖信息分散在官方发布、研究机构、媒体和预测社区中，不同来源的含义和资料日期容易混淆。",
+    "solution": "把六大奖项入口、公布倒计时、人物资料与历年档案组织在同一站点，分别说明各类公开来源和对照方法，并提供 16 种语言入口。",
+    "evidence": "2026-10-06 实测正式站及简体中文内容页可访问；根页面提供 16 种语言入口，中文首页可见六大奖项、当地时区公布日程与倒计时、人物背景、历年档案及来源对照导航。页面注明为独立观察站，并说明专家推荐和市场挂牌不代表官方确认的提名。",
+    "launched_at": "2026-10-06",
+    "status": "live",
+    "image": "assets/projects/project-53.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
