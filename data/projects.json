@@ -846,5 +846,21 @@
     "image": "assets/projects/project-53.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 54,
+    "name": "Week / Paper",
+    "url": "https://printablecalendar.site/",
+    "category": "tool",
+    "subtitle": "可打印日历与日、周、月、年计划生成器",
+    "summary": "免费日历与计划页制作工具，支持日、周、月、年四种格式，自定义日期、纸张、方向与装订留白，在浏览器中预览并导出适合打印的 PDF。",
+    "problem": "现成日历往往无法同时满足日期范围、纸张尺寸、书写空间和装订需求，使用者还要反复调整打印比例与页边距。",
+    "solution": "把版式设置、真实纸张预览和 PDF 导出放在同一工作台，提供学习、工作与家庭模板，以及浏览器本地保存、设置分享和 JSON 备份。",
+    "evidence": "2026-10-07 实测正式首页可访问；页面提供英语与简体中文入口，日、周、月、年格式，A4 与 Letter、周起始日、横竖方向和装订边距设置，显示预览页、日期范围与页数，并提供 PDF 下载及 PNG 预览入口。模板涵盖学习周计划、工作时间块和家庭月历；页面说明无需账号，设置保存在本设备。",
+    "launched_at": "2026-10-07",
+    "status": "live",
+    "image": "assets/projects/project-54.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]

@@ -882,5 +882,22 @@
     "sha256": "97f8024cb22b031d9ee935c31fcd0d400fc84771dba468a7016b6f8f2386b8c4",
     "resolved_url": "https://prizeeye.site/zh-hans/",
     "source_sha256": "b481cd267902ab1cffa0ebfa8f00b814518d482d3ff1baaf018c05fe990997c3"
+  },
+  {
+    "id": 54,
+    "url": "https://printablecalendar.site/",
+    "image": "assets/projects/project-54.webp",
+    "captured_at": "2026-10-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "ca9bc3564abe0c74fed56880bc356fc0f6c3188ad1130310eb6f336fe3120b87",
+    "resolved_url": "https://printablecalendar.site/",
+    "source_sha256": "ecce55354ffeaeb5220aab991410a062d5178839a152a8c21401d219368d000d"
   }
 ]

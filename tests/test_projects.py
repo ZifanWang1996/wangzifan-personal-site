@@ -92,7 +92,7 @@ def test_tracked_public_candidate_matches_deterministic_builder(tmp_path):
 def test_registry_assets_are_complete_lightweight_and_fixed_size():
     projects = json.loads(REGISTRY.read_text(encoding="utf-8"))
     sources = [project["image"] for project in projects]
-    assert len(sources) == len(set(sources)) == 53
+    assert len(sources) == len(set(sources)) == 54
     for source in sources:
         image_path = ROOT / source
         assert image_path.is_file(), source
@@ -248,12 +248,12 @@ def test_builder_escapes_adversarial_registry_values_and_json_ld():
 
 def test_homepage_truth_and_link_security_match_registry():
     html = SITE.read_text(encoding="utf-8")
-    assert html.count('data-ledger-id="') == 53
-    assert html.count('data-ledger-status="live"') == 52
+    assert html.count('data-ledger-id="') == 54
+    assert html.count('data-ledger-status="live"') == 53
     assert html.count('data-ledger-status="offline"') == 1
     assert 'data-ledger-id="24"' in html and "Polski Piłkarz Simulator" in html
     # The archive and six real hero slices have safe outbound links.
-    expected_safe_external_links = 58
+    expected_safe_external_links = 59
     parser = AuditParser()
     parser.feed(html)
     assert len(parser.blank_links) == expected_safe_external_links
@@ -343,7 +343,7 @@ def test_workflow_builds_and_tests_before_exact_allowlist_upload():
         assert public_path in manifest
     assert 'glob("*.webp")' not in manifest
     assert 'f"assets/projects/project-{project_id:02d}.webp"' in manifest
-    assert "for project_id in range(1, 54)" in manifest
+    assert "for project_id in range(1, 55)" in manifest
     assert "PUBLIC_PATHS = STATIC_PUBLIC_PATHS + PROJECT_PUBLIC_PATHS" in manifest
     assert "if output.exists()" in manifest
     assert "if actual != expected_relative" in manifest
@@ -381,12 +381,12 @@ def test_journal_references_existing_projects_and_has_editable_content():
 def test_current_screenshot_manifest_matches_published_images():
     records = json.loads((ROOT / 'data' / 'screenshot-refresh.json').read_text())
     projects = {p['id']: p for p in json.loads(REGISTRY.read_text())}
-    assert len({r['id'] for r in records}) == len(records) == 52
+    assert len({r['id'] for r in records}) == len(records) == 53
     for record in records:
         project = projects[record['id']]
         assert record['image'] == project['image']
         assert record['url'] == project['url']
         assert record['resolved_url'].startswith('https://')
-        assert record['captured_at'] == ('2026-10-06' if record['id'] >= 52 else '2026-10-03')
+        assert record['captured_at'] == ('2026-10-07' if record['id'] == 54 else '2026-10-06' if record['id'] >= 52 else '2026-10-03')
         assert record['dimensions'] == [800, 500]
         assert hashlib.sha256((ROOT / record['image']).read_bytes()).hexdigest() == record['sha256']

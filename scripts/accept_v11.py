@@ -202,7 +202,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("prize observer")
+    page.locator("#ledger-search").fill("week / paper")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -232,7 +232,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     }
 
     expanded_images = decode_images(page)
-    result["expandedImages"] = len(expanded_images) == 60 and all(
+    result["expandedImages"] = len(expanded_images) == 61 and all(
         image["complete"] and image["natural"][0] > 0 and not image["decodeError"]
         for image in expanded_images
     )
@@ -308,7 +308,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     result["year"] = page.locator("[data-ledger-id]:visible").count()
     page.locator("#ledger-period").select_option("all")
 
-    latest_link = page.locator('[data-ledger-id="53"] a.ledger-main')
+    latest_link = page.locator('[data-ledger-id="54"] a.ledger-main')
     result["latestCTA"] = {
         "href": latest_link.get_attribute("href"),
         "target": latest_link.get_attribute("target"),
@@ -330,7 +330,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     page.keyboard.press("Shift+Tab")
     result["focusTrap"] = page.evaluate("document.querySelector('#project-dialog').contains(document.activeElement)")
     if width == 390:
-        context.route("https://prizeeye.site/**", lambda route: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Prize Observer</title>"))
+        context.route("https://printablecalendar.site/**", lambda route: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Week / Paper</title>"))
         with context.expect_page() as popup_info:
             page.locator("#detail-visit a").tap()
         popup = popup_info.value
@@ -381,30 +381,30 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "heroRestore": task["heroRestore"],
             "preview": task["preview"],
             "scene": task["scene"],
-            "period": task["period"] == ["53", "52", "51", "50"],
+            "period": task["period"] == ["54", "53", "52", "51", "50"],
             "periodEmpty": task["periodEmpty"],
-            "year": task["year"] == 53,
-            "dialog": task["dialog"] == {"open": True, "title": "Prize Observer", "summary": True, "focused": True, "fits": True},
+            "year": task["year"] == 54,
+            "dialog": task["dialog"] == {"open": True, "title": "Week / Paper", "summary": True, "focused": True, "fits": True},
             "focusTrap": task["focusTrap"],
             "dialogDismiss": task["dialogDismiss"],
             "offlineDialog": task["offlineDialog"],
             "related": task["related"],
             "defaultVisible": task["defaultVisible"] == 9,
             "expandedImages": task["expandedImages"],
-            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 53
+            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 54
             and not task["listView"]["geometry"]["overflow"] and not task["listView"]["geometry"]["ownerCrossings"],
             "wallView": task["wallView"],
-            "ai": task["ai"] == {"visible": 6, "count": "6 / 53"},
-            "game": task["game"] == {"visible": 27, "count": "27 / 53"},
-            "search": task["search"] == {"visible": 1, "ids": ["53"]},
+            "ai": task["ai"] == {"visible": 6, "count": "6 / 54"},
+            "game": task["game"] == {"visible": 27, "count": "27 / 54"},
+            "search": task["search"] == {"visible": 1, "ids": ["54"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 53",
+                "count": "0 / 54",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 53, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 54, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -417,10 +417,10 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "fragment": task["fragment"]["hash"] == "#ledger"
             and task["fragment"]["intersects"],
             "latestCTA": task["latestCTA"] == {
-                "href": "https://prizeeye.site/",
+                "href": "https://printablecalendar.site/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://prizeeye.site/" if width == 390 else None,
+                "tapOpened": "https://printablecalendar.site/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -654,8 +654,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 0,
-        "ledger": 53,
-        "visibleLedger": 53,
+        "ledger": 54,
+        "visibleLedger": 54,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
