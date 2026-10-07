@@ -1,5 +1,12 @@
 # Project Control Board
 
+## #54 Week / Paper（2026-10-07）
+
+- 新增 printablecalendar.site 的可打印日历与计划页制作工具，归入实用工具；收录日期采用本轮核验日期。
+- 核对正式首页的日、周、月、年格式、A4／Letter 纸张、日期与版式设置、纸张预览、PDF 下载和 PNG 预览入口，以及学习、工作和家庭模板、本地保存与设置备份说明。
+- 缩略图取自正式首页，1440×900 真实采集并输出 800×500 WebP，来源地址与哈希同步入库。
+- 共 54 条作品（53 在线、1 离线），实用工具 13 条，公开文件 62 个。
+
 ## #53 Prize Observer（2026-10-06）
 
 - 新增 prizeeye.site 的多语言诺贝尔奖来源对照与结果解读站，归入实用工具；收录日期采用本轮核验日期。
@@ -452,7 +459,7 @@
    - 交流方向：OPC 创业、AI 产品、出海增长、网站工具与联合实验。
    - 公开联系渠道：微信号 `wang1227928718`。
 
-## 产品索引（53）
+## 产品索引（54）
 
 | # | 产品 | 分类 | 地址 |
 |---:|---|---|---|
@@ -509,11 +516,12 @@
 | 51 | Ride A Pet Field Guide | 游戏与内容 | https://rideapet.space/ |
 | 52 | Lagos Life Guide & Planner | 游戏与内容 | https://lagoslife.space/ |
 | 53 | Prize Observer | 实用工具 | https://prizeeye.site/ |
+| 54 | Week / Paper | 实用工具 | https://printablecalendar.site/ |
 
 ## 发布产物边界
 
 - `scripts/prepare_public_artifact.py` 只向全新 `_site` 目录复制 strict allowlist，并拒绝复用已有目录与 symlink 来源。
-- 当前候选 allowlist 精确为 61 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 53 张编号项目 WebP。
+- 当前候选 allowlist 精确为 62 个文件：`index.html`、`privacy.html`、`favicon.svg`、共享 CSS/JS、Archivo 字体、OG 图、微信二维码和 54 张编号项目 WebP。
 - `upload-pages-artifact` 的路径固定为 `_site`，不得改回仓库根目录；源码、测试、数据、控制文档、Git 元数据、`.hermes/`、`_qa/` 不得进入 Pages artifact。
 - `_site/` 与 `_qa/` 均由 `.gitignore` 排除；候选证据不进入提交。
 - 页面仅加载已批准并在隐私页披露的 Plausible 统计脚本；全部新窗口外链使用 `noopener noreferrer`。
@@ -522,10 +530,10 @@
 
 - 真实 CSS 视口 `1440×900`、`1024×768`、`768×1024`、`390×844`、`320×568` 与断点边界 `759/760/761×800` 均无页面级横向溢出、owner crossing、控制台错误、页面异常、同源失败请求或坏响应。
 - 320px 首屏主 CTA 完整可见；验收覆盖的按钮与表单控件高度不低于 44px，复制失败后出现的手动输入框也在 1440/390/320 三档实测为 44px；首页与隐私页 skip link 均将焦点送到对应 main。
-- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 53 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，Prize Observer 搜索唯一命中 #53。
-- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，53 条档案全部可读。
+- 默认档案展示 9 条；类别、关键词、在线/离线组合筛选与 54 条展开状态均纳入验收；离线筛选唯一命中 Polski Piłkarz Simulator，Week / Paper 搜索唯一命中 #54。
+- 搜索零结果会明确显示空状态；微信复制覆盖 Clipboard API 成功与 `execCommand` 失败后的明文选择降级；无 JavaScript 时筛选/展开/复制按钮不出现，54 条档案全部可读。
 - 正常动画与 `prefers-reduced-motion` 均无持续帧变化；默认视口内与全部展开后的作品图片均完成解码。
-- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-53.webp`，不接受任意 53 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
+- 验收脚本会独立拒绝 artifact 后插文件或 symlink；项目图片 allowlist 固定为 `project-01.webp` 至 `project-54.webp`，不接受任意 54 个 WebP；所有 `target="_blank"` 逐链接验证 `noopener noreferrer`，并用恶意 registry payload 回归 HTML/JSON-LD escaping。
 - V11.10 生产证据绑定 PR run `34706699305`、production run `34706815685`、deployment `6412132521`、Pages artifact `10302216049`、browser evidence artifact `10301767145` 与公开 artifact SHA-256 `aa8967327f5708913baf0315b38e00a2fed940ccc2220b6153a067f2c0d6c483`（50 文件）。
 
 ## 隐私与内容边界
