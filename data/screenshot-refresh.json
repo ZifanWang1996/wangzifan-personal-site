@@ -899,5 +899,22 @@
     "sha256": "ca9bc3564abe0c74fed56880bc356fc0f6c3188ad1130310eb6f336fe3120b87",
     "resolved_url": "https://printablecalendar.site/",
     "source_sha256": "ecce55354ffeaeb5220aab991410a062d5178839a152a8c21401d219368d000d"
+  },
+  {
+    "id": 55,
+    "url": "https://1in8b.space/",
+    "image": "assets/projects/project-55.webp",
+    "captured_at": "2026-10-23",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "15e12c1f3a7d193d2a1b377c2176581f23ee735d89f30c5b3b0559b1c59360cf",
+    "resolved_url": "https://1in8b.space/",
+    "source_sha256": "59ec254a8cf31c17276051800e26faa8a75a64fe83aad5b1b042eebb76bc2695"
   }
 ]

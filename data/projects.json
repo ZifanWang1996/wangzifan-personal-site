@@ -862,5 +862,21 @@
     "image": "assets/projects/project-54.webp",
     "featured": false,
     "featured_order": null
+  },
+  {
+    "id": 55,
+    "name": "Forked Lives · 1 in 8 Billion",
+    "url": "https://1in8b.space/",
+    "category": "game",
+    "subtitle": "从随机出生到人生分岔的浏览器模拟游戏",
+    "summary": "免费的多语言人生叙事模拟游戏，从 172 个国家与地区中抽取出生地，在成长、学习、工作与关系中做出选择，回到转折点比较不同人生，并保存属于自己的生命日志。",
+    "problem": "人生模拟中的起点、环境与个人选择相互影响，玩家需要既能体验随机际遇，又能回看关键决定、比较分岔和保留经历的游戏。",
+    "solution": "把随机出生、自动推进与关键选择结合起来，提供人生分支、日志和纪念卡，以及浏览器本地存档与导出备份，并以公开参考数据说明出生地抽取方式。",
+    "evidence": "2026-10-23 实测正式首页可访问；页面提供 15 种语言入口，标明 beta、172 个国家与地区和 15 岁以上，展示按出生统计归一化的出生地比例、历史人生入口、分支比较和本地存档说明。页面明确其为独立叙事模拟，国家数据为近似值，简化模型不预测任何人的真实人生。",
+    "launched_at": "2026-10-23",
+    "status": "live",
+    "image": "assets/projects/project-55.webp",
+    "featured": false,
+    "featured_order": null
   }
 ]
