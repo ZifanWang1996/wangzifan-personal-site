@@ -37,8 +37,8 @@ def latest_live_project(projects: list[dict]) -> dict:
 
 
 def render_hero_projects(projects: list[dict]) -> str:
-    # Real project slices spanning games, AI, tools and creative experiments.
-    ids = [51, 34, 49, 25, 20, 17]
+    # Keep the first screen in sync with the newest live portfolio entries.
+    ids = [p["id"] for p in sorted(projects, key=lambda p: p["id"], reverse=True) if p["status"] == "live"][:6]
     by_id = {p["id"]: p for p in projects}
     positions = [(46, 2, -9, 23), (74, 22, 8, 25), (52, 49, -6, 25), (77, 73, 6, 20), (29, 77, 4, 20), (5, 81, -5, 18)]
     cards = []

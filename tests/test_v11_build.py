@@ -238,6 +238,8 @@ def test_build_renders_one_complete_visual_product_wall(tmp_path):
     output = tmp_path / "index.html"
     subprocess.run([sys.executable, str(ROOT / "scripts" / "build_v11.py"), "--output", str(output)], cwd=ROOT, check=True)
     html = output.read_text(encoding="utf-8")
+    hero_ids = re.findall(r'class="orbit-project orbit-\d+" data-project-open="(\d+)"', html)
+    assert hero_ids == ["76", "75", "74", "73", "72", "71"]
     assert 'data-latest-card' not in html
     assert 'data-featured-card' not in html
     assert html.count('class="project-window"') == 76
