@@ -166,10 +166,10 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     settle(page)
     result["defaultVisible"] = page.locator("[data-ledger-id]:visible").count()
     # All hero slices are real accessible projects; opening keeps focus reversible.
-    hero_link = page.locator('.orbit-project[data-project-open="51"]')
+    hero_link = page.locator('.orbit-project[data-project-open="76"]')
     hero_link.click()
     page.locator('#detail-image').evaluate('img => img.decode()')
-    result['heroOpen'] = page.locator('#project-dialog').is_visible() and page.locator('#detail-image').get_attribute('src') == 'assets/projects/project-51.webp'
+    result['heroOpen'] = page.locator('#project-dialog').is_visible() and page.locator('#detail-image').get_attribute('src') == 'assets/projects/project-76.webp'
     page.keyboard.press('Escape')
     result['heroRestore'] = hero_link.evaluate('el=>el===document.activeElement')
     result['preview'] = True
