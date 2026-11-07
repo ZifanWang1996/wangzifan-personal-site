@@ -902,8 +902,229 @@
   },
   {
     "id": 55,
-    "url": "https://1in8b.space/",
+    "url": "https://hotellobbyai.space/",
     "image": "assets/projects/project-55.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "5e683aa37113a0450fb074835a7c2681c1bf9276320c99ef79350ffc9198cb07",
+    "resolved_url": "https://hotellobbyai.space/",
+    "source_sha256": "d1198183a174bc1df1490329629eaa5ca0f02076a96c1114d0a9c3fa877a10e9"
+  },
+  {
+    "id": 56,
+    "url": "https://loottoforge.site/",
+    "image": "assets/projects/project-56.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "c1ca2471d3302a588fa9198a6cb38390c6ebb8d5477129afd2576dfc1d6cf24b",
+    "resolved_url": "https://loottoforge.site/",
+    "source_sha256": "d4a57fa67790d37cb2e04b28a1392dd40a5a278995efe8eb4671de3dfe88710c"
+  },
+  {
+    "id": 57,
+    "url": "https://dragonkind.space/",
+    "image": "assets/projects/project-57.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "60e1ea0feb4cd67025bffac0bb760843e13fea2553a048cf2d88520e173a2fcd",
+    "resolved_url": "https://dragonkind.space/",
+    "source_sha256": "8114d5f3b2d9bb4a9cbce988dbaae2d8521a7cb8866b481eb1e56d60a7d2d17f"
+  },
+  {
+    "id": 58,
+    "url": "https://raindanceai.space/",
+    "image": "assets/projects/project-58.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "c0d9e87408e1b2f70a78dff1ea32872b7a6d479317f351de55624053f4db5bcc",
+    "resolved_url": "https://raindanceai.space/",
+    "source_sha256": "66f4a1112c5e81901d1ea73e66b0ecf4d4d3edc9bb26c7ae6e35fd6e08f1eb62"
+  },
+  {
+    "id": 59,
+    "url": "https://radiantoptimizer.site/",
+    "image": "assets/projects/project-59.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "4521eb353ae996e7304c56205d806f425deaa2e215567dda5300b2e10c83d43f",
+    "resolved_url": "https://radiantoptimizer.site/",
+    "source_sha256": "bba3a091e2bf617afe0eec13c85424582443ed2cbb9adef6153f2eb925b8e67d"
+  },
+  {
+    "id": 60,
+    "url": "https://bulin47.space/",
+    "image": "assets/projects/project-60.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "1d8e28bf4771e6e9e56ec4fcaf042be63e7a6dc4ee8ff9bdae8a7dc4e5c49051",
+    "resolved_url": "https://bulin47.space/",
+    "source_sha256": "c6d399b894fb1a7e42980453579b644bf1922aaf61b6d4f27930641e331a4787"
+  },
+  {
+    "id": 61,
+    "url": "https://aizombie.site/",
+    "image": "assets/projects/project-61.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "a384d9be0833019c5392202269a8d837f0a952bfbe073c94ba64ada4d31b7174",
+    "resolved_url": "https://aizombie.site/",
+    "source_sha256": "6ffd342406f7a42e17695285be113f7d7e453d3a24268d46bdfbcc5d3cb6cfb4"
+  },
+  {
+    "id": 62,
+    "url": "https://roadsterai.site/",
+    "image": "assets/projects/project-62.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "437efedae9fe3e94b1d663e37432ef82364fcedda2deb49c99e134537e0a7081",
+    "resolved_url": "https://roadsterai.site/",
+    "source_sha256": "bb3f596cb1dade8a265c47f0bad5cb6e5bcc5c713315186cd0dc8e7d66e7abac"
+  },
+  {
+    "id": 63,
+    "url": "https://catclappingai.app/",
+    "image": "assets/projects/project-63.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "0fb5f3be758314de96b6aca71b855ee9e3cfbf3526dc7c7ba703875bb8d804c5",
+    "resolved_url": "https://catclappingai.app/",
+    "source_sha256": "0230b3df43fdafd82ca75ba493aa2b1ac955bee285a91a1c867810e19fc665cf"
+  },
+  {
+    "id": 64,
+    "url": "https://ozilgoalai.space/",
+    "image": "assets/projects/project-64.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "a661ede90d59a8fe77686f873b098bfc83b7d9019198531785e41b1ca156aedd",
+    "resolved_url": "https://ozilgoalai.space/",
+    "source_sha256": "e54e73d8fbbf280a206d2b9ec38852ad15303a4c32758ad4954a7d9e25946cd6"
+  },
+  {
+    "id": 65,
+    "url": "https://imagetextkit.pics/",
+    "image": "assets/projects/project-65.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "0d8c90989faaf2c8fdb2647e29c6fd6efaf37d1c6fe66205eb4b0d67efbb0661",
+    "resolved_url": "https://imagetextkit.pics/",
+    "source_sha256": "74c014479ab213c3748b12c3cc179477270eea94aaf9821abdd178e07fcfce01"
+  },
+  {
+    "id": 66,
+    "url": "https://hittheroaddudeai.site/",
+    "image": "assets/projects/project-66.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "4166f2e77c2aacf61552fb4302613edb686cb5994815d5c70f2b8e7d7fe15ccf",
+    "resolved_url": "https://hittheroaddudeai.site/",
+    "source_sha256": "99be601d33c76bbc8239ec26d74b1a1d6db5c1da747f12af50bc17c37d93002e"
+  },
+  {
+    "id": 67,
+    "url": "https://flyingcarai.site/",
+    "image": "assets/projects/project-67.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "d719cb0901ceae2b41cbeb137d7a5df4d6ece4bc454c66cbaf3b3d7e5f67d69e",
+    "resolved_url": "https://flyingcarai.site/",
+    "source_sha256": "a1941f372550ba7099fe6bab04c251cfb6389668701eff57ececce2a57a24a77"
+  },
+  {
+    "id": 68,
+    "url": "https://1in8b.space/",
+    "image": "assets/projects/project-68.webp",
     "captured_at": "2026-10-23",
     "viewport": [
       1440,
@@ -916,5 +1137,141 @@
     "sha256": "15e12c1f3a7d193d2a1b377c2176581f23ee735d89f30c5b3b0559b1c59360cf",
     "resolved_url": "https://1in8b.space/",
     "source_sha256": "59ec254a8cf31c17276051800e26faa8a75a64fe83aad5b1b042eebb76bc2695"
+  },
+  {
+    "id": 69,
+    "url": "https://airapvideo.world/",
+    "image": "assets/projects/project-69.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "368eb8912dd2eb8e5ee1f13e14f58a4a4fc1c95de3bc536990fececcec71e624",
+    "resolved_url": "https://airapvideo.world/",
+    "source_sha256": "8cd4f3251bc584e287f89daa2ae2f1dbe532b37ad083c3b97cc638f3d9bf9575"
+  },
+  {
+    "id": 70,
+    "url": "https://aisongremix.com/",
+    "image": "assets/projects/project-70.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "f9e7e1fbd69bd625373cb2684b19d8eac9b4fe2a0cdeb8f0c25e6511b971e682",
+    "resolved_url": "https://aisongremix.com/",
+    "source_sha256": "2f41c22d5b6cd618381afdd99457e9ff32d84461a15a879d907fa374fed80a0e"
+  },
+  {
+    "id": 71,
+    "url": "https://unpixelateimage.net/",
+    "image": "assets/projects/project-71.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "f4821933082038c0a01bd82f89f9bea11a6fb2418d5cacf33828ef7a75bf4cc0",
+    "resolved_url": "https://unpixelateimage.net/",
+    "source_sha256": "f420b3fb0fc380829d1eff3c46f571ca4c8c94195693c542c601d845daa3188b"
+  },
+  {
+    "id": 72,
+    "url": "https://sansatemple.app/",
+    "image": "assets/projects/project-72.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "2aca2b71d70d3ff8d589fcdd0822c1c27a84311ecd35becfaaa571c13f778a44",
+    "resolved_url": "https://sansatemple.app/?room=01&region=apac",
+    "source_sha256": "709c295f26a31cacb5281f62d18cd5000a6680c9a636c00df3ca9831829a6b46"
+  },
+  {
+    "id": 73,
+    "url": "https://dogbartenderai.com/",
+    "image": "assets/projects/project-73.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "84c9332e2ce4a5cff62ea4acb3e1a80503259c547cf8b07f4947ecc7b3c8d578",
+    "resolved_url": "https://dogbartenderai.com/",
+    "source_sha256": "d74ad93ec955791430c066189b3bca5508ffece74a4108fa56372d6488020791"
+  },
+  {
+    "id": 74,
+    "url": "https://bgrm.video/",
+    "image": "assets/projects/project-74.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "88b81d5e71a35a02e92279cad68d6103f1e79ba52023498a41157c9e17f39ef8",
+    "resolved_url": "https://bgrm.video/en",
+    "source_sha256": "fa6336c10570904113dc0ec2433a5d42c15edeed56bf70106b0620284f99091f"
+  },
+  {
+    "id": 75,
+    "url": "https://58thfloor.space/",
+    "image": "assets/projects/project-75.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "8dcd08c97154a188ef688c327082ca397e22c1405143d60d16d6a738113a0430",
+    "resolved_url": "https://58thfloor.space/",
+    "source_sha256": "5dbd7e178a8b173e55db02984d7ec5547df5f8c5d94cf2a621722019cc15e8b4"
+  },
+  {
+    "id": 76,
+    "url": "https://24kmagicai.space/",
+    "image": "assets/projects/project-76.webp",
+    "captured_at": "2026-11-07",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dimensions": [
+      800,
+      500
+    ],
+    "sha256": "b8494979926e7f8c31e82365350901787328c50bc9b94d91ba2f1308a58b5300",
+    "resolved_url": "https://24kmagicai.space/",
+    "source_sha256": "845f4a9d481c94cc6a65ad5dabad8aa096432224d2f29179faf58d94aaaa90b9"
   }
 ]
