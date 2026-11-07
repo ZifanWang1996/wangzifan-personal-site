@@ -178,11 +178,11 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         page.evaluate("scrollTo({top:470,behavior:'instant'})")
         page.wait_for_function("Number(document.querySelector('.hero-scene').style.getPropertyValue('--g')) > .99")
         result['scene'] = page.locator('.orbit-project').evaluate_all("els=>els.every(el=>Math.abs(new DOMMatrix(getComputedStyle(el).transform).b)<.001)&&Math.max(...els.map(el=>el.getBoundingClientRect().top))-Math.min(...els.map(el=>el.getBoundingClientRect().top))<1") and abs(page.locator('.hero-scene').bounding_box()['y']) < 1
-        page.locator('[data-ledger-id="50"] .ledger-main').focus()
-        page.wait_for_function("document.querySelector('#preview-title').textContent === 'Rivals Insight'")
-        result['preview'] = page.locator('#ledger-preview').is_visible() and page.locator('.preview-open').get_attribute('data-project-open') == '50'
+        page.locator('[data-ledger-id="75"] .ledger-main').focus()
+        page.wait_for_function("document.querySelector('#preview-title').textContent === 'Veyduo'")
+        result['preview'] = page.locator('#ledger-preview').is_visible() and page.locator('.preview-open').get_attribute('data-project-open') == '75'
         page.locator('.preview-open').click()
-        result['preview'] = result['preview'] and page.locator('#detail-title').inner_text() == 'Rivals Insight'
+        result['preview'] = result['preview'] and page.locator('#detail-title').inner_text() == 'Veyduo'
         page.keyboard.press('Escape')
         page.locator('#ledger-search').fill('not-a-real-project')
         result['preview'] = result['preview'] and not page.locator('#ledger-preview').is_visible()
@@ -202,7 +202,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
         "count": page.locator("#ledger-count").inner_text(),
     }
     page.locator('[data-ledger-filter="all"]').click()
-    page.locator("#ledger-search").fill("forked lives")
+    page.locator("#ledger-search").fill("deckmovo")
     result["search"] = {
         "visible": page.locator("[data-ledger-id]:visible").count(),
         "ids": page.locator("[data-ledger-id]:visible").evaluate_all(
@@ -232,7 +232,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     }
 
     expanded_images = decode_images(page)
-    result["expandedImages"] = len(expanded_images) == 62 and all(
+    result["expandedImages"] = len(expanded_images) == 83 and all(
         image["complete"] and image["natural"][0] > 0 and not image["decodeError"]
         for image in expanded_images
     )
@@ -308,7 +308,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     result["year"] = page.locator("[data-ledger-id]:visible").count()
     page.locator("#ledger-period").select_option("all")
 
-    latest_link = page.locator('[data-ledger-id="55"] a.ledger-main')
+    latest_link = page.locator('[data-ledger-id="76"] a.ledger-main')
     result["latestCTA"] = {
         "href": latest_link.get_attribute("href"),
         "target": latest_link.get_attribute("target"),
@@ -330,7 +330,7 @@ def interactions(page, context, origin: str, width: int, height: int) -> dict:
     page.keyboard.press("Shift+Tab")
     result["focusTrap"] = page.evaluate("document.querySelector('#project-dialog').contains(document.activeElement)")
     if width == 390:
-        context.route("https://1in8b.space/**", lambda route: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Forked Lives · 1 in 8 Billion</title>"))
+        context.route("https://24kmagicai.space/**", lambda route: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Deckmovo</title>"))
         with context.expect_page() as popup_info:
             page.locator("#detail-visit a").tap()
         popup = popup_info.value
@@ -381,30 +381,30 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "heroRestore": task["heroRestore"],
             "preview": task["preview"],
             "scene": task["scene"],
-            "period": task["period"] == ["55", "54", "53", "52", "51", "50"],
+            "period": task["period"] == ["68", "54", "53", "52", "51", "50"],
             "periodEmpty": task["periodEmpty"],
-            "year": task["year"] == 55,
-            "dialog": task["dialog"] == {"open": True, "title": "Forked Lives · 1 in 8 Billion", "summary": True, "focused": True, "fits": True},
+            "year": task["year"] == 76,
+            "dialog": task["dialog"] == {"open": True, "title": "Deckmovo", "summary": True, "focused": True, "fits": True},
             "focusTrap": task["focusTrap"],
             "dialogDismiss": task["dialogDismiss"],
             "offlineDialog": task["offlineDialog"],
             "related": task["related"],
             "defaultVisible": task["defaultVisible"] == 9,
             "expandedImages": task["expandedImages"],
-            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 55
+            "listView": task["listView"]["enabled"] and task["listView"]["visible"] == 76
             and not task["listView"]["geometry"]["overflow"] and not task["listView"]["geometry"]["ownerCrossings"],
             "wallView": task["wallView"],
-            "ai": task["ai"] == {"visible": 6, "count": "6 / 55"},
-            "game": task["game"] == {"visible": 28, "count": "28 / 55"},
-            "search": task["search"] == {"visible": 1, "ids": ["55"]},
+            "ai": task["ai"] == {"visible": 21, "count": "21 / 76"},
+            "game": task["game"] == {"visible": 30, "count": "30 / 76"},
+            "search": task["search"] == {"visible": 1, "ids": ["76"]},
             "empty": task["empty"] == {
                 "visible": 0,
-                "count": "0 / 55",
+                "count": "0 / 76",
                 "messageVisible": True,
                 "message": "没有匹配记录，试试别的关键词或筛选。",
             },
             "offline": task["offline"] == {"visible": 1, "ids": ["24"]},
-            "expanded": task["expanded"] == {"visible": 55, "aria": "true"},
+            "expanded": task["expanded"] == {"visible": 76, "aria": "true"},
             "copySuccess": task["copySuccess"]["button"] == "已复制 ✓"
             and "已复制" in task["copySuccess"]["status"],
             "copyFailure": task["copyFailure"]["button"] == "复制微信号"
@@ -417,10 +417,10 @@ def assert_view(name, width, height, geom, images, task) -> list[str]:
             "fragment": task["fragment"]["hash"] == "#ledger"
             and task["fragment"]["intersects"],
             "latestCTA": task["latestCTA"] == {
-                "href": "https://1in8b.space/",
+                "href": "https://24kmagicai.space/",
                 "target": "_blank",
                 "rel": ["noopener", "noreferrer"],
-                "tapOpened": "https://1in8b.space/" if width == 390 else None,
+                "tapOpened": "https://24kmagicai.space/" if width == 390 else None,
             },
         }
         failures.extend(
@@ -654,8 +654,8 @@ def run_matrix(origin: str, output: Path, site_root: Path) -> dict:
         "status": 200,
         "hero": 1,
         "featured": 0,
-        "ledger": 55,
-        "visibleLedger": 55,
+        "ledger": 76,
+        "visibleLedger": 76,
         "visibleLedgerTools": 0,
         "visibleLedgerMore": 0,
         "visibleCopyButton": 0,
